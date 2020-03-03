@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang=zh>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Java 泛型  为什么？ 只有指定类型才可以添加到集合中：类型安全 读取出来的对象不需要强转，便捷 **Java中的泛型，只在编译阶段有效。**在编译过程中，正确检验泛型结果后，会将泛型的相关信息擦除，并且在对象进入和离开方法的边界处添加类型检查和类型转换的方法。也就是说，泛型信息不会进入到运行阶段。  泛型的使用  1. 泛型类 对象实例化时不指定泛型，默认为Object 泛型不同的引用不能">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 泛型">
+<meta property="og:url" content="https://tiantianliu2018.github.io/2019/10/14/Java-泛型/index.html">
+<meta property="og:site_name" content="Tina&#39;s Blog">
+<meta property="og:description" content="Java 泛型  为什么？ 只有指定类型才可以添加到集合中：类型安全 读取出来的对象不需要强转，便捷 **Java中的泛型，只在编译阶段有效。**在编译过程中，正确检验泛型结果后，会将泛型的相关信息擦除，并且在对象进入和离开方法的边界处添加类型检查和类型转换的方法。也就是说，泛型信息不会进入到运行阶段。  泛型的使用  1. 泛型类 对象实例化时不指定泛型，默认为Object 泛型不同的引用不能">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-27T02:32:07.620Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 泛型">
+<meta name="twitter:description" content="Java 泛型  为什么？ 只有指定类型才可以添加到集合中：类型安全 读取出来的对象不需要强转，便捷 **Java中的泛型，只在编译阶段有效。**在编译过程中，正确检验泛型结果后，会将泛型的相关信息擦除，并且在对象进入和离开方法的边界处添加类型检查和类型转换的方法。也就是说，泛型信息不会进入到运行阶段。  泛型的使用  1. 泛型类 对象实例化时不指定泛型，默认为Object 泛型不同的引用不能">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Java 泛型</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/tiantianliu2018">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/10/15/Java-枚举类/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/10/13/论文阅读《Graph-Neural-Networks-A-Review-of-Methods-and-Applications》/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://tiantianliu2018.github.io/2019/10/14/Java-泛型/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://tiantianliu2018.github.io/2019/10/14/Java-泛型/&text=Java 泛型"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tiantianliu2018.github.io/2019/10/14/Java-泛型/&title=Java 泛型"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tiantianliu2018.github.io/2019/10/14/Java-泛型/&is_video=false&description=Java 泛型"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java 泛型&body=Check out this article: https://tiantianliu2018.github.io/2019/10/14/Java-泛型/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://tiantianliu2018.github.io/2019/10/14/Java-泛型/&title=Java 泛型"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://tiantianliu2018.github.io/2019/10/14/Java-泛型/&title=Java 泛型"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tiantianliu2018.github.io/2019/10/14/Java-泛型/&title=Java 泛型"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://tiantianliu2018.github.io/2019/10/14/Java-泛型/&title=Java 泛型"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tiantianliu2018.github.io/2019/10/14/Java-泛型/&name=Java 泛型&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java-泛型"><span class="toc-number">1.</span> <span class="toc-text"> Java 泛型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么"><span class="toc-number">1.1.</span> <span class="toc-text"> 为什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#泛型的使用"><span class="toc-number">1.2.</span> <span class="toc-text"> 泛型的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-泛型类"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 1. 泛型类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-泛型方法"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 2. 泛型方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-泛型接口"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 3. 泛型接口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通配符"><span class="toc-number">1.3.</span> <span class="toc-text"> 通配符</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Java 泛型
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Tina's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-10-14T00:38:39.000Z" itemprop="datePublished">2019-10-14</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/source/categories/Java/">Java</a> › <a class="category-link" href="/source/categories/Java/泛型/">泛型</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/source/tags/Java/">Java</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="java-泛型"><a class="markdownIt-Anchor" href="#java-泛型"></a> Java 泛型</h1>
+<h2 id="为什么"><a class="markdownIt-Anchor" href="#为什么"></a> 为什么？</h2>
+<p>只有指定类型才可以添加到集合中：类型安全</p>
+<p>读取出来的对象不需要强转，便捷</p>
+<p>**Java中的泛型，只在编译阶段有效。**在编译过程中，正确检验泛型结果后，会将泛型的相关信息擦除，并且在对象进入和离开方法的边界处添加类型检查和类型转换的方法。也就是说，<strong>泛型信息不会进入到运行阶段。</strong></p>
+<h2 id="泛型的使用"><a class="markdownIt-Anchor" href="#泛型的使用"></a> 泛型的使用</h2>
+<h3 id="1-泛型类"><a class="markdownIt-Anchor" href="#1-泛型类"></a> 1. 泛型类</h3>
+<p>对象实例化时不指定泛型，默认为Object</p>
+<p>泛型不同的引用不能相互赋值</p>
+<pre class="highlight"><code class="Java"><span class="hljs-comment">/**
+ * 泛型类
+ * <span class="hljs-doctag">@param</span> &lt;T&gt;  此处的泛型T可以任意取名，一般使用T(type)
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>&lt;<span class="hljs-title">T</span>&gt;</span>{
+    <span class="hljs-keyword">private</span> T t;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setT</span><span class="hljs-params">(T t)</span></span>{
+        <span class="hljs-keyword">this</span>.t = t;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> T <span class="hljs-title">getT</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.t;
+    }
+}
+</code></pre>
+<h3 id="2-泛型方法"><a class="markdownIt-Anchor" href="#2-泛型方法"></a> 2. 泛型方法</h3>
+<p>方法，也可以被泛型化，不管此时定义在其中的类是不是泛型化的。在泛型方法中可以定义泛型参数，此时，参数的类型就是传入数据的类型。</p>
+<p>在类上定义的泛型，可以在普通的方法中使用。</p>
+<p>在静态方法中，不能使用类定义的泛型，如果使用泛型，只能使用静态方法自己定义的泛型。</p>
+<p>泛型方法在调用之前没有固定的数据类型，在调用时，传入的参数是什么类型，就会把泛型改成什么类型。也就说，泛型方法会在调用时确定泛型具体的数据类型。</p>
+<h3 id="3-泛型接口"><a class="markdownIt-Anchor" href="#3-泛型接口"></a> 3. 泛型接口</h3>
+<p><strong>接口定义</strong></p>
+<pre class="highlight"><code class="Java"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Generator</span>&lt;<span class="hljs-title">T</span>&gt;</span>{
+    <span class="hljs-function">T <span class="hljs-title">next</span><span class="hljs-params">()</span></span>;
+}
+</code></pre>
+<p><strong>实现接口</strong></p>
+<p>未传入泛型实参时，与泛型类的定义相同，在声明类的时候，需要将泛型的声明也一起加到类中。</p>
+<pre class="highlight"><code class="Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FruitGenerator</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">Generator</span>&lt;<span class="hljs-title">T</span>&gt;</span>{}
+</code></pre>
+<p>传入泛型实参时，定义一个生产器实现这个接口，虽然只创建了一个泛型接口 <code>Generator&lt;T&gt;</code>, 但是我们可以为 <code>T</code> 传入无数个实参, 形成无数种类型的 Generator 接口</p>
+<p>在实现类实现泛型接口时，如已将泛型类型传入实参类型，则所有使用泛型的地方都要替换成传入的实参类型。</p>
+<pre class="highlight"><code class="Java">Generator&lt;T&gt;, <span class="hljs-function"><span class="hljs-keyword">public</span> T <span class="hljs-title">next</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// 中的T都要替换成传入的String类型</span>
+</code></pre>
+<h2 id="通配符"><a class="markdownIt-Anchor" href="#通配符"></a> 通配符</h2>
+<p>不确定集合中的元素具体的数据类型，使用 <code>？</code> 表示所有类型</p>
+<pre class="highlight"><code class="Java"> <span class="hljs-comment">// test 方法需要一个list集合的参数，但是不确定list集合中数据的具体类型</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test</span><span class="hljs-params">(List&lt;?&gt; list)</span></span>{ 
+	System.out.println(list);
+}
+</code></pre>
+<p><strong>有限制的通配符</strong></p>
+<p><code>&lt;? extends Person&gt;</code>（无穷小，Person）</p>
+<p>只允许泛型为 Person 及 Person 子类的引用调用</p>
+<p><code>&lt;? super Person&gt;</code>（Person，无穷大）</p>
+<p>只允许泛型为 Person 及 Person 父类的引用调用</p>
+<p><code>&lt;? extends Comparable&gt;</code>（无穷小，Person）</p>
+<p>只允许泛型为实现 Comparable 接口的实现类的引用调用</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/tiantianliu2018">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java-泛型"><span class="toc-number">1.</span> <span class="toc-text"> Java 泛型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么"><span class="toc-number">1.1.</span> <span class="toc-text"> 为什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#泛型的使用"><span class="toc-number">1.2.</span> <span class="toc-text"> 泛型的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-泛型类"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 1. 泛型类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-泛型方法"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 2. 泛型方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-泛型接口"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 3. 泛型接口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通配符"><span class="toc-number">1.3.</span> <span class="toc-text"> 通配符</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://tiantianliu2018.github.io/2019/10/14/Java-泛型/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://tiantianliu2018.github.io/2019/10/14/Java-泛型/&text=Java 泛型"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tiantianliu2018.github.io/2019/10/14/Java-泛型/&title=Java 泛型"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tiantianliu2018.github.io/2019/10/14/Java-泛型/&is_video=false&description=Java 泛型"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java 泛型&body=Check out this article: https://tiantianliu2018.github.io/2019/10/14/Java-泛型/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://tiantianliu2018.github.io/2019/10/14/Java-泛型/&title=Java 泛型"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://tiantianliu2018.github.io/2019/10/14/Java-泛型/&title=Java 泛型"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tiantianliu2018.github.io/2019/10/14/Java-泛型/&title=Java 泛型"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://tiantianliu2018.github.io/2019/10/14/Java-泛型/&title=Java 泛型"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tiantianliu2018.github.io/2019/10/14/Java-泛型/&name=Java 泛型&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Tiantian Liu
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/tiantianliu2018">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+
+
+  <!--   {% if theme.canvas_nest %} -->
+	<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+	<!-- {% endif %} -->
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

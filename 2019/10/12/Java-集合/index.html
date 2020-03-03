@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang=zh>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="集合 Java 集合类存放于 java.util 包中，是一个用来存放对象的容器  Java 集合只能存放对象。 集合存放的是多个对象的引用，对象本身还是存放在堆内存中 集合可以存放不同类型，不限数量的数据类型  Java 集合可分为 Set、List、Map 三种大体系：  Set：无序、不可重复集合 List：有序，可重复集合 Map：具有映射关系的集合  在 JDK5 之后，增加了泛型，J">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 集合">
+<meta property="og:url" content="https://tiantianliu2018.github.io/2019/10/12/Java-集合/index.html">
+<meta property="og:site_name" content="Tina&#39;s Blog">
+<meta property="og:description" content="集合 Java 集合类存放于 java.util 包中，是一个用来存放对象的容器  Java 集合只能存放对象。 集合存放的是多个对象的引用，对象本身还是存放在堆内存中 集合可以存放不同类型，不限数量的数据类型  Java 集合可分为 Set、List、Map 三种大体系：  Set：无序、不可重复集合 List：有序，可重复集合 Map：具有映射关系的集合  在 JDK5 之后，增加了泛型，J">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-27T02:32:44.886Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 集合">
+<meta name="twitter:description" content="集合 Java 集合类存放于 java.util 包中，是一个用来存放对象的容器  Java 集合只能存放对象。 集合存放的是多个对象的引用，对象本身还是存放在堆内存中 集合可以存放不同类型，不限数量的数据类型  Java 集合可分为 Set、List、Map 三种大体系：  Set：无序、不可重复集合 List：有序，可重复集合 Map：具有映射关系的集合  在 JDK5 之后，增加了泛型，J">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Java 集合</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/tiantianliu2018">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/10/13/论文阅读《Graph-Neural-Networks-A-Review-of-Methods-and-Applications》/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/10/11/Java-异常处理/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://tiantianliu2018.github.io/2019/10/12/Java-集合/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://tiantianliu2018.github.io/2019/10/12/Java-集合/&text=Java 集合"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tiantianliu2018.github.io/2019/10/12/Java-集合/&title=Java 集合"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tiantianliu2018.github.io/2019/10/12/Java-集合/&is_video=false&description=Java 集合"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java 集合&body=Check out this article: https://tiantianliu2018.github.io/2019/10/12/Java-集合/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://tiantianliu2018.github.io/2019/10/12/Java-集合/&title=Java 集合"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://tiantianliu2018.github.io/2019/10/12/Java-集合/&title=Java 集合"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tiantianliu2018.github.io/2019/10/12/Java-集合/&title=Java 集合"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://tiantianliu2018.github.io/2019/10/12/Java-集合/&title=Java 集合"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tiantianliu2018.github.io/2019/10/12/Java-集合/&name=Java 集合&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#集合"><span class="toc-number">1.</span> <span class="toc-text"> 集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hashset"><span class="toc-number">1.0.1.</span> <span class="toc-text"> HashSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#treeset"><span class="toc-number">1.0.2.</span> <span class="toc-text"> TreeSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list-与-arraylist"><span class="toc-number">1.0.3.</span> <span class="toc-text"> List 与 ArrayList</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#arraylist-和-vector"><span class="toc-number">1.0.4.</span> <span class="toc-text"> ArrayList 和 Vector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#map"><span class="toc-number">1.0.5.</span> <span class="toc-text"> Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hashmap-和-hashtable"><span class="toc-number">1.0.6.</span> <span class="toc-text"> HashMap 和 Hashtable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#treemap"><span class="toc-number">1.0.7.</span> <span class="toc-text"> TreeMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作集合的工具类-collections"><span class="toc-number">1.0.8.</span> <span class="toc-text"> 操作集合的工具类 Collections</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Java 集合
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Tina's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-10-12T00:38:34.000Z" itemprop="datePublished">2019-10-12</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/source/categories/Java/">Java</a> › <a class="category-link" href="/source/categories/Java/集合/">集合</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/source/tags/Java/">Java</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="集合"><a class="markdownIt-Anchor" href="#集合"></a> 集合</h1>
+<p>Java 集合类存放于 <code>java.util</code> 包中，是一个用来存放对象的容器</p>
+<ul>
+<li>Java 集合只能存放对象。</li>
+<li>集合存放的是多个对象的引用，对象本身还是存放在堆内存中</li>
+<li>集合可以存放不同类型，不限数量的数据类型</li>
+</ul>
+<p>Java 集合可分为 <code>Set</code>、<code>List</code>、<code>Map</code> 三种大体系：</p>
+<ul>
+<li><code>Set</code>：无序、不可重复集合</li>
+<li><code>List</code>：有序，可重复集合</li>
+<li><code>Map</code>：具有映射关系的集合</li>
+</ul>
+<p>在 JDK5 之后，增加了泛型，Java集合可以记住容器中对象的数据类型</p>
+<h3 id="hashset"><a class="markdownIt-Anchor" href="#hashset"></a> HashSet</h3>
+<p><code>HashSet</code> 是 <code>Set</code> 接口的典型实现，大多数时候使用 <code>Set</code> 集合时都使用这个实现类。我们大多数时候说的 <code>Set</code> 集合值得都是 <code>HashSet</code></p>
+<p><code>HashSet</code> 按 <code>Hash</code> 算法来存储集合中的元素，因此具有很好的存取和查找性能。</p>
+<p><code>HashSet</code> 具有以下特点：</p>
+<ul>
+<li>不能保证元素的排列顺序</li>
+<li>不可重复</li>
+<li><code>HashSet</code> 不是线程安全的</li>
+<li>集合元素可以是 <code>null</code></li>
+</ul>
+<p>当向 <code>HashSet</code> 集合中存入一个元素时，<code>HashSet</code> 会调用该对象的 <code>hashCode()</code> 方法来得到该对象的 <code>hashCode</code> 值，然后根据 <code>hashCode</code> 值确定该对象在 <code>HashSet</code> 中的存储位置。</p>
+<p>如果两个元素的 <code>equals()</code> 方法返回 <code>true</code>，但它们的 <code>hashCode()</code> 返回值不相等，<code>hashSet</code> 将会把它们存储在不同的位置，但依然可以添加成功。</p>
+<p><strong>Hashset 方法</strong></p>
+<pre class="highlight"><code class="Java">set.add(); 		<span class="hljs-comment">// 添加元素</span>
+set.remove(); 	<span class="hljs-comment">// 移除元素</span>
+set.contains(); <span class="hljs-comment">// 判断是否包含某个元素</span>
+set.clear();	<span class="hljs-comment">// 清空集合</span>
+set.size(); 	<span class="hljs-comment">// 集合中元素的个数</span>
+
+<span class="hljs-comment">/* 集合的遍历 */</span>
+<span class="hljs-comment">// 使用迭代器遍历集合</span>
+Iterator iterator = set.iterator();
+<span class="hljs-keyword">while</span> (iterator.hasNext()){
+    System.out.println(iterator.next());
+}
+<span class="hljs-comment">// for each 迭代集合</span>
+<span class="hljs-keyword">for</span> (Object object: set) {  <span class="hljs-comment">// 取出set中的每一个元素，赋值给object，直到循环set所有值</span>
+    System.out.println(object);
+}
+</code></pre>
+<p><strong>hashCode() 方法</strong></p>
+<p>HashSet集合判断两个元素相等的标准：两个对象通过 <code>equals()</code> 方法比较相等，并且两个对象的 <code>hashCode()</code> 方法返回值也相等。</p>
+<p>如果两个对象通过 <code>equals()</code> 方法返回 <code>true</code>，这两个对象的 <code>hashCode</code> 值也应该相同。</p>
+<p>如果想让集合只能存同样类型的对象，使用<strong>泛型</strong>:</p>
+<pre class="highlight"><code class="Java">Set&lt;String&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;String&gt;();  <span class="hljs-comment">// 该集合只能存 String 类型的数据</span>
+</code></pre>
+<h3 id="treeset"><a class="markdownIt-Anchor" href="#treeset"></a> TreeSet</h3>
+<p><code>TreeSet</code> 是 <code>SortedSet</code> 接口的实现类，<code>TreeSet</code> 可以确保集合元素处于排序状态。<code>TreeSet</code> 支持两种排序方法：<strong>自然排序</strong>和<strong>定制排序</strong>。默认情况下，<code>TreeSet</code> 采用自然排序。</p>
+<p><strong>自然排序</strong></p>
+<p>排序：<code>TreeSet</code> 会调用集合元素的 <code>compareTo(Object obj)</code> 方法来比较元素之间的大小关系，然后将集合元素按升序排列</p>
+<ul>
+<li>如果 this &gt; obj, 返回正数 1</li>
+<li>如果 this &lt; obj, 返回负数 -1</li>
+<li>如果 this = obj, 返回 0，则认为这两个对象相等</li>
+<li>必须放入同样类的对象（默认会进行排序）否则可能会发生类型转换异常，可以使用泛型来进行限制。</li>
+</ul>
+<p><strong>定制排序</strong></p>
+<p>如果要实现定制排序，则需要在创建 <code>TreeSet</code> 集合对象时，提供一个 <code>Comparator</code> 接口的实现类对象。由该 <code>Comparator</code> 对象负责集合元素的排序逻辑。</p>
+<pre class="highlight"><code class="Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Comparator</span>&lt;<span class="hljs-title">Person</span>&gt; </span>{  <span class="hljs-comment">// 按照年龄排序</span>
+    <span class="hljs-keyword">int</span> age;
+    String name;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span><span class="hljs-params">()</span></span>{}
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span><span class="hljs-params">(<span class="hljs-keyword">int</span> age, String name)</span></span>{
+        <span class="hljs-keyword">this</span>.age = age;
+        <span class="hljs-keyword">this</span>.name = name;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(Person o1, Person o2)</span> </span>{  <span class="hljs-comment">// 按年龄从小到大排序</span>
+        <span class="hljs-keyword">if</span> (o1.age &gt; o2.age){
+            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+        }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (o1.age &lt; o2.age){
+            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+        }<span class="hljs-keyword">else</span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        }
+    }
+}
+</code></pre>
+<h3 id="list-与-arraylist"><a class="markdownIt-Anchor" href="#list-与-arraylist"></a> List 与 ArrayList</h3>
+<p><code>List</code> 代表一个元素有序，且可重复的集合，集合中的每个元素都有其对应的顺序</p>
+<p><code>List</code> 允许使用重复元素，可以通过索引来访问指定位置的元素集合</p>
+<p><code>List</code> 默认按元素的添加顺序设置元素的索引</p>
+<p><code>List</code> 集合里添加了一些根据索引来操作集合的方法</p>
+<pre class="highlight"><code class="Java">list.get(<span class="hljs-number">2</span>);  <span class="hljs-comment">// 通过索引来访问指定位置的集合元素</span>
+
+list.add(<span class="hljs-number">1</span>,<span class="hljs-string">"f"</span>);  <span class="hljs-comment">// 在指定索引下标的位置插入数据</span>
+
+List&lt;String&gt; l = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;();
+l.add(<span class="hljs-string">"123"</span>);
+l.add(<span class="hljs-string">"456"</span>);
+list.addAll(<span class="hljs-number">2</span>, l); <span class="hljs-comment">// 在指定索引下标的位置插入集合</span>
+
+list.indexOf(<span class="hljs-string">"d"</span>);  <span class="hljs-comment">// 获取指定元素在集合中第一次出现的索引下标</span>
+list.lastIndexOf(<span class="hljs-string">"d"</span>);  <span class="hljs-comment">// 获取指定元素在集合中最后一次出现的索引下标</span>
+
+list.remove(<span class="hljs-number">2</span>);  <span class="hljs-comment">// 根据指定的索引下标移除数据</span>
+
+list.set(<span class="hljs-number">1</span>, <span class="hljs-string">"ff"</span>); <span class="hljs-comment">// 根据指定索引下标修改元素</span>
+
+List&lt;String&gt; sublist = list.subList(<span class="hljs-number">2</span>,<span class="hljs-number">4</span>);  <span class="hljs-comment">// 根据索引下标的起始位置截取元素，前闭后开</span>
+</code></pre>
+<h3 id="arraylist-和-vector"><a class="markdownIt-Anchor" href="#arraylist-和-vector"></a> ArrayList 和 Vector</h3>
+<p><code>ArrayList</code> 和 <code>Vector</code> 是 <code>List</code> 接口的两个典型实现。</p>
+<p>区别：</p>
+<ul>
+<li><code>Vector</code> 是一个古老的集合，通常建议使用 <code>ArrayList</code></li>
+<li><code>ArrayList</code> 是线程不安全的， 而 <code>Vector</code> 是线程安全的</li>
+<li>即使为保证 <code>List</code> 集合线程安全，也不推荐使用 <code>Vector</code></li>
+</ul>
+<h3 id="map"><a class="markdownIt-Anchor" href="#map"></a> Map</h3>
+<p><code>Map</code> 用于保存具有映射关系的数据，因此 <code>Map</code> 集合里保存着两组值，一组值用于保存 <code>Map</code> 里的 <code>Key</code>，另外一组用于保存 <code>Map</code> 里的 <code>Value</code></p>
+<p><code>Map</code> 中的 <code>Key</code> 和 <code>Value</code> 都可以是任何引用类型的数据</p>
+<p><code>Map</code> 中的 <code>key</code> 不允许重复，即同一个 <code>Map</code> 对象的任何两个 <code>Key</code> 通过 <code>equals()</code> 方法比较返回 <code>false</code></p>
+<p><code>Key</code> 和 <code>Value</code> 之间存在单向一对一关系，即通过指定的 <code>Key</code> 总能找到唯一的确定的 <code>Value</code></p>
+<pre class="highlight"><code class="Java">map.put(<span class="hljs-string">"b"</span>,<span class="hljs-number">1</span>);  <span class="hljs-comment">// 添加数据</span>
+   
+map.get(<span class="hljs-string">"b"</span>);  <span class="hljs-comment">// 根据 key 取值</span>
+map.remove(<span class="hljs-string">"c"</span>);  <span class="hljs-comment">// 根据 key 移除键值对</span>
+map.size();  <span class="hljs-comment">// map 集合的元素个数</span>
+
+System.out.println(map.containsKey(<span class="hljs-string">"e"</span>));  <span class="hljs-comment">// 判断当前的 map 集合是否包含指定的 key</span>
+System.out.println(map.containsValue(<span class="hljs-number">10</span>)); <span class="hljs-comment">// 判断当前的 map 集合是否包含指定的 value</span>
+
+<span class="hljs-comment">// 遍历 map 集合</span>
+Set&lt;String&gt; keySet = map.keySet(); <span class="hljs-comment">// 获取 map 所有的 key</span>
+map.values(); <span class="hljs-comment">// 获取 map 所有的 value</span>
+<span class="hljs-keyword">for</span> (String key:keySet){
+System.out.println(<span class="hljs-string">"Key: "</span> + key + <span class="hljs-string">"\t Value: "</span>+ map.get(key));
+}
+<span class="hljs-comment">// map.entrySet();</span>
+Set&lt;Map.Entry&lt;String, Integer&gt;&gt; entrySet = map.entrySet();
+<span class="hljs-keyword">for</span>(Map.Entry&lt;String, Integer&gt; en: entrySet){
+System.out.println(<span class="hljs-string">"Key: "</span> + en.getKey() + <span class="hljs-string">"\t Value: "</span> + en.getValue());
+}
+</code></pre>
+<h3 id="hashmap-和-hashtable"><a class="markdownIt-Anchor" href="#hashmap-和-hashtable"></a> HashMap 和 Hashtable</h3>
+<p><code>HashMap</code> 和 <code>HashValue</code> 是 Map 接口的两个典型实现类。</p>
+<p>区别：</p>
+<ul>
+<li><code>Hashtable</code> 是一个古老的 Map 实现类，不建议使用</li>
+<li><code>Hashtable</code> 是一个线程安全的 Map 实现，但 <code>HashMap</code> 是线程不安全的</li>
+<li><code>Hashtable</code> 不允许使用 <code>null</code> 作为 <code>key</code> 和 <code>value</code>， 而 <code>HashMap</code> 可以</li>
+</ul>
+<p>与 <code>HashSet</code> 集合不能保证元素的顺序一样，<code>Hashtable</code>、<code>HashMap</code> 也不能保证其中 <code>key-value</code> 对的顺序</p>
+<p><code>Hashtable</code>、<code>HashMap</code> 判断两个 <code>Key</code> 相等的标准是：两个 <code>key</code> 通过 <code>equals()</code> 方法返回 <code>true</code>，<code>hashCode</code>值也相等</p>
+<p><code>Hashtable</code>、<code>HashMap</code>  相等的标准是：两个<code>value</code> 通过 <code>equalsHashMap</code> 判断两个 <code>Values</code> 方法返回 <code>true</code></p>
+<h3 id="treemap"><a class="markdownIt-Anchor" href="#treemap"></a> TreeMap</h3>
+<p><code>TreeMap</code> 存储 <code>Key-Value</code> 对时，需要根据 <code>Key</code> 对 <code>key-value</code> 对进行排序。<code>TreeMap</code> 可以保证所有的 <code>Key-Value</code> 对处于有序状态.</p>
+<p><code>TreeMap</code> 的 <code>key</code> 的排序：</p>
+<ul>
+<li>自然排序：<code>TreeMap</code> 的所有的 <code>Key</code> 必须实现 <code>Comparable</code> 接口，而且所有的 <code>Key</code> 应该是同一个类的对象，否则会抛出 <code>ClassCastException</code></li>
+<li>定制排序：创建 <code>TreeMap</code> 时，传入一个 <code>Comparator</code> 对象，该对象负责对 <code>TreeMap</code> 中所有 <code>key</code> 进行排序。此时，不需要 <code>Map</code> 的 <code>Key</code> 实现 <code>Comparable</code> 接口</li>
+</ul>
+<h3 id="操作集合的工具类-collections"><a class="markdownIt-Anchor" href="#操作集合的工具类-collections"></a> 操作集合的工具类 Collections</h3>
+<p>Collections 是一个操作 Set、List 和 Map 等集合的工具类</p>
+<p>Collections 中提供了大量方法对集合进行排序、查询和修改等操作，还提供了对集合对象设置不可变、对集合对象实现同步控制等方法。</p>
+<p>排序操作：</p>
+<ul>
+<li><code>reverse(List)</code>: 反转 List 元素顺序</li>
+<li><code>shuffle(List)</code>  对 List 集合元素进行随机排序</li>
+<li><code>sort(List)</code> 根据元素的自然顺序对指定 List 集合元素按升序排序</li>
+<li><code>sort(List, Comparator)</code> 根据指定的 Comparator 产生的顺序对 List 集合元素进行排序</li>
+<li><code>swap(List, int i, int j)</code> 将指定 list 集合中的 i 处元素 和 j 处元素进行交换</li>
+</ul>
+<p><strong>查找、替换</strong></p>
+<ul>
+<li><code>Object max(Collection)</code>：根据元素的自然顺序，返回给定集合中的最大元素</li>
+<li><code>Object max(Collection, Comparator)</code>：根据 Comparator 指定的顺序，返回给定集合中的最大元素</li>
+<li><code>Object min(Collection)</code></li>
+<li><code>Object min(Collection, Comparator)</code></li>
+<li><code>int frequency(Collection, Object)</code>：返回指定集合中指定元素的出现次数</li>
+<li><code>boolean replaceAll(List list, Object oldVal, Object newVal)</code> ：使用新值替换 List 对象的所有指定旧值</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/tiantianliu2018">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#集合"><span class="toc-number">1.</span> <span class="toc-text"> 集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hashset"><span class="toc-number">1.0.1.</span> <span class="toc-text"> HashSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#treeset"><span class="toc-number">1.0.2.</span> <span class="toc-text"> TreeSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list-与-arraylist"><span class="toc-number">1.0.3.</span> <span class="toc-text"> List 与 ArrayList</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#arraylist-和-vector"><span class="toc-number">1.0.4.</span> <span class="toc-text"> ArrayList 和 Vector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#map"><span class="toc-number">1.0.5.</span> <span class="toc-text"> Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hashmap-和-hashtable"><span class="toc-number">1.0.6.</span> <span class="toc-text"> HashMap 和 Hashtable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#treemap"><span class="toc-number">1.0.7.</span> <span class="toc-text"> TreeMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作集合的工具类-collections"><span class="toc-number">1.0.8.</span> <span class="toc-text"> 操作集合的工具类 Collections</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://tiantianliu2018.github.io/2019/10/12/Java-集合/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://tiantianliu2018.github.io/2019/10/12/Java-集合/&text=Java 集合"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tiantianliu2018.github.io/2019/10/12/Java-集合/&title=Java 集合"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tiantianliu2018.github.io/2019/10/12/Java-集合/&is_video=false&description=Java 集合"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java 集合&body=Check out this article: https://tiantianliu2018.github.io/2019/10/12/Java-集合/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://tiantianliu2018.github.io/2019/10/12/Java-集合/&title=Java 集合"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://tiantianliu2018.github.io/2019/10/12/Java-集合/&title=Java 集合"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tiantianliu2018.github.io/2019/10/12/Java-集合/&title=Java 集合"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://tiantianliu2018.github.io/2019/10/12/Java-集合/&title=Java 集合"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tiantianliu2018.github.io/2019/10/12/Java-集合/&name=Java 集合&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Tiantian Liu
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/tiantianliu2018">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+
+
+  <!--   {% if theme.canvas_nest %} -->
+	<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+	<!-- {% endif %} -->
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

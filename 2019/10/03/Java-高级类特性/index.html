@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang=zh>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Java 高级类特性  面向对象特征之二：继承 为什么要有继承？ 多个类中存在相同属性和行为时，将这些内容抽取到单独一个类中，那么多个类无需再定义这些属性和行为，只要继承那个类即可。 此处的多个类称为子类，单独的这个类称为父类（基类或超类） 继承的语法规则 public Subclass extends Superclass{}  作用 继承的出现提高了代码的复用性 继承的出现让类与类之间产生了">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 高级类特性">
+<meta property="og:url" content="https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/index.html">
+<meta property="og:site_name" content="Tina&#39;s Blog">
+<meta property="og:description" content="Java 高级类特性  面向对象特征之二：继承 为什么要有继承？ 多个类中存在相同属性和行为时，将这些内容抽取到单独一个类中，那么多个类无需再定义这些属性和行为，只要继承那个类即可。 此处的多个类称为子类，单独的这个类称为父类（基类或超类） 继承的语法规则 public Subclass extends Superclass{}  作用 继承的出现提高了代码的复用性 继承的出现让类与类之间产生了">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-27T02:32:20.890Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 高级类特性">
+<meta name="twitter:description" content="Java 高级类特性  面向对象特征之二：继承 为什么要有继承？ 多个类中存在相同属性和行为时，将这些内容抽取到单独一个类中，那么多个类无需再定义这些属性和行为，只要继承那个类即可。 此处的多个类称为子类，单独的这个类称为父类（基类或超类） 继承的语法规则 public Subclass extends Superclass{}  作用 继承的出现提高了代码的复用性 继承的出现让类与类之间产生了">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Java 高级类特性</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/tiantianliu2018">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/10/06/论文阅读《Mapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information》/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/10/03/JavaBean/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/&text=Java 高级类特性"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/&title=Java 高级类特性"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/&is_video=false&description=Java 高级类特性"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java 高级类特性&body=Check out this article: https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/&title=Java 高级类特性"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/&title=Java 高级类特性"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/&title=Java 高级类特性"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/&title=Java 高级类特性"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/&name=Java 高级类特性&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#java-高级类特性"><span class="toc-number">1.</span> <span class="toc-text"> Java 高级类特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面向对象特征之二继承"><span class="toc-number">2.</span> <span class="toc-text"> 面向对象特征之二：继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法的重写"><span class="toc-number">3.</span> <span class="toc-text"> 方法的重写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四种访问权限修饰符"><span class="toc-number">4.</span> <span class="toc-text"> 四种访问权限修饰符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关键字-super"><span class="toc-number">5.</span> <span class="toc-text"> 关键字 super</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#子类对象实例化过程"><span class="toc-number">6.</span> <span class="toc-text"> 子类对象实例化过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面向对象特征之三多态"><span class="toc-number">7.</span> <span class="toc-text"> 面向对象特征之三：多态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#instance-of-操作符"><span class="toc-number">7.0.1.</span> <span class="toc-text"> instance of 操作符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#object类包装类"><span class="toc-number">8.</span> <span class="toc-text"> Object类，包装类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#object-类"><span class="toc-number">8.0.1.</span> <span class="toc-text"> Object 类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象类型转换"><span class="toc-number">8.0.2.</span> <span class="toc-text"> 对象类型转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#操作符与-equals-方法"><span class="toc-number">8.0.3.</span> <span class="toc-text"> == 操作符与 equals 方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#string-对象的创建"><span class="toc-number">8.0.4.</span> <span class="toc-text"> String 对象的创建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#包装类wrapper"><span class="toc-number">8.0.5.</span> <span class="toc-text"> 包装类（Wrapper）</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Java 高级类特性
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Tina's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-10-03T01:14:31.000Z" itemprop="datePublished">2019-10-03</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/source/categories/Java/">Java</a> › <a class="category-link" href="/source/categories/Java/高级类特性/">高级类特性</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/source/tags/Java/">Java</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="java-高级类特性"><a class="markdownIt-Anchor" href="#java-高级类特性"></a> Java 高级类特性</h2>
+<h2 id="面向对象特征之二继承"><a class="markdownIt-Anchor" href="#面向对象特征之二继承"></a> 面向对象特征之二：继承</h2>
+<p><strong>为什么要有继承？</strong></p>
+<p>多个类中存在相同属性和行为时，将这些内容抽取到单独一个类中，那么多个类无需再定义这些属性和行为，只要继承那个类即可。</p>
+<p>此处的多个类称为子类，单独的这个类称为父类（基类或超类）</p>
+<p><strong>继承的语法规则</strong></p>
+<pre class="highlight"><code class="Java"><span class="hljs-keyword">public</span> Subclass extends Superclass{}
+</code></pre>
+<p><strong>作用</strong></p>
+<p>继承的出现提高了代码的复用性</p>
+<p>继承的出现让类与类之间产生了关系，提供了多态的前提</p>
+<p>不要仅为了获取其他类中某个功能而去继承</p>
+<p><strong>说明</strong></p>
+<p>子类继承了父类，就继承了父类的方法和属性。</p>
+<p>在子类中，可以使用父类中定义的方法和属性，也可以创建新的数据和方法。</p>
+<p>在 Java 中，继承的关键字用的是 <code>extends</code>, 即子类不是父类的子集，而是对父类的扩展</p>
+<p>关于继承的规则：</p>
+<ul>
+<li>子类不能直接访问父类中私有的（private）成员变量和方法</li>
+<li>Java 只支持单继承，不允许多重继承
+<ul>
+<li>一个子类只能有一个父类</li>
+<li>一个父类可以派生出多个子类</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="方法的重写"><a class="markdownIt-Anchor" href="#方法的重写"></a> 方法的重写</h2>
+<p>在子类中可以根据需要对从父类中继承来的方法进行改造，也称方法的重置、覆盖。在程序执行时，子类的方法将覆盖父类的方法。子类重写父类的方法，只是重新编写方法体的代码。</p>
+<p>要求：</p>
+<ul>
+<li>
+<p>重写方法必须和被重写方法具有相同的方法名称、参数列表和返回值类型</p>
+</li>
+<li>
+<p>重写方法不能使用比被重写方法更严格的访问权限</p>
+</li>
+<li>
+<p>重写方法和被重写的方法必须同时为 <code>static</code> 的，或者同时为 <code>非static</code> 的</p>
+</li>
+<li>
+<p>子类方法抛出的异常不能大于父类被重写方法的异常</p>
+</li>
+</ul>
+<hr>
+<h2 id="四种访问权限修饰符"><a class="markdownIt-Anchor" href="#四种访问权限修饰符"></a> 四种访问权限修饰符</h2>
+<p>如果子类和父类在<strong>同一个包</strong>下，那么对于父类的成员修饰符只要不是私有的 <code>private</code>，子类那就可以使用</p>
+<p>如果子类和父类<strong>不在同一个包</strong>中，那么子类只能使用父类中 <code>protected</code> 和 <code>public</code> 的成员变量</p>
+<hr>
+<h2 id="关键字-super"><a class="markdownIt-Anchor" href="#关键字-super"></a> 关键字 super</h2>
+<p>在 Java 类中使用 <code>super</code> 来调用父类中指定的操作：</p>
+<ul>
+<li>
+<p><code>super</code> 可用于访问父类中定义的属性</p>
+</li>
+<li>
+<p><code>super</code> 可用于调用父类中定义的成员方法</p>
+</li>
+<li>
+<p><code>super</code> 可用于在子类构造方法中调用父类的构造器</p>
+</li>
+</ul>
+<p><strong>注意</strong></p>
+<p>尤其是当子父类出现同名成员时，可以用 <code>super</code> 进行区分</p>
+<p><code>super</code> 的追溯不仅限于直接父类，使用 <code>super</code>，子类可以调用子类之上的所有父类层级</p>
+<p><code>super</code> 和 <code>this</code> 的用法相像，<code>this</code> 代表本类对象的引用， <code>super</code> 代表父类的内存空间的标识</p>
+<p><strong>调用父类的构造器</strong></p>
+<p>子类中所有的构造器<strong>默认</strong>都会访问父类中<strong>空参数</strong>的构造器</p>
+<p>当父类中没有空参数的构造器时，子类的构造器必须通过 <code>this（参数列表）</code>或者 <code>super（参数列表）</code>语句指定调用本类或者父类中相应的构造器，且必须放在构造器的第一行</p>
+<p>如果子类构造器中既有显式调用父类或本类的构造器，且父类中又没有无参的构造器，则编译出错</p>
+<p><strong>this 和 super 的区别</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">区别点</th>
+<th>this</th>
+<th>super</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">访问属性</td>
+<td>访问本类中的属性，如果本类没有此属性则从父类中继续查找</td>
+<td>访问父类中的属性</td>
+</tr>
+<tr>
+<td style="text-align:center">调用方法</td>
+<td>访问本类中的方法</td>
+<td>直接访问父类中的方法</td>
+</tr>
+<tr>
+<td style="text-align:center">调用构造器</td>
+<td>调用本类构造器，必须放在构造器的首行</td>
+<td>调用父类构造器，必须放在子类构造器的首行</td>
+</tr>
+<tr>
+<td style="text-align:center">特殊</td>
+<td>表示当前对象</td>
+<td>无此概念</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="子类对象实例化过程"><a class="markdownIt-Anchor" href="#子类对象实例化过程"></a> 子类对象实例化过程</h2>
+<p><strong>简单类对象的实例化过程</strong></p>
+<ol>
+<li>在方法区加载 <code>Person.class</code></li>
+<li>在栈中申请空间，声明变量 <code>p</code></li>
+<li>在堆内存中开辟空间，分配地址，假设地址是 <code>BE2500</code></li>
+<li>在对象空间中（堆内存），对对象中的属性进行默认初始化，若对成员变量有赋值，则对成员变量显式初始化</li>
+<li>构造函数方法进栈，进行初始化（栈内存）</li>
+<li>初始化完毕后，将堆内存中的地址值赋给引用变量 <code>p = BE2500</code>，构造方法出栈</li>
+</ol>
+<p><strong>子类对象的实例化过程</strong></p>
+<ol>
+<li>在方法区先加载 <code>Person.class</code>, 再加载 <code>Student.class</code></li>
+<li>在栈中申请空间，声明变量 <code>stu</code></li>
+<li>在堆内存中开辟空间，分配地址</li>
+<li>并在对象空间中，对对象中的属性（包括父类的属性）进行默认初始化</li>
+<li>子类构造方法进栈</li>
+<li>显式初始化父类的属性（堆内存）</li>
+<li>父类构造方法进栈，执行完毕出栈</li>
+<li>显式初始化子类的属性（堆内存）</li>
+<li>初始化完毕后，将堆内存中的地址值赋给引用变量 <code>stu</code>. 子类构造方法出栈</li>
+</ol>
+<hr>
+<h2 id="面向对象特征之三多态"><a class="markdownIt-Anchor" href="#面向对象特征之三多态"></a> 面向对象特征之三：多态</h2>
+<p>多态性，是面向对象最重要的概念，在Java中有两种体现：</p>
+<ol>
+<li>方法的重载（overload）和重写（overwrite）</li>
+<li><strong>对象的多态性</strong>——可以直接应用在抽象类和接口上</li>
+</ol>
+<p>Java 引用变量有两个类型：<strong>编译时类型</strong>和<strong>运行时类型</strong>。</p>
+<p>编译时类型由声明该变量时使用的类型决定，</p>
+<p>运行时类型由实际赋给该变量的对象决定。</p>
+<p>若编译时类型和运行时类型不一致，就出现多态（Polymorphism）——对象的多态</p>
+<p><strong>对象的多态</strong> —— 在Java中，子类的对象可以代替父类的对象使用</p>
+<ul>
+<li>一个变量只能有一种确定的数据类型</li>
+<li>一个引用类型变量可能指向（引用）多种不同类型的对象</li>
+</ul>
+<p>子类可以看做是特殊的父类，所以父类类型的引用可以指向子类的对象：<strong>向上转型</strong></p>
+<pre class="highlight"><code class="Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>{}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span></span>{}
+Person p = <span class="hljs-keyword">new</span> Person();
+Person e = <span class="hljs-keyword">new</span> Student();  <span class="hljs-comment">// 子类的对象可以赋值给父类类型的变量引用</span>
+</code></pre>
+<p>一个引用类型变量如果声明为父类的类型，但实际引用的是子类对象，那么该变量就不能再访问子类中添加的属性和方法。</p>
+<pre class="highlight"><code class="Java">Student m = <span class="hljs-keyword">new</span> Student();
+m.school = <span class="hljs-string">"pku"</span>; <span class="hljs-comment">// 合法， Student类中有school成员变量</span>
+Person e = <span class="hljs-keyword">new</span> Student();
+e.school = <span class="hljs-string">"pku"</span>; <span class="hljs-comment">// 非法，Person类没有school成员变量</span>
+</code></pre>
+<p>属性是在编译时确定的，编译时 <code>e</code> 为 <code>Person</code> 类型，没有 <code>school</code> 成员变量，因而编译出错。</p>
+<p><strong>虚拟方法调用</strong></p>
+<p>正常的方法调用：</p>
+<pre class="highlight"><code class="Java">Person p = <span class="hljs-keyword">new</span> Person();
+p.getInfo();
+Student s = <span class="hljs-keyword">new</span> Student();
+s.getInfo();
+</code></pre>
+<p>虚拟方法调用（多态情况下）</p>
+<pre class="highlight"><code class>Person e = new Student();
+e.getInfo();  // 调用 Student 类的 getInfo() 方法
+</code></pre>
+<p>编译时类型和运行时类型：</p>
+<p>编译时 <code>e</code>为 <code>Person</code> 类，而方法的调用是在运行时确定的，所以调用的是 <code>Student</code>类的 <code>getInfo()</code> 方法 —— 动态绑定</p>
+<p><strong>多态小结：</strong></p>
+<ul>
+<li>
+<p>前提</p>
+<p>需要存在继承或者实现关系</p>
+<p>要有覆盖操作</p>
+</li>
+<li>
+<p>成员方法：</p>
+<ul>
+<li>编译时，要查看引用变量所属的类中是否有所调用的方法</li>
+<li>运行时，要调用实际对象所属类中的重写方法</li>
+</ul>
+</li>
+<li>
+<p>成员变量</p>
+<p>不具备多态性，只看引用变量所属的类</p>
+</li>
+</ul>
+<h4 id="instance-of-操作符"><a class="markdownIt-Anchor" href="#instance-of-操作符"></a> instance of 操作符</h4>
+<p><code>x instance of A</code>: 检验 <code>x</code> 是否是类 A 的对象，返回值为 <code>boolean</code> 型</p>
+<p>要求 x 所属的类与类 A 必须是子类和父类的关系，否则编译出错</p>
+<p>如果 x 属于类 A 的子类 B ，<code>x instance of A</code> 值也为 <code>true</code></p>
+<hr>
+<h2 id="object类包装类"><a class="markdownIt-Anchor" href="#object类包装类"></a> Object类，包装类</h2>
+<h4 id="object-类"><a class="markdownIt-Anchor" href="#object-类"></a> Object 类</h4>
+<p>Object 类是所有Java类的根父类 —— 基类</p>
+<p>object类中的主要方法：</p>
+<pre class="highlight"><code class="Java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Object</span><span class="hljs-params">()</span>   <span class="hljs-comment">//构造方法</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object obj)</span>	<span class="hljs-comment">//普通方法，对象比较(引用对象)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hashCode</span><span class="hljs-params">()</span>		<span class="hljs-comment">// 获取Hash码</span>
+<span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span>    <span class="hljs-comment">// 对象打印时调用</span>
+</span></code></pre>
+<h4 id="对象类型转换"><a class="markdownIt-Anchor" href="#对象类型转换"></a> 对象类型转换</h4>
+<p>基本数据类型转换的 Casting</p>
+<ul>
+<li>
+<p>自动类型转换：小的数据类型可以自动转换成大的数据类型</p>
+<p><code>long g = 20;</code>       <code>double d = 12.0f</code></p>
+</li>
+<li>
+<p>强制类型转换：可以把大的数据类型转换成小的数据类型</p>
+<p><code>float f = (float)12.0;</code>   	<code>int a = (int) 1200L</code></p>
+</li>
+</ul>
+<p>对Java对象的强制类型转换称为<strong>造型</strong></p>
+<ul>
+<li>从子类到父类的类型转换可以自动进行</li>
+<li>从父类到子类的类型转换必须通过造型（强制类型转换）实现</li>
+<li>无继承关系的引用类型间的转换是非法的</li>
+</ul>
+<h4 id="操作符与-equals-方法"><a class="markdownIt-Anchor" href="#操作符与-equals-方法"></a> <code>==</code> 操作符与 <code>equals</code> 方法</h4>
+<ul>
+<li>
+<p><code>==</code></p>
+<ul>
+<li>
+<p>基本类型比较值：只要两个变量的值相等，即为 true</p>
+<p><code>int a = 5;</code>  <code>if(a==6){...};</code></p>
+</li>
+<li>
+<p>引用类型比较引用（是否指向同一个对象）：只有指向同一个对象时，<code>==</code> 才返回true</p>
+<pre class="highlight"><code class="Java">Person p1 = <span class="hljs-keyword">new</span> Person();
+Person p2 = <span class="hljs-keyword">new</span> Person();
+<span class="hljs-keyword">if</span>(p1 == p2){...}
+</code></pre>
+<p>用 <code>==</code> 进行比较时，符号两边的数据类型必须兼容（可自动转换的基本数据类型除外），否则编译出错</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>equals</code> 所有类都继承了 Object，也就获得了 <code>equals()</code> 方法。还可以重写。</p>
+<ul>
+<li>只能比较引用类型，其作用与 <code>==</code> 相同，比较是否指向同一个对象。
+<ul>
+<li>格式：<code>obj1.equals(obj2)</code></li>
+</ul>
+</li>
+<li>特例：当用 <code>equals()</code> 方法进行比较时，对类 File、String、Date 及包装类（Wrapper）来说，是比较类型及内容而不考虑引用的是否是同一个对象
+<ul>
+<li>原因：在职这些类中重写了 Object 类的  <code>equals()</code>  方法</li>
+</ul>
+</li>
+</ul>
+<p><strong>总结</strong></p>
+<p>对于对象来说，特殊的类，如 String、File、Date使用 <code>==</code> 比较的是对象（对象的地址）， <code>equals</code> 比较的是内容</p>
+<p>除了特殊类之外的其他其他普通对象， <code>==</code> 和 <code>equals</code> 比较的都是对象（对象的内存地址）</p>
+</li>
+</ul>
+<h4 id="string-对象的创建"><a class="markdownIt-Anchor" href="#string-对象的创建"></a> String 对象的创建</h4>
+<ul>
+<li>
+<p>字面量创建 String 对象</p>
+<pre class="highlight"><code class="Java">String s1 = <span class="hljs-string">"abc"</span>;	<span class="hljs-comment">// 堆内存的常量池中添加“abc”对象，返回引用地址给s1对象</span>
+String s2 = <span class="hljs-string">"abc"</span>;	<span class="hljs-comment">// 通过 equals() 方法判断常量池中是否存在值为“abc”的对象，返回相同的引用</span>
+System.out.println(s1==s2); <span class="hljs-comment">// true, s1==s2</span>
+</code></pre>
+</li>
+<li>
+<p>new 创建 String 对象</p>
+<pre class="highlight"><code class="Java">String s3 = <span class="hljs-keyword">new</span> String(<span class="hljs-string">"def"</span>);  <span class="hljs-comment">// 在常量池中添加“def”对象，在堆中创建值为“def"的对象s3,返回指向堆中s3的引用</span>
+String s4 = <span class="hljs-keyword">new</span> String(<span class="hljs-string">"def"</span>);  <span class="hljs-comment">// 常量池中已有“def”对象，不做处理，在堆中创建值为“def”的对象s4，返回指向堆中s4的引用</span>
+<span class="hljs-comment">// 因此 s3 和 s4 指向的不是一个对象</span>
+</code></pre>
+<p>字面量创建对象的时候，只在常量池创建一个对象。</p>
+<p>使用 <code>new</code> 创建对象，常量池有对象，堆中也要有对象，字面量方法要比<code>new</code>方法省内存</p>
+</li>
+<li>
+<p>字面量相加</p>
+<pre class="highlight"><code class="Java">String s5 = <span class="hljs-string">"x"</span>+<span class="hljs-string">"y"</span>;  <span class="hljs-comment">// 经过JVM的优化，直接在常量池中添加“xy”对象</span>
+</code></pre>
+</li>
+<li>
+<p>通过<code>new</code>的方式字符串叠加</p>
+<pre class="highlight"><code class="Java">String s6 = <span class="hljs-keyword">new</span> String(<span class="hljs-string">"1"</span>)+<span class="hljs-keyword">new</span> String(<span class="hljs-string">"1"</span>)+<span class="hljs-keyword">new</span> String(<span class="hljs-string">"2"</span>);  <span class="hljs-comment">// 通过StringBuilder实现，在常量池中添加“1”和“2”两个对象，在堆中创建值为“112”的对象，把引用地址给s6</span>
+</code></pre>
+</li>
+</ul>
+<h4 id="包装类wrapper"><a class="markdownIt-Anchor" href="#包装类wrapper"></a> 包装类（Wrapper）</h4>
+<p>针对八种基本类型定义相应的引用类型——包装类（封装类）</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">基本数据类型</th>
+<th style="text-align:center">包装类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">Boolean</td>
+</tr>
+<tr>
+<td style="text-align:center">byte</td>
+<td style="text-align:center">Byte</td>
+</tr>
+<tr>
+<td style="text-align:center">short</td>
+<td style="text-align:center">Short</td>
+</tr>
+<tr>
+<td style="text-align:center">int</td>
+<td style="text-align:center">Integer</td>
+</tr>
+<tr>
+<td style="text-align:center">long</td>
+<td style="text-align:center">Long</td>
+</tr>
+<tr>
+<td style="text-align:center">char</td>
+<td style="text-align:center">Character</td>
+</tr>
+<tr>
+<td style="text-align:center">float</td>
+<td style="text-align:center">Float</td>
+</tr>
+<tr>
+<td style="text-align:center">double</td>
+<td style="text-align:center">Double</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>基本数据类型包装成包装类的实例——装箱</p>
+<p>通过包装类的构造器实现：</p>
+<pre class="highlight"><code class="Java"><span class="hljs-keyword">int</span> i = <span class="hljs-number">500</span>;
+Interger t = <span class="hljs-keyword">new</span> Integer(i);
+</code></pre>
+<p>还可以通过字符串参数构造包装类对象：</p>
+<pre class="highlight"><code class="Java">Float f = <span class="hljs-keyword">new</span> <span class="hljs-keyword">float</span>(<span class="hljs-string">"4.56"</span>);
+Long l = <span class="hljs-keyword">new</span> Long(<span class="hljs-string">"asdf"</span>);  <span class="hljs-comment">// NumberFormatException</span>
+</code></pre>
+</li>
+<li>
+<p>获得包装类对象中包装的基本数据类型变量——拆箱</p>
+<p>调用包装类的<code>.xxxValue()</code> 方法：</p>
+<p><code>boolean b = bObj.booleanValue();</code></p>
+</li>
+</ul>
+<p>JDK1.5后支持自动装箱和拆箱：</p>
+<pre class="highlight"><code class="Java">Integer l1 = <span class="hljs-number">112</span>;  <span class="hljs-comment">// 自动装箱</span>
+<span class="hljs-keyword">int</span> l2 = l1; 	<span class="hljs-comment">// 自动拆箱</span>
+</code></pre>
+<ul>
+<li>
+<p>字符串转换成基本数据类型</p>
+<ul>
+<li>
+<p>通过包装类的构造器实现：</p>
+<p><code>int i = new Integer(&quot;12&quot;);</code></p>
+</li>
+<li>
+<p>通过包装类的<code>parseXxx(String s)</code> 静态方法：</p>
+<p><code>Float f = Float.parseFloat(&quot;12.1&quot;);</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>基本数据类型转换成字符串</p>
+<ul>
+<li>
+<p>调用字符串重载的<code>valueOf()</code> 方法</p>
+<p><code>String fstr = String.valueOf(2.34f);</code></p>
+</li>
+<li>
+<p>更直接的方式</p>
+<p><code>String intStr = 5 + &quot;&quot;</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>包装类的作用</strong></p>
+<p>基本数据类型的包装类实现了基本数据类型与字符串直接转化</p>
+<p>包装类使得一个基本数据类型的数据变成了类。有了类的特点，可以调用类中的方法。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/tiantianliu2018">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#java-高级类特性"><span class="toc-number">1.</span> <span class="toc-text"> Java 高级类特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面向对象特征之二继承"><span class="toc-number">2.</span> <span class="toc-text"> 面向对象特征之二：继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法的重写"><span class="toc-number">3.</span> <span class="toc-text"> 方法的重写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四种访问权限修饰符"><span class="toc-number">4.</span> <span class="toc-text"> 四种访问权限修饰符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关键字-super"><span class="toc-number">5.</span> <span class="toc-text"> 关键字 super</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#子类对象实例化过程"><span class="toc-number">6.</span> <span class="toc-text"> 子类对象实例化过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面向对象特征之三多态"><span class="toc-number">7.</span> <span class="toc-text"> 面向对象特征之三：多态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#instance-of-操作符"><span class="toc-number">7.0.1.</span> <span class="toc-text"> instance of 操作符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#object类包装类"><span class="toc-number">8.</span> <span class="toc-text"> Object类，包装类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#object-类"><span class="toc-number">8.0.1.</span> <span class="toc-text"> Object 类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象类型转换"><span class="toc-number">8.0.2.</span> <span class="toc-text"> 对象类型转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#操作符与-equals-方法"><span class="toc-number">8.0.3.</span> <span class="toc-text"> == 操作符与 equals 方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#string-对象的创建"><span class="toc-number">8.0.4.</span> <span class="toc-text"> String 对象的创建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#包装类wrapper"><span class="toc-number">8.0.5.</span> <span class="toc-text"> 包装类（Wrapper）</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/&text=Java 高级类特性"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/&title=Java 高级类特性"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/&is_video=false&description=Java 高级类特性"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java 高级类特性&body=Check out this article: https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/&title=Java 高级类特性"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/&title=Java 高级类特性"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/&title=Java 高级类特性"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/&title=Java 高级类特性"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tiantianliu2018.github.io/2019/10/03/Java-高级类特性/&name=Java 高级类特性&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Tiantian Liu
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/tiantianliu2018">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+
+
+  <!--   {% if theme.canvas_nest %} -->
+	<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+	<!-- {% endif %} -->
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

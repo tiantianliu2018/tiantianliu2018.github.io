@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang=zh>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Neural Link Prediction Over Aligned Networks  Summary 这篇文章是如何利用对齐的两个网络增强一个网络中的链路预测性能。对于特征分别利用深度网络进行提取，最后一起用来进行链路预测。 链路预测问题，不是社交网络对齐问题。  Research Objective 给定两个对齐的网络，本文的目标是对这两个网络进行联合建模，以提高两个网络的预测质量。 提">
+<meta name="keywords" content="Network Alignment">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18">
+<meta property="og:url" content="https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/index.html">
+<meta property="og:site_name" content="Tina&#39;s Blog">
+<meta property="og:description" content="Neural Link Prediction Over Aligned Networks  Summary 这篇文章是如何利用对齐的两个网络增强一个网络中的链路预测性能。对于特征分别利用深度网络进行提取，最后一起用来进行链路预测。 链路预测问题，不是社交网络对齐问题。  Research Objective 给定两个对齐的网络，本文的目标是对这两个网络进行联合建模，以提高两个网络的预测质量。 提">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-19T12:35:10.618Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18">
+<meta name="twitter:description" content="Neural Link Prediction Over Aligned Networks  Summary 这篇文章是如何利用对齐的两个网络增强一个网络中的链路预测性能。对于特征分别利用深度网络进行提取，最后一起用来进行链路预测。 链路预测问题，不是社交网络对齐问题。  Research Objective 给定两个对齐的网络，本文的目标是对这两个网络进行联合建模，以提高两个网络的预测质量。 提">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/tiantianliu2018">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/10/20/论文阅读《Joint-Link-Prediction-and-Network-Alignment-via-Cross-graph-Embedding》IJCAI19/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/10/17/论文阅读《Structure-Based-User-Identification-across-Social-Networks》/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/&text=论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/&title=论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/&is_video=false&description=论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18&body=Check out this article: https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/&title=论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/&title=论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/&title=论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/&title=论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/&name=论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#neural-link-prediction-over-aligned-networks"><span class="toc-number">1.</span> <span class="toc-text"> Neural Link Prediction Over Aligned Networks</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#summary"><span class="toc-number">1.1.</span> <span class="toc-text"> Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#research-objective"><span class="toc-number">1.2.</span> <span class="toc-text"> Research Objective</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#problem-statement"><span class="toc-number">1.3.</span> <span class="toc-text"> Problem Statement</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#link-prediction"><span class="toc-number">1.3.1.</span> <span class="toc-text"> Link Prediction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#network-alignment"><span class="toc-number">1.3.2.</span> <span class="toc-text"> Network Alignment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#multi-task-learning"><span class="toc-number">1.3.3.</span> <span class="toc-text"> Multi-Task Learning</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#methods"><span class="toc-number">1.4.</span> <span class="toc-text"> Methods</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#evaluation"><span class="toc-number">1.5.</span> <span class="toc-text"> Evaluation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-number">1.6.</span> <span class="toc-text"> Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#notes"><span class="toc-number">1.7.</span> <span class="toc-text"> Notes</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Tina's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-10-19T07:00:09.000Z" itemprop="datePublished">2019-10-19</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/source/categories/论文阅读/">论文阅读</a> › <a class="category-link" href="/source/categories/论文阅读/Social-Networks/">Social Networks</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/source/tags/Network-Alignment/">Network Alignment</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="neural-link-prediction-over-aligned-networks"><a class="markdownIt-Anchor" href="#neural-link-prediction-over-aligned-networks"></a> Neural Link Prediction Over Aligned Networks</h1>
+<h2 id="summary"><a class="markdownIt-Anchor" href="#summary"></a> Summary</h2>
+<p>这篇文章是如何利用对齐的两个网络增强一个网络中的链路预测性能。对于特征分别利用深度网络进行提取，最后一起用来进行链路预测。</p>
+<p>链路预测问题，不是社交网络对齐问题。</p>
+<h2 id="research-objective"><a class="markdownIt-Anchor" href="#research-objective"></a> Research Objective</h2>
+<p>给定两个对齐的网络，本文的目标是对这两个网络进行联合建模，以提高两个网络的预测质量。</p>
+<p>提出一个基于对齐网络的多层神经网络框架 MNN,  在该框架中，将每个异质目标或特征视为一个单独的目标通道。分别为每个目标通道构造一个神经网络，而所有的神经网络共享一组公共的顶点嵌入。</p>
+<h2 id="problem-statement"><a class="markdownIt-Anchor" href="#problem-statement"></a> Problem Statement</h2>
+<h3 id="link-prediction"><a class="markdownIt-Anchor" href="#link-prediction"></a> Link Prediction</h3>
+<p>单个网络的链路预测问题可以分为<strong>基于相似性的方法</strong>和<strong>基于模型的方法</strong>。</p>
+<p><strong>Similarity-based</strong></p>
+<p>为每一对节点分配相似性分数，然后根据相似性分数进行链路预测。</p>
+<ul>
+<li>common neighbors</li>
+<li>Leicht-Holme-Newman index</li>
+<li>node rank based algorithms</li>
+</ul>
+<p><strong>Model-based</strong></p>
+<p>基于网络结构或连接机制的假设建立模型，然后用观测到的网络结构去训练网络</p>
+<ul>
+<li>hierarchical graph based models 基于层次图的模型</li>
+<li>latent factor models</li>
+<li>深度模型
+<ul>
+<li>DeepWork：DeepWalk将节点视为单词，将随机游动序列视为句子，然后应用单词嵌入技术来计算顶点嵌入。</li>
+<li>node2vec：biased random walk</li>
+<li>SDNE</li>
+</ul>
+</li>
+</ul>
+<h3 id="network-alignment"><a class="markdownIt-Anchor" href="#network-alignment"></a> Network Alignment</h3>
+<h3 id="multi-task-learning"><a class="markdownIt-Anchor" href="#multi-task-learning"></a> Multi-Task Learning</h3>
+<p><strong>Aligned Network</strong></p>
+<h2 id="methods"><a class="markdownIt-Anchor" href="#methods"></a> Methods</h2>
+<h2 id="evaluation"><a class="markdownIt-Anchor" href="#evaluation"></a> Evaluation</h2>
+<h2 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion"></a> Conclusion</h2>
+<h2 id="notes"><a class="markdownIt-Anchor" href="#notes"></a> Notes</h2>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/tiantianliu2018">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#neural-link-prediction-over-aligned-networks"><span class="toc-number">1.</span> <span class="toc-text"> Neural Link Prediction Over Aligned Networks</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#summary"><span class="toc-number">1.1.</span> <span class="toc-text"> Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#research-objective"><span class="toc-number">1.2.</span> <span class="toc-text"> Research Objective</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#problem-statement"><span class="toc-number">1.3.</span> <span class="toc-text"> Problem Statement</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#link-prediction"><span class="toc-number">1.3.1.</span> <span class="toc-text"> Link Prediction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#network-alignment"><span class="toc-number">1.3.2.</span> <span class="toc-text"> Network Alignment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#multi-task-learning"><span class="toc-number">1.3.3.</span> <span class="toc-text"> Multi-Task Learning</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#methods"><span class="toc-number">1.4.</span> <span class="toc-text"> Methods</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#evaluation"><span class="toc-number">1.5.</span> <span class="toc-text"> Evaluation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-number">1.6.</span> <span class="toc-text"> Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#notes"><span class="toc-number">1.7.</span> <span class="toc-text"> Notes</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/&text=论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/&title=论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/&is_video=false&description=论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18&body=Check out this article: https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/&title=论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/&title=论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/&title=论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/&title=论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tiantianliu2018.github.io/2019/10/19/论文阅读《Neural-Link-Prediction-Over-Aligned-Networks》-AAAI18/&name=论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Tiantian Liu
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/tiantianliu2018">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+
+
+  <!--   {% if theme.canvas_nest %} -->
+	<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+	<!-- {% endif %} -->
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

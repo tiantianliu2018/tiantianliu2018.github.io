@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang=zh>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Leetcode 刷题记录  191. 位1的个数 汉明重量：一串符号中非零符号的个数，在数据位符号串中，指1的个数 方法1 遍历一个数字的 32 位，如果某一位为 1，就将计数器加 1。 运行时间依赖于数字 n 的位数，此题中 n 是一个 32 位数，所以运行时间是 O(1) 的 方法2 位操作小技巧：在二进制表示中，将 n 和 n-1 做与运算总是能把 n 中最低位的 1 变成 0，并保持其">
+<meta name="keywords" content="algoritms">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode 刷题">
+<meta property="og:url" content="https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/index.html">
+<meta property="og:site_name" content="Tina&#39;s Blog">
+<meta property="og:description" content="Leetcode 刷题记录  191. 位1的个数 汉明重量：一串符号中非零符号的个数，在数据位符号串中，指1的个数 方法1 遍历一个数字的 32 位，如果某一位为 1，就将计数器加 1。 运行时间依赖于数字 n 的位数，此题中 n 是一个 32 位数，所以运行时间是 O(1) 的 方法2 位操作小技巧：在二进制表示中，将 n 和 n-1 做与运算总是能把 n 中最低位的 1 变成 0，并保持其">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/204.gif">
+<meta property="og:updated_time" content="2019-09-30T00:36:25.524Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leetcode 刷题">
+<meta name="twitter:description" content="Leetcode 刷题记录  191. 位1的个数 汉明重量：一串符号中非零符号的个数，在数据位符号串中，指1的个数 方法1 遍历一个数字的 32 位，如果某一位为 1，就将计数器加 1。 运行时间依赖于数字 n 的位数，此题中 n 是一个 32 位数，所以运行时间是 O(1) 的 方法2 位操作小技巧：在二进制表示中，将 n 和 n-1 做与运算总是能把 n 中最低位的 1 变成 0，并保持其">
+<meta name="twitter:image" content="https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/204.gif">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>leetcode 刷题</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/tiantianliu2018">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/09/18/组会记录/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/09/17/论文阅读《TransLink-User-Identity-Linkage-across-Heterogeneous-Social-Networks-via-Translating-Embeddings》/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/&text=leetcode 刷题"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/&title=leetcode 刷题"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/&is_video=false&description=leetcode 刷题"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=leetcode 刷题&body=Check out this article: https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/&title=leetcode 刷题"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/&title=leetcode 刷题"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/&title=leetcode 刷题"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/&title=leetcode 刷题"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/&name=leetcode 刷题&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#leetcode-刷题记录"><span class="toc-number">1.</span> <span class="toc-text"> Leetcode 刷题记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#191-位1的个数"><span class="toc-number">1.1.</span> <span class="toc-text"> 191. 位1的个数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#193-有效的电话号码"><span class="toc-number">1.2.</span> <span class="toc-text"> 193. 有效的电话号码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#195-第十行"><span class="toc-number">1.3.</span> <span class="toc-text"> 195. 第十行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#204-计数质数"><span class="toc-number">1.4.</span> <span class="toc-text"> 204. 计数质数</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        leetcode 刷题
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Tina's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-09-18T01:38:13.000Z" itemprop="datePublished">2019-09-18</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/source/categories/leetcode/">leetcode</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/source/tags/algoritms/">algoritms</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="leetcode-刷题记录"><a class="markdownIt-Anchor" href="#leetcode-刷题记录"></a> Leetcode 刷题记录</h2>
+<h3 id="191-位1的个数"><a class="markdownIt-Anchor" href="#191-位1的个数"></a> 191. 位1的个数</h3>
+<p>汉明重量：一串符号中非零符号的个数，在数据位符号串中，指1的个数</p>
+<p><strong>方法1</strong></p>
+<p>遍历一个数字的 32 位，如果某一位为 1，就将计数器加 1。</p>
+<p>运行时间依赖于数字 n 的位数，此题中 n 是一个 32 位数，所以运行时间是 O(1) 的</p>
+<p><strong>方法2</strong></p>
+<p>位操作小技巧：在二进制表示中，将 n 和 n-1 做与运算总是能把 n 中最低位的 1 变成 0，并保持其他位不变</p>
+<h3 id="193-有效的电话号码"><a class="markdownIt-Anchor" href="#193-有效的电话号码"></a> 193. 有效的电话号码</h3>
+<p><code>grep</code>对文本或输出内容进行过滤</p>
+<p><code>grep [OPTIONS] PATTERN [FILE ...]</code></p>
+<p><code>grep</code>按行检索输入的每一行，如果输入行包含模式<code>PATTERN</code>，则输出这一行。这里的<code>PATTERN</code>是正则表达式。</p>
+<p><code>-i</code> 使 grep 在匹配模式时忽略大小写</p>
+<p><code>-o</code> 表示只输出匹配的字符，而不是整行</p>
+<p><code>-c</code> 统计匹配的行数</p>
+<p><code>-v</code> 表示取反匹配</p>
+<p><code>-P</code> 表示使用 perl 的正则表达式进行匹配</p>
+<h3 id="195-第十行"><a class="markdownIt-Anchor" href="#195-第十行"></a> 195. 第十行</h3>
+<ul>
+<li>
+<p><code>sed</code> 命令</p>
+<p><code>sed --help</code> 查看具体使用规则</p>
+<p><code>sed -n 'xp' filename</code> 显示文件X行命令</p>
+<p><code>sed -n 'x,yp' filename</code> 显示文件X行到Y行的内容</p>
+</li>
+<li>
+<p><code>head</code> 命令</p>
+<p><code>head [参数]...[文件]...</code> head 用来显示档案的开头至标准输出中，默认head命令打印其相应文件的开头10行。</p>
+</li>
+<li>
+<p><code>tail</code> 命令</p>
+<p><code>tail [必要参数] [选择参数] [文件]</code> tail 命令从指定点开始将文件写到标准输出.</p>
+<p>使用 <code>tail</code> 命令的 <code>-f</code>选项可以方便的查阅正在改变的日志文件,<code>tail -f filename</code>会把<code>filename</code>里最尾部的内容显示在屏幕上, 并且不刷新, 使你看到最新的文件内容.</p>
+</li>
+<li>
+<p><code>head</code> 命令和 <code>tail</code> 命令结合</p>
+</li>
+</ul>
+<h3 id="204-计数质数"><a class="markdownIt-Anchor" href="#204-计数质数"></a> 204. 计数质数</h3>
+<p>判断一个数是否是质数的方法：</p>
+<ul>
+<li>
+<p>暴力算法</p>
+</li>
+<li>
+<p>优化暴力算法：当判断一个数是否是质数时，用 2-sqrt(n) 之间的整数去除</p>
+</li>
+<li>
+<p><strong>厄拉多塞筛法</strong></p>
+<p><img src="/2019/09/18/leetcode-刷题/204.gif" alt="img"></p>
+</li>
+<li></li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/tiantianliu2018">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#leetcode-刷题记录"><span class="toc-number">1.</span> <span class="toc-text"> Leetcode 刷题记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#191-位1的个数"><span class="toc-number">1.1.</span> <span class="toc-text"> 191. 位1的个数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#193-有效的电话号码"><span class="toc-number">1.2.</span> <span class="toc-text"> 193. 有效的电话号码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#195-第十行"><span class="toc-number">1.3.</span> <span class="toc-text"> 195. 第十行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#204-计数质数"><span class="toc-number">1.4.</span> <span class="toc-text"> 204. 计数质数</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/&text=leetcode 刷题"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/&title=leetcode 刷题"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/&is_video=false&description=leetcode 刷题"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=leetcode 刷题&body=Check out this article: https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/&title=leetcode 刷题"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/&title=leetcode 刷题"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/&title=leetcode 刷题"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/&title=leetcode 刷题"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tiantianliu2018.github.io/2019/09/18/leetcode-刷题/&name=leetcode 刷题&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Tiantian Liu
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="https://github.com/tiantianliu2018">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+
+
+  <!--   {% if theme.canvas_nest %} -->
+	<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+	<!-- {% endif %} -->
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
