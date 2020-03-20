@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Spring Data JPA  (二)一、定义查询方法两种定义查询方法：  从方法名派生查询 手动定义 @Query  待查询功能的方法名由查询策略（关键字）、查 询字段和一些限制性条件组成。 一些关键字：And，Or，Is，Equals，Between，LessThan，IsNull，Like，OrderBy，Not，In，IgnoreCase 等">
+  <meta name="description" content="java.util.concurrent.AtomicInteger 源码阅读笔记CAS 机制自旋锁 + Unsafe类 比较当前工作内存中的值和主物理内存中的值，相同则执行规定操作，否则比较直到主内存和工作内存中的值一致为止。 CAS 底层原理CAS的原理是拿期望的值和原本的一个值作比较，如果相同则更新成新的值。 UnSafe 类的 objectFieldOffset() 方法是一个本地方法，这">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring Data Jpa (二)">
-<meta property="og:url" content="http://tiantianliu2018.github.io/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/index.html">
+<meta property="og:title" content="Java AtomicInteger 源码阅读笔记">
+<meta property="og:url" content="http://tiantianliu2018.github.io/2020/03/20/Java-AtomicInteger-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Tiantian&#39;s Blogs">
-<meta property="og:description" content="Spring Data JPA  (二)一、定义查询方法两种定义查询方法：  从方法名派生查询 手动定义 @Query  待查询功能的方法名由查询策略（关键字）、查 询字段和一些限制性条件组成。 一些关键字：And，Or，Is，Equals，Between，LessThan，IsNull，Like，OrderBy，Not，In，IgnoreCase 等">
+<meta property="og:description" content="java.util.concurrent.AtomicInteger 源码阅读笔记CAS 机制自旋锁 + Unsafe类 比较当前工作内存中的值和主物理内存中的值，相同则执行规定操作，否则比较直到主内存和工作内存中的值一致为止。 CAS 底层原理CAS的原理是拿期望的值和原本的一个值作比较，如果相同则更新成新的值。 UnSafe 类的 objectFieldOffset() 方法是一个本地方法，这">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-06T15:27:26.000Z">
-<meta property="article:modified_time" content="2020-03-11T12:39:04.877Z">
+<meta property="article:published_time" content="2020-03-20T01:26:12.000Z">
+<meta property="article:modified_time" content="2020-03-20T02:01:04.768Z">
 <meta property="article:author" content="Tiantian Liu">
-<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://tiantianliu2018.github.io/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/">
+<link rel="canonical" href="http://tiantianliu2018.github.io/2020/03/20/Java-AtomicInteger-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>Spring Data Jpa (二) | Tiantian's Blogs</title>
+  <title>Java AtomicInteger 源码阅读笔记 | Tiantian's Blogs</title>
   
 
 
@@ -167,7 +167,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/20/Java-AtomicInteger-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpeg">
@@ -180,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Spring Data Jpa (二)
+          Java AtomicInteger 源码阅读笔记
         </h1>
 
         <div class="post-meta">
@@ -189,23 +189,17 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-03-06 23:27:26" itemprop="dateCreated datePublished" datetime="2020-03-06T23:27:26+08:00">2020-03-06</time>
+              <time title="创建时间：2020-03-20 09:26:12 / 修改时间：10:01:04" itemprop="dateCreated datePublished" datetime="2020-03-20T09:26:12+08:00">2020-03-20</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-11 20:39:04" itemprop="dateModified" datetime="2020-03-11T20:39:04+08:00">2020-03-11</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a>
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
                 </span>
             </span>
 
@@ -222,7 +216,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.4k</span>
+              <span>1.5k</span>
             </span>
 
         </div>
@@ -234,37 +228,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Spring-Data-JPA-二"><a href="#Spring-Data-JPA-二" class="headerlink" title="Spring Data JPA  (二)"></a>Spring Data JPA  (二)</h2><h3 id="一、定义查询方法"><a href="#一、定义查询方法" class="headerlink" title="一、定义查询方法"></a>一、定义查询方法</h3><p>两种定义查询方法：</p>
-<ol>
-<li>从方法名派生查询</li>
-<li>手动定义 @Query</li>
-</ol>
-<p>待查询功能的方法名由查询策略（关键字）、查 询字段和一些限制性条件组成。</p>
-<p>一些关键字：And，Or，Is，Equals，Between，LessThan，IsNull，Like，OrderBy，Not，In，IgnoreCase 等</p>
+        <h2 id="java-util-concurrent-AtomicInteger-源码阅读笔记"><a href="#java-util-concurrent-AtomicInteger-源码阅读笔记" class="headerlink" title="java.util.concurrent.AtomicInteger 源码阅读笔记"></a>java.util.concurrent.AtomicInteger 源码阅读笔记</h2><h3 id="CAS-机制"><a href="#CAS-机制" class="headerlink" title="CAS 机制"></a>CAS 机制</h3><p><strong>自旋锁 + Unsafe类</strong></p>
+<p>比较当前工作内存中的值和主物理内存中的值，相同则执行规定操作，否则比较直到主内存和工作内存中的值一致为止。</p>
+<h3 id="CAS-底层原理"><a href="#CAS-底层原理" class="headerlink" title="CAS 底层原理"></a>CAS 底层原理</h3><p>CAS的原理是拿期望的值和原本的一个值作比较，如果相同则更新成新的值。</p>
+<p>UnSafe 类的 objectFieldOffset() 方法是一个本地方法，这个方法是用来拿到“原来的值”的内存地址，返回值是 valueOffset。</p>
+<p>value 是由 volatile 修饰的，保证了value修改的可见性，在任何时刻任何线程总能拿到该变量的最新值。</p>
 <a id="more"></a>
 
-<h4 id="参数选择"><a href="#参数选择" class="headerlink" title="参数选择"></a>参数选择</h4><p>Pageable，Slice，Sort</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Page&lt;User&gt; <span class="title">findUserByName</span><span class="params">(String name, Pageable pageable)</span></span>;</span><br><span class="line"><span class="function">Slice&lt;User&gt; <span class="title">findUserByEmail</span><span class="params">(String email, Pageable pageable)</span></span>;</span><br><span class="line"><span class="function">List&lt;User&gt; <span class="title">findUserByName</span><span class="params">(String name, Sort sort)</span></span>;</span><br><span class="line"><span class="function">List&lt;User&gt; <span class="title">findUserByNameAndEmail</span><span class="params">(String name, Pageable pageable)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="CAS-的缺点"><a href="#CAS-的缺点" class="headerlink" title="CAS 的缺点"></a>CAS 的缺点</h3><h4 id="1-ABA-问题"><a href="#1-ABA-问题" class="headerlink" title="1. ABA 问题"></a>1. ABA 问题</h4><p><strong>例如：</strong>线程 1 从内存中取出 A，线程 2 也从内存中取出 A，线程 2 进行了一些操作将内存中的值变成了 B，然后又改回 A，这时候线程 1 进行 CAS 操作发现内存中仍然是 A，操作成功。虽然线程 1 的 CAS 操作成功，但是整个过程就是有问题的。</p>
+<p><strong>规避：</strong>在变量前面加版本号，AtomicStampedReference 类解决 ABA 问题，该类的 compareAndSet 方法作用是首先检查当前引用是否等于预期引用，并且当前 stamp 是否等于预期 stamp，如果全部相等，则以原子方式将该引用和该 stamp 的值设置为给定的更新值。</p>
+<h4 id="2-循环尝试，多线程开销大"><a href="#2-循环尝试，多线程开销大" class="headerlink" title="2. 循环尝试，多线程开销大"></a>2. 循环尝试，多线程开销大</h4><h4 id="3-只能保证一个共享变量的原子操作。"><a href="#3-只能保证一个共享变量的原子操作。" class="headerlink" title="3. 只能保证一个共享变量的原子操作。"></a>3. <strong>只能保证一个共享变量的原子操作</strong>。</h4><h3 id="AtomicInteger-源码解读"><a href="#AtomicInteger-源码解读" class="headerlink" title="AtomicInteger 源码解读"></a>AtomicInteger 源码解读</h3><p>AtomicInteger 类主要利用 CAS (compare and swap) + volatile 和 native 方法来保证原子操作，从而避免 synchronized 的高开销，使执行效率大为提升。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// setup to use Unsafe.compareAndSwapInt for updates</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Unsafe unsafe = Unsafe.getUnsafe();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> valueOffset;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">       <span class="comment">//  public native long objectFieldOffset(Field var1);</span></span><br><span class="line">        valueOffset = unsafe.objectFieldOffset  </span><br><span class="line">            (AtomicInteger.class.getDeclaredField("value"));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception ex) &#123; <span class="keyword">throw</span> <span class="keyword">new</span> Error(ex); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> value;</span><br></pre></td></tr></table></figure>
 
-<h4 id="限制查询"><a href="#限制查询" class="headerlink" title="限制查询"></a>限制查询</h4><p>通过关键字来限制 first 或 top</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">User <span class="title">findFirstByOrderByNameAsc</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">User <span class="title">findTopByOrderByEmailDesc</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">Page&lt;User&gt; <span class="title">queryFirst10ByName</span><span class="params">(String name, Pageable pageable)</span></span>;</span><br><span class="line"><span class="function">Slice&lt;User&gt; <span class="title">findTop3ByEmail</span><span class="params">(String email, Pageable pageable)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<h4 id="查询结果的形式"><a href="#查询结果的形式" class="headerlink" title="查询结果的形式"></a>查询结果的形式</h4><p>除了 Iterator，List，Set 还支持 Spring Data’s Streamable</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">UserRepository:</span><br><span class="line"><span class="function">Streamable&lt;User&gt; <span class="title">findUserByFirstNameContaining</span><span class="params">(String name)</span></span>;</span><br><span class="line"><span class="function">Streamable&lt;User&gt; <span class="title">findUserByLastNameContaining</span><span class="params">(String name)</span></span>;</span><br><span class="line"></span><br><span class="line">Controller:</span><br><span class="line">Streamable&lt;User&gt; result = userRepository.findUserByFirstNameContaining(str)</span><br><span class="line">                .and(userRepository.findUserByLastNameContaining(str));</span><br></pre></td></tr></table></figure>
-
-<p>使用Java 8 Stream<T>作为返回类型来逐步处理查询方法的结果</T></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Stream&lt;User&gt; <span class="title">readAllByFirstNameNotNull</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">// 关闭资源</span></span><br><span class="line"><span class="keyword">try</span> (Stream&lt;User&gt; userStream = userRepository.readAllByFirstNameNotNull())&#123;</span><br><span class="line">			<span class="comment">// 操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="二、注解式查询"><a href="#二、注解式查询" class="headerlink" title="二、注解式查询"></a>二、注解式查询</h3><p>@Query</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Query &#123;</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">countQuery</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">countProjection</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">nativeQuery</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">false</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">countName</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
+<p>AtomicInteger.getAndIncrement() </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Atomically increments by one the current value.  对当前值原子加一</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> the previous value</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">getAndIncrement</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> unsafe.getAndAddInt(<span class="keyword">this</span>, valueOffset, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Unsafe 类下：</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">getAndAddInt</span><span class="params">(Object var1, <span class="keyword">long</span> var2, <span class="keyword">int</span> var4)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> var5;</span><br><span class="line">  	<span class="comment">// 自旋锁，compareAndSwap，直到期望值和内存中的值一致则进行操作</span></span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        var5 = <span class="keyword">this</span>.getIntVolatile(var1, var2);</span><br><span class="line">    &#125; <span class="keyword">while</span>(!<span class="keyword">this</span>.compareAndSwapInt(var1, var2, var5, var5 + var4));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> var5;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -286,7 +263,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Spring/" rel="tag"># Spring</a>
+              <a href="/tags/Java/" rel="tag"># Java</a>
           </div>
 
         
@@ -295,12 +272,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/05/Spring-Data-JPA-%E4%B8%80/" rel="prev" title="Spring Data JPA (一)">
-      <i class="fa fa-chevron-left"></i> Spring Data JPA (一)
+    <a href="/2020/03/19/SpringBoot-2-x-%E5%AD%A6%E4%B9%A0%E4%B8%80/" rel="prev" title="SpringBoot 2.x 学习一">
+      <i class="fa fa-chevron-left"></i> SpringBoot 2.x 学习一
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/03/15/Java-%E5%BC%80%E5%8F%91%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%951/" rel="next" title="Java 开发错误记录1">
-      Java 开发错误记录1 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/03/20/Java-Thread-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" rel="next" title="Java Thread 源码阅读笔记">
+      Java Thread 源码阅读笔记 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -361,7 +338,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Data-JPA-二"><span class="nav-number">1.</span> <span class="nav-text">Spring Data JPA  (二)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、定义查询方法"><span class="nav-number">1.1.</span> <span class="nav-text">一、定义查询方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数选择"><span class="nav-number">1.1.1.</span> <span class="nav-text">参数选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#限制查询"><span class="nav-number">1.1.2.</span> <span class="nav-text">限制查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询结果的形式"><span class="nav-number">1.1.3.</span> <span class="nav-text">查询结果的形式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、注解式查询"><span class="nav-number">1.2.</span> <span class="nav-text">二、注解式查询</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#java-util-concurrent-AtomicInteger-源码阅读笔记"><span class="nav-number">1.</span> <span class="nav-text">java.util.concurrent.AtomicInteger 源码阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CAS-机制"><span class="nav-number">1.1.</span> <span class="nav-text">CAS 机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CAS-底层原理"><span class="nav-number">1.2.</span> <span class="nav-text">CAS 底层原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CAS-的缺点"><span class="nav-number">1.3.</span> <span class="nav-text">CAS 的缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ABA-问题"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. ABA 问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-循环尝试，多线程开销大"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 循环尝试，多线程开销大</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-只能保证一个共享变量的原子操作。"><span class="nav-number">1.3.3.</span> <span class="nav-text">3. 只能保证一个共享变量的原子操作。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AtomicInteger-源码解读"><span class="nav-number">1.4.</span> <span class="nav-text">AtomicInteger 源码解读</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
