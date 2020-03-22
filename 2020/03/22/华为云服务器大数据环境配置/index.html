@@ -28,7 +28,7 @@
 <meta property="og:description" content="华为云服务器大数据环境配置参加牛客🐂的活动，买了一台华为云服务器，40G，可以搭建一个伪分布式的大数据环境用来学习，终于可以放过自己的小本本了，开心😍🤗 一、Hadoop 伪分布式安装与配置参考博客：“化鲲为鹏，我有话说”十七，基于鲲鹏搭建 Hadoop 伪分布式环境 1. Java 环境配置安装 JDK1.8 并配置 JAVA_HOME">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-22T05:51:21.000Z">
-<meta property="article:modified_time" content="2020-03-22T06:38:23.417Z">
+<meta property="article:modified_time" content="2020-03-22T07:41:35.127Z">
 <meta property="article:author" content="Tiantian Liu">
 <meta property="article:tag" content="大数据">
 <meta name="twitter:card" content="summary">
@@ -191,7 +191,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-22 13:51:21 / 修改时间：14:38:23" itemprop="dateCreated datePublished" datetime="2020-03-22T13:51:21+08:00">2020-03-22</time>
+              <time title="创建时间：2020-03-22 13:51:21 / 修改时间：15:41:35" itemprop="dateCreated datePublished" datetime="2020-03-22T13:51:21+08:00">2020-03-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -216,7 +216,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.1k</span>
+              <span>3.4k</span>
             </span>
 
         </div>
@@ -259,7 +259,13 @@
 
 <p>再起启动只需要执行下面命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/hadoop/sbin/start-dfs.sh</span><br></pre></td></tr></table></figure>
+<h4 id="6-配置免密登录"><a href="#6-配置免密登录" class="headerlink" title="6. 配置免密登录"></a>6. 配置免密登录</h4><p>如果在终端中输入<code>ssh localhost</code>有返回，则已经配置好了SSH keys，如果没有，新建 SSH keys 配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -P <span class="string">""</span></span><br></pre></td></tr></table></figure>
 
+<p>为了避免每次询问你的密码，可以授权你的公钥到本地：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat <span class="variable">$HOME</span>/.ssh/id_rsa.pub &gt;&gt; <span class="variable">$HOME</span>/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+<p>现在 SSH keys 就设置成功</p>
 <h3 id="二、HBase-安装配置"><a href="#二、HBase-安装配置" class="headerlink" title="二、HBase 安装配置"></a>二、HBase 安装配置</h3><p>HBase 的安装，看了好多教程，比较混乱，自己搞一下吧</p>
 <h4 id="1-安装-HBase"><a href="#1-安装-HBase" class="headerlink" title="1. 安装 HBase"></a>1. 安装 HBase</h4><p>直接从官网上下载的，比较慢，可以找找国内的镜像资源</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 下载</span></span><br><span class="line">wget http://archive.apache.org/dist/hbase/2.1.0/hbase-2.1.0-bin.tar.gz</span><br><span class="line"><span class="comment">## 解压</span></span><br><span class="line">tar -zxvf hbase-2.1.0-bin.tar.gz -C /usr/<span class="built_in">local</span>/ </span><br><span class="line"><span class="comment">## 对安装目录重新命名</span></span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/</span><br><span class="line">mv ./hbase-2.1.0/ ./hbase</span><br></pre></td></tr></table></figure>
@@ -272,6 +278,10 @@
 
 <p>配置 hbase-site.xml</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>hbase.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>/usr/local/hbase/data<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>hbase.rootdir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://localhost:9000/hbase<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>hbase.cluster.distributed<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>false<span class="tag">&lt;/<span class="name">value</span>&gt;</span>   <span class="comment">&lt;!-- 不开启分布式模式 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-HBase-MapReduce"><a href="#4-HBase-MapReduce" class="headerlink" title="4. HBase - MapReduce"></a>4. HBase - MapReduce</h4><p>并在 hadoop-env.sh 中配置：（注意：在 for 循环之后配） </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> HADOOP_CLASSPATH=<span class="variable">$HADOOP_CLASSPATH</span>:/usr/<span class="built_in">local</span>/hbase/lib/*</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -364,7 +374,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#华为云服务器大数据环境配置"><span class="nav-number">1.</span> <span class="nav-text">华为云服务器大数据环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、Hadoop-伪分布式安装与配置"><span class="nav-number">1.1.</span> <span class="nav-text">一、Hadoop 伪分布式安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Java-环境配置"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. Java 环境配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-安装-Hadoop"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 安装 Hadoop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-设置-Hadoop-的环境变量"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. 设置 Hadoop 的环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-修改-Hadoop-的配置文件"><span class="nav-number">1.1.4.</span> <span class="nav-text">4. 修改 Hadoop 的配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-格式化-NameNode"><span class="nav-number">1.1.5.</span> <span class="nav-text">5. 格式化 NameNode</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、HBase-安装配置"><span class="nav-number">1.2.</span> <span class="nav-text">二、HBase 安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-安装-HBase"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 安装 HBase</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-设置-HBase-环境"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 设置 HBase 环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-修改-HBase-配置文件"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. 修改 HBase 配置文件</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#华为云服务器大数据环境配置"><span class="nav-number">1.</span> <span class="nav-text">华为云服务器大数据环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、Hadoop-伪分布式安装与配置"><span class="nav-number">1.1.</span> <span class="nav-text">一、Hadoop 伪分布式安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Java-环境配置"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. Java 环境配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-安装-Hadoop"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 安装 Hadoop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-设置-Hadoop-的环境变量"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. 设置 Hadoop 的环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-修改-Hadoop-的配置文件"><span class="nav-number">1.1.4.</span> <span class="nav-text">4. 修改 Hadoop 的配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-格式化-NameNode"><span class="nav-number">1.1.5.</span> <span class="nav-text">5. 格式化 NameNode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-配置免密登录"><span class="nav-number">1.1.6.</span> <span class="nav-text">6. 配置免密登录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、HBase-安装配置"><span class="nav-number">1.2.</span> <span class="nav-text">二、HBase 安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-安装-HBase"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 安装 HBase</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-设置-HBase-环境"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 设置 HBase 环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-修改-HBase-配置文件"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. 修改 HBase 配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-HBase-MapReduce"><span class="nav-number">1.2.4.</span> <span class="nav-text">4. HBase - MapReduce</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -442,7 +452,7 @@
 <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共5.3k字</span>
+  <span class="post-count">博客全站共5.4k字</span>
   <span class="post-meta-divider">|</span>
   本站总访问量<span id="busuanzi_value_site_pv"></span>次
   <span class="post-meta-divider">|</span>
@@ -453,7 +463,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共5.3k字</span>
+  <span class="post-count">博客全站共5.4k字</span>
 </div>
 
 
