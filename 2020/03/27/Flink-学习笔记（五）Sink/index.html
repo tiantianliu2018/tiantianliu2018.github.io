@@ -20,20 +20,23 @@
     var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Spring Data JPA  (二)一、定义查询方法两种定义查询方法：  从方法名派生查询 手动定义 @Query  待查询功能的方法名由查询策略（关键字）、查 询字段和一些限制性条件组成。 一些关键字：And，Or，Is，Equals，Between，LessThan，IsNull，Like，OrderBy，Not，In，IgnoreCase 等">
+  <meta name="description" content="Flink 学习笔记（五）SinkData sinks 消费 DataStreams 并将其转发到文件，套接字，外部系统或打印出来。 Flink带有多种内置输出格式，这些格式封装在DataStreams的操作后面： 打印结果1print() &#x2F; printToErr() &#x2F;&#x2F; 在标准输出&#x2F;标准错误流上打印每个元素的 toString() 值。  2. 输出文件123writeAsText() &#x2F;&#x2F;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring Data Jpa (二)">
-<meta property="og:url" content="http://tiantianliu2018.github.io/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/index.html">
+<meta property="og:title" content="Flink 学习笔记（五）Sink">
+<meta property="og:url" content="http://tiantianliu2018.github.io/2020/03/27/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89Sink/index.html">
 <meta property="og:site_name" content="Tiantian&#39;s Blogs">
-<meta property="og:description" content="Spring Data JPA  (二)一、定义查询方法两种定义查询方法：  从方法名派生查询 手动定义 @Query  待查询功能的方法名由查询策略（关键字）、查 询字段和一些限制性条件组成。 一些关键字：And，Or，Is，Equals，Between，LessThan，IsNull，Like，OrderBy，Not，In，IgnoreCase 等">
+<meta property="og:description" content="Flink 学习笔记（五）SinkData sinks 消费 DataStreams 并将其转发到文件，套接字，外部系统或打印出来。 Flink带有多种内置输出格式，这些格式封装在DataStreams的操作后面： 打印结果1print() &#x2F; printToErr() &#x2F;&#x2F; 在标准输出&#x2F;标准错误流上打印每个元素的 toString() 值。  2. 输出文件123writeAsText() &#x2F;&#x2F;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-06T15:27:26.000Z">
-<meta property="article:modified_time" content="2020-03-11T12:39:04.877Z">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2020/03/27/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89Sink/sinkfunction.png">
+<meta property="article:published_time" content="2020-03-27T03:50:36.000Z">
+<meta property="article:modified_time" content="2020-03-27T06:00:27.689Z">
 <meta property="article:author" content="Tiantian Liu">
-<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="Flink">
+<meta property="article:tag" content="流处理">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tiantianliu2018.github.io/2020/03/27/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89Sink/sinkfunction.png">
 
-<link rel="canonical" href="http://tiantianliu2018.github.io/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/">
+<link rel="canonical" href="http://tiantianliu2018.github.io/2020/03/27/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89Sink/">
 
 
 <script id="page-configurations">
@@ -45,7 +48,7 @@
   };
 </script>
 
-  <title>Spring Data Jpa (二) | Tiantian's Blogs</title>
+  <title>Flink 学习笔记（五）Sink | Tiantian's Blogs</title>
   
 
 
@@ -167,7 +170,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/27/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89Sink/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpeg">
@@ -180,7 +183,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Spring Data Jpa (二)
+          Flink 学习笔记（五）Sink
         </h1>
 
         <div class="post-meta">
@@ -189,23 +192,17 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-03-06 23:27:26" itemprop="dateCreated datePublished" datetime="2020-03-06T23:27:26+08:00">2020-03-06</time>
+              <time title="创建时间：2020-03-27 11:50:36 / 修改时间：14:00:27" itemprop="dateCreated datePublished" datetime="2020-03-27T11:50:36+08:00">2020-03-27</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-11 20:39:04" itemprop="dateModified" datetime="2020-03-11T20:39:04+08:00">2020-03-11</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a>
+                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
                 </span>
             </span>
 
@@ -222,7 +219,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.4k</span>
+              <span>1.2k</span>
             </span>
 
         </div>
@@ -234,38 +231,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Spring-Data-JPA-二"><a href="#Spring-Data-JPA-二" class="headerlink" title="Spring Data JPA  (二)"></a>Spring Data JPA  (二)</h2><h3 id="一、定义查询方法"><a href="#一、定义查询方法" class="headerlink" title="一、定义查询方法"></a>一、定义查询方法</h3><p>两种定义查询方法：</p>
-<ol>
-<li>从方法名派生查询</li>
-<li>手动定义 @Query</li>
-</ol>
-<p>待查询功能的方法名由查询策略（关键字）、查 询字段和一些限制性条件组成。</p>
-<p>一些关键字：And，Or，Is，Equals，Between，LessThan，IsNull，Like，OrderBy，Not，In，IgnoreCase 等</p>
-<a id="more"></a>
+        <h3 id="Flink-学习笔记（五）Sink"><a href="#Flink-学习笔记（五）Sink" class="headerlink" title="Flink 学习笔记（五）Sink"></a>Flink 学习笔记（五）Sink</h3><p>Data sinks 消费 DataStreams 并将其转发到文件，套接字，外部系统或打印出来。 Flink带有多种内置输出格式，这些格式封装在DataStreams的操作后面：</p>
+<h4 id="打印结果"><a href="#打印结果" class="headerlink" title="打印结果"></a>打印结果</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print() / printToErr() <span class="comment">// 在标准输出/标准错误流上打印每个元素的 toString() 值。</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="参数选择"><a href="#参数选择" class="headerlink" title="参数选择"></a>参数选择</h4><p>Pageable，Slice，Sort</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Page&lt;User&gt; <span class="title">findUserByName</span><span class="params">(String name, Pageable pageable)</span></span>;</span><br><span class="line"><span class="function">Slice&lt;User&gt; <span class="title">findUserByEmail</span><span class="params">(String email, Pageable pageable)</span></span>;</span><br><span class="line"><span class="function">List&lt;User&gt; <span class="title">findUserByName</span><span class="params">(String name, Sort sort)</span></span>;</span><br><span class="line"><span class="function">List&lt;User&gt; <span class="title">findUserByNameAndEmail</span><span class="params">(String name, Pageable pageable)</span></span>;</span><br></pre></td></tr></table></figure>
+<h4 id="2-输出文件"><a href="#2-输出文件" class="headerlink" title="2. 输出文件"></a>2. 输出文件</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">writeAsText() <span class="comment">// TextOutputFormat  text 文件格式</span></span><br><span class="line">writeAsCsv(...)  <span class="comment">// CsvOutputFormat csv 文件格式</span></span><br><span class="line">writeUsingOutputFormat()  <span class="comment">// FileOutputFormat</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="限制查询"><a href="#限制查询" class="headerlink" title="限制查询"></a>限制查询</h4><p>通过关键字来限制 first 或 top</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">User <span class="title">findFirstByOrderByNameAsc</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">User <span class="title">findTopByOrderByEmailDesc</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">Page&lt;User&gt; <span class="title">queryFirst10ByName</span><span class="params">(String name, Pageable pageable)</span></span>;</span><br><span class="line"><span class="function">Slice&lt;User&gt; <span class="title">findTop3ByEmail</span><span class="params">(String email, Pageable pageable)</span></span>;</span><br></pre></td></tr></table></figure>
+<h4 id="3-写入-socket"><a href="#3-写入-socket" class="headerlink" title="3. 写入 socket"></a>3. 写入 socket</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writeToSocket()  <span class="comment">// 根据 SerializationSchema 写到 socket</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="查询结果的形式"><a href="#查询结果的形式" class="headerlink" title="查询结果的形式"></a>查询结果的形式</h4><p>除了 Iterator，List，Set 还支持 Spring Data’s Streamable</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">UserRepository:</span><br><span class="line"><span class="function">Streamable&lt;User&gt; <span class="title">findUserByFirstNameContaining</span><span class="params">(String name)</span></span>;</span><br><span class="line"><span class="function">Streamable&lt;User&gt; <span class="title">findUserByLastNameContaining</span><span class="params">(String name)</span></span>;</span><br><span class="line"></span><br><span class="line">Controller:</span><br><span class="line">Streamable&lt;User&gt; result = userRepository.findUserByFirstNameContaining(str)</span><br><span class="line">                .and(userRepository.findUserByLastNameContaining(str));</span><br></pre></td></tr></table></figure>
+<h4 id="4-自定义的："><a href="#4-自定义的：" class="headerlink" title="4. 自定义的："></a>4. 自定义的：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addSink() <span class="comment">// 自定义 sink</span></span><br></pre></td></tr></table></figure>
 
-<p>使用Java 8 Stream<T>作为返回类型来逐步处理查询方法的结果</T></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Stream&lt;User&gt; <span class="title">readAllByFirstNameNotNull</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">// 关闭资源</span></span><br><span class="line"><span class="keyword">try</span> (Stream&lt;User&gt; userStream = userRepository.readAllByFirstNameNotNull())&#123;</span><br><span class="line">			<span class="comment">// 操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一般常用自定义的 sink</p>
+<h4 id="Flink-Kafka-Producer"><a href="#Flink-Kafka-Producer" class="headerlink" title="Flink Kafka Producer"></a>Flink Kafka Producer</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">DataStream&lt;String&gt; stream = ...;</span><br><span class="line"></span><br><span class="line">FlinkKafkaProducer011&lt;String&gt; myProducer = <span class="keyword">new</span> FlinkKafkaProducer011&lt;String&gt;(</span><br><span class="line">        <span class="string">"localhost:9092"</span>,            <span class="comment">// broker list</span></span><br><span class="line">        <span class="string">"my-topic"</span>,                  <span class="comment">// target topic</span></span><br><span class="line">        <span class="keyword">new</span> SimpleStringSchema());   <span class="comment">// serialization schema</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// this method is not available for earlier Kafka versions</span></span><br><span class="line">myProducer.setWriteTimestampToKafka(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">stream.addSink(myProducer);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以自定义</span></span><br><span class="line">Providing custom properties</span><br><span class="line">Custom partitioner</span><br><span class="line">Advanced serialization schema</span><br></pre></td></tr></table></figure>
 
-<h3 id="二、注解式查询"><a href="#二、注解式查询" class="headerlink" title="二、注解式查询"></a>二、注解式查询</h3><p>@Query</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Query &#123;</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">countQuery</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">countProjection</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">nativeQuery</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">false</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">countName</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
+<p><img src="/2020/03/27/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89Sink/sinkfunction.png" alt="sink function"></p>
+<p>实现自定义的 function 可以继承 RichSinkFunction，重写其中的方法</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>DataStream上的 <code>write*()</code> 方法主要用于调试目的。 没有参与 Flink 的检查点，这意味着这些功能通常具有“至少一次”（at-least-once）的语义。 刷新到目标系统的数据取决于 OutputFormat 的实现。 这意味着并非所有发送到OutputFormat 的元素都立即显示在目标系统中。 同样，在失败的情况下，这些记录可能会丢失。</p>
+<p>为了将流可靠，准确地一次传输到文件系统中，请使用 flink-connector-filesystem。 此外，通过<code>.addSink（...）</code>方法进行的自定义实现可以参与 Flink 一次精确语义的检查点。</p>
 
     </div>
 
@@ -286,7 +267,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Spring/" rel="tag"># Spring</a>
+              <a href="/tags/Flink/" rel="tag"># Flink</a>
+              <a href="/tags/%E6%B5%81%E5%A4%84%E7%90%86/" rel="tag"># 流处理</a>
           </div>
 
         
@@ -295,13 +277,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/05/Spring-Data-JPA-%E4%B8%80/" rel="prev" title="Spring Data JPA (一)">
-      <i class="fa fa-chevron-left"></i> Spring Data JPA (一)
+    <a href="/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89Transformation/" rel="prev" title="Flink 学习笔记（四）Transformation">
+      <i class="fa fa-chevron-left"></i> Flink 学习笔记（四）Transformation
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/03/15/Java-%E5%BC%80%E5%8F%91%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%951/" rel="next" title="Java 开发错误记录1">
-      Java 开发错误记录1 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -361,7 +340,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Data-JPA-二"><span class="nav-number">1.</span> <span class="nav-text">Spring Data JPA  (二)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、定义查询方法"><span class="nav-number">1.1.</span> <span class="nav-text">一、定义查询方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数选择"><span class="nav-number">1.1.1.</span> <span class="nav-text">参数选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#限制查询"><span class="nav-number">1.1.2.</span> <span class="nav-text">限制查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询结果的形式"><span class="nav-number">1.1.3.</span> <span class="nav-text">查询结果的形式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、注解式查询"><span class="nav-number">1.2.</span> <span class="nav-text">二、注解式查询</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flink-学习笔记（五）Sink"><span class="nav-number">1.</span> <span class="nav-text">Flink 学习笔记（五）Sink</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#打印结果"><span class="nav-number">1.1.</span> <span class="nav-text">打印结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-输出文件"><span class="nav-number">1.2.</span> <span class="nav-text">2. 输出文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-写入-socket"><span class="nav-number">1.3.</span> <span class="nav-text">3. 写入 socket</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-自定义的："><span class="nav-number">1.4.</span> <span class="nav-text">4. 自定义的：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Flink-Kafka-Producer"><span class="nav-number">1.5.</span> <span class="nav-text">Flink Kafka Producer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.6.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
