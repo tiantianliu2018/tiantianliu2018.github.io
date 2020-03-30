@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">20</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">21</span></a>
 
   </li>
   </ul>
@@ -162,6 +162,132 @@
             
 
   <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/30/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-Java-%E8%99%9A%E6%8B%9F%E6%9C%BA%E3%80%8B%E7%AC%AC12%E7%AB%A0%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Tiantian Liu">
+      <meta itemprop="description" content="The Space to record my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiantian's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/30/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-Java-%E8%99%9A%E6%8B%9F%E6%9C%BA%E3%80%8B%E7%AC%AC12%E7%AB%A0%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">《深入理解 Java 虚拟机》第12章阅读笔记</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-30 15:48:36 / 修改时间：17:44:20" itemprop="dateCreated datePublished" datetime="2020-03-30T15:48:36+08:00">2020-03-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.6k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="第12章-Java内存模型与线程"><a href="#第12章-Java内存模型与线程" class="headerlink" title="第12章　Java内存模型与线程"></a>第12章　Java内存模型与线程</h3><h3 id="内存模型"><a href="#内存模型" class="headerlink" title="内存模型"></a>内存模型</h3><p>高速缓存的使用引入了「缓存一致性」问题。</p>
+<p>而内存模型是指在特定的操作协议下，对特定的内存或高速缓存进行读写访问的过程抽象。不同架构的物理机器可以拥有不一样的内存模型。</p>
+<h3 id="程序的乱序执行"><a href="#程序的乱序执行" class="headerlink" title="程序的乱序执行"></a>程序的乱序执行</h3><p>处理器为了充分利用运算单元，可能会对输入代码进行<strong>乱序执行（Out-Of-Order Execution）优化</strong>，处理器会在计算之后将乱序执行的<strong>结果重组</strong>，保证该结果与顺序执行的结果是一致的，但并不保证程序中各个语句计算的先后顺序与输入代码中的顺序一致。</p>
+<h3 id="Java-内存模型（Java-Memory-Model，JMM）"><a href="#Java-内存模型（Java-Memory-Model，JMM）" class="headerlink" title="Java 内存模型（Java Memory Model，JMM）"></a>Java 内存模型（Java Memory Model，JMM）</h3><p><strong>目的</strong>：屏 蔽各种硬件和操作系统的内存访问差异，以实现让 Java 程序在各种平台下都能达到一致的内存访问效果。</p>
+<p><img src="/2020/03/30/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-Java-%E8%99%9A%E6%8B%9F%E6%9C%BA%E3%80%8B%E7%AC%AC12%E7%AB%A0%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/jmm.jpg" alt="img"></p>
+<p>Java 内存模型规定：</p>
+<ul>
+<li>所有变量都存储在主内存（Main Memory）中</li>
+<li>每条线程有自己的工作内存，线程的工作内存中保存了被该线程使用的变量的主内存副本</li>
+<li>线程对变量的所有操作（读取、赋值等）都必须在工作内存中进行，而不能直接读写主内存中的数据</li>
+<li>不同的线程之间无法直接访问对方工作内存中的变量，线程间变量值的传递均需要通过主内存来完成</li>
+</ul>
+<p><strong>注意</strong>：之前看一些资料说 volatile 是直接操作主内存的，本书中特意提到了这一点，应该是不正确的。</p>
+<blockquote>
+<p>根据《Java虚拟机规范》的约定，volatile 变量依然有工作内存的拷贝，但是由于它特殊的操作顺序性规定，所以看起来如同直接在主内存中读写访问一般。  – 摘自书中注释÷</p>
+</blockquote>
+<h4 id="内存间交互操作"><a href="#内存间交互操作" class="headerlink" title="内存间交互操作"></a>内存间交互操作</h4><p>lock、unlock、read、load、use、assign、store、write</p>
+<h4 id="Volatile-的特殊规则"><a href="#Volatile-的特殊规则" class="headerlink" title="Volatile 的特殊规则"></a>Volatile 的特殊规则</h4><ol>
+<li><p>保证此变量对所有线程的可见性</p>
+<blockquote>
+<p>可见性：当一条线程修改了这个变量的值，新值对于其他线程来说是可以立即得知的。</p>
+</blockquote>
+</li>
+<li><p>禁止指令重排序优化🚫</p>
+<p>有 volatile 修饰的变量，赋值后多执行了一个 <code>lock addl $0x0，(%esp)</code> 操作，这个操作的作用相当于一个内存屏障 (Memory Barrier 或 Memory Fence，指重排序时不能把后面的指令重排序到内存屏障之前的位置), lock  的作用是将本处理器的缓存写入内存，这让 volatile 变量的修改对其他处理器立即可见。</p>
+</li>
+<li><p>不能保证原子性</p>
+</li>
+</ol>
+<h4 id="long-和-double-的非原子性协定"><a href="#long-和-double-的非原子性协定" class="headerlink" title="long 和 double 的非原子性协定"></a>long 和 double 的非原子性协定</h4><p>JMM 允许虚拟机将没有被 volatile 修饰的 64 位数据的读写操作划分为两次 32 位的操作来进行，即允许虚拟机实现自行选择是否要保证 64 位数据类型的 load、store、read 和 write 这四个操作的原子性，</p>
+<h4 id="原子性、可见性与有序性"><a href="#原子性、可见性与有序性" class="headerlink" title="原子性、可见性与有序性"></a>原子性、可见性与有序性</h4><p><strong>1. 原子性</strong></p>
+<p>六个原子性操作指令，可以认为基本数据类型的访问、读写都是具备原子性的</p>
+<p><strong>2. 可见性</strong></p>
+<p>可见性就是指当一个线程修改了共享变量的值时，其他线程能够立即得知这个修改。Java内存模型是通过在变量修改后将新值同步回主内存，在变量读取前从主内存刷新变量值这种依赖主内存作为传递媒介的方式来实现可见性的。</p>
+<p><strong>3. 有序性</strong></p>
+<p>如果在本线程内观察，所有的操作都是有序的；如果在一个线程中观察另一个线程， 所有的操作都是无序的。</p>
+<h3 id="Java-与线程"><a href="#Java-与线程" class="headerlink" title="Java 与线程"></a>Java 与线程</h3><p>线程是比进程更轻量级的调度执行单位，<strong>线程</strong>是 Java 里面进行处理器资源调度的最基本单位。</p>
+<h4 id="线程的实现"><a href="#线程的实现" class="headerlink" title="线程的实现"></a>线程的实现</h4><ol>
+<li><p><strong>内核线程实现</strong>：线程由内核来完成线程切换</p>
+<p>实际使用的是轻量级进程 LWP，每个 LWP 对应一个内核线程 KLT。</p>
+<p><strong>缺点</strong>：轻量级进程基于内核线程实现，各种线程操作都需要进行系统调用。而系统调需要在用户态（User Mode）和内核态（Kernel Mode）中来回切换。另外，每个轻量级进程都需要有一个内核线程的支持，要消耗一定的内核资源（如内核线程的栈 空间），因此一个系统支持轻量级进程的数量是有限的。</p>
+</li>
+<li><p><strong>用户线程实现</strong>：完全建立在用户空间的线程库上，用户线程的建立、同步、销毁和调度完全在用户态中完成，不需要内核的帮助。</p>
+</li>
+<li><p>用户线程加轻量级进程混合实现：一个内核线程 KLT 对应一个轻量级进程LWP，而一个 LWP 对应多个用户线程 UT</p>
+</li>
+</ol>
+<h4 id="Java-线程状态转换"><a href="#Java-线程状态转换" class="headerlink" title="Java 线程状态转换"></a>Java 线程状态转换</h4><p><img src="/2020/03/30/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-Java-%E8%99%9A%E6%8B%9F%E6%9C%BA%E3%80%8B%E7%AC%AC12%E7%AB%A0%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/thread.png" alt="img"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -371,6 +497,22 @@
 
               <time title="创建时间：2020-03-26 23:20:09" itemprop="dateCreated datePublished" datetime="2020-03-26T23:20:09+08:00">2020-03-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-30 15:17:53" itemprop="dateModified" datetime="2020-03-30T15:17:53+08:00">2020-03-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
+                </span>
+            </span>
 
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -378,7 +520,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>0</span>
+              <span>3.9k</span>
             </span>
 
         </div>
@@ -390,7 +532,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h3 id="Flink-学习笔记（四）Transformation"><a href="#Flink-学习笔记（四）Transformation" class="headerlink" title="Flink 学习笔记（四）Transformation"></a>Flink 学习笔记（四）Transformation</h3><p>算子将一个或多个数据流转换为一个新的数据流</p>
+<p>一下是常用的算子 API，不涉及具体的原理和理论。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89Transformation/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -963,99 +1114,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/22/%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Tiantian Liu">
-      <meta itemprop="description" content="The Space to record my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tiantian's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/22/%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">华为云服务器大数据环境配置</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-22 13:51:21 / 修改时间：15:41:35" itemprop="dateCreated datePublished" datetime="2020-03-22T13:51:21+08:00">2020-03-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" itemprop="url" rel="index"><span itemprop="name">软件安装</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.4k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="华为云服务器大数据环境配置"><a href="#华为云服务器大数据环境配置" class="headerlink" title="华为云服务器大数据环境配置"></a>华为云服务器大数据环境配置</h2><p>参加牛客🐂的活动，买了一台华为云服务器，40G，可以搭建一个伪分布式的大数据环境用来学习，终于可以放过自己的小本本了，开心😍🤗</p>
-<h3 id="一、Hadoop-伪分布式安装与配置"><a href="#一、Hadoop-伪分布式安装与配置" class="headerlink" title="一、Hadoop 伪分布式安装与配置"></a>一、Hadoop 伪分布式安装与配置</h3><p>参考博客：<a href="https://bbs.huaweicloud.com/forum/thread-27950-1-1.html" target="_blank" rel="noopener">“化鲲为鹏，我有话说”十七，基于鲲鹏搭建 Hadoop 伪分布式环境</a></p>
-<h4 id="1-Java-环境配置"><a href="#1-Java-环境配置" class="headerlink" title="1. Java 环境配置"></a>1. Java 环境配置</h4><p>安装 JDK1.8 并配置 JAVA_HOME</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/03/22/%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1123,7 +1186,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1179,13 +1242,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">36k</span>
+    <span title="站点总字数">41k</span>
 </div>
 
 <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共11.9k字</span>
+  <span class="post-count">博客全站共14.1k字</span>
   <span class="post-meta-divider">|</span>
   本站总访问量<span id="busuanzi_value_site_pv"></span>次
   <span class="post-meta-divider">|</span>
@@ -1196,7 +1259,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共11.9k字</span>
+  <span class="post-count">博客全站共14.1k字</span>
 </div>
 
 
