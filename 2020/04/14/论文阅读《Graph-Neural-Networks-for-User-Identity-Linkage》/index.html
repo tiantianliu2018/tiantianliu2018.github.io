@@ -20,19 +20,20 @@
     var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="The Space to record my life.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Tiantian&#39;s Blogs">
-<meta property="og:url" content="http://tiantianliu2018.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/index.html">
+  <meta name="description" content="论文阅读《Graph Neural Networks for User Identity Linkage》Summary仅用社交网络结构信息，通过 GNN 学习局部和全局的网络结构进行节点的表示">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读《Graph Neural Networks for User Identity Linkage》">
+<meta property="og:url" content="http://tiantianliu2018.github.io/2020/04/14/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AGraph-Neural-Networks-for-User-Identity-Linkage%E3%80%8B/index.html">
 <meta property="og:site_name" content="Tiantian&#39;s Blogs">
-<meta property="og:description" content="The Space to record my life.">
+<meta property="og:description" content="论文阅读《Graph Neural Networks for User Identity Linkage》Summary仅用社交网络结构信息，通过 GNN 学习局部和全局的网络结构进行节点的表示">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-14T08:30:17.000Z">
+<meta property="article:modified_time" content="2020-04-22T08:02:28.390Z">
 <meta property="article:author" content="Tiantian Liu">
-<meta property="article:tag" content="CS_learn">
-<meta property="article:tag" content=" Keep moving">
+<meta property="article:tag" content="social network">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://tiantianliu2018.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+<link rel="canonical" href="http://tiantianliu2018.github.io/2020/04/14/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AGraph-Neural-Networks-for-User-Identity-Linkage%E3%80%8B/">
 
 
 <script id="page-configurations">
@@ -40,11 +41,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false
+    isPost : true
   };
 </script>
 
-  <title>标签: 大数据 | Tiantian's Blogs</title>
+  <title>论文阅读《Graph Neural Networks for User Identity Linkage》 | Tiantian's Blogs</title>
   
 
 
@@ -161,94 +162,145 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">大数据
-          <small>标签</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/04/14/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AGraph-Neural-Networks-for-User-Identity-Linkage%E3%80%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Tiantian Liu">
+      <meta itemprop="description" content="The Space to record my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiantian's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          论文阅读《Graph Neural Networks for User Identity Linkage》
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-14 16:30:17" itemprop="dateCreated datePublished" datetime="2020-04-14T16:30:17+08:00">2020-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-22 16:02:28" itemprop="dateModified" datetime="2020-04-22T16:02:28+08:00">2020-04-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/14/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AGraph-Neural-Networks-for-User-Identity-Linkage%E3%80%8B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/14/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AGraph-Neural-Networks-for-User-Identity-Linkage%E3%80%8B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>349</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
+        <h2 id="论文阅读《Graph-Neural-Networks-for-User-Identity-Linkage》"><a href="#论文阅读《Graph-Neural-Networks-for-User-Identity-Linkage》" class="headerlink" title="论文阅读《Graph Neural Networks for User Identity Linkage》"></a>论文阅读《Graph Neural Networks for User Identity Linkage》</h2><h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>仅用社交网络结构信息，通过 GNN 学习局部和全局的网络结构进行节点的表示</p>
+<a id="more"></a>
+
+<p>待完成。。。</p>
+<h3 id="Research-Objective"><a href="#Research-Objective" class="headerlink" title="Research Objective"></a>Research Objective</h3><h3 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h3><h3 id="Method-s-–-GraphUIL"><a href="#Method-s-–-GraphUIL" class="headerlink" title="Method(s) – GraphUIL"></a>Method(s) – GraphUIL</h3><h4 id="Network-Embedding-Through-Node-Propagation"><a href="#Network-Embedding-Through-Node-Propagation" class="headerlink" title="Network Embedding Through Node Propagation"></a>Network Embedding Through Node Propagation</h4><h4 id="Global-Topology-Aware-Aggregator-GTA-Agg"><a href="#Global-Topology-Aware-Aggregator-GTA-Agg" class="headerlink" title="Global-Topology-Aware Aggregator (GTA-Agg)"></a>Global-Topology-Aware Aggregator (GTA-Agg)</h4><h4 id="Local-Topology-Aware-Aggregator-LTA-Agg"><a href="#Local-Topology-Aware-Aggregator-LTA-Agg" class="headerlink" title="Local-Topology-Aware Aggregator (LTA-Agg)"></a>Local-Topology-Aware Aggregator (LTA-Agg)</h4><h3 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h3><p>对比 PALE，FRUIP ，Node2Vec 方法以及 GraphUIL 仅使用局部或全局的拓扑结构嵌入方法</p>
+<p>衡量指标：Accuracy，F1</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-26T17:33:54+08:00"
-              content="2020-03-26">
-          03-26
-        </time>
-      </div>
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/26/%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-Flink-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" itemprop="url">
-            <span itemprop="name">华为云服务器 Flink 环境搭建</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-22T13:51:21+08:00"
-              content="2020-03-22">
-          03-22
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/22/%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" itemprop="url">
-            <span itemprop="name">华为云服务器大数据环境配置</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-04T08:37:13+08:00"
-              content="2020-03-04">
-          03-04
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/04/Mac-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEHadoop-3-X-%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/" itemprop="url">
-            <span itemprop="name">Mac 安装配置Hadoop 3.X 采坑记录</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
+      
     </div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/social-network/" rel="tag"># social network</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/" rel="prev" title="论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》">
+      <i class="fa fa-chevron-left"></i> 论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -295,6 +347,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#论文阅读《Graph-Neural-Networks-for-User-Identity-Linkage》"><span class="nav-number">1.</span> <span class="nav-text">论文阅读《Graph Neural Networks for User Identity Linkage》</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-number">1.1.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Research-Objective"><span class="nav-number">1.2.</span> <span class="nav-text">Research Objective</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Statement"><span class="nav-number">1.3.</span> <span class="nav-text">Problem Statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-s-–-GraphUIL"><span class="nav-number">1.4.</span> <span class="nav-text">Method(s) – GraphUIL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Network-Embedding-Through-Node-Propagation"><span class="nav-number">1.4.1.</span> <span class="nav-text">Network Embedding Through Node Propagation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Global-Topology-Aware-Aggregator-GTA-Agg"><span class="nav-number">1.4.2.</span> <span class="nav-text">Global-Topology-Aware Aggregator (GTA-Agg)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Local-Topology-Aware-Aggregator-LTA-Agg"><span class="nav-number">1.4.3.</span> <span class="nav-text">Local-Topology-Aware Aggregator (LTA-Agg)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Evaluation"><span class="nav-number">1.5.</span> <span class="nav-text">Evaluation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conclusion"><span class="nav-number">1.6.</span> <span class="nav-text">Conclusion</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
