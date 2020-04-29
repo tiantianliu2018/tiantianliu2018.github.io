@@ -20,16 +20,16 @@
     var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="HBase 基础总结1. 概述分布式、可扩展、支持海量数据存储的 NoSQL 数据库 2. HBase 架构 Master  ：维护表结构信息，比如建表、删表、移动 Region、合并等 监控 RegionServer 处理 RegionServer 故障转移 处理元数据的变更 分配 regions 到每个 RegionServer   RegionServer ：负责存储数据的服务器，存放 Re">
+  <meta name="description" content="HBase 基础总结1. 概述分布式、可扩展、支持海量数据存储的 NoSQL 数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HBase 基础总结">
 <meta property="og:url" content="http://tiantianliu2018.github.io/2020/04/24/HBase-%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Tiantian&#39;s Blogs">
-<meta property="og:description" content="HBase 基础总结1. 概述分布式、可扩展、支持海量数据存储的 NoSQL 数据库 2. HBase 架构 Master  ：维护表结构信息，比如建表、删表、移动 Region、合并等 监控 RegionServer 处理 RegionServer 故障转移 处理元数据的变更 分配 regions 到每个 RegionServer   RegionServer ：负责存储数据的服务器，存放 Re">
+<meta property="og:description" content="HBase 基础总结1. 概述分布式、可扩展、支持海量数据存储的 NoSQL 数据库">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://tiantianliu2018.github.io/2020/04/24/HBase-%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/HBase.png">
 <meta property="article:published_time" content="2020-04-24T06:44:26.000Z">
-<meta property="article:modified_time" content="2020-04-25T09:24:54.200Z">
+<meta property="article:modified_time" content="2020-04-29T09:06:29.289Z">
 <meta property="article:author" content="Tiantian Liu">
 <meta property="article:tag" content="HBase">
 <meta property="article:tag" content="数据库">
@@ -200,7 +200,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-25 17:24:54" itemprop="dateModified" datetime="2020-04-25T17:24:54+08:00">2020-04-25</time>
+                <time title="修改时间：2020-04-29 17:06:29" itemprop="dateModified" datetime="2020-04-29T17:06:29+08:00">2020-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,6 +252,8 @@
 
       
         <h2 id="HBase-基础总结"><a href="#HBase-基础总结" class="headerlink" title="HBase 基础总结"></a>HBase 基础总结</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h3><p>分布式、可扩展、支持海量数据存储的 NoSQL 数据库</p>
+<a id="more"></a> 
+
 <h3 id="2-HBase-架构"><a href="#2-HBase-架构" class="headerlink" title="2. HBase 架构"></a>2. HBase 架构</h3><ul>
 <li><strong>Master</strong>  ：维护表结构信息，比如建表、删表、移动 Region、合并等<ul>
 <li>监控 RegionServer</li>

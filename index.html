@@ -197,7 +197,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-25 17:24:54" itemprop="dateModified" datetime="2020-04-25T17:24:54+08:00">2020-04-25</time>
+                <time title="修改时间：2020-04-29 17:06:29" itemprop="dateModified" datetime="2020-04-29T17:06:29+08:00">2020-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -242,42 +242,14 @@
 
       
           <h2 id="HBase-基础总结"><a href="#HBase-基础总结" class="headerlink" title="HBase 基础总结"></a>HBase 基础总结</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h3><p>分布式、可扩展、支持海量数据存储的 NoSQL 数据库</p>
-<h3 id="2-HBase-架构"><a href="#2-HBase-架构" class="headerlink" title="2. HBase 架构"></a>2. HBase 架构</h3><ul>
-<li><strong>Master</strong>  ：维护表结构信息，比如建表、删表、移动 Region、合并等<ul>
-<li>监控 RegionServer</li>
-<li>处理 RegionServer 故障转移</li>
-<li>处理元数据的变更</li>
-<li>分配 regions 到每个 RegionServer</li>
-</ul>
-</li>
-<li><strong>RegionServer</strong> ：负责存储数据的服务器，存放 Region 的容器<ul>
-<li>负责存储 HBase 的实际数据</li>
-<li>处理分配给它的 Region</li>
-<li>刷新缓存到 HDFS</li>
-<li>维护 Hlog</li>
-<li>执行压缩</li>
-<li>负责处理 Region 分片</li>
-</ul>
-</li>
-<li><strong>Region</strong> : 一段数据的集合，HBase 的一个表有多个 Region<ul>
-<li>不能跨服务器</li>
-<li>数据量大的时候，HBase 会拆分 Region</li>
-</ul>
-</li>
-</ul>
-<p>依赖 Zookeper 的服务</p>
-<p><img src="/2020/04/24/HBase-%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/HBase.png" alt="HBase 架构"></p>
-<h3 id="3-HBase-存储的概念"><a href="#3-HBase-存储的概念" class="headerlink" title="3. HBase 存储的概念"></a>3. HBase 存储的概念</h3><ul>
-<li><strong>Cell</strong> : 单元格</li>
-<li><strong>列</strong> ：最基本的存储单位</li>
-<li><strong>列族</strong> ：列必须依赖列族存在，指定一个列【 列族 : 列 】</li>
-<li><strong>行</strong> ：每行数据由一个 row key 和多个列组成，数据是按照 RowKey 的<strong>字典顺序</strong>存储的</li>
-</ul>
-<p>唯一确定一条结果的表示 ——【 行键：列族：列：版本号 】</p>
-<ul>
-<li><strong>时间戳</strong> ：用来标识数据的不同版本</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/24/HBase-%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
