@@ -127,7 +127,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">12</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">14</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">26</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">27</span></a>
 
   </li>
   </ul>
@@ -162,6 +162,140 @@
             
 
   <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/04/24/HBase-%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Tiantian Liu">
+      <meta itemprop="description" content="The Space to record my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiantian's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/24/HBase-%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">HBase 基础总结</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-24 14:44:26" itemprop="dateCreated datePublished" datetime="2020-04-24T14:44:26+08:00">2020-04-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-25 17:24:54" itemprop="dateModified" datetime="2020-04-25T17:24:54+08:00">2020-04-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/24/HBase-%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/24/HBase-%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>449</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="HBase-基础总结"><a href="#HBase-基础总结" class="headerlink" title="HBase 基础总结"></a>HBase 基础总结</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h3><p>分布式、可扩展、支持海量数据存储的 NoSQL 数据库</p>
+<h3 id="2-HBase-架构"><a href="#2-HBase-架构" class="headerlink" title="2. HBase 架构"></a>2. HBase 架构</h3><ul>
+<li><strong>Master</strong>  ：维护表结构信息，比如建表、删表、移动 Region、合并等<ul>
+<li>监控 RegionServer</li>
+<li>处理 RegionServer 故障转移</li>
+<li>处理元数据的变更</li>
+<li>分配 regions 到每个 RegionServer</li>
+</ul>
+</li>
+<li><strong>RegionServer</strong> ：负责存储数据的服务器，存放 Region 的容器<ul>
+<li>负责存储 HBase 的实际数据</li>
+<li>处理分配给它的 Region</li>
+<li>刷新缓存到 HDFS</li>
+<li>维护 Hlog</li>
+<li>执行压缩</li>
+<li>负责处理 Region 分片</li>
+</ul>
+</li>
+<li><strong>Region</strong> : 一段数据的集合，HBase 的一个表有多个 Region<ul>
+<li>不能跨服务器</li>
+<li>数据量大的时候，HBase 会拆分 Region</li>
+</ul>
+</li>
+</ul>
+<p>依赖 Zookeper 的服务</p>
+<p><img src="/2020/04/24/HBase-%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/HBase.png" alt="HBase 架构"></p>
+<h3 id="3-HBase-存储的概念"><a href="#3-HBase-存储的概念" class="headerlink" title="3. HBase 存储的概念"></a>3. HBase 存储的概念</h3><ul>
+<li><strong>Cell</strong> : 单元格</li>
+<li><strong>列</strong> ：最基本的存储单位</li>
+<li><strong>列族</strong> ：列必须依赖列族存在，指定一个列【 列族 : 列 】</li>
+<li><strong>行</strong> ：每行数据由一个 row key 和多个列组成，数据是按照 RowKey 的<strong>字典顺序</strong>存储的</li>
+</ul>
+<p>唯一确定一条结果的表示 ——【 行键：列族：列：版本号 】</p>
+<ul>
+<li><strong>时间戳</strong> ：用来标识数据的不同版本</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -398,10 +532,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-04-07 20:30:25 / 修改时间：21:28:42" itemprop="dateCreated datePublished" datetime="2020-04-07T20:30:25+08:00">2020-04-07</time>
+              <time title="创建时间：2020-04-07 20:30:25" itemprop="dateCreated datePublished" datetime="2020-04-07T20:30:25+08:00">2020-04-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-29 17:02:48" itemprop="dateModified" datetime="2020-04-29T17:02:48+08:00">2020-04-29</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -432,7 +572,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.2k</span>
+              <span>2.5k</span>
             </span>
 
         </div>
@@ -444,7 +584,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="实战：OutOfMemoryError-异常"><a href="#实战：OutOfMemoryError-异常" class="headerlink" title="实战：OutOfMemoryError 异常"></a>实战：OutOfMemoryError 异常</h2><h3 id="Java-堆溢出"><a href="#Java-堆溢出" class="headerlink" title="Java 堆溢出"></a>Java 堆溢出</h3><p>当堆内存（Heap Space）没有足够空间存放新创建的对象时，就会抛出 <code>java.lang.OutOfMemoryError:Javaheap space</code> </p>
+          <h2 id="实战：OutOfMemoryError-异常"><a href="#实战：OutOfMemoryError-异常" class="headerlink" title="实战：OutOfMemoryError 异常"></a>实战：OutOfMemoryError 异常</h2><h3 id="Java-堆溢出"><a href="#Java-堆溢出" class="headerlink" title="Java 堆溢出"></a>Java 堆溢出</h3><p>当堆内存（Heap Space）没有足够空间存放新创建的对象时，就会抛出 <code>java.lang.OutOfMemoryError:Java heap space</code> </p>
 <h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>1、代码中可能存在大对象分配，通常是大数组</p>
 <p>2、可能存在内存泄露（Memory Leak），大量对象没有被释放，导致在多次 GC 之后无法回收，还是无法找到一块足够大的内存容纳当前对象。</p>
           <!--noindex-->
@@ -1102,112 +1242,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89-DataSource/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Tiantian Liu">
-      <meta itemprop="description" content="The Space to record my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tiantian's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89-DataSource/" class="post-title-link" itemprop="url">Flink 学习笔记(三) DataSource</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-26 17:59:44" itemprop="dateCreated datePublished" datetime="2020-03-26T17:59:44+08:00">2020-03-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-27 11:49:37" itemprop="dateModified" datetime="2020-03-27T11:49:37+08:00">2020-03-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89-DataSource/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89-DataSource/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.7k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Flink-学习笔记-三-DataSource"><a href="#Flink-学习笔记-三-DataSource" class="headerlink" title="Flink 学习笔记(三) DataSource"></a>Flink 学习笔记(三) DataSource</h2><h3 id="1-基于集合"><a href="#1-基于集合" class="headerlink" title="1. 基于集合"></a>1. 基于集合</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fromCollection(Collection)  <span class="comment">// 从 Java Java.util.Collection 创建数据流</span></span><br><span class="line">fromCollection(Iterator, Class) <span class="comment">// 从迭代器创建</span></span><br><span class="line">fromElements(T ...)	<span class="comment">// 从给定的对象序列</span></span><br><span class="line">fromParallelCollection(SplittableIterator, Class) <span class="comment">// 从一个迭代器中创建并行数据流</span></span><br><span class="line">generateSequence(from, to)  <span class="comment">// 创建一个生成指定区间范围内的数字序列的并行数据流</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89-DataSource/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1280,7 +1314,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1293,7 +1327,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1336,13 +1370,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">48k</span>
+    <span title="站点总字数">49k</span>
 </div>
 
 <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共18.2k字</span>
+  <span class="post-count">博客全站共18.7k字</span>
   <span class="post-meta-divider">|</span>
   本站总访问量<span id="busuanzi_value_site_pv"></span>次
   <span class="post-meta-divider">|</span>
@@ -1353,7 +1387,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共18.2k字</span>
+  <span class="post-count">博客全站共18.7k字</span>
 </div>
 
 
