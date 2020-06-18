@@ -20,21 +20,23 @@
     var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Flink 学习笔记(三) DataSource1. 基于集合12345fromCollection(Collection)  &#x2F;&#x2F; 从 Java Java.util.Collection 创建数据流fromCollection(Iterator, Class) &#x2F;&#x2F; 从迭代器创建fromElements(T ...)	&#x2F;&#x2F; 从给定的对象序列fromParallelCollection(Split">
+  <meta name="description" content="Spark 学习笔记 一、Spark 简介基于内存计算的大数据并行计算框架 特点：  速度快  易用  通用  运行模式多样   二、Spark 生态系统三、Spark 运行架构RDD：Resillient Distributed Dataset（弹性分布式数据集）共享内存模型 DAG：有向无环图  反映 RDD 之间的依赖关系 Executor：运行在工作节点的一个进程，负责运行 Task Ap">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flink 学习笔记(三) DataSource">
-<meta property="og:url" content="http://tiantianliu2018.github.io/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89-DataSource/index.html">
+<meta property="og:title" content="Spark 学习笔记">
+<meta property="og:url" content="http://tiantianliu2018.github.io/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Tiantian&#39;s Blogs">
-<meta property="og:description" content="Flink 学习笔记(三) DataSource1. 基于集合12345fromCollection(Collection)  &#x2F;&#x2F; 从 Java Java.util.Collection 创建数据流fromCollection(Iterator, Class) &#x2F;&#x2F; 从迭代器创建fromElements(T ...)	&#x2F;&#x2F; 从给定的对象序列fromParallelCollection(Split">
+<meta property="og:description" content="Spark 学习笔记 一、Spark 简介基于内存计算的大数据并行计算框架 特点：  速度快  易用  通用  运行模式多样   二、Spark 生态系统三、Spark 运行架构RDD：Resillient Distributed Dataset（弹性分布式数据集）共享内存模型 DAG：有向无环图  反映 RDD 之间的依赖关系 Executor：运行在工作节点的一个进程，负责运行 Task Ap">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-26T09:59:44.000Z">
-<meta property="article:modified_time" content="2020-03-27T03:49:37.377Z">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ttl/MyBlog/source/_posts/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/spark.png">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ttl/MyBlog/source/_posts/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/run.png">
+<meta property="article:published_time" content="2020-06-12T02:00:54.000Z">
+<meta property="article:modified_time" content="2020-06-17T02:17:10.048Z">
 <meta property="article:author" content="Tiantian Liu">
-<meta property="article:tag" content="Flink">
-<meta property="article:tag" content="流处理">
+<meta property="article:tag" content="Spark">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tiantianliu2018.github.io/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ttl/MyBlog/source/_posts/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/spark.png">
 
-<link rel="canonical" href="http://tiantianliu2018.github.io/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89-DataSource/">
+<link rel="canonical" href="http://tiantianliu2018.github.io/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
@@ -46,7 +48,7 @@
   };
 </script>
 
-  <title>Flink 学习笔记(三) DataSource | Tiantian's Blogs</title>
+  <title>Spark 学习笔记 | Tiantian's Blogs</title>
   
 
 
@@ -168,7 +170,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89-DataSource/">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpeg">
@@ -181,7 +183,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Flink 学习笔记(三) DataSource
+          Spark 学习笔记
         </h1>
 
         <div class="post-meta">
@@ -191,14 +193,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-03-26 17:59:44" itemprop="dateCreated datePublished" datetime="2020-03-26T17:59:44+08:00">2020-03-26</time>
+              <time title="创建时间：2020-06-12 10:00:54" itemprop="dateCreated datePublished" datetime="2020-06-12T10:00:54+08:00">2020-06-12</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-27 11:49:37" itemprop="dateModified" datetime="2020-03-27T11:49:37+08:00">2020-03-27</time>
+                <time title="修改时间：2020-06-17 10:17:10" itemprop="dateModified" datetime="2020-06-17T10:17:10+08:00">2020-06-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -226,8 +228,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89-DataSource/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89-DataSource/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -237,7 +239,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.7k</span>
+              <span>2.2k</span>
             </span>
 
         </div>
@@ -249,30 +251,82 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Flink-学习笔记-三-DataSource"><a href="#Flink-学习笔记-三-DataSource" class="headerlink" title="Flink 学习笔记(三) DataSource"></a>Flink 学习笔记(三) DataSource</h2><h3 id="1-基于集合"><a href="#1-基于集合" class="headerlink" title="1. 基于集合"></a>1. 基于集合</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fromCollection(Collection)  <span class="comment">// 从 Java Java.util.Collection 创建数据流</span></span><br><span class="line">fromCollection(Iterator, Class) <span class="comment">// 从迭代器创建</span></span><br><span class="line">fromElements(T ...)	<span class="comment">// 从给定的对象序列</span></span><br><span class="line">fromParallelCollection(SplittableIterator, Class) <span class="comment">// 从一个迭代器中创建并行数据流</span></span><br><span class="line">generateSequence(from, to)  <span class="comment">// 创建一个生成指定区间范围内的数字序列的并行数据流</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-
-<h3 id="2-基于文件"><a href="#2-基于文件" class="headerlink" title="2. 基于文件"></a>2. 基于文件</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">readTextFile(path) <span class="comment">// 读取文本文件，返回字符串</span></span><br><span class="line">readFile(fileInputFormat, path) <span class="comment">// 读取指定输入格式的文件</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据给定的 fileInputFormat 和读取路径读取文件。</span></span><br><span class="line"><span class="comment"> * 根据提供的 watchType，这个 source 可以定期（每隔 interval 毫秒）监测给定路径的新数据</span></span><br><span class="line"><span class="comment"> *（FileProcessingMode.PROCESS_CONTINUOUSLY），或者处理一次路径对应文件的数据并退出</span></span><br><span class="line"><span class="comment"> *（FileProcessingMode.PROCESS_ONCE）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">readFile(fileInputFormat, path, watchType, interval, pathFilter, typeInfo)</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-基于-Socket"><a href="#3-基于-Socket" class="headerlink" title="3. 基于 Socket"></a>3. 基于 Socket</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socketTextStream(String hostname, <span class="keyword">int</span> port) <span class="comment">// 从 socket 读取,元素可以用分隔符切分。</span></span><br></pre></td></tr></table></figure>
-<p>Example:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DataStream&lt;Tuple2&lt;String, Integer&gt;&gt; sum = environment</span><br><span class="line">  			.socketTextStream(<span class="string">"localhost"</span>, <span class="number">9000</span>)</span><br><span class="line">        .flatMap(<span class="keyword">new</span> Splitter())</span><br><span class="line">        .keyBy(<span class="number">0</span>)  	<span class="comment">// 根据第一个字段做聚合</span></span><br><span class="line">        .timeWindow(Time.seconds(<span class="number">5</span>))  <span class="comment">// 窗口大小</span></span><br><span class="line">        .sum(<span class="number">1</span>);	<span class="comment">// 对第二个字段求和</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="4-自定义"><a href="#4-自定义" class="headerlink" title="4. 自定义"></a>4. 自定义</h3><p>自定义 source，可以从 Kafka 等读取数据<br>大多数场景下都会用到自定义的情况</p>
-<h4 id="Flink-Kafka-Source"><a href="#Flink-Kafka-Source" class="headerlink" title="Flink Kafka Source"></a>Flink Kafka Source</h4><p>基本使用方式：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line">properties.setProperty(<span class="string">"bootstrap.servers"</span>, <span class="string">"localhost:9092"</span>);</span><br><span class="line"><span class="comment">// only required for Kafka 0.8</span></span><br><span class="line">properties.setProperty(<span class="string">"zookeeper.connect"</span>, <span class="string">"localhost:2181"</span>);</span><br><span class="line">properties.setProperty(<span class="string">"group.id"</span>, <span class="string">"test"</span>);</span><br><span class="line">DataStream&lt;String&gt; stream = env</span><br><span class="line">	.addSource(<span class="keyword">new</span> FlinkKafkaConsumer08&lt;&gt;(</span><br><span class="line">    <span class="string">"topic"</span>,   <span class="comment">// 消息的 topic</span></span><br><span class="line">    <span class="comment">// DeserializationSchema/KafkaDeserializationSchema,反序列化 Kafka 中的数据</span></span><br><span class="line">    <span class="keyword">new</span> SimpleStringSchema(),  </span><br><span class="line">    <span class="comment">// Kafka 消费者的属性</span></span><br><span class="line">    properties	</span><br><span class="line">  ));</span><br><span class="line"><span class="comment">/* Kafka 消费者的属性</span></span><br><span class="line"><span class="comment"> * bootstrap.servers” 逗号分隔的 brokers 列表</span></span><br><span class="line"><span class="comment"> * “zookeeper.connect” 逗号分隔的 Zookeeper 服务器 (only required for Kafka 0.8)</span></span><br><span class="line"><span class="comment"> * “group.id” consumer group id</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
-
-<p>Kafka 相关：</p>
+        <h1 id="Spark-学习笔记"><a href="#Spark-学习笔记" class="headerlink" title="Spark 学习笔记"></a>Spark 学习笔记</h1><hr>
+<h2 id="一、Spark-简介"><a href="#一、Spark-简介" class="headerlink" title="一、Spark 简介"></a>一、Spark 简介</h2><p>基于<strong>内存计算</strong>的大数据<strong>并行计算框架</strong></p>
+<p>特点：</p>
 <ul>
-<li><p><strong>Topic</strong>：属于特定类别的消息流称为主题。可以理解为消息的标签🏷，订阅了该 topic 的消费者会接收到所有该类消息。</p>
+<li><p>速度快</p>
 </li>
-<li><p><strong>Producer：消息发送者</strong>。负责将消息发送到 Kafka 集群的某一个topic中。</p>
+<li><p>易用</p>
 </li>
-<li><p><strong>Consumer：消息消费者</strong>。订阅topic，获取消息。</p>
+<li><p>通用</p>
 </li>
-<li><p><strong>Broker：Kafka 集群中的每一台服务器</strong>。Kafka是一个分布式集群，其中每一台服务器都叫做Broker。</p>
+<li><p>运行模式多样</p>
 </li>
 </ul>
+<h2 id="二、Spark-生态系统"><a href="#二、Spark-生态系统" class="headerlink" title="二、Spark 生态系统"></a>二、Spark 生态系统</h2><h2 id="三、Spark-运行架构"><a href="#三、Spark-运行架构" class="headerlink" title="三、Spark 运行架构"></a>三、Spark 运行架构</h2><p>RDD：Resillient Distributed Dataset（弹性分布式数据集）共享内存模型</p>
+<p>DAG：有向无环图  反映 RDD 之间的依赖关系</p>
+<p>Executor：运行在工作节点的一个进程，负责运行 Task</p>
+<p>Application：用户编写的 Spark 应用程序</p>
+<p>Task：运行在 Executor 上的工作单元</p>
+<p>Job：一个 Job 包含多个 RDD 及作用于相应 RDD 上的各种操作</p>
+<p>Stage：是 Job 的基本调度单位，一个 Job 会分为多组 Task，每组 Task 被称为 Stage，或者也被称为 TaskSet，代表了一组关联的、相互之间没有 Shuffle 依赖关系的任务组成的任务集</p>
+<p><img src="/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ttl/MyBlog/source/_posts/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/spark.png" alt="Spark 运行架构"></p>
+<h3 id="Spark-运行基本流程"><a href="#Spark-运行基本流程" class="headerlink" title="Spark 运行基本流程"></a>Spark 运行基本流程</h3><p><img src="/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ttl/MyBlog/source/_posts/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/run.png" alt="Spark 基本运行流程"></p>
+<p>RDD 在 Spark 中的运行过程：</p>
+<ol>
+<li><p>创建 RDD 对象</p>
+</li>
+<li><p>SparkContext 负责计算 RDD 时间的依赖关系，构建DAG</p>
+</li>
+<li><p>DAGScheduler 负责把 DAG 图分解成多个 Stage， 每个 Stage 中包含了多个 Task，每个 Task 会 TaskScheduler</p>
+<p>分发给各个 WorkerNode 上的 Executor 去执行</p>
+</li>
+</ol>
+<h2 id="四、RDD-编程"><a href="#四、RDD-编程" class="headerlink" title="四、RDD 编程"></a>四、RDD 编程</h2><h3 id="1-RDD-创建"><a href="#1-RDD-创建" class="headerlink" title="1. RDD 创建"></a>1. RDD 创建</h3><ul>
+<li><p>从文件系统中加载数据创建</p>
+<p><code>sc.textFile(&quot;file:///&quot;)</code> 本地文件系统</p>
+<p><code>sc.textFile(&quot;hdfs://地址&quot;)</code> 分布式文件系统 HDFS</p>
+</li>
+<li><p>通过并行集合（数组）创建 RDD</p>
+<p><code>sc.parallelize()</code></p>
+</li>
+</ul>
+<h3 id="2-RDD-操作-惰性求值"><a href="#2-RDD-操作-惰性求值" class="headerlink" title="2. RDD 操作 惰性求值"></a>2. RDD 操作 惰性求值</h3><h4 id="转换操作"><a href="#转换操作" class="headerlink" title="转换操作"></a>转换操作</h4><p>filter：筛选、map：映射、flatMap、groupByKey()、reduceByKey()</p>
+<h4 id="行动操作-真正触发计算"><a href="#行动操作-真正触发计算" class="headerlink" title="行动操作  真正触发计算"></a>行动操作  真正触发计算</h4><p><code>count()</code> 返回数据集中的元素个数 </p>
+<p><code>collect()</code> 以<strong>数组</strong>的形式返回数据集中的所有元素 </p>
+<p><code>first()</code> 返回数据集中的第一个元素 </p>
+<p><code>take(n)</code> 以数组的形式返回数据集中的前n个元素 </p>
+<p><code>reduce(func)</code> 通过函数 func（输入两个参数并返回一个值） 聚合数据集中的元素</p>
+<p><code>foreach(func)</code> 将数据集中的每个元素传递到函数func中运行</p>
+<h3 id="3-RDD-持久化"><a href="#3-RDD-持久化" class="headerlink" title="3. RDD 持久化"></a>3. RDD 持久化</h3><h3 id="4-RDD-分区"><a href="#4-RDD-分区" class="headerlink" title="4. RDD 分区"></a>4. RDD 分区</h3><h3 id="5-键值对-RDD"><a href="#5-键值对-RDD" class="headerlink" title="5. 键值对 RDD"></a>5. 键值对 RDD</h3><p><code>reduceByKey(func)</code> 使用 func 函数合并具有相同键的值，用于对每个 key 对应的多个 value 进行 merge 操作，最重要的是它能够在本地先进行 merge 操作，并且 merge 操作可以通过函数自定义</p>
+<p><code>groupByKey()</code> 对具有相同 key 的 value 进行分组，但只生成一个 sequence，groupByKey 本身不能自定义函数，需要先用 groupByKey 生成 RDD，然后才能对此 RDD 通过 map 进行自定义函数操作</p>
+<p><code>keys</code>只会把 Pair RDD 中的 key 返回形成一个新的 RDD</p>
+<p><code>values</code>  只会把 Pair RDD中 的 value 返回形成一个新的 RDD。</p>
+<p><code>sortByKey()</code> 返回一个根据键排序的 RDD，默认是升序排序</p>
+<p><code>mapValues(func)</code> 对键值对 RDD 中的每个 value 都应用一个函数，但是，key 不会发生变化</p>
+<p><code>join</code> 内连接，只有在两个数据集中都存在的 key 才会被输出，最终得到一个 (K,(V1,V2)) 类型的数据集。</p>
+<p><code>combineByKey(createCombiner,mergeValue,mergeCombiners,partitioner ,mapSideCombine)</code></p>
+<h3 id="6-共享变量"><a href="#6-共享变量" class="headerlink" title="6. 共享变量"></a>6. 共享变量</h3><p>广播变量：把变量在所有节点的内存之间进行共享。缓存一个只读变量</p>
+<p>​    通过调用 <code>SparkContext.broadcast(v)</code> 来从一个普通变量 v 中创建一个广播变量</p>
+<p>​    通过调用 <code>value</code> 方法就可以获得这个广播变量的值，</p>
+<p>累加器：支持在所有不同节点之间进行累加计算</p>
+<p>​    通过调用 <code>SparkContext.longAccumulator()</code> 或者 <code>SparkContext.doubleAccumulator()</code> 来创建</p>
+<p>​    只有任务控制节点（Driver Program）可以使用 <code>value</code> 方法来读取累加器的值</p>
+<h3 id="7-数据读写"><a href="#7-数据读写" class="headerlink" title="7. 数据读写"></a>7. 数据读写</h3><h4 id="本地文件数据的读写"><a href="#本地文件数据的读写" class="headerlink" title="本地文件数据的读写"></a>本地文件数据的读写</h4><p><code>sc.textFile()</code>  惰性机制，行动操作才进行加载</p>
+<p><code>saveAsTextFile()</code>  生成一个目录  part-00000  RDD 分区，再次加载只需要写这个目录</p>
+<h4 id="分布式文件系统读写"><a href="#分布式文件系统读写" class="headerlink" title="分布式文件系统读写"></a>分布式文件系统读写</h4><p><code>sc.textFile(&quot;hdfs://&quot;)</code></p>
+<h4 id="JSON-文件读写"><a href="#JSON-文件读写" class="headerlink" title="JSON 文件读写"></a>JSON 文件读写</h4><p><code>sc.textFile()</code></p>
+<p>对 json 进行解析 scala.util.parsing.json.Json 可以实现对 JSON 数据的解析</p>
+<h3 id="8-HBase"><a href="#8-HBase" class="headerlink" title="8. HBase"></a>8. HBase</h3><p>HBase 中需要根据行键、列族、列限定符和时间戳来确定一个单元格</p>
+<p>HBase 需要时间戳是因为 HBAse 的底层是 HDFS，HDFS 要求一次写入不能进行修改，所以要修改单元格的数据只能生成新的版本，让最新的数指向最新的版本</p>
+<p>四维坐标定位【行键、列族、列、版本时间戳】</p>
+<p>一个单元格一个插入数据</p>
+<h2 id="五、Spark-SQL"><a href="#五、Spark-SQL" class="headerlink" title="五、Spark SQL"></a>五、Spark SQL</h2><p>RDD 是分布式的 Java 对象的集合</p>
+<p>DataFrame 是一种以 RDD 为基础的分布式数据集</p>
+<p><code>spark.read.json()</code> 读取 json 文件</p>
+<p><code>spark.read.parquet(&quot;people.parquet&quot;)</code> </p>
+<p><code>spark.read.csv(&quot;people.csv&quot;)</code></p>
 
     </div>
 
@@ -293,8 +347,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Flink/" rel="tag"># Flink</a>
-              <a href="/tags/%E6%B5%81%E5%A4%84%E7%90%86/" rel="tag"># 流处理</a>
+              <a href="/tags/Spark/" rel="tag"># Spark</a>
           </div>
 
         
@@ -303,13 +356,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/26/%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-Flink-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="prev" title="华为云服务器 Flink 环境搭建">
-      <i class="fa fa-chevron-left"></i> 华为云服务器 Flink 环境搭建
+    <a href="/2020/04/24/HBase-%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/" rel="prev" title="HBase 基础总结">
+      <i class="fa fa-chevron-left"></i> HBase 基础总结
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89Transformation/" rel="next" title="Flink 学习笔记（四）Transformation">
-      Flink 学习笔记（四）Transformation <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -370,7 +420,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flink-学习笔记-三-DataSource"><span class="nav-number">1.</span> <span class="nav-text">Flink 学习笔记(三) DataSource</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基于集合"><span class="nav-number">1.1.</span> <span class="nav-text">1. 基于集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-基于文件"><span class="nav-number">1.2.</span> <span class="nav-text">2. 基于文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-基于-Socket"><span class="nav-number">1.3.</span> <span class="nav-text">3. 基于 Socket</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-自定义"><span class="nav-number">1.4.</span> <span class="nav-text">4. 自定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Flink-Kafka-Source"><span class="nav-number">1.4.1.</span> <span class="nav-text">Flink Kafka Source</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spark-学习笔记"><span class="nav-number">1.</span> <span class="nav-text">Spark 学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Spark-简介"><span class="nav-number">1.1.</span> <span class="nav-text">一、Spark 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Spark-生态系统"><span class="nav-number">1.2.</span> <span class="nav-text">二、Spark 生态系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、Spark-运行架构"><span class="nav-number">1.3.</span> <span class="nav-text">三、Spark 运行架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spark-运行基本流程"><span class="nav-number">1.3.1.</span> <span class="nav-text">Spark 运行基本流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、RDD-编程"><span class="nav-number">1.4.</span> <span class="nav-text">四、RDD 编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-RDD-创建"><span class="nav-number">1.4.1.</span> <span class="nav-text">1. RDD 创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-RDD-操作-惰性求值"><span class="nav-number">1.4.2.</span> <span class="nav-text">2. RDD 操作 惰性求值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#转换操作"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">转换操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行动操作-真正触发计算"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">行动操作  真正触发计算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-RDD-持久化"><span class="nav-number">1.4.3.</span> <span class="nav-text">3. RDD 持久化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-RDD-分区"><span class="nav-number">1.4.4.</span> <span class="nav-text">4. RDD 分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-键值对-RDD"><span class="nav-number">1.4.5.</span> <span class="nav-text">5. 键值对 RDD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-共享变量"><span class="nav-number">1.4.6.</span> <span class="nav-text">6. 共享变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-数据读写"><span class="nav-number">1.4.7.</span> <span class="nav-text">7. 数据读写</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地文件数据的读写"><span class="nav-number">1.4.7.1.</span> <span class="nav-text">本地文件数据的读写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式文件系统读写"><span class="nav-number">1.4.7.2.</span> <span class="nav-text">分布式文件系统读写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSON-文件读写"><span class="nav-number">1.4.7.3.</span> <span class="nav-text">JSON 文件读写</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-HBase"><span class="nav-number">1.4.8.</span> <span class="nav-text">8. HBase</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、Spark-SQL"><span class="nav-number">1.5.</span> <span class="nav-text">五、Spark SQL</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -127,7 +127,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">14</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">15</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">27</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">28</span></a>
 
   </li>
   </ul>
@@ -162,6 +162,180 @@
             
 
   <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Tiantian Liu">
+      <meta itemprop="description" content="The Space to record my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiantian's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Spark 学习笔记</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-12 10:00:54" itemprop="dateCreated datePublished" datetime="2020-06-12T10:00:54+08:00">2020-06-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-17 10:17:10" itemprop="dateModified" datetime="2020-06-17T10:17:10+08:00">2020-06-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Spark-学习笔记"><a href="#Spark-学习笔记" class="headerlink" title="Spark 学习笔记"></a>Spark 学习笔记</h1><hr>
+<h2 id="一、Spark-简介"><a href="#一、Spark-简介" class="headerlink" title="一、Spark 简介"></a>一、Spark 简介</h2><p>基于<strong>内存计算</strong>的大数据<strong>并行计算框架</strong></p>
+<p>特点：</p>
+<ul>
+<li><p>速度快</p>
+</li>
+<li><p>易用</p>
+</li>
+<li><p>通用</p>
+</li>
+<li><p>运行模式多样</p>
+</li>
+</ul>
+<h2 id="二、Spark-生态系统"><a href="#二、Spark-生态系统" class="headerlink" title="二、Spark 生态系统"></a>二、Spark 生态系统</h2><h2 id="三、Spark-运行架构"><a href="#三、Spark-运行架构" class="headerlink" title="三、Spark 运行架构"></a>三、Spark 运行架构</h2><p>RDD：Resillient Distributed Dataset（弹性分布式数据集）共享内存模型</p>
+<p>DAG：有向无环图  反映 RDD 之间的依赖关系</p>
+<p>Executor：运行在工作节点的一个进程，负责运行 Task</p>
+<p>Application：用户编写的 Spark 应用程序</p>
+<p>Task：运行在 Executor 上的工作单元</p>
+<p>Job：一个 Job 包含多个 RDD 及作用于相应 RDD 上的各种操作</p>
+<p>Stage：是 Job 的基本调度单位，一个 Job 会分为多组 Task，每组 Task 被称为 Stage，或者也被称为 TaskSet，代表了一组关联的、相互之间没有 Shuffle 依赖关系的任务组成的任务集</p>
+<p><img src="/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ttl/MyBlog/source/_posts/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/spark.png" alt="Spark 运行架构"></p>
+<h3 id="Spark-运行基本流程"><a href="#Spark-运行基本流程" class="headerlink" title="Spark 运行基本流程"></a>Spark 运行基本流程</h3><p><img src="/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ttl/MyBlog/source/_posts/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/run.png" alt="Spark 基本运行流程"></p>
+<p>RDD 在 Spark 中的运行过程：</p>
+<ol>
+<li><p>创建 RDD 对象</p>
+</li>
+<li><p>SparkContext 负责计算 RDD 时间的依赖关系，构建DAG</p>
+</li>
+<li><p>DAGScheduler 负责把 DAG 图分解成多个 Stage， 每个 Stage 中包含了多个 Task，每个 Task 会 TaskScheduler</p>
+<p>分发给各个 WorkerNode 上的 Executor 去执行</p>
+</li>
+</ol>
+<h2 id="四、RDD-编程"><a href="#四、RDD-编程" class="headerlink" title="四、RDD 编程"></a>四、RDD 编程</h2><h3 id="1-RDD-创建"><a href="#1-RDD-创建" class="headerlink" title="1. RDD 创建"></a>1. RDD 创建</h3><ul>
+<li><p>从文件系统中加载数据创建</p>
+<p><code>sc.textFile(&quot;file:///&quot;)</code> 本地文件系统</p>
+<p><code>sc.textFile(&quot;hdfs://地址&quot;)</code> 分布式文件系统 HDFS</p>
+</li>
+<li><p>通过并行集合（数组）创建 RDD</p>
+<p><code>sc.parallelize()</code></p>
+</li>
+</ul>
+<h3 id="2-RDD-操作-惰性求值"><a href="#2-RDD-操作-惰性求值" class="headerlink" title="2. RDD 操作 惰性求值"></a>2. RDD 操作 惰性求值</h3><h4 id="转换操作"><a href="#转换操作" class="headerlink" title="转换操作"></a>转换操作</h4><p>filter：筛选、map：映射、flatMap、groupByKey()、reduceByKey()</p>
+<h4 id="行动操作-真正触发计算"><a href="#行动操作-真正触发计算" class="headerlink" title="行动操作  真正触发计算"></a>行动操作  真正触发计算</h4><p><code>count()</code> 返回数据集中的元素个数 </p>
+<p><code>collect()</code> 以<strong>数组</strong>的形式返回数据集中的所有元素 </p>
+<p><code>first()</code> 返回数据集中的第一个元素 </p>
+<p><code>take(n)</code> 以数组的形式返回数据集中的前n个元素 </p>
+<p><code>reduce(func)</code> 通过函数 func（输入两个参数并返回一个值） 聚合数据集中的元素</p>
+<p><code>foreach(func)</code> 将数据集中的每个元素传递到函数func中运行</p>
+<h3 id="3-RDD-持久化"><a href="#3-RDD-持久化" class="headerlink" title="3. RDD 持久化"></a>3. RDD 持久化</h3><h3 id="4-RDD-分区"><a href="#4-RDD-分区" class="headerlink" title="4. RDD 分区"></a>4. RDD 分区</h3><h3 id="5-键值对-RDD"><a href="#5-键值对-RDD" class="headerlink" title="5. 键值对 RDD"></a>5. 键值对 RDD</h3><p><code>reduceByKey(func)</code> 使用 func 函数合并具有相同键的值，用于对每个 key 对应的多个 value 进行 merge 操作，最重要的是它能够在本地先进行 merge 操作，并且 merge 操作可以通过函数自定义</p>
+<p><code>groupByKey()</code> 对具有相同 key 的 value 进行分组，但只生成一个 sequence，groupByKey 本身不能自定义函数，需要先用 groupByKey 生成 RDD，然后才能对此 RDD 通过 map 进行自定义函数操作</p>
+<p><code>keys</code>只会把 Pair RDD 中的 key 返回形成一个新的 RDD</p>
+<p><code>values</code>  只会把 Pair RDD中 的 value 返回形成一个新的 RDD。</p>
+<p><code>sortByKey()</code> 返回一个根据键排序的 RDD，默认是升序排序</p>
+<p><code>mapValues(func)</code> 对键值对 RDD 中的每个 value 都应用一个函数，但是，key 不会发生变化</p>
+<p><code>join</code> 内连接，只有在两个数据集中都存在的 key 才会被输出，最终得到一个 (K,(V1,V2)) 类型的数据集。</p>
+<p><code>combineByKey(createCombiner,mergeValue,mergeCombiners,partitioner ,mapSideCombine)</code></p>
+<h3 id="6-共享变量"><a href="#6-共享变量" class="headerlink" title="6. 共享变量"></a>6. 共享变量</h3><p>广播变量：把变量在所有节点的内存之间进行共享。缓存一个只读变量</p>
+<p>​    通过调用 <code>SparkContext.broadcast(v)</code> 来从一个普通变量 v 中创建一个广播变量</p>
+<p>​    通过调用 <code>value</code> 方法就可以获得这个广播变量的值，</p>
+<p>累加器：支持在所有不同节点之间进行累加计算</p>
+<p>​    通过调用 <code>SparkContext.longAccumulator()</code> 或者 <code>SparkContext.doubleAccumulator()</code> 来创建</p>
+<p>​    只有任务控制节点（Driver Program）可以使用 <code>value</code> 方法来读取累加器的值</p>
+<h3 id="7-数据读写"><a href="#7-数据读写" class="headerlink" title="7. 数据读写"></a>7. 数据读写</h3><h4 id="本地文件数据的读写"><a href="#本地文件数据的读写" class="headerlink" title="本地文件数据的读写"></a>本地文件数据的读写</h4><p><code>sc.textFile()</code>  惰性机制，行动操作才进行加载</p>
+<p><code>saveAsTextFile()</code>  生成一个目录  part-00000  RDD 分区，再次加载只需要写这个目录</p>
+<h4 id="分布式文件系统读写"><a href="#分布式文件系统读写" class="headerlink" title="分布式文件系统读写"></a>分布式文件系统读写</h4><p><code>sc.textFile(&quot;hdfs://&quot;)</code></p>
+<h4 id="JSON-文件读写"><a href="#JSON-文件读写" class="headerlink" title="JSON 文件读写"></a>JSON 文件读写</h4><p><code>sc.textFile()</code></p>
+<p>对 json 进行解析 scala.util.parsing.json.Json 可以实现对 JSON 数据的解析</p>
+<h3 id="8-HBase"><a href="#8-HBase" class="headerlink" title="8. HBase"></a>8. HBase</h3><p>HBase 中需要根据行键、列族、列限定符和时间戳来确定一个单元格</p>
+<p>HBase 需要时间戳是因为 HBAse 的底层是 HDFS，HDFS 要求一次写入不能进行修改，所以要修改单元格的数据只能生成新的版本，让最新的数指向最新的版本</p>
+<p>四维坐标定位【行键、列族、列、版本时间戳】</p>
+<p>一个单元格一个插入数据</p>
+<h2 id="五、Spark-SQL"><a href="#五、Spark-SQL" class="headerlink" title="五、Spark SQL"></a>五、Spark SQL</h2><p>RDD 是分布式的 Java 对象的集合</p>
+<p>DataFrame 是一种以 RDD 为基础的分布式数据集</p>
+<p><code>spark.read.json()</code> 读取 json 文件</p>
+<p><code>spark.read.parquet(&quot;people.parquet&quot;)</code> </p>
+<p><code>spark.read.csv(&quot;people.csv&quot;)</code></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -303,7 +477,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-22 16:02:28" itemprop="dateModified" datetime="2020-04-22T16:02:28+08:00">2020-04-22</time>
+                <time title="修改时间：2020-06-08 08:42:22" itemprop="dateModified" datetime="2020-06-08T08:42:22+08:00">2020-06-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -335,7 +509,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>349</span>
+              <span>565</span>
             </span>
 
         </div>
@@ -1107,113 +1281,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89Transformation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Tiantian Liu">
-      <meta itemprop="description" content="The Space to record my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tiantian's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89Transformation/" class="post-title-link" itemprop="url">Flink 学习笔记（四）Transformation</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-26 23:20:09" itemprop="dateCreated datePublished" datetime="2020-03-26T23:20:09+08:00">2020-03-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-30 15:17:53" itemprop="dateModified" datetime="2020-03-30T15:17:53+08:00">2020-03-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89Transformation/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89Transformation/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.9k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Flink-学习笔记（四）Transformation"><a href="#Flink-学习笔记（四）Transformation" class="headerlink" title="Flink 学习笔记（四）Transformation"></a>Flink 学习笔记（四）Transformation</h3><p>算子将一个或多个数据流转换为一个新的数据流</p>
-<p>一下是常用的算子 API，不涉及具体的原理和理论。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89Transformation/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1286,7 +1353,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1299,7 +1366,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1342,13 +1409,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">49k</span>
+    <span title="站点总字数">51k</span>
 </div>
 
 <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共18.7k字</span>
+  <span class="post-count">博客全站共20k字</span>
   <span class="post-meta-divider">|</span>
   本站总访问量<span id="busuanzi_value_site_pv"></span>次
   <span class="post-meta-divider">|</span>
@@ -1359,7 +1426,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共18.7k字</span>
+  <span class="post-count">博客全站共20k字</span>
 </div>
 
 
