@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8332.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8316.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="A comparative study on network alignment techniquesSummary从矩阵对齐和网络表示学习的角度总结了state-of-the-art的7种方法，并建立了一个统一的基准平台。同时他们还研究了不同网络因素对于这些方法的影响。 这篇文章对于7种方法的介绍非常详细（数学真得好难），可以参考。 但是数据集对于该问题是主要的影响因素，但是公开数据集特别少。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读《A comparative study on network alignment techniques》">
+<meta property="og:url" content="http://tiantianliu2018.github.io/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/index.html">
+<meta property="og:site_name" content="Tiantian&#39;s Blogs">
+<meta property="og:description" content="A comparative study on network alignment techniquesSummary从矩阵对齐和网络表示学习的角度总结了state-of-the-art的7种方法，并建立了一个统一的基准平台。同时他们还研究了不同网络因素对于这些方法的影响。 这篇文章对于7种方法的介绍非常详细（数学真得好难），可以参考。 但是数据集对于该问题是主要的影响因素，但是公开数据集特别少。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/spectral_method.png">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/FINAL.png">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/PALE.png">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/DEEPLINK.png">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/benchmark.png">
+<meta property="article:published_time" content="2019-10-07T06:47:39.000Z">
+<meta property="article:modified_time" content="2020-09-13T01:51:43.034Z">
+<meta property="article:author" content="Tiantian Liu">
+<meta property="article:tag" content="Network Alignment">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tiantianliu2018.github.io/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/spectral_method.png">
+
+<link rel="canonical" href="http://tiantianliu2018.github.io/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>论文阅读《A comparative study on network alignment techniques》 | Tiantian's Blogs</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tiantian's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">To Be Better</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">35</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">36</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">78</span></a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Tiantian Liu">
+      <meta itemprop="description" content="The Space to record my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiantian's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          论文阅读《A comparative study on network alignment techniques》
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-07 14:47:39" itemprop="dateCreated datePublished" datetime="2019-10-07T14:47:39+08:00">2019-10-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-13 09:51:43" itemprop="dateModified" datetime="2020-09-13T09:51:43+08:00">2020-09-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/" itemprop="url" rel="index"><span itemprop="name">Social Networks</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>9k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="A-comparative-study-on-network-alignment-techniques"><a href="#A-comparative-study-on-network-alignment-techniques" class="headerlink" title="A comparative study on network alignment techniques"></a>A comparative study on network alignment techniques</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>从矩阵对齐和网络表示学习的角度总结了state-of-the-art的7种方法，并建立了一个统一的基准平台。同时他们还研究了不同网络因素对于这些方法的影响。</p>
+<p>这篇文章对于7种方法的介绍非常详细（数学真得好难），可以参考。</p>
+<p>但是数据集对于该问题是主要的影响因素，但是公开数据集特别少。</p>
+<h2 id="Research-Objective"><a href="#Research-Objective" class="headerlink" title="Research Objective"></a>Research Objective</h2><p>比较现有网络对齐的方法</p>
+<p>评估公共框架下的 Network Alignment 技术</p>
+<p>本研究的主要目的是提供一个灵活而强大的工具，以支持比较和促进网络对齐技术的基准分析。</p>
+<h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p>文章中将目前的 Network Align 方法分为 <strong>spectral methods</strong>（基于邻接矩阵的操作） 和 <strong>network representation methods</strong> (节点用嵌入向量表示，能够捕捉到网络的结构信息)</p>
+<p>虽然Network Alignment方法的研究已经很长时间了，但由于缺少公共数据集和共同的评价指标，还没有比较过这些方法的性能。</p>
+<h3 id="Network-alignment-methods"><a href="#Network-alignment-methods" class="headerlink" title="Network alignment methods"></a>Network alignment methods</h3><p>网络对齐技术利用结构一致性和属性一致性假设来构建它们的模型。</p>
+<p>结构一致性：同质性原则，即邻近的节点倾向于在不同的网络中维持它们之间的关系</p>
+<p>属性一致性：属于同一身份的在不同网络上的节点可能保持相同的属性(特征)</p>
+<ul>
+<li><h4 id="Spectral-methods-—-matrix-factorization-矩阵分解"><a href="#Spectral-methods-—-matrix-factorization-矩阵分解" class="headerlink" title="Spectral methods — matrix factorization 矩阵分解"></a>Spectral methods — matrix factorization 矩阵分解</h4><p>使用矩阵分解，直接计算对齐矩阵 S </p>
+<p><img src="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/spectral_method.png" alt="spectral_method"></p>
+<p>将输入的图用连接矩阵的形式表示，Spectral methods 以损失函数的形式定义模型，模型考虑了源和目标网络的邻接矩阵；节点特征为常量，对齐矩阵S为变量。在对准过程中，根据结构和/或属性一致性假设，通过优化损失函数来学习得到对准矩阵。</p>
+<p>Spectral methods 不同之处在于构建模型时使用什么一致性原则以及该原则如何使用的</p>
+<ul>
+<li><p><strong>IsoRank</strong>：如果来自不同网络的两个节点的邻居是相似的，那么这两个节点是相似的。因此该方法中，节点的相似性取决于两个节点邻居的相似性。</p>
+<p>similarity：</p>
+<script type="math/tex; mode=display">
+\mathbf{S}\left(u_{s}, v_{t}\right)=\sum_{w_{s} \in N\left(u_{s}\right)} \sum_{w_{t} \in N\left(v_{t}\right)} \frac{1}{\left|N\left(u_{s}\right)\right|\left|N\left(v_{t}\right)\right|} \mathbf{S}\left(w_{s}, w_{t}\right)  \\
+u_{s}源网络的节点，v_t目标网络的节点，N(u)节点u的邻居集合  \\
+上面的公式可以写成：S=CS \\
+where \\
+\mathbf{C}[i, j][u, v]=\left\{\begin{array}{ll}{\frac{1}{|N(u)||N(v)|},} & {\text { if }(i, u) \in E_{s},(i, v) \in E_{t}} \\ {0,} & {\text { otherwise }}\end{array}\right.  \\
+通过迭代的方法更新S\\
+\mathbf{S}^{k+1} \leftarrow \frac{\mathbf{C S}^{k}}{\left|\mathbf{C S}^{k}\right|}  \\
+其中S^{k}是第k次迭代的对齐矩阵</script><p>该方法对于网络的结构较敏感</p>
+</li>
+<li><p><strong>BigAlign</strong></p>
+<p>利用网络节点的原始特征和手工提取的特征，如节点度、权重、集群系数等，将源网络和目标网络转换成二分图，从而解决网络对齐问题。</p>
+<p>求置换矩阵 P，使损失函数最小化:</p>
+<script type="math/tex; mode=display">
+\mathbb{L}(\mathbf{P})=\left\|\mathbf{P D}_{s} \mathbf{P}^{T}-\mathbf{D}_{t}\right\|_{F}^{2}</script><p>P 用于对 $D<em>{s}$ 的行进行重新排序，$P^{t}$ 用于对 $D</em>{t}$ 的列进行重新排序。难解。</p>
+<p>将图转化成二分图然后最小化损失函数：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \mathbb{L}(\mathbf{P}, \mathbf{Q}) &=\left\|\mathbf{P D}_{s} \mathbf{Q}-\mathbf{D}_{t}\right\|_{F}^{2}+\lambda \sum_{i, j} \mathbf{P}(i, j)+\phi \sum_{i, j} \mathbf{Q}(i, j) \\ &=\operatorname{Tr}\left(\mathbf{P D}_{s} \mathbf{Q}\left(\mathbf{P D}_{s} \mathbf{Q}\right)^{T}-2 \mathbf{P D}_{s} \mathbf{Q} \mathbf{D}_{t}^{T}\right)+\lambda \mathbf{1}^{T} \mathbf{P} \mathbf{1}+\phi \mathbf{1}^{T} \mathbf{Q} \mathbf{1} \end{aligned} \\
+其中 Tr(·) 是矩阵的迹, \lambda \sum_{i, j} \mathbf{P}(i, j) 是矩阵的稀疏性约束 \\</script><p>上面的损失函数可以通过 <strong>alternating projected gradient descent (APGD)  </strong>来优化：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{\mathbf{P}_{k+1}=\mathbf{P}_{k}-\eta_{P} \cdot\left(2\left(\mathbf{P}_{k} \mathbf{D}_{s} \mathbf{Q}_{k}-\mathbf{D}_{t}\right) \mathbf{Q}_{k}^{T} \mathbf{D}_{s}^{T}+\lambda \mathbf{1} \mathbf{I}^{T}\right)} \\ {\left.\mathbf{Q}_{k+1}=\mathbf{Q}_{k}-\eta_{Q} \cdot\left(2 \mathbf{D}_{s}^{T} \mathbf{P}_{k+1}^{T} \mathbf{D}_{s} \mathbf{Q}_{k}-\mathbf{D}_{t}\right)+\phi \mathbf{1} \mathbf{1}^{T}\right)}\end{array} \\
+P_k 是第k次迭代的矩阵P，\eta_{P},\eta_{Q}为APGD算法的步长</script><p>仅用属性信息而忽略了拓扑信息。</p>
+</li>
+<li><p><strong>FINAL</strong></p>
+<p>通过定义结构相似性、节点特征相似性和边特征的相似性条件</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \mathbb{L}(\mathbf{S}) &=\sum_{u_{s}, v_{s}, u_{t}, v_{t}}\left[\frac{\mathbf{S}\left(u_{s}, u_{t}\right)}{\sqrt{f\left(u_{s}, u_{t}\right)}}-\frac{\mathbf{S}\left(v_{s}, v_{t}\right)}{\sqrt{f\left(v_{s}, v_{t}\right)}}\right] \\ & \times \mathbf{D}_{s}\left(u_{s}, v_{s}\right) \mathbf{D}_{t}\left(u_{t}, v_{t}\right) \end{aligned} \\
+\begin{array}{l}{\times \mathbb{1}\left(A\left(u_{s}\right)=A\left(u_{t}\right)\right) \mathbb{1}\left(A\left(v_{s}\right)=A\left(v_{t}\right)\right)} \\ {\times \mathbb{1}\left(A_{e}\left(u_{s}, v_{s}\right)=A_{e}\left(u_{t}, v_{t}\right)\right)}\end{array} \\
+其中A_e是边属性矩阵，\mathbb{1}(\cdot)是一个指示函数，如果括号中的条件正确，则返回1，\sqrt{f\left(u, u\right)} 是一个归一化因子</script><p><img src="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/FINAL.png" alt="FINAL"></p>
+<blockquote>
+<p>数学好难，没看懂。。。</p>
+</blockquote>
+</li>
+<li><p><strong>REGAL</strong></p>
+<p>两个节点之间的相似性：</p>
+<script type="math/tex; mode=display">
+\mathbf{S}^{\prime}(u, v)=\exp \left(-\lambda_{s} \cdot\left\|\mathbf{d}_{u}-\mathbf{d}_{v}\right\|^{2}-\lambda_{a} \cdot \operatorname{dist}(\mathbf{A}(u), \mathbf{A}(v))\right)</script></li>
+<li></li>
+</ul>
+</li>
+<li><h4 id="Representation-learning-methods"><a href="#Representation-learning-methods" class="headerlink" title="Representation learning methods"></a>Representation learning methods</h4><p>embedding generation 嵌入的生成</p>
+<p>alignment matrix generation 对齐矩阵的生成</p>
+<p>对于基于嵌入的网络对齐方法，不同之处在于embedding function 和 mapping function</p>
+<ul>
+<li><p><strong>PALE</strong></p>
+<p><img src="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/PALE.png" alt="PALE"></p>
+<blockquote>
+<p><a href="https://tiantianliu2018.github.io/2019/09/28/论文阅读《Predict-Anchor-Links-across-Social-Networks-via-an-Embedding-Approach》/">https://tiantianliu2018.github.io/2019/09/28/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8APredict-Anchor-Links-across-Social-Networks-via-an-Embedding-Approach%E3%80%8B/</a></p>
+<p>我之前的阅读笔记。</p>
+</blockquote>
+<p>首先对网络进行扩展：如果在source网络中 $u_s$ 和 $v_s$存在边，并且知道这两个在target网络中对应的节点 $u_t$ 和 $v_t$, 那么  $u_t$ 和 $v_t$ 之间也应该有边，因此通过这样的方式扩展网络</p>
+<p><strong>Emdedding function</strong></p>
+<script type="math/tex; mode=display">
+\theta(v_i) = E[i]</script><p>其中 $E$ 是 embedding matrix，它是通过最小化如下损失得到的：</p>
+<script type="math/tex; mode=display">
+\mathbb{L}(\mathbf{E})=\log \sigma\left(\mathbf{u}^{T} \cdot \mathbf{v}\right)+\sum_{k=1}^{K} \mathbb{E}_{w \alpha P_{n}(v)}\left[\log \left(1-\sigma\left(\mathbf{u}^{T} \cdot \mathbf{w}\right)\right)\right]</script><p>其中 $(u,v) \in E$  是观测到的边，$w$ 是通过在E中负采样的节点</p>
+<p><strong>Mapping function</strong></p>
+<script type="math/tex; mode=display">
+\phi\left(\mathbf{u}_{s}\right)=\mathbf{M} \times \mathbf{u}_{s}</script><p>$M$ 是一个$d×d$ 的矩阵，通过最小化下面的损失函数得到：</p>
+<script type="math/tex; mode=display">
+\mathbb{L}(\mathbf{M})=\sum_{\mathbf{H}\left(v_{s}, v_{t}\right)=1}\left\|\phi\left(\mathbf{v}_{\mathbf{s}}\right)-\mathbf{v}_{t}\right\|</script><p>$H$ 是先验对齐矩阵</p>
+</li>
+<li><p><strong>DeepLink</strong></p>
+<p>embedding graph 与PALE是一样的，但在mapping function中考虑了mapping的方向</p>
+<p><img src="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/DEEPLINK.png" alt="DEEPLINK"></p>
+<p><strong>Emdedding function</strong></p>
+<script type="math/tex; mode=display">
+\theta(v_i) = E[i]</script><p>参数 $E$ 的 loss function:</p>
+<script type="math/tex; mode=display">
+\mathbb{L}_{\theta}(\mathbf{E})=\log \sigma(\mathbf{u} \cdot \mathbf{v})+\sum_{k=1}^{K} \mathbb{E}_{w \propto P_{n}(v)}[\log (1-\sigma(\mathbf{u} \cdot \mathbf{w}))]</script><p>DeepLink方法认为如果 $v$ 是 $u$随机游走过程中的节点，则认为这两个节点相似。</p>
+<p><strong>Mapping function</strong></p>
+<p>从源网络 $G_s$ 到目标网络 $G_t$ 的 mapping function</p>
+<script type="math/tex; mode=display">
+\phi_{s, t}\left(\mathbf{u}_{s}\right)=\mathbf{M}_{s, t} \times \mathbf{u}_{s}+\mathbf{b}_{s, t}</script><p>类似的 从目标网络 $G_t$ 到源网络 $G_s$ 的 mapping function</p>
+<script type="math/tex; mode=display">
+\phi_{t, s}\left(\mathbf{u}_{t}\right)=\mathbf{M}_{t, s} \times \mathbf{v}_{t}+\mathbf{b}_{t, s}</script><p>参数 $\phi<em>{s, t}$ 通过最优化如下loss function得到（$\phi</em>{t, s}$ 类似）：</p>
+<script type="math/tex; mode=display">
+\mathbb{L}\left(\mathbf{W}_{s, t}, \mathbf{b}_{s, t}\right) =\sum_{\left(v_{s}, v_{t}\right) \in H} \min \left(1-\cos \left(\phi\left(\mathbf{v}_{s}\right), \mathbf{v}_{t}\right)\right)</script><p>对于两个网络中的同一个用户，他们的嵌入向量应该是相似的，因此，通过最小化损失函数来改进 $\phi<em>{s, t}$ 和 $\phi</em>{t, s}$:</p>
+<script type="math/tex; mode=display">
+\mathbb{L}\left(\mathbf{W}_{s, t}, \mathbf{b}_{s, t}, \mathbf{W}_{t, s}, \mathbf{b}_{t, s}\right)=\operatorname{dist}\left(\phi_{t, s}\left(\phi_{s, t}(\mathbf{u})\right), \mathbf{u}\right)</script><p>对于监督学习，最大化 reward function</p>
+<script type="math/tex; mode=display">
+r_{s, t}^{u}=\frac{1}{k} \sum_{w \in T_{k}(u)} \log (\cos (\mathbf{w}, \mathbf{v})+1)  \\
+其中 T_k(u) 是G_t中与\phi_{s,t}(u) embedding最接近的top-k个节点  \\
+\phi_{t,s}的reward \, function 为：\\
+r_{t, s}^{v}=\frac{1}{k} \sum_{w \in T_{k}(v)} \log (\cos (\mathbf{w}, \mathbf{u})+1)</script><blockquote>
+<p><a href="https://tiantianliu2018.github.io/2019/09/15/论文阅读《DeepLink-A-Deep-Learning-Approach-for-User-Identity-Linkage》/">https://tiantianliu2018.github.io/2019/09/15/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeepLink-A-Deep-Learning-Approach-for-User-Identity-Linkage%E3%80%8B/</a><br> 之前的论文阅读笔记<br> 又一大堆数学公式推导，好像没有看下去。</p>
+</blockquote>
+</li>
+<li><p><strong>IONE</strong></p>
+<p>IONE 与 PALE 的 mapping function 是相同的，但是其 embedding function 更加复杂，它在计算节点的嵌入时考虑了节点的邻居特征。</p>
+<p><strong>Embedding function</strong></p>
+<p>一个 embedding 矩阵，其中的每一行是由三个向量拼接到一起的：节点向量、输入上下文向量、输出上下文向量，最终其 embedding function 为：</p>
+<script type="math/tex; mode=display">
+\theta_i = E[i], E \in \mathbb{R}^{|V| \times 3 d}</script><p>该方法的思想是：一个节点的节点向量可以影响其邻居的输入上下文向量，而其邻居的节点向量可以影响其输出上下文向量。</p>
+<p>为了学习 $E$, 该方法需要满足两个目标：</p>
+<ol>
+<li><p>每个图中相邻的节点应该具有类似的节点嵌入</p>
+<p>为了实现该目标，可以通过考虑一个节点向量相对于其邻居的输入上下文向量的贡献概率来实现：</p>
+<script type="math/tex; mode=display">
+p_{1}(u | v)=\frac{\exp \left(\mathbf{u}^{\prime T} \cdot \mathbf{v}\right)}{\sum_{w \in G} \exp \left(\mathbf{w}^{\prime T} \cdot \mathbf{v}\right)}</script><p>其经验定义为：</p>
+<script type="math/tex; mode=display">
+\hat{p}_{1}(u, v)=\frac{w_{u, v}}{|\{v |(u, v) \in E\}|}\\
+其中w_{u,v}是边(u,v)的权重</script><p>类似的，一个节点向量对其邻居的输出上下文向量的贡献的概率及其经验定义：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} p_{2}(v | u) &=\frac{\exp \left(\mathbf{v}^{\prime \prime T} \cdot \mathbf{u}\right)}{\sum_{w \in G} \exp \left(\mathbf{w}^{\prime \prime} T \cdot \mathbf{u}\right)} \\ \hat{p}_{2}(u, v) &=\frac{w_{u, v}}{|\{v |(v, u) \in E\}|} \end{aligned}</script><p>$p_1$ 应该和 $p_2$ 是相似的，于是有如下目标函数：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \mathbb{L}_{1}(\mathbf{E})=&-\sum_{G \in\left\{G_{s}, G_{t}\right\}} \sum_{(u, v) \in G} w_{u, v} \log p_{1}(v | u) \\ &-\sum_{G \in\left\{G_{s}, G_{t}\right\}} \sum_{(u, v) \in G} w_{u, v} \log p_{2}(u | v) \end{aligned}</script></li>
+<li><p>具有近似嵌入的节点是很好的对齐节点的候选节点</p>
+<p>在两个网络中，两个节点如果是同一个用户，那么这两个节点是可以相互代替的，其代替的程度应该是由这两个节点是同一个用户的可信度确定的，基于这一点，对目标函数L1进行修改，将相应节点的信息考虑如下：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \mathbb{L}_{2}(\mathbf{E})=&-\sum_{w_{t} \in G_{t}} \sum_{\left(u_{s}, v_{s}\right) \in V_{s}} w_{u_{s}, v_{s}} p_{a}\left(u_{s} | w_{t}\right) \log p_{1}\left(v_{s} | w_{t}\right) \\ &-\sum_{w_{t} \in G_{t}} \sum_{\left(u_{s}, v_{s}\right) \in V_{s}} w_{u_{s}, v_{s}} p_{a}\left(v_{s} | w_{t}\right) \log p_{1}\left(u_{s} | w_{t}\right) \\ &-\sum_{w_{s} \in G_{s}} \sum_{\left(u_{t}, v_{t}\right) \in V_{t}} w_{u_{t}, v_{t}} p_{a}\left(u_{t} | w_{s}\right) \log p_{1}\left(v_{t} | w_{s}\right) \\ &-\sum_{w_{s} \in G_{s}} \sum_{\left(u_{t}, v_{t}\right) \in V_{t}} w_{u_{t}, v_{t}} p_{a}\left(v_{t} | w_{s}\right) \log p_{1}\left(u_{t} | w_{s}\right) \end{aligned}</script><p>最终通过最小化联合目标函数，得到嵌入的参数</p>
+<script type="math/tex; mode=display">
+\mathbb{L}(\mathbf{E}) = \mathbb{L}_{1}(\mathbf{E}) + \mathbb{L}_{2}(\mathbf{E})</script></li>
+</ol>
+<p><strong>Mapping function</strong></p>
+<p>IONE的映射函数是PALE的映射函数的一个特例，映射矩阵M是单位矩阵</p>
+<blockquote>
+<pre><code>   [https://tiantianliu2018.github.io/2019/09/30/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AAligning-Users-Across-Social-Networks-Using-Network-Embedding%E3%80%8B/](https://tiantianliu2018.github.io/2019/09/30/论文阅读《Aligning-Users-Across-Social-Networks-Using-Network-Embedding》/)
+</code></pre><p>之前的论文阅读笔记</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><p><img src="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/benchmark.png" alt="Benchmark"></p>
+<h3 id="Datasets"><a href="#Datasets" class="headerlink" title="Datasets"></a>Datasets</h3><p><strong>Real-world datasets</strong>：这些数据集的质量好像都不太高</p>
+<ul>
+<li>S1. Douban online vs Douban offline </li>
+<li>S2. Flickr vs Lastfm </li>
+<li>S3. Flickr vs MySpace</li>
+<li>S4. Twitter vs Facebook </li>
+<li>S5. Twitter vs Foursquare </li>
+</ul>
+<p><strong>Synthetic datasets</strong></p>
+<ul>
+<li>Partial synthetic：用真实网络生成目标网络</li>
+<li>Full synthetic：</li>
+</ul>
+<hr>
+
+<h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><h3 id="Metrics"><a href="#Metrics" class="headerlink" title="Metrics"></a>Metrics</h3><p><strong>Accuracy</strong></p>
+<script type="math/tex; mode=display">
+acc = \frac {\# {correctly \ \ identified \ \ node \ \ pairs}}{\# {groundtruth\ \ node\ \ pairs}}</script><p><strong>Precision@k</strong></p>
+<script type="math/tex; mode=display">
+Precision@k = \frac {\# {Times \ \ that \ \ target \ \ node \ \ in \ \ top \ k \ \ similarity \ \ candiates}}{\#{groundtruth \ \  node \ \ pairs}}</script><p><strong>Mean Average Precision (MAP) </strong></p>
+<script type="math/tex; mode=display">
+MAP = mean(\frac{1}{ra}) \\ra 是排序后的候选序列中匹配节点的rank</script><h3 id="Evaluation-procedure"><a href="#Evaluation-procedure" class="headerlink" title="Evaluation procedure"></a>Evaluation procedure</h3><ul>
+<li>Structural noise level </li>
+<li>Attribute noise level </li>
+<li>Graph size </li>
+<li>Graph size imbalance </li>
+<li>Graph density </li>
+<li>Graph connectivity </li>
+<li>Number of connected components </li>
+</ul>
+<h3 id="Experimental-evaluation"><a href="#Experimental-evaluation" class="headerlink" title="Experimental evaluation"></a>Experimental evaluation</h3><p>评估以上因素对于实验的影响</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>克服真实网络中的结构和属性不稳定性是网络对齐面临的主要挑战之一</p>
+<h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2>
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+      
+    </div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Network-Alignment/" rel="tag"># Network Alignment</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/10/07/Java-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A72/" rel="prev" title="Java 高级特性2">
+      <i class="fa fa-chevron-left"></i> Java 高级特性2
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/10/10/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AConnecting-Users-across-Social-Media-Sites-A-Behavioral-Modeling-Approach%E3%80%8B/" rel="next" title="论文阅读《Connecting Users across Social Media Sites: A Behavioral-Modeling Approach》">
+      论文阅读《Connecting Users across Social Media Sites: A Behavioral-Modeling Approach》 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A-comparative-study-on-network-alignment-techniques"><span class="nav-number">1.</span> <span class="nav-text">A comparative study on network alignment techniques</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">1.1.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Research-Objective"><span class="nav-number">1.2.</span> <span class="nav-text">Research Objective</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-Statement"><span class="nav-number">1.3.</span> <span class="nav-text">Problem Statement</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Network-alignment-methods"><span class="nav-number">1.3.1.</span> <span class="nav-text">Network alignment methods</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spectral-methods-—-matrix-factorization-矩阵分解"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">Spectral methods — matrix factorization 矩阵分解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Representation-learning-methods"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">Representation learning methods</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Methods"><span class="nav-number">1.4.</span> <span class="nav-text">Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Datasets"><span class="nav-number">1.4.1.</span> <span class="nav-text">Datasets</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Evaluation"><span class="nav-number">1.5.</span> <span class="nav-text">Evaluation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Metrics"><span class="nav-number">1.5.1.</span> <span class="nav-text">Metrics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Evaluation-procedure"><span class="nav-number">1.5.2.</span> <span class="nav-text">Evaluation procedure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Experimental-evaluation"><span class="nav-number">1.5.3.</span> <span class="nav-text">Experimental evaluation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">1.6.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Notes"><span class="nav-number">1.7.</span> <span class="nav-text">Notes</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tiantian Liu"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Tiantian Liu</p>
+  <div class="site-description" itemprop="description">The Space to record my life.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tiantianliu2018" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tiantianliu2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tiantianliu2018@outlook.com" title="E-Mail → mailto:tiantianliu2018@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tiantian liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">138k</span>
+</div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共61.8k字</span>
+  <span class="post-meta-divider">|</span>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  <span class="post-meta-divider">|</span>
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  <span class="post-meta-divider">|</span>
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共61.8k字</span>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'FhWVmso5TyqrTqtDNNtpuBeC-gzGzoHsz',
+      appKey     : 'd5yz5CVcPPfEmfA5p2ovH6g9',
+      placeholder: "欢迎交流讨论...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-CN' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

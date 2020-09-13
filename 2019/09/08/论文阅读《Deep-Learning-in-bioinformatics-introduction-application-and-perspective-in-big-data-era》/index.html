@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8332.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8316.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="IntroductionComputer Vision image recognition 图像识别 object detection 目标检测 image inpainting 图像修复 super-resolution  超分辨率  Natural Language Processing text classification 文本分类 speech recognition 语音识别 mach">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读《Deep Learning in bioinformatics: introduction, application and perspective in big data era》">
+<meta property="og:url" content="http://tiantianliu2018.github.io/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/index.html">
+<meta property="og:site_name" content="Tiantian&#39;s Blogs">
+<meta property="og:description" content="IntroductionComputer Vision image recognition 图像识别 object detection 目标检测 image inpainting 图像修复 super-resolution  超分辨率  Natural Language Processing text classification 文本分类 speech recognition 语音识别 mach">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/data.png">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/GCN.png">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/GAN.png">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/autoencoder.png">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/vae.png">
+<meta property="article:published_time" content="2019-09-08T11:18:01.000Z">
+<meta property="article:modified_time" content="2020-09-13T01:52:17.546Z">
+<meta property="article:author" content="Tiantian Liu">
+<meta property="article:tag" content="CS_learn">
+<meta property="article:tag" content=" Keep moving">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tiantianliu2018.github.io/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/data.png">
+
+<link rel="canonical" href="http://tiantianliu2018.github.io/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>论文阅读《Deep Learning in bioinformatics: introduction, application and perspective in big data era》 | Tiantian's Blogs</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tiantian's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">To Be Better</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">35</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">36</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">78</span></a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Tiantian Liu">
+      <meta itemprop="description" content="The Space to record my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiantian's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          论文阅读《Deep Learning in bioinformatics: introduction, application and perspective in big data era》
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-08 19:18:01" itemprop="dateCreated datePublished" datetime="2019-09-08T19:18:01+08:00">2019-09-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-13 09:52:17" itemprop="dateModified" datetime="2020-09-13T09:52:17+08:00">2020-09-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.2k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h4 id="Computer-Vision"><a href="#Computer-Vision" class="headerlink" title="Computer Vision"></a>Computer Vision</h4><ul>
+<li>image recognition 图像识别</li>
+<li>object detection 目标检测</li>
+<li>image inpainting 图像修复</li>
+<li>super-resolution  超分辨率</li>
+</ul>
+<h4 id="Natural-Language-Processing"><a href="#Natural-Language-Processing" class="headerlink" title="Natural Language Processing"></a>Natural Language Processing</h4><ul>
+<li>text classification 文本分类</li>
+<li>speech recognition 语音识别</li>
+<li>machine translation 机器翻译</li>
+</ul>
+<h4 id="Bioinformatics"><a href="#Bioinformatics" class="headerlink" title="Bioinformatics"></a>Bioinformatics</h4><ol>
+<li><p>sequence analysis 序列分析</p>
+<ul>
+<li>predict the effect of noncoding sequence variants  预测非编码序列变异的影响</li>
+<li><strong>model the transcription factor binding affinity landscape 对转录因子结合亲和性的建模</strong> （PS：有一篇文章可以看）</li>
+<li>improve DNA sequencing and peptide sequencing </li>
+<li>analyze DNA sequence modification  分析DNA序列的变异</li>
+<li>model various post-transcription regulation events  模拟各种转录后调控事件</li>
+</ul>
+</li>
+<li><p>structure prediction and reconstruction 结构预测和重建</p>
+<ul>
+<li>protein secondary structure 蛋白质的二级结构</li>
+<li>model the protein structure when it interacts with other molecules  </li>
+<li>predict protein contact maps and the structure of membrane proteins 预测蛋白质的接触图和膜蛋白的结构</li>
+<li>accelerates the fluorescence microscopy super-resolution</li>
+</ul>
+</li>
+<li><p>biomolecular property and function prediction  生物分子性质和功能预测</p>
+<ul>
+<li>predicts enzyme detailed function by predicting the Enzyme Commission number 通过预测酶的EC number 预测酶的详细功能</li>
+<li>predict the protein Gene Ontology (GO) </li>
+<li>predicts the protein subcellular location 预测蛋白质亚细胞位置</li>
+</ul>
+</li>
+<li><p>biomedical image processing and diagnosis 生物图像处理和诊断</p>
+<ul>
+<li>classifying skin cancer </li>
+<li>predict fluorescent labels from transmitted-light images of unlabeled biological samples </li>
+<li>analyze the cell imagining data </li>
+</ul>
+</li>
+<li><p>biomolecule interaction prediction and system biology 生物相互作用预测与统生物学</p>
+<ul>
+<li>model the hierarchical structure and the function of the whole cell 对整个细胞的层次结构和功能进行建模</li>
+<li>predict novel drug-target interaction 预测新的药物靶点相互作用</li>
+<li>model polypharmacy sides effects - multi-modal graph convolutional networks </li>
+</ul>
+</li>
+</ol>
+<p><img src="/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/data.png" alt="img"></p>
+<hr>
+
+<h2 id="Deep-Learning-Methods"><a href="#Deep-Learning-Methods" class="headerlink" title="Deep Learning Methods"></a>Deep Learning Methods</h2><p>通过训练一个神经网络（具有非线性函数）来表达特征和标签之间的隐含关系。</p>
+<p>需要训练参数 W, 让模型 fit data，实现这一目的的算法是前向-反向传播（<code>forward-backward propagation</code>)，通过最小化前向输出和标签之间的差异（loss or error）直到模型收敛</p>
+<p>常用的 activation function：</p>
+<p>​    hidden layer — ReLU </p>
+<p>​    output layer — softmax</p>
+<p>常用的 loss function：</p>
+<p>​    classification — cross-entropy</p>
+<p>​    regression — mean squared error</p>
+<p>optimizer：</p>
+<p>​    stochastic gradient descent （SGD）</p>
+<p>​    Momentum with learning rate decay — understanding the problem</p>
+<p>​    Adam  — not familiar with the problem</p>
+<p>​    RMSprop</p>
+<h3 id="CNN-Deep-Learning-Architecture"><a href="#CNN-Deep-Learning-Architecture" class="headerlink" title="CNN Deep Learning Architecture"></a>CNN Deep Learning Architecture</h3><p>local connectivity 局部连接 </p>
+<p>weight sharing  权重共享</p>
+<p>模型架构：</p>
+<p>​    AlexNet、VGG、GoogleNet、ResNet、SENet、DenseNet、DPN</p>
+<h3 id="RNN-Deep-Learning-Architecture"><a href="#RNN-Deep-Learning-Architecture" class="headerlink" title="RNN Deep Learning Architecture"></a>RNN Deep Learning Architecture</h3><p>模型架构：</p>
+<p>​    LSTM、Bi-RNN、GRU</p>
+<h3 id="Graph-Nerual-Networks"><a href="#Graph-Nerual-Networks" class="headerlink" title="Graph Nerual Networks"></a>Graph Nerual Networks</h3><p><strong>Primary task</strong>：</p>
+<p>extract and encode the topological and connectivity information from the network  提取并编码网络的拓扑和连接信息</p>
+<p>为了保证网络中节点的信息（邻居信息），构建一棵邻居树</p>
+<p><img src="/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/GCN.png" alt="img"></p>
+<h3 id="Generative-models-GAN-and-VAE-—-unsupervised-learning"><a href="#Generative-models-GAN-and-VAE-—-unsupervised-learning" class="headerlink" title="Generative models: GAN and VAE — unsupervised learning"></a>Generative models: GAN and VAE — unsupervised learning</h3><p>学习数据分布并且生成带有一些变化的新数据点</p>
+<p><strong>GAN</strong></p>
+<p><img src="/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/GAN.png" alt="img"></p>
+<p><strong>Variational Autoencoder</strong></p>
+<p>Autoencoder 并不能产生新的数据</p>
+<p><img src="/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/autoencoder.png" alt="img"></p>
+<p>Variational antoencoder </p>
+<p><img src="/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/vae.png" alt="img"></p>
+<hr>
+
+<h2 id="Applications-of-deep-learning-in-bioinformatics"><a href="#Applications-of-deep-learning-in-bioinformatics" class="headerlink" title="Applications of deep learning in bioinformatics"></a>Applications of deep learning in bioinformatics</h2><h3 id="1-Identifying-enzymes-using-multi-layer-neural-networks"><a href="#1-Identifying-enzymes-using-multi-layer-neural-networks" class="headerlink" title="1. Identifying enzymes using multi-layer neural networks"></a>1. Identifying enzymes using multi-layer neural networks</h3><p>identify enzyme sequences based on sequence information using deep learning based methods 用深度学习的方法基于序列信息预测酶的序列</p>
+<p>encoder the protein sequences into numbers → Forward Nerual Network</p>
+<h3 id="2-Gene-expression-regression"><a href="#2-Gene-expression-regression" class="headerlink" title="2. Gene expression regression"></a>2. Gene expression regression</h3><p>different genes’ expression can be highly correlated </p>
+<p>profiling around 1000 carefully selected landmark genes and predicting the expression of the other target genes based on computational methods and landmark gene expression </p>
+<h3 id="3-RNA-protein-binding-sites-prediction-with-CNN"><a href="#3-RNA-protein-binding-sites-prediction-with-CNN" class="headerlink" title="3. RNA-protein binding sites prediction with CNN"></a>3. RNA-protein binding sites prediction with CNN</h3><p>RNA-binding proteins (RBP)  RNA 结合蛋白</p>
+<p>将RNN序列编码为 2D tensors</p>
+<h3 id="4-DNA-sequence-function-prediction-with-CNN-and-RNN"><a href="#4-DNA-sequence-function-prediction-with-CNN-and-RNN" class="headerlink" title="4. DNA sequence function prediction with CNN and RNN"></a>4. DNA sequence function prediction with CNN and RNN</h3><p>predict the functionality of non-coding DNA sequences 预测DNA序列的非编码区的功能</p>
+<h3 id="5-Biomedical-image-classification-using-transfer-learning-and-ResNet"><a href="#5-Biomedical-image-classification-using-transfer-learning-and-ResNet" class="headerlink" title="5. Biomedical image classification using transfer learning and ResNet"></a>5. Biomedical image classification using transfer learning and ResNet</h3><h3 id="6-Graph-embedding-for-novel-protein-interaction-prediction-using-GCN"><a href="#6-Graph-embedding-for-novel-protein-interaction-prediction-using-GCN" class="headerlink" title="6. Graph embedding for novel protein interaction prediction using GCN"></a>6. Graph embedding for novel protein interaction prediction using GCN</h3><p>graph embedding — PPI networks</p>
+<p>使用 GCN 学得节点（蛋白质）的嵌入表示，然后 apply the interaction operation (inner product) to each pair of nodes </p>
+<h3 id="7-Biology-image-super-resolution-using-GAN"><a href="#7-Biology-image-super-resolution-using-GAN" class="headerlink" title="7. Biology image super-resolution using GAN"></a>7. Biology image super-resolution using GAN</h3><h3 id="8-High-dimensional-biological-data-embedding-and-generation-with-VAE"><a href="#8-High-dimensional-biological-data-embedding-and-generation-with-VAE" class="headerlink" title="8. High dimensional biological data embedding and generation with VAE"></a>8. High dimensional biological data embedding and generation with VAE</h3><hr>
+
+<h2 id="Perspectives-limitations-and-suggestions"><a href="#Perspectives-limitations-and-suggestions" class="headerlink" title="Perspectives: limitations and suggestions"></a>Perspectives: limitations and suggestions</h2><h4 id="1-Lack-of-data"><a href="#1-Lack-of-data" class="headerlink" title="1. Lack of data"></a>1. Lack of data</h4><p>transfer learning</p>
+<p>use a well trained model from another similar task and fine tune the last one or two layers using the limited real data  </p>
+<p>data augmentation</p>
+<p>simulated data </p>
+<h4 id="2-Overfitting"><a href="#2-Overfitting" class="headerlink" title="2. Overfitting"></a>2. Overfitting</h4><p>acts on the model parameters and the model architecture :</p>
+<ul>
+<li>dropout</li>
+<li>batch normalization</li>
+<li>weight decay</li>
+</ul>
+<h4 id="3-Imbalanced-data"><a href="#3-Imbalanced-data" class="headerlink" title="3. Imbalanced data"></a>3. Imbalanced data</h4><ul>
+<li>use the right criteria to evaluate the prediction result and the loss  使用恰当的评价标准衡量模型的预测结果</li>
+<li>upsample smaller classes</li>
+<li>downsample larger classes</li>
+</ul>
+<h4 id="4-Interpretability"><a href="#4-Interpretability" class="headerlink" title="4. Interpretability"></a>4. Interpretability</h4><p>查看输入的每一部分的重要性分数</p>
+<p>Perturbation-based approaches </p>
+<p>Backpropagation-based methods </p>
+<h4 id="5-Uncertainty-scaling"><a href="#5-Uncertainty-scaling" class="headerlink" title="5. Uncertainty scaling"></a>5. Uncertainty scaling</h4><p>legendary Platt scaling </p>
+<p>histogram binning </p>
+<p>isotonic regression 保序回归</p>
+<p>Bayssian Binning into Quantiles </p>
+<p>temperature scaling  </p>
+<h4 id="6-Catastrophic-forgetting"><a href="#6-Catastrophic-forgetting" class="headerlink" title="6. Catastrophic forgetting"></a>6. Catastrophic forgetting</h4><ul>
+<li>regularizations：EWC</li>
+<li>dynamic nerual network</li>
+<li>rehearsal training methods：iCaRL </li>
+</ul>
+<h4 id="7-Reducing-computational-requirement-and-model-compression-减少计算需求并进行模型压缩"><a href="#7-Reducing-computational-requirement-and-model-compression-减少计算需求并进行模型压缩" class="headerlink" title="7. Reducing computational requirement and model compression  减少计算需求并进行模型压缩"></a>7. Reducing computational requirement and model compression  减少计算需求并进行模型压缩</h4><ul>
+<li>parameter pruning ：reduces the redundant parameters </li>
+<li>knowledge distillation </li>
+<li>use compact convolutional filters to save parameters </li>
+<li>low rank factorization </li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+      
+    </div>
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/09/07/%E6%9C%AC%E5%9C%B0%E9%85%8D%E7%BD%AE%E4%B8%A4%E6%AE%B5%E8%B7%B3%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="prev" title="本地配置两段跳的服务器">
+      <i class="fa fa-chevron-left"></i> 本地配置两段跳的服务器
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/09/09/How-to-tackle-with-overfitting/" rel="next" title="How to tackle with overfitting?">
+      How to tackle with overfitting? <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Computer-Vision"><span class="nav-number">1.0.1.</span> <span class="nav-text">Computer Vision</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Natural-Language-Processing"><span class="nav-number">1.0.2.</span> <span class="nav-text">Natural Language Processing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bioinformatics"><span class="nav-number">1.0.3.</span> <span class="nav-text">Bioinformatics</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deep-Learning-Methods"><span class="nav-number">2.</span> <span class="nav-text">Deep Learning Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CNN-Deep-Learning-Architecture"><span class="nav-number">2.1.</span> <span class="nav-text">CNN Deep Learning Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RNN-Deep-Learning-Architecture"><span class="nav-number">2.2.</span> <span class="nav-text">RNN Deep Learning Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graph-Nerual-Networks"><span class="nav-number">2.3.</span> <span class="nav-text">Graph Nerual Networks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generative-models-GAN-and-VAE-—-unsupervised-learning"><span class="nav-number">2.4.</span> <span class="nav-text">Generative models: GAN and VAE — unsupervised learning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Applications-of-deep-learning-in-bioinformatics"><span class="nav-number">3.</span> <span class="nav-text">Applications of deep learning in bioinformatics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Identifying-enzymes-using-multi-layer-neural-networks"><span class="nav-number">3.1.</span> <span class="nav-text">1. Identifying enzymes using multi-layer neural networks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Gene-expression-regression"><span class="nav-number">3.2.</span> <span class="nav-text">2. Gene expression regression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-RNA-protein-binding-sites-prediction-with-CNN"><span class="nav-number">3.3.</span> <span class="nav-text">3. RNA-protein binding sites prediction with CNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-DNA-sequence-function-prediction-with-CNN-and-RNN"><span class="nav-number">3.4.</span> <span class="nav-text">4. DNA sequence function prediction with CNN and RNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Biomedical-image-classification-using-transfer-learning-and-ResNet"><span class="nav-number">3.5.</span> <span class="nav-text">5. Biomedical image classification using transfer learning and ResNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Graph-embedding-for-novel-protein-interaction-prediction-using-GCN"><span class="nav-number">3.6.</span> <span class="nav-text">6. Graph embedding for novel protein interaction prediction using GCN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Biology-image-super-resolution-using-GAN"><span class="nav-number">3.7.</span> <span class="nav-text">7. Biology image super-resolution using GAN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-High-dimensional-biological-data-embedding-and-generation-with-VAE"><span class="nav-number">3.8.</span> <span class="nav-text">8. High dimensional biological data embedding and generation with VAE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Perspectives-limitations-and-suggestions"><span class="nav-number">4.</span> <span class="nav-text">Perspectives: limitations and suggestions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Lack-of-data"><span class="nav-number">4.0.1.</span> <span class="nav-text">1. Lack of data</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Overfitting"><span class="nav-number">4.0.2.</span> <span class="nav-text">2. Overfitting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Imbalanced-data"><span class="nav-number">4.0.3.</span> <span class="nav-text">3. Imbalanced data</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Interpretability"><span class="nav-number">4.0.4.</span> <span class="nav-text">4. Interpretability</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Uncertainty-scaling"><span class="nav-number">4.0.5.</span> <span class="nav-text">5. Uncertainty scaling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Catastrophic-forgetting"><span class="nav-number">4.0.6.</span> <span class="nav-text">6. Catastrophic forgetting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-Reducing-computational-requirement-and-model-compression-减少计算需求并进行模型压缩"><span class="nav-number">4.0.7.</span> <span class="nav-text">7. Reducing computational requirement and model compression  减少计算需求并进行模型压缩</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tiantian Liu"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Tiantian Liu</p>
+  <div class="site-description" itemprop="description">The Space to record my life.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tiantianliu2018" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tiantianliu2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tiantianliu2018@outlook.com" title="E-Mail → mailto:tiantianliu2018@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tiantian liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">138k</span>
+</div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共61.8k字</span>
+  <span class="post-meta-divider">|</span>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  <span class="post-meta-divider">|</span>
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  <span class="post-meta-divider">|</span>
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共61.8k字</span>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'FhWVmso5TyqrTqtDNNtpuBeC-gzGzoHsz',
+      appKey     : 'd5yz5CVcPPfEmfA5p2ovH6g9',
+      placeholder: "欢迎交流讨论...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-CN' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

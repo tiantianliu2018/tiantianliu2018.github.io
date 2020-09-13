@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8332.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8316.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="集合Java 集合类存放于 java.util 包中，是一个用来存放对象的容器  Java 集合只能存放对象。 集合存放的是多个对象的引用，对象本身还是存放在堆内存中 集合可以存放不同类型，不限数量的数据类型  Java 集合可分为 Set、List、Map 三种大体系：  Set：无序、不可重复集合 List：有序，可重复集合 Map：具有映射关系的集合  在 JDK5 之后，增加了泛型，Jav">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 集合">
+<meta property="og:url" content="http://tiantianliu2018.github.io/2019/10/12/Java-%E9%9B%86%E5%90%88/index.html">
+<meta property="og:site_name" content="Tiantian&#39;s Blogs">
+<meta property="og:description" content="集合Java 集合类存放于 java.util 包中，是一个用来存放对象的容器  Java 集合只能存放对象。 集合存放的是多个对象的引用，对象本身还是存放在堆内存中 集合可以存放不同类型，不限数量的数据类型  Java 集合可分为 Set、List、Map 三种大体系：  Set：无序、不可重复集合 List：有序，可重复集合 Map：具有映射关系的集合  在 JDK5 之后，增加了泛型，Jav">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-12T00:38:34.000Z">
+<meta property="article:modified_time" content="2020-09-13T01:48:50.310Z">
+<meta property="article:author" content="Tiantian Liu">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://tiantianliu2018.github.io/2019/10/12/Java-%E9%9B%86%E5%90%88/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>Java 集合 | Tiantian's Blogs</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tiantian's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">To Be Better</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">35</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">36</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">78</span></a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/12/Java-%E9%9B%86%E5%90%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Tiantian Liu">
+      <meta itemprop="description" content="The Space to record my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiantian's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java 集合
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-12 08:38:34" itemprop="dateCreated datePublished" datetime="2019-10-12T08:38:34+08:00">2019-10-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-13 09:48:50" itemprop="dateModified" datetime="2020-09-13T09:48:50+08:00">2020-09-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/%E9%9B%86%E5%90%88/" itemprop="url" rel="index"><span itemprop="name">集合</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/10/12/Java-%E9%9B%86%E5%90%88/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/12/Java-%E9%9B%86%E5%90%88/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.6k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><p>Java 集合类存放于 <code>java.util</code> 包中，是一个用来存放对象的容器</p>
+<ul>
+<li>Java 集合只能存放对象。</li>
+<li>集合存放的是多个对象的引用，对象本身还是存放在堆内存中</li>
+<li>集合可以存放不同类型，不限数量的数据类型</li>
+</ul>
+<p>Java 集合可分为 <code>Set</code>、<code>List</code>、<code>Map</code> 三种大体系：</p>
+<ul>
+<li><code>Set</code>：无序、不可重复集合</li>
+<li><code>List</code>：有序，可重复集合</li>
+<li><code>Map</code>：具有映射关系的集合</li>
+</ul>
+<p>在 JDK5 之后，增加了泛型，Java集合可以记住容器中对象的数据类型</p>
+<h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><p><code>HashSet</code> 是 <code>Set</code> 接口的典型实现，大多数时候使用 <code>Set</code> 集合时都使用这个实现类。我们大多数时候说的 <code>Set</code> 集合值得都是 <code>HashSet</code></p>
+<p><code>HashSet</code> 按 <code>Hash</code> 算法来存储集合中的元素，因此具有很好的存取和查找性能。</p>
+<p><code>HashSet</code> 具有以下特点：</p>
+<ul>
+<li>不能保证元素的排列顺序</li>
+<li>不可重复</li>
+<li><code>HashSet</code> 不是线程安全的</li>
+<li>集合元素可以是 <code>null</code></li>
+</ul>
+<p>当向 <code>HashSet</code> 集合中存入一个元素时，<code>HashSet</code> 会调用该对象的 <code>hashCode()</code> 方法来得到该对象的 <code>hashCode</code> 值，然后根据 <code>hashCode</code> 值确定该对象在 <code>HashSet</code> 中的存储位置。</p>
+<p>如果两个元素的 <code>equals()</code> 方法返回 <code>true</code>，但它们的 <code>hashCode()</code> 返回值不相等，<code>hashSet</code> 将会把它们存储在不同的位置，但依然可以添加成功。</p>
+<p><strong>Hashset 方法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">set.add(); 		<span class="comment">// 添加元素</span></span><br><span class="line">set.remove(); 	<span class="comment">// 移除元素</span></span><br><span class="line">set.contains(); <span class="comment">// 判断是否包含某个元素</span></span><br><span class="line">set.clear();	<span class="comment">// 清空集合</span></span><br><span class="line">set.size(); 	<span class="comment">// 集合中元素的个数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 集合的遍历 */</span></span><br><span class="line"><span class="comment">// 使用迭代器遍历集合</span></span><br><span class="line">Iterator iterator = set.iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext())&#123;</span><br><span class="line">    System.out.println(iterator.next());</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// for each 迭代集合</span></span><br><span class="line"><span class="keyword">for</span> (Object object: set) &#123;  <span class="comment">// 取出set中的每一个元素，赋值给object，直到循环set所有值</span></span><br><span class="line">    System.out.println(object);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>hashCode() 方法</strong></p>
+<p>HashSet集合判断两个元素相等的标准：两个对象通过 <code>equals()</code> 方法比较相等，并且两个对象的 <code>hashCode()</code> 方法返回值也相等。</p>
+<p>如果两个对象通过 <code>equals()</code> 方法返回 <code>true</code>，这两个对象的 <code>hashCode</code> 值也应该相同。</p>
+<p>如果想让集合只能存同样类型的对象，使用<strong>泛型</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;String&gt; set = <span class="keyword">new</span> HashSet&lt;String&gt;();  <span class="comment">// 该集合只能存 String 类型的数据</span></span><br></pre></td></tr></table></figure>
+<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><p><code>TreeSet</code> 是 <code>SortedSet</code> 接口的实现类，<code>TreeSet</code> 可以确保集合元素处于排序状态。<code>TreeSet</code> 支持两种排序方法：<strong>自然排序</strong>和<strong>定制排序</strong>。默认情况下，<code>TreeSet</code> 采用自然排序。</p>
+<p><strong>自然排序</strong></p>
+<p>排序：<code>TreeSet</code> 会调用集合元素的 <code>compareTo(Object obj)</code> 方法来比较元素之间的大小关系，然后将集合元素按升序排列</p>
+<ul>
+<li>如果 this &gt; obj, 返回正数 1</li>
+<li>如果 this &lt; obj, 返回负数 -1</li>
+<li>如果 this = obj, 返回 0，则认为这两个对象相等</li>
+<li>必须放入同样类的对象（默认会进行排序）否则可能会发生类型转换异常，可以使用泛型来进行限制。</li>
+</ul>
+<p><strong>定制排序</strong></p>
+<p>如果要实现定制排序，则需要在创建 <code>TreeSet</code> 集合对象时，提供一个 <code>Comparator</code> 接口的实现类对象。由该 <code>Comparator</code> 对象负责集合元素的排序逻辑。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Person</span>&gt; </span>&#123;  <span class="comment">// 按照年龄排序</span></span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(<span class="keyword">int</span> age, String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Person o1, Person o2)</span> </span>&#123;  <span class="comment">// 按年龄从小到大排序</span></span><br><span class="line">        <span class="keyword">if</span> (o1.age &gt; o2.age)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (o1.age &lt; o2.age)&#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="List-与-ArrayList"><a href="#List-与-ArrayList" class="headerlink" title="List 与 ArrayList"></a>List 与 ArrayList</h3><p><code>List</code> 代表一个元素有序，且可重复的集合，集合中的每个元素都有其对应的顺序</p>
+<p><code>List</code> 允许使用重复元素，可以通过索引来访问指定位置的元素集合</p>
+<p><code>List</code> 默认按元素的添加顺序设置元素的索引</p>
+<p><code>List</code> 集合里添加了一些根据索引来操作集合的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">list.get(<span class="number">2</span>);  <span class="comment">// 通过索引来访问指定位置的集合元素</span></span><br><span class="line"></span><br><span class="line">list.add(<span class="number">1</span>,<span class="string">"f"</span>);  <span class="comment">// 在指定索引下标的位置插入数据</span></span><br><span class="line"></span><br><span class="line">List&lt;String&gt; l = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">l.add(<span class="string">"123"</span>);</span><br><span class="line">l.add(<span class="string">"456"</span>);</span><br><span class="line">list.addAll(<span class="number">2</span>, l); <span class="comment">// 在指定索引下标的位置插入集合</span></span><br><span class="line"></span><br><span class="line">list.indexOf(<span class="string">"d"</span>);  <span class="comment">// 获取指定元素在集合中第一次出现的索引下标</span></span><br><span class="line">list.lastIndexOf(<span class="string">"d"</span>);  <span class="comment">// 获取指定元素在集合中最后一次出现的索引下标</span></span><br><span class="line"></span><br><span class="line">list.remove(<span class="number">2</span>);  <span class="comment">// 根据指定的索引下标移除数据</span></span><br><span class="line"></span><br><span class="line">list.set(<span class="number">1</span>, <span class="string">"ff"</span>); <span class="comment">// 根据指定索引下标修改元素</span></span><br><span class="line"></span><br><span class="line">List&lt;String&gt; sublist = list.subList(<span class="number">2</span>,<span class="number">4</span>);  <span class="comment">// 根据索引下标的起始位置截取元素，前闭后开</span></span><br></pre></td></tr></table></figure>
+<h3 id="ArrayList-和-Vector"><a href="#ArrayList-和-Vector" class="headerlink" title="ArrayList 和 Vector"></a>ArrayList 和 Vector</h3><p><code>ArrayList</code> 和 <code>Vector</code> 是 <code>List</code> 接口的两个典型实现。</p>
+<p>区别：</p>
+<ul>
+<li><code>Vector</code> 是一个古老的集合，通常建议使用 <code>ArrayList</code></li>
+<li><code>ArrayList</code> 是线程不安全的， 而 <code>Vector</code> 是线程安全的</li>
+<li>即使为保证 <code>List</code> 集合线程安全，也不推荐使用 <code>Vector</code></li>
+</ul>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p><code>Map</code> 用于保存具有映射关系的数据，因此 <code>Map</code> 集合里保存着两组值，一组值用于保存 <code>Map</code> 里的 <code>Key</code>，另外一组用于保存 <code>Map</code> 里的 <code>Value</code></p>
+<p><code>Map</code> 中的 <code>Key</code> 和 <code>Value</code> 都可以是任何引用类型的数据</p>
+<p><code>Map</code> 中的 <code>key</code> 不允许重复，即同一个 <code>Map</code> 对象的任何两个 <code>Key</code> 通过 <code>equals()</code> 方法比较返回 <code>false</code></p>
+<p><code>Key</code> 和 <code>Value</code> 之间存在单向一对一关系，即通过指定的 <code>Key</code> 总能找到唯一的确定的 <code>Value</code> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">map.put(<span class="string">"b"</span>,<span class="number">1</span>);  <span class="comment">// 添加数据</span></span><br><span class="line">   </span><br><span class="line">map.get(<span class="string">"b"</span>);  <span class="comment">// 根据 key 取值</span></span><br><span class="line">map.remove(<span class="string">"c"</span>);  <span class="comment">// 根据 key 移除键值对</span></span><br><span class="line">map.size();  <span class="comment">// map 集合的元素个数</span></span><br><span class="line"></span><br><span class="line">System.out.println(map.containsKey(<span class="string">"e"</span>));  <span class="comment">// 判断当前的 map 集合是否包含指定的 key</span></span><br><span class="line">System.out.println(map.containsValue(<span class="number">10</span>)); <span class="comment">// 判断当前的 map 集合是否包含指定的 value</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历 map 集合</span></span><br><span class="line">Set&lt;String&gt; keySet = map.keySet(); <span class="comment">// 获取 map 所有的 key</span></span><br><span class="line">map.values(); <span class="comment">// 获取 map 所有的 value</span></span><br><span class="line"><span class="keyword">for</span> (String key:keySet)&#123;</span><br><span class="line">System.out.println(<span class="string">"Key: "</span> + key + <span class="string">"\t Value: "</span>+ map.get(key));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// map.entrySet();</span></span><br><span class="line">Set&lt;Map.Entry&lt;String, Integer&gt;&gt; entrySet = map.entrySet();</span><br><span class="line"><span class="keyword">for</span>(Map.Entry&lt;String, Integer&gt; en: entrySet)&#123;</span><br><span class="line">System.out.println(<span class="string">"Key: "</span> + en.getKey() + <span class="string">"\t Value: "</span> + en.getValue());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="HashMap-和-Hashtable"><a href="#HashMap-和-Hashtable" class="headerlink" title="HashMap 和 Hashtable"></a>HashMap 和 Hashtable</h3><p><code>HashMap</code> 和 <code>HashValue</code> 是 Map 接口的两个典型实现类。</p>
+<p>区别：</p>
+<ul>
+<li><code>Hashtable</code> 是一个古老的 Map 实现类，不建议使用</li>
+<li><code>Hashtable</code> 是一个线程安全的 Map 实现，但 <code>HashMap</code> 是线程不安全的</li>
+<li><code>Hashtable</code> 不允许使用 <code>null</code> 作为 <code>key</code> 和 <code>value</code>， 而 <code>HashMap</code> 可以</li>
+</ul>
+<p>与 <code>HashSet</code> 集合不能保证元素的顺序一样，<code>Hashtable</code>、<code>HashMap</code> 也不能保证其中 <code>key-value</code> 对的顺序</p>
+<p><code>Hashtable</code>、<code>HashMap</code> 判断两个 <code>Key</code> 相等的标准是：两个 <code>key</code> 通过 <code>equals()</code> 方法返回 <code>true</code>，<code>hashCode</code>值也相等</p>
+<p><code>Hashtable</code>、<code>HashMap</code>  相等的标准是：两个<code>value</code> 通过 <code>equalsHashMap</code> 判断两个 <code>Values</code> 方法返回 <code>true</code></p>
+<h3 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h3><p><code>TreeMap</code> 存储 <code>Key-Value</code> 对时，需要根据 <code>Key</code> 对 <code>key-value</code> 对进行排序。<code>TreeMap</code> 可以保证所有的 <code>Key-Value</code> 对处于有序状态.</p>
+<p><code>TreeMap</code> 的 <code>key</code> 的排序：</p>
+<ul>
+<li>自然排序：<code>TreeMap</code> 的所有的 <code>Key</code> 必须实现 <code>Comparable</code> 接口，而且所有的 <code>Key</code> 应该是同一个类的对象，否则会抛出 <code>ClassCastException</code></li>
+<li>定制排序：创建 <code>TreeMap</code> 时，传入一个 <code>Comparator</code> 对象，该对象负责对 <code>TreeMap</code> 中所有 <code>key</code> 进行排序。此时，不需要 <code>Map</code> 的 <code>Key</code> 实现 <code>Comparable</code> 接口</li>
+</ul>
+<h3 id="操作集合的工具类-Collections"><a href="#操作集合的工具类-Collections" class="headerlink" title="操作集合的工具类 Collections"></a>操作集合的工具类 Collections</h3><p>Collections 是一个操作 Set、List 和 Map 等集合的工具类</p>
+<p>Collections 中提供了大量方法对集合进行排序、查询和修改等操作，还提供了对集合对象设置不可变、对集合对象实现同步控制等方法。</p>
+<p>排序操作：</p>
+<ul>
+<li><code>reverse(List)</code>: 反转 List 元素顺序</li>
+<li><code>shuffle(List)</code>  对 List 集合元素进行随机排序</li>
+<li><code>sort(List)</code> 根据元素的自然顺序对指定 List 集合元素按升序排序</li>
+<li><code>sort(List, Comparator)</code> 根据指定的 Comparator 产生的顺序对 List 集合元素进行排序</li>
+<li><code>swap(List, int i, int j)</code> 将指定 list 集合中的 i 处元素 和 j 处元素进行交换</li>
+</ul>
+<p><strong>查找、替换</strong></p>
+<ul>
+<li><code>Object max(Collection)</code>：根据元素的自然顺序，返回给定集合中的最大元素</li>
+<li><code>Object max(Collection, Comparator)</code>：根据 Comparator 指定的顺序，返回给定集合中的最大元素</li>
+<li><code>Object min(Collection)</code></li>
+<li><code>Object min(Collection, Comparator)</code></li>
+<li><code>int frequency(Collection, Object)</code>：返回指定集合中指定元素的出现次数</li>
+<li><code>boolean replaceAll(List list, Object oldVal, Object newVal)</code> ：使用新值替换 List 对象的所有指定旧值</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+      
+    </div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/10/11/Java-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" rel="prev" title="Java 异常处理">
+      <i class="fa fa-chevron-left"></i> Java 异常处理
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/10/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AGraph-Neural-Networks-A-Review-of-Methods-and-Applications%E3%80%8B/" rel="next" title="论文阅读《Graph-Neural-Networks-A-Review-of-Methods-and-Applications》">
+      论文阅读《Graph-Neural-Networks-A-Review-of-Methods-and-Applications》 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集合"><span class="nav-number">1.</span> <span class="nav-text">集合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet"><span class="nav-number">1.0.1.</span> <span class="nav-text">HashSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TreeSet"><span class="nav-number">1.0.2.</span> <span class="nav-text">TreeSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List-与-ArrayList"><span class="nav-number">1.0.3.</span> <span class="nav-text">List 与 ArrayList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-和-Vector"><span class="nav-number">1.0.4.</span> <span class="nav-text">ArrayList 和 Vector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map"><span class="nav-number">1.0.5.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-和-Hashtable"><span class="nav-number">1.0.6.</span> <span class="nav-text">HashMap 和 Hashtable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TreeMap"><span class="nav-number">1.0.7.</span> <span class="nav-text">TreeMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作集合的工具类-Collections"><span class="nav-number">1.0.8.</span> <span class="nav-text">操作集合的工具类 Collections</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tiantian Liu"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Tiantian Liu</p>
+  <div class="site-description" itemprop="description">The Space to record my life.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tiantianliu2018" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tiantianliu2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tiantianliu2018@outlook.com" title="E-Mail → mailto:tiantianliu2018@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tiantian liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">138k</span>
+</div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共61.8k字</span>
+  <span class="post-meta-divider">|</span>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  <span class="post-meta-divider">|</span>
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  <span class="post-meta-divider">|</span>
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共61.8k字</span>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'FhWVmso5TyqrTqtDNNtpuBeC-gzGzoHsz',
+      appKey     : 'd5yz5CVcPPfEmfA5p2ovH6g9',
+      placeholder: "欢迎交流讨论...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-CN' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

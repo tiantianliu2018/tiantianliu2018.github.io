@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8332.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8316.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="User Identity Linkage across Online Social Networks: A ReviewSummary Shu K ,  Wang S ,  Tang J , et al. User Identity Linkage across OnlineSocial Networks: A Review[J]. ACM SIGKDD Explorations Newslet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读《User Identity Linkage across Online Social Networks：A Review》">
+<meta property="og:url" content="http://tiantianliu2018.github.io/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/index.html">
+<meta property="og:site_name" content="Tiantian&#39;s Blogs">
+<meta property="og:description" content="User Identity Linkage across Online Social Networks: A ReviewSummary Shu K ,  Wang S ,  Tang J , et al. User Identity Linkage across OnlineSocial Networks: A Review[J]. ACM SIGKDD Explorations Newslet">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/application.png">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/definition.png">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/framework.png">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/f1.png">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/research_aspects.png">
+<meta property="article:published_time" content="2019-09-23T07:13:09.000Z">
+<meta property="article:modified_time" content="2020-09-13T01:53:40.206Z">
+<meta property="article:author" content="Tiantian Liu">
+<meta property="article:tag" content="User Identity Linkage">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tiantianliu2018.github.io/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/application.png">
+
+<link rel="canonical" href="http://tiantianliu2018.github.io/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>论文阅读《User Identity Linkage across Online Social Networks：A Review》 | Tiantian's Blogs</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tiantian's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">To Be Better</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">35</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">36</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">78</span></a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Tiantian Liu">
+      <meta itemprop="description" content="The Space to record my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiantian's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          论文阅读《User Identity Linkage across Online Social Networks：A Review》
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-23 15:13:09" itemprop="dateCreated datePublished" datetime="2019-09-23T15:13:09+08:00">2019-09-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-13 09:53:40" itemprop="dateModified" datetime="2020-09-13T09:53:40+08:00">2020-09-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Paper%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">Paper阅读</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Paper%E9%98%85%E8%AF%BB/Social-Networks/" itemprop="url" rel="index"><span itemprop="name">Social Networks</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.9k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="User-Identity-Linkage-across-Online-Social-Networks-A-Review"><a href="#User-Identity-Linkage-across-Online-Social-Networks-A-Review" class="headerlink" title="User Identity Linkage across Online Social Networks: A Review"></a>User Identity Linkage across Online Social Networks: A Review</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><blockquote>
+<p>Shu K ,  Wang S ,  Tang J , et al. User Identity Linkage across Online<br>Social Networks: A Review[J]. ACM SIGKDD Explorations Newsletter, 2017,<br>18(2):5-17.</p>
+</blockquote>
+<p>这篇综述文章，总结了User Identity Linkage 问题的定义，现有的算法，数据集以及度量指标，并对该问题现存挑战和未来研究点进行了总结。</p>
+<p>算法包括两个阶段：特征提取（Profile、Content、Network）、模型构建（监督、半监督、无监督）</p>
+<p>数据集提供了两个可用的 public datasets:</p>
+<ul>
+<li><a href="https://www.aminer.cn/cosnet" target="_blank" rel="noopener">https://www.aminer.cn/cosnet</a></li>
+<li><a href="http://www.mpi-sws.org/~ogoga/data.html" target="_blank" rel="noopener">http://www.mpi-sws.org/~ogoga/data.html</a></li>
+<li><a href="http://www.ursino.unirc.it/pkdd-12.html" target="_blank" rel="noopener">http://www.ursino.unirc.it/pkdd-12.html</a> </li>
+</ul>
+<h2 id="Research-Objective"><a href="#Research-Objective" class="headerlink" title="Research Objective"></a>Research Objective</h2><ul>
+<li>对 User Identity linkage problem 提出了一个正式的定义</li>
+<li>提出了一个统一框架：特征提取、模型构建</li>
+<li>数据集与评价指标总结</li>
+<li>未来研究方向</li>
+</ul>
+<h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p>目前，越来越多的人使用多个社交平台，每个社交平台的功能不同，因此通过不同平台搜集的用户信息实际上是刻画每一个用户不同方面的特征。单一社交平台并不能捕捉用户的个性和兴趣。如果我们能够将不同平台上的同一个用户身份识别出来，利用用户来自多个不同社交平台的信息，就能够更好得理解用户的兴趣，为其提供更好的推荐和服务。另外，利用用户多个社交网络的信息，能够整合其社交模式，帮助解决冷启动和数据稀疏性问题。</p>
+<h4 id="Linking-User-Identity-定义："><a href="#Linking-User-Identity-定义：" class="headerlink" title="Linking User Identity 定义："></a>Linking User Identity 定义：</h4><ul>
+<li><p><strong>Enhancing Friend Recommendation</strong></p>
+<p>对于一个社交网络中的用户 A 和 B 有共同好友 C，因此会将用户 A 推荐给用户 B。若可以应用跨社交网络的补充信息，即使 A 和 B 在另一个社交网络中没有共同好友，将用户 A 推荐给 B 也是较好的 friend recommendation</p>
+<p><img src="/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/application.png" alt="application"></p>
+</li>
+<li><p><strong>Information diffusion</strong></p>
+<p>目前信息传播的研究是基于单个社交网络的。实际上，信息和流言得传播极有可能是跨社交平台的，研究什么样的信息更容易在一个社交内的网络内传播，什么样的信息更容易跨社交网络传播都是极有意义的。</p>
+</li>
+<li><p><strong>Analyzing Network Dynamics</strong></p>
+</li>
+</ul>
+<h4 id="Identity-Linkage-Challenge"><a href="#Identity-Linkage-Challenge" class="headerlink" title="Identity Linkage Challenge"></a>Identity Linkage Challenge</h4><p>task：linking user‘s account on multiple social sites</p>
+<ol>
+<li>用户社交网络上的身份信息可以与他在真实世界中的身份信息不相同</li>
+<li>在线社交网络数据庞大，存在较多噪声数据、非结构化、不完整</li>
+</ol>
+<p>在线社交网络中 user identity data 的特点：</p>
+<ul>
+<li>Profile inconsistency：不同的用户资料关注点，故意信息造假</li>
+<li>Content Heterogeneity：用户发布的内容反映了他的社会活动行为，在社交网络中产生的内容包括文字、图片、视频等，多源异构信息难以利用。数据孤岛。</li>
+<li>Network Diversity：某用户在不同社交平台的社交网路结构是不同的</li>
+</ul>
+<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><h3 id="Problem-Definition"><a href="#Problem-Definition" class="headerlink" title="Problem Definition"></a>Problem Definition</h3><p>对于一个现实世界中的自然人P：</p>
+<ul>
+<li>Profile：对该用户的描述，eg：用户名、位置、年龄、职业等</li>
+<li>Context：表示用户活动的属性，包括时间、位置、文本、图片等</li>
+<li>Network：描述该用户与其他用户的社会关系</li>
+</ul>
+<p><img src="/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/definition.png" alt="definition"></p>
+<hr>
+
+<h3 id="Framework"><a href="#Framework" class="headerlink" title="Framework"></a>Framework</h3><p><img src="/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/framework.png" alt="framework"></p>
+<h4 id="1-Feature-Extraction"><a href="#1-Feature-Extraction" class="headerlink" title="1. Feature Extraction"></a>1. Feature Extraction</h4><h4 id="1-1-Profile-Features"><a href="#1-1-Profile-Features" class="headerlink" title="1.1. Profile Features"></a>1.1. Profile Features</h4><p><strong>Public profile fileds</strong></p>
+<p>​    username</p>
+<p>​    screen name：账户名</p>
+<p>​    Biography：text description</p>
+<p>​    Education</p>
+<p>​    Avatar</p>
+<p><strong>根据用户资料识别用户身份的方法</strong></p>
+<ul>
+<li>Distance-based<ul>
+<li>文本类型：Jaro-Winkler distance，Jaccard similarity, and Levenshtein (Edit) distance </li>
+<li>图像：mean square error, peak signal-to-noise ratio, and Levenshtein distance </li>
+</ul>
+</li>
+<li>Frequency-based<pre><code>+ 文本类型：bag-of-word model， TF-IDF model  
+   + 其他：probabilistic model ：Markov-chain model
+</code></pre></li>
+</ul>
+<h4 id="1-2-Content-Features"><a href="#1-2-Content-Features" class="headerlink" title="1.2. Content Features"></a>1.2. Content Features</h4><p><strong>特征</strong></p>
+<ul>
+<li>Temporal：用户活动的时间戳</li>
+<li>Spatial：有位置标签的，可以转成精确的经纬度；没有位置标签可以从用户发布的文字和图片中提取</li>
+<li>Post：文字或图像</li>
+</ul>
+<p><strong>方法</strong></p>
+<ul>
+<li><p>Interest-based：long-term topic modeling — 提取用户的核心兴趣</p>
+<blockquote>
+<p>Liu et.al. Hydra: Large-scale social identity linkage via heterogeneous behavior modeling. In SIGMOD, 2014. </p>
+</blockquote>
+<p><a href="https://dl.acm.org/citation.cfm?id=2588559&amp;preflayout=flat" target="_blank" rel="noopener">https://dl.acm.org/citation.cfm?id=2588559&amp;preflayout=flat</a></p>
+<blockquote>
+<p>Yuanping Nie, Yan Jia, Shudong Li, Xiang Zhu, Aiping Li, and Bin Zhou. Identifying users across social networks based on dynamic core interests. Neurocomputing, 2016. </p>
+</blockquote>
+</li>
+<li><p>Style-based：提取用户的写作风格。</p>
+<ul>
+<li>n-gram language model </li>
+<li>term-frequency analysis</li>
+</ul>
+</li>
+<li><p>Trajectory-based：具有时间戳的位置数据</p>
+</li>
+</ul>
+<h4 id="1-3-Network-Features"><a href="#1-3-Network-Features" class="headerlink" title="1.3. Network Features"></a>1.3. Network Features</h4><p><strong>网络分类</strong></p>
+<ul>
+<li>local network：只考虑直接相连的邻居（following/followee/friend relationship)，是用户的ego-network</li>
+<li>global network：所有用户都要考虑进去</li>
+</ul>
+<p><strong>方法</strong></p>
+<ul>
+<li>Neighborhood-based：邻居的数量，入度/出度，Dice coefficient ，common neighbors, Jaccard’s coefficient and Adamic/Adar score </li>
+<li>Embedding-based：<ul>
+<li>first-order proximity </li>
+<li>second-order proximity </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>local network中，只有 Neighborhood-based 方法可以用，而 global network 上述两种方法都可以使用</p>
+</blockquote>
+<h4 id="1-4-Discussion"><a href="#1-4-Discussion" class="headerlink" title="1.4. Discussion"></a>1.4. Discussion</h4><p>Profile features 最容易获得，但是也信息也是最容易被伪造的。由于不同社交平台会要求填写不同的用户资料，数据不一致性会更强。</p>
+<p>Content features 会非常稀疏，因为用户可能并不活跃</p>
+<p>Network features 噪声数据较多；一些特征必须是基于两个完全一致的网络提取的。</p>
+<h4 id="2-Model-Construction"><a href="#2-Model-Construction" class="headerlink" title="2. Model Construction"></a>2. Model Construction</h4><h4 id="2-1-Supervised-Model"><a href="#2-1-Supervised-Model" class="headerlink" title="2.1 Supervised Model"></a>2.1 Supervised Model</h4><p>典型的二分类问题</p>
+<ul>
+<li><p><strong>Aggregating methods</strong></p>
+<p>hybrid weighted form 混合加权的形式 combine 不同的相似性分数</p>
+<p><img src="/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/f1.png" alt="hybrid weighted form"></p>
+</li>
+<li><p><strong>Probabilistic methods</strong></p>
+<p>预测类标签的概率分布</p>
+<script type="math/tex; mode=display">
+\mathcal{F}(\vec{x})=\arg \max \operatorname{Pr}\left(y=1 | \vec{x},\left(\mathcal{M}^{\prime}, \mathcal{N}^{\prime}\right), M\right)</script><p>Maximum a posteriori (MAP) estimate 最大后验估计，可以通过贝叶斯理论求解</p>
+</li>
+<li><p><strong>Boosting methods</strong></p>
+<p>通过多个弱假设学习一个强假设</p>
+<script type="math/tex; mode=display">
+\mathcal{F}(\vec{x})=\operatorname{sign}\left(\sum_{i=1}^{T} \alpha_{i} h_{i}(\vec{x})\right)</script></li>
+<li><p><strong>Projection methods</strong></p>
+<p>学习一个映射函数：学习原始特征空间和在线社交网络中用户身份的潜在特征空间的映射关系</p>
+<script type="math/tex; mode=display">
+\hat{u}^{t}=\underset{u^{t} \in \mathcal{U}^{t}}{\arg \min } \mathbb{D}\left(\Phi_{s}\left(u^{s}\right), \Phi_{t}\left(u^{t}\right)\right)</script><p>$\mathbb{D}$ 是衡量潜在特征空间中用户s和用户d之间距离的函数</p>
+</li>
+</ul>
+<h4 id="2-2-Semi-Supervised-Model"><a href="#2-2-Semi-Supervised-Model" class="headerlink" title="2.2 Semi-Supervised Model"></a>2.2 Semi-Supervised Model</h4><ul>
+<li><p><strong>Propagation methods</strong></p>
+<p>seed matching user identity pairs </p>
+<p>定义一个函数来计算用户身份的匹配程度，通过使用其已知的邻居信息以及其他特征</p>
+<p>每一轮迭代过程中，匹配分数高的用户身份对被选择出来</p>
+<p>两种<strong>propagation order</strong>：</p>
+<pre><code>+ Exhaust comparison ：从未匹配对中找到，加入
++ Local expansion 从现有匹配的用户对的邻居扩展候选匹配对扩充
+</code></pre></li>
+<li><p><strong>Embedding methods</strong></p>
+<p>在源网络和目标网络中，半监督嵌入方法通常共同学习用户身份的潜在特征。</p>
+</li>
+</ul>
+<h4 id="2-3-Unsupervised-Model"><a href="#2-3-Unsupervised-Model" class="headerlink" title="2.3 Unsupervised Model"></a>2.3 Unsupervised Model</h4><ul>
+<li><strong>Aligning Methods</strong><ul>
+<li>对每一对候选 user identities 计算 affinity score</li>
+<li>构建一个二分网络</li>
+<li>根据得到的图G，形式化为一个优化问题，实现所有用户标识对的一对一匹配。</li>
+</ul>
+</li>
+<li><strong>Progressive methods</strong><ul>
+<li>利用具有较强识别力的特征来寻找局部 ground truth</li>
+<li>所有提取的特征都可以用来对剩余的未标记用户标识执行分类</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-4-Discussion"><a href="#2-4-Discussion" class="headerlink" title="2.4 Discussion"></a>2.4 Discussion</h4><ul>
+<li>可扩展性</li>
+<li>多样性</li>
+</ul>
+<h4 id="3-Summary-of-UIL-Algorithms"><a href="#3-Summary-of-UIL-Algorithms" class="headerlink" title="3. Summary of UIL Algorithms"></a>3. Summary of UIL Algorithms</h4><hr>
+
+<h3 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h3><h4 id="1-Datasets"><a href="#1-Datasets" class="headerlink" title="1. Datasets"></a>1. Datasets</h4><h4 id="2-Evaluation-Metrics"><a href="#2-Evaluation-Metrics" class="headerlink" title="2. Evaluation Metrics"></a>2. Evaluation Metrics</h4><ul>
+<li><p>Prediction metrics</p>
+<ul>
+<li>TP：预测为 true，真实为 true</li>
+<li>TN：预测为 false，真实为 false</li>
+<li>FN：预测为 false，真实为 true</li>
+<li>FP：预测为 true，真实为 false</li>
+</ul>
+<script type="math/tex; mode=display">
+Precision=\frac{|T P|}{|T P|+|F P|}  \\
+Recall=\frac{|T P|}{|T P|+|F N|}  \\
+Accuracy=\frac{|T P|+|T N|}{|T P|+|T N|+|F P|+|F N|}</script><p>Identity-based Accuracy :</p>
+<script type="math/tex; mode=display">
+I-Acc=\frac{\# \text { correctly identified user identities }}{\# \text { ground truth user identities }}</script></li>
+<li><p>Ranking metrics</p>
+<ul>
+<li><p>ROC 曲线</p>
+<ul>
+<li><p>FPR（False Positive Rate）</p>
+<script type="math/tex; mode=display">
+TPR=\frac{|T P|}{|T P|+|F N|}</script></li>
+<li><p>TPR（True Positive Rate）</p>
+<script type="math/tex; mode=display">
+FPR=\frac{|F P|}{|F P|+|T N|}</script></li>
+</ul>
+</li>
+<li><p>Area Under ROC curve （AUC）</p>
+<script type="math/tex; mode=display">
+A U C=\frac{n_{1}+1-r_{1}}{n_{1}}  \\
+\text {Hit-Pricision}=\frac{n_{1}+2-r_{1}}{n_{1}+1}</script></li>
+</ul>
+</li>
+<li><p>Mean Reciprocal Rank (MRR)</p>
+</li>
+<li>Mean Average Precision (MAP)</li>
+</ul>
+<hr>
+
+<h3 id="Related-Areas"><a href="#Related-Areas" class="headerlink" title="Related Areas"></a>Related Areas</h3><p><img src="/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/research_aspects.png" alt="research_aspects"></p>
+<h3 id="Open-Issues-and-Future-Research-Directions"><a href="#Open-Issues-and-Future-Research-Directions" class="headerlink" title="Open Issues and Future Research Directions"></a>Open Issues and Future Research Directions</h3><ul>
+<li>Data Challenge</li>
+<li>Dynamic user identity linkage</li>
+<li>Jointly user identity linkage and recommendation </li>
+<li>Jointly user identity linkage and link prediction </li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+      
+    </div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/User-Identity-Linkage/" rel="tag"># User Identity Linkage</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/09/18/%E7%BB%84%E4%BC%9A%E8%AE%B0%E5%BD%95/" rel="prev" title="组会记录">
+      <i class="fa fa-chevron-left"></i> 组会记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/09/26/Java-%E6%95%B0%E7%BB%84/" rel="next" title="Java_数组">
+      Java_数组 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#User-Identity-Linkage-across-Online-Social-Networks-A-Review"><span class="nav-number">1.</span> <span class="nav-text">User Identity Linkage across Online Social Networks: A Review</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">1.1.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Research-Objective"><span class="nav-number">1.2.</span> <span class="nav-text">Research Objective</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-Statement"><span class="nav-number">1.3.</span> <span class="nav-text">Problem Statement</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linking-User-Identity-定义："><span class="nav-number">1.3.0.1.</span> <span class="nav-text">Linking User Identity 定义：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Identity-Linkage-Challenge"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">Identity Linkage Challenge</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Methods"><span class="nav-number">1.4.</span> <span class="nav-text">Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Definition"><span class="nav-number">1.4.1.</span> <span class="nav-text">Problem Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Framework"><span class="nav-number">1.4.2.</span> <span class="nav-text">Framework</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Feature-Extraction"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">1. Feature Extraction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-Profile-Features"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">1.1. Profile Features</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-Content-Features"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">1.2. Content Features</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-Network-Features"><span class="nav-number">1.4.2.4.</span> <span class="nav-text">1.3. Network Features</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-Discussion"><span class="nav-number">1.4.2.5.</span> <span class="nav-text">1.4. Discussion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Model-Construction"><span class="nav-number">1.4.2.6.</span> <span class="nav-text">2. Model Construction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-Supervised-Model"><span class="nav-number">1.4.2.7.</span> <span class="nav-text">2.1 Supervised Model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-Semi-Supervised-Model"><span class="nav-number">1.4.2.8.</span> <span class="nav-text">2.2 Semi-Supervised Model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-Unsupervised-Model"><span class="nav-number">1.4.2.9.</span> <span class="nav-text">2.3 Unsupervised Model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-Discussion"><span class="nav-number">1.4.2.10.</span> <span class="nav-text">2.4 Discussion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Summary-of-UIL-Algorithms"><span class="nav-number">1.4.2.11.</span> <span class="nav-text">3. Summary of UIL Algorithms</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Evaluation"><span class="nav-number">1.4.3.</span> <span class="nav-text">Evaluation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Datasets"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">1. Datasets</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Evaluation-Metrics"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">2. Evaluation Metrics</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Related-Areas"><span class="nav-number">1.4.4.</span> <span class="nav-text">Related Areas</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Open-Issues-and-Future-Research-Directions"><span class="nav-number">1.4.5.</span> <span class="nav-text">Open Issues and Future Research Directions</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tiantian Liu"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Tiantian Liu</p>
+  <div class="site-description" itemprop="description">The Space to record my life.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tiantianliu2018" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tiantianliu2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tiantianliu2018@outlook.com" title="E-Mail → mailto:tiantianliu2018@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tiantian liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">138k</span>
+</div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共61.8k字</span>
+  <span class="post-meta-divider">|</span>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  <span class="post-meta-divider">|</span>
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  <span class="post-meta-divider">|</span>
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共61.8k字</span>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'FhWVmso5TyqrTqtDNNtpuBeC-gzGzoHsz',
+      appKey     : 'd5yz5CVcPPfEmfA5p2ovH6g9',
+      placeholder: "欢迎交流讨论...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-CN' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8332.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8316.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Java 高级特性2关键字 static无论是否产生了对象或无论产生了多少对象，某些特定的数据在内存空间里只有一份 如果想让一个类的所有实例共享数据，应该使用类变量 类变量：不用实例化，直接类名.属性名 就可以使用，是类的一部分，被所有这个类的实例化对象所共享，也可以叫做静态变量，用static 来修饰 实例变量：只有实例化后才能使用，属于实例化对象的一部分 类属性、类方法的设计思想 类属性作为该">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 高级特性2">
+<meta property="og:url" content="http://tiantianliu2018.github.io/2019/10/07/Java-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A72/index.html">
+<meta property="og:site_name" content="Tiantian&#39;s Blogs">
+<meta property="og:description" content="Java 高级特性2关键字 static无论是否产生了对象或无论产生了多少对象，某些特定的数据在内存空间里只有一份 如果想让一个类的所有实例共享数据，应该使用类变量 类变量：不用实例化，直接类名.属性名 就可以使用，是类的一部分，被所有这个类的实例化对象所共享，也可以叫做静态变量，用static 来修饰 实例变量：只有实例化后才能使用，属于实例化对象的一部分 类属性、类方法的设计思想 类属性作为该">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-07T00:44:28.000Z">
+<meta property="article:modified_time" content="2020-09-13T01:49:27.866Z">
+<meta property="article:author" content="Tiantian Liu">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://tiantianliu2018.github.io/2019/10/07/Java-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A72/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>Java 高级特性2 | Tiantian's Blogs</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tiantian's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">To Be Better</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">35</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">36</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">78</span></a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/07/Java-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A72/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Tiantian Liu">
+      <meta itemprop="description" content="The Space to record my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiantian's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java 高级特性2
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-07 08:44:28" itemprop="dateCreated datePublished" datetime="2019-10-07T08:44:28+08:00">2019-10-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-13 09:49:27" itemprop="dateModified" datetime="2020-09-13T09:49:27+08:00">2020-09-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" itemprop="url" rel="index"><span itemprop="name">高级特性</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/10/07/Java-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A72/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/07/Java-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A72/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.3k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Java-高级特性2"><a href="#Java-高级特性2" class="headerlink" title="Java 高级特性2"></a>Java 高级特性2</h1><h2 id="关键字-static"><a href="#关键字-static" class="headerlink" title="关键字 static"></a>关键字 static</h2><p>无论是否产生了对象或无论产生了多少对象，某些特定的数据在内存空间里只有一份</p>
+<p>如果想让一个类的所有实例共享数据，应该使用<strong>类变量</strong></p>
+<p>类变量：不用实例化，直接<code>类名.属性名</code> 就可以使用，是类的一部分，被所有这个类的实例化对象所共享，也可以叫做静态变量，用<code>static</code> 来修饰</p>
+<p>实例变量：只有实例化后才能使用，属于实例化对象的一部分</p>
+<p><strong>类属性、类方法的设计思想</strong></p>
+<p>类属性作为该类各个对象之间共享的变量。在设计类时，分析哪些类属性不因对象的不同而改变，将这些属性设置为类属性。相应的方法设置为类方法。</p>
+<p>如果方法与调用者无关，则这样的方法通常被声明为类方法，由于不需要创建对象就可以调用类方法，从而简化了方法的调用</p>
+<p><strong>使用范围</strong></p>
+<p>可用static修饰属性、方法、代码块、内部类</p>
+<p><strong>被修饰后的成员具备以下特点</strong></p>
+<p>随着类的加载而加载</p>
+<p>优先于对象存在</p>
+<p>修饰的成员，被所有该类的对象所共享</p>
+<p>访问权限允许时，可不创建对象，直接被类调用</p>
+<p><strong>类方法</strong></p>
+<p>在static 方法内部只能访问类的<code>static</code>属性，不能访问类的非<code>static</code>属性</p>
+<p>做工具类用最多</p>
+<p>因为不需要实例就可以访问 <code>static</code> 方法，因此 <code>static</code>  方法内部不能有 <code>this</code> 和 <code>super</code></p>
+<p>重载的方法需同为 <code>static</code>  或非 <code>static</code> </p>
+<hr>
+
+<h2 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h2><p><strong>设计模式</strong> 就是在大量的实践中总结和理论化之后优选的代码结构、编程风格、以及解决问题的思考方式。即在实际编程中，逐渐总结出的一些解决问题的套路。</p>
+<p><strong>类的单例模式</strong>：采取一定的方法保证在整个软件系统中，对某个类<strong>只能存在一个对象实例</strong>，并且该类只提供一个取得其对象实例的方法。</p>
+<p>例如：实例化对象的创建要消耗大量的时间和资源。</p>
+<p><strong>单例模式的实现方式</strong></p>
+<ul>
+<li><p>饿汉式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Single</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 实现私有的构造函数，调用这个类的就不能直接用new来创建对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Single</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="comment">// 私有的Single类变量，只能在类内部访问</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Single single = <span class="keyword">new</span> Single();</span><br><span class="line">    <span class="comment">// getSingle() 为 static，不用创建对象即可访问</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Single <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> single;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Single s1 = Single.getInstance();  <span class="comment">// 访问静态方法</span></span><br><span class="line">		Single s2 = Single.getInstance();</span><br><span class="line">		<span class="keyword">if</span>(s1==s2)&#123;</span><br><span class="line">			System.out.println(<span class="string">"s1 is equals to s2!"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>懒汉式：最开始对象是null，直到有第一个人调用才new一个对象，之后都调用这个对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Single1</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 先私有化构造方法，保证在此类的外部，不能调用本类的构造器</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Single1</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="comment">// 先声明类的引用</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Single1 single = <span class="keyword">null</span>;</span><br><span class="line">	<span class="comment">// 设置公有的方法来访问类的实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Single1 <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 如果类的实例未创建，先创建，再返回给调用者</span></span><br><span class="line">        <span class="keyword">if</span> (single==<span class="keyword">null</span>)&#123;</span><br><span class="line">            single = <span class="keyword">new</span> Single1();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 若有了实例，直接返回给调用者</span></span><br><span class="line">        <span class="keyword">return</span> single;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+
+<h2 id="理解-main-方法的语法"><a href="#理解-main-方法的语法" class="headerlink" title="理解 main 方法的语法"></a>理解 main 方法的语法</h2><p>由于 Java 虚拟机需要调用类的 <code>main()</code> 方法，所以该方法的访问权限是 <code>public</code>，又因为 java 虚拟机在执行 <code>main()</code> 方法时不必创建对象，所以该方法是 <code>static</code> 的，该方法接收一个 String 类型的数组参数，该数组中保存执行 java 命令时传递给所运行的类的参数。</p>
+<p>Java 运行的类名 第一个参数 第二个参数 第三个参数 … …</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+
+<h2 id="类的成员之四：初始化块"><a href="#类的成员之四：初始化块" class="headerlink" title="类的成员之四：初始化块"></a>类的成员之四：初始化块</h2><p>初始化块（代码块）作用：对Java对象进行初始化</p>
+<p>程序的执行顺序：</p>
+<p>声明成员变量默认初始化 -&gt; 显式初始化、多个初始化块依次被执行（同级别下按先后顺序执行）-&gt; 构造器再对成员进行赋值操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="comment">// 非静态代码块</span></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 静态代码块，只能使用静态的成员属性和方法</span></span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个类中初始化块若有修饰符，则只能被 <code>static</code> 修饰，称为静态代码块，当类被载入时，类属性的声明和静态代码块先后顺序被执行，且<strong>只能被执行一次</strong>。</p>
+<p><code>static</code> 块通常用于初始化 static（类）属性</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> total;</span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        total = <span class="number">100</span>; <span class="comment">// 为 total 赋初值</span></span><br><span class="line">    &#125;</span><br><span class="line">    ...... <span class="comment">// 其他属性或方法声明</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>非静态代码块</strong>：没有 static 修饰的代码块</p>
+<ul>
+<li><p>可以有输出语句</p>
+</li>
+<li><p>可以对类的属性声明进行初始化操作</p>
+</li>
+<li><p>可以调用静态和非静态的变量或方法</p>
+</li>
+<li><p>若有多个非静态代码块，那么按照从上到下的顺序依次执行</p>
+</li>
+<li><p>每次创建对象的时候，都会执行一次，且先于构造器执行</p>
+</li>
+</ul>
+<p><strong>静态代码块</strong>：static 修饰的代码块</p>
+<ul>
+<li><p>可以有输出语句</p>
+</li>
+<li><p>可以对类的属性声明进行初始化操作</p>
+</li>
+<li>不可以对非静态的属性初始化。即：不可以调用非静态的属性和方法</li>
+<li>若有多个静态代码块，那么按照从上到下的顺序依次执行</li>
+<li>静态代码块的执行要先于非静态代码块</li>
+<li>静态代码块只执行一次</li>
+</ul>
+<p><strong>在匿名类中，用代码块代替构造方法</strong></p>
+<hr>
+
+<h2 id="关键字-final"><a href="#关键字-final" class="headerlink" title="关键字 final"></a>关键字 final</h2><p>在 Java 中声明类、属性和方法时，可以用关键字 <code>final</code> 来修饰，表示”最终“</p>
+<p><strong><code>final</code> 标记的类不能被继承。</strong> 提高安全性，提高程序的可读性。</p>
+<p>​    String 类、System 类、StringBuffer 类</p>
+<p>​    <code>final</code> 修饰类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span></span>&#123;&#125; <span class="comment">// 错误，final类不能被继承</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><code>final</code> 标记的方法不能被子类重写</strong></p>
+<p>​    Object 类中的 getClass()</p>
+<p><strong><code>final</code> 标记的变量（成员变量或局部变量）即称为常量。</strong>名称大写，且只能被赋值一次。</p>
+<p>​    final 标记的成员变量必须在声明的同时或在每个构造方法中或代码块中显式赋值，然后才能使用。</p>
+<p>​    <code>final</code>、<code>static</code>  一起修饰变量，称为全局变量。</p>
+<p>​    常量定义名称约定使用大写，如果由多个单词组成名称，用 <code>_</code> 连接</p>
+<hr>
+
+<h2 id="抽象类（abstract-class）"><a href="#抽象类（abstract-class）" class="headerlink" title="抽象类（abstract class）"></a>抽象类（abstract class）</h2><p>随着继承层次中一个个新子类的定义，类变得越来越具体，而父类则更一般，更通用。类的设计应该保证父类和子类能够共享特征。有时将一个父类设计得非常抽象，以至于它没有具体的实例，这样的类叫做抽象类。</p>
+<p>用 <code>abstract</code> 关键字来修饰一个类时，这个类叫做抽象类；</p>
+<p>用 <code>abstract</code> 来修饰一个方法时，该方法叫做抽象方法。</p>
+<p>​    抽象方法：只有方法的声明，没有方法的实现。以分号结束：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">abstractMethod</span><span class="params">(<span class="keyword">int</span> a)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>含有抽象方法的类必须声明为抽象类</p>
+<p><strong>抽象类不能被实例化。</strong>抽象类是用来作为父类被继承的，抽象类的子类必须重写父类的抽象方法，并提供方法体。若没有重写全部的抽象方法，仍为抽象类。</p>
+<p>不能用 <code>abstract</code> 修饰属性、私有方法、构造器、静态方法和 <code>final</code> 方法。</p>
+<p><strong>抽象类应用</strong></p>
+<p>抽象类是用来模型化那些父类无法确定全部实现，而是由其子类提供具体实现的对象的类。</p>
+<hr>
+
+<h2 id="模板方法设计模式（TemplateMethod）"><a href="#模板方法设计模式（TemplateMethod）" class="headerlink" title="模板方法设计模式（TemplateMethod）"></a>模板方法设计模式（TemplateMethod）</h2><p>抽象类体现的就是一种模板模式的设计，<strong>抽象类作为多个子类的通用模板，</strong>子类在抽象类的基础上进行扩展、改造，但子类总体上会保留抽象类的行为方式。</p>
+<blockquote>
+<p>抽象类就像一个大纲，里面的抽象方法就是每个章节的标题。子类，去根据这些标题将每个章节细化出来。</p>
+</blockquote>
+<p><strong>解决的问题</strong></p>
+<p>当功能内部一部分实现是确定，一部分实现是不确定的。这时可以把不确定的部分暴露出去，让子类去实现。</p>
+<p>编写一个抽象父类，父类提供了多个子类的通用方法，并把一个或多个方法留给其子类去实现，就是一种模板模式。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Template</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">getTime</span><span class="params">()</span></span>&#123;  <span class="comment">// 定义子类不能重写的方法</span></span><br><span class="line">        <span class="keyword">long</span> start = System.currentTimeMillis();</span><br><span class="line">        code();</span><br><span class="line">        <span class="keyword">long</span> end = System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">"code() 方法执行时间是："</span>+ (end - start));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">code</span><span class="params">()</span></span>;  <span class="comment">// 抽象方法，由子类去实现</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubTemplate</span> <span class="keyword">extends</span> <span class="title">Template</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">code</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10000</span>;i++)&#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>有时必须从几个类中派生出一个子类，继承它们所有的属性和方法。但是，Java 不支持多重继承。有了接口，就可以得到多重继承的效果。</p>
+<p>接口（interface）是 <strong>抽象方法</strong> 和 <strong>常量值</strong> 的定义的集合</p>
+<p>从本质上讲，接口是一种特殊的抽象类，这种抽象类中只包含常量和方法的定义，而没有变量和方法的实现。</p>
+<p>实现接口类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubClass</span> <span class="keyword">implements</span> <span class="title">InterfaceA</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>一个类可以实现多个接口，接口也可以继承其它接口。</p>
+<p><strong>接口的特点</strong></p>
+<ul>
+<li>用 <code>interface</code> 来定义</li>
+<li>接口中所有成员变量都 <strong>默认由 <code>public static final</code> 修饰 （全局常量）</strong></li>
+<li>接口中所有方法都 <strong>默认是由 <code>public abstract</code> 修饰的 (抽象方法)</strong></li>
+<li>接口没有构造器</li>
+<li>接口采用多层继承机制</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Runner</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ID = <span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">start</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实现接口的类必须实现提供接口中所有方法的具体实现内容，方可实例化，否则，仍为抽象类。</p>
+<p><strong>接口的主要用途是被实现类实现</strong>（面向接口编程）</p>
+<p>与继承关系类似，接口与实现类之间存在多态性。</p>
+<p>定义 Java 类的语法格式，先写 <code>extends</code>，后写 <code>implements</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;modifier&gt; class &lt;name&gt; [extends &lt;superclass&gt;] [implements &lt;interfce&gt;[,&lt;interface]*]&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>一个类可以实现多个无关的接口。</p>
+<p>与继承关系类似，接口与实现类之间存在多态。</p>
+<p>如果实现接口的类中没有实现接口中的全部方法，必须将此类定义为抽象类。</p>
+<p>抽象类是对于一类事物的高度抽象，其中既有属性也有方法；接口是对方法的抽象，也就是对一系列动作的抽象。</p>
+<hr>
+
+<h2 id="工厂方法（FactoryMethod）"><a href="#工厂方法（FactoryMethod）" class="headerlink" title="工厂方法（FactoryMethod）"></a>工厂方法（FactoryMethod）</h2><p>工厂方法模式是设计模式中应用最为广泛的模式，在面向对象的编程中，对象的创建工作非常简单，对象的创建时机却很重要。FactoryMethod解决的就是这个问题，它通过面向对象的手法，将所要创建的具体对象的创建工作延迟到了子类，从而提供了一种扩展的策略，较好的解决了这种紧耦合的关系。</p>
+<p>通过工厂把 new 对象隔离，通过产品的接口可以接收不同实际产品的实现类，实例的类名的改变不影响其他合作开发人员的编程。</p>
+<hr>
+
+<h2 id="类的成员之五：内部类"><a href="#类的成员之五：内部类" class="headerlink" title="类的成员之五：内部类"></a>类的成员之五：内部类</h2><p>在Java中，允许一个类的定义位于另一个类的内部，前者称为内部类，后者称为外部类。</p>
+<p>Inner class 一般用于在定义它的类或语句块之内，在外部引用它时必须给出完整的名称。</p>
+<p>​    Inner class 的名字不能与包含它的类名相同</p>
+<p>Inner class 可以使用外部类的私有数据，因为它是外部类的成员，同一个类的成员之间可相互访问。而外部类要访问内部类中的成员需要 <code>内部类.成员</code> 或者 <code>内部类对象.成员</code></p>
+<p>分类：</p>
+<ul>
+<li>成员内部类（static 成员内部类和非static成员内部类）</li>
+<li>局部内部类（不谈修饰符）、匿名内部类</li>
+</ul>
+<p><strong>内部类的特性</strong></p>
+<ul>
+<li><p>Inner class 作为类的成员</p>
+<p>​    可以声明为 <code>final</code></p>
+<p>​    和外部类不同，Inner class 可声明为 <code>private</code> 或 <code>protected</code></p>
+<p>​    Inner class 可以声明为 <code>static</code> 的，但此时就不能再使用外部类的 <code>非static</code> 成员变量</p>
+</li>
+<li><p>Inner class 作为类：</p>
+<p>​    可以声明为 <code>abstract</code> 类，因此可以被其他内部类继承</p>
+</li>
+</ul>
+<p>【注意】：非 static 的内部类中的成员不能声明为 <code>static</code> 的，只有在外部类或 <code>static</code> 的内部类中才可以声明 <code>static</code> 成员</p>
+<p><strong>作用</strong></p>
+<p>主要解决 Java 不能<strong>多重继承</strong>的问题</p>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+      
+    </div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/10/06/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AMapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information%E3%80%8B/" rel="prev" title="论文阅读《Mapping Users across Social Media Platforms by Integrating Text and Structure Information》">
+      <i class="fa fa-chevron-left"></i> 论文阅读《Mapping Users across Social Media Platforms by Integrating Text and Structure Information》
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/" rel="next" title="论文阅读《A comparative study on network alignment techniques》">
+      论文阅读《A comparative study on network alignment techniques》 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-高级特性2"><span class="nav-number">1.</span> <span class="nav-text">Java 高级特性2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关键字-static"><span class="nav-number">1.1.</span> <span class="nav-text">关键字 static</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单例设计模式"><span class="nav-number">1.2.</span> <span class="nav-text">单例设计模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解-main-方法的语法"><span class="nav-number">1.3.</span> <span class="nav-text">理解 main 方法的语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的成员之四：初始化块"><span class="nav-number">1.4.</span> <span class="nav-text">类的成员之四：初始化块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关键字-final"><span class="nav-number">1.5.</span> <span class="nav-text">关键字 final</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类（abstract-class）"><span class="nav-number">1.6.</span> <span class="nav-text">抽象类（abstract class）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板方法设计模式（TemplateMethod）"><span class="nav-number">1.7.</span> <span class="nav-text">模板方法设计模式（TemplateMethod）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">1.8.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工厂方法（FactoryMethod）"><span class="nav-number">1.9.</span> <span class="nav-text">工厂方法（FactoryMethod）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的成员之五：内部类"><span class="nav-number">1.10.</span> <span class="nav-text">类的成员之五：内部类</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tiantian Liu"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Tiantian Liu</p>
+  <div class="site-description" itemprop="description">The Space to record my life.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tiantianliu2018" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tiantianliu2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tiantianliu2018@outlook.com" title="E-Mail → mailto:tiantianliu2018@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tiantian liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">138k</span>
+</div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共61.8k字</span>
+  <span class="post-meta-divider">|</span>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  <span class="post-meta-divider">|</span>
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  <span class="post-meta-divider">|</span>
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共61.8k字</span>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'FhWVmso5TyqrTqtDNNtpuBeC-gzGzoHsz',
+      appKey     : 'd5yz5CVcPPfEmfA5p2ovH6g9',
+      placeholder: "欢迎交流讨论...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-CN' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

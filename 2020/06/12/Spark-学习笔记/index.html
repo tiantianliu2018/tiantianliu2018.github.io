@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8332.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8316.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Spark 学习笔记 一、Spark 简介基于内存计算的大数据并行计算框架 特点：  速度快 易用 通用 运行模式多样">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark 学习笔记">
+<meta property="og:url" content="http://tiantianliu2018.github.io/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Tiantian&#39;s Blogs">
+<meta property="og:description" content="Spark 学习笔记 一、Spark 简介基于内存计算的大数据并行计算框架 特点：  速度快 易用 通用 运行模式多样">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/spark.png">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/run.png">
+<meta property="article:published_time" content="2020-06-12T02:00:54.000Z">
+<meta property="article:modified_time" content="2020-06-18T06:01:51.766Z">
+<meta property="article:author" content="Tiantian Liu">
+<meta property="article:tag" content="Spark">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tiantianliu2018.github.io/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/spark.png">
+
+<link rel="canonical" href="http://tiantianliu2018.github.io/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>Spark 学习笔记 | Tiantian's Blogs</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tiantian's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">To Be Better</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">35</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">36</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">78</span></a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Tiantian Liu">
+      <meta itemprop="description" content="The Space to record my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiantian's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Spark 学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-12 10:00:54" itemprop="dateCreated datePublished" datetime="2020-06-12T10:00:54+08:00">2020-06-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-18 14:01:51" itemprop="dateModified" datetime="2020-06-18T14:01:51+08:00">2020-06-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Spark-学习笔记"><a href="#Spark-学习笔记" class="headerlink" title="Spark 学习笔记"></a>Spark 学习笔记</h1><hr>
+<h2 id="一、Spark-简介"><a href="#一、Spark-简介" class="headerlink" title="一、Spark 简介"></a>一、Spark 简介</h2><p>基于<strong>内存计算</strong>的大数据<strong>并行计算框架</strong></p>
+<p>特点：</p>
+<ul>
+<li>速度快</li>
+<li>易用</li>
+<li>通用</li>
+<li>运行模式多样</li>
+</ul>
+<a id="more"></a>
+<h2 id="二、Spark-生态系统"><a href="#二、Spark-生态系统" class="headerlink" title="二、Spark 生态系统"></a>二、Spark 生态系统</h2><h2 id="三、Spark-运行架构"><a href="#三、Spark-运行架构" class="headerlink" title="三、Spark 运行架构"></a>三、Spark 运行架构</h2><p>RDD：Resillient Distributed Dataset（弹性分布式数据集）共享内存模型</p>
+<p>DAG：有向无环图  反映 RDD 之间的依赖关系</p>
+<p>Executor：运行在工作节点的一个进程，负责运行 Task</p>
+<p>Application：用户编写的 Spark 应用程序</p>
+<p>Task：运行在 Executor 上的工作单元</p>
+<p>Job：一个 Job 包含多个 RDD 及作用于相应 RDD 上的各种操作</p>
+<p>Stage：是 Job 的基本调度单位，一个 Job 会分为多组 Task，每组 Task 被称为 Stage，或者也被称为 TaskSet，代表了一组关联的、相互之间没有 Shuffle 依赖关系的任务组成的任务集</p>
+<p><img src="/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/spark.png" alt="Spark 运行架构"></p>
+<h3 id="Spark-运行基本流程"><a href="#Spark-运行基本流程" class="headerlink" title="Spark 运行基本流程"></a>Spark 运行基本流程</h3><p><img src="/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/run.png" alt="Spark 基本运行流程"></p>
+<p>RDD 在 Spark 中的运行过程：</p>
+<ol>
+<li><p>创建 RDD 对象</p>
+</li>
+<li><p>SparkContext 负责计算 RDD 时间的依赖关系，构建DAG</p>
+</li>
+<li><p>DAGScheduler 负责把 DAG 图分解成多个 Stage， 每个 Stage 中包含了多个 Task，每个 Task 会 TaskScheduler</p>
+<p>分发给各个 WorkerNode 上的 Executor 去执行</p>
+</li>
+</ol>
+<h2 id="四、RDD-编程"><a href="#四、RDD-编程" class="headerlink" title="四、RDD 编程"></a>四、RDD 编程</h2><h3 id="1-RDD-创建"><a href="#1-RDD-创建" class="headerlink" title="1. RDD 创建"></a>1. RDD 创建</h3><ul>
+<li><p>从文件系统中加载数据创建</p>
+<p><code>sc.textFile(&quot;file:///&quot;)</code> 本地文件系统</p>
+<p><code>sc.textFile(&quot;hdfs://地址&quot;)</code> 分布式文件系统 HDFS</p>
+</li>
+<li><p>通过并行集合（数组）创建 RDD</p>
+<p><code>sc.parallelize()</code></p>
+</li>
+</ul>
+<h3 id="2-RDD-操作-惰性求值"><a href="#2-RDD-操作-惰性求值" class="headerlink" title="2. RDD 操作 惰性求值"></a>2. RDD 操作 惰性求值</h3><h4 id="转换操作"><a href="#转换操作" class="headerlink" title="转换操作"></a>转换操作</h4><p>filter：筛选、map：映射、flatMap、groupByKey()、reduceByKey()</p>
+<h4 id="行动操作-真正触发计算"><a href="#行动操作-真正触发计算" class="headerlink" title="行动操作  真正触发计算"></a>行动操作  真正触发计算</h4><p><code>count()</code> 返回数据集中的元素个数 </p>
+<p><code>collect()</code> 以<strong>数组</strong>的形式返回数据集中的所有元素 </p>
+<p><code>first()</code> 返回数据集中的第一个元素 </p>
+<p><code>take(n)</code> 以数组的形式返回数据集中的前n个元素 </p>
+<p><code>reduce(func)</code> 通过函数 func（输入两个参数并返回一个值） 聚合数据集中的元素</p>
+<p><code>foreach(func)</code> 将数据集中的每个元素传递到函数func中运行</p>
+<h3 id="3-RDD-持久化"><a href="#3-RDD-持久化" class="headerlink" title="3. RDD 持久化"></a>3. RDD 持久化</h3><h3 id="4-RDD-分区"><a href="#4-RDD-分区" class="headerlink" title="4. RDD 分区"></a>4. RDD 分区</h3><h3 id="5-键值对-RDD"><a href="#5-键值对-RDD" class="headerlink" title="5. 键值对 RDD"></a>5. 键值对 RDD</h3><p><code>reduceByKey(func)</code> 使用 func 函数合并具有相同键的值，用于对每个 key 对应的多个 value 进行 merge 操作，最重要的是它能够在本地先进行 merge 操作，并且 merge 操作可以通过函数自定义</p>
+<p><code>groupByKey()</code> 对具有相同 key 的 value 进行分组，但只生成一个 sequence，groupByKey 本身不能自定义函数，需要先用 groupByKey 生成 RDD，然后才能对此 RDD 通过 map 进行自定义函数操作</p>
+<p><code>keys</code>只会把 Pair RDD 中的 key 返回形成一个新的 RDD</p>
+<p><code>values</code>  只会把 Pair RDD中 的 value 返回形成一个新的 RDD。</p>
+<p><code>sortByKey()</code> 返回一个根据键排序的 RDD，默认是升序排序</p>
+<p><code>mapValues(func)</code> 对键值对 RDD 中的每个 value 都应用一个函数，但是，key 不会发生变化</p>
+<p><code>join</code> 内连接，只有在两个数据集中都存在的 key 才会被输出，最终得到一个 (K,(V1,V2)) 类型的数据集。</p>
+<p><code>combineByKey(createCombiner,mergeValue,mergeCombiners,partitioner ,mapSideCombine)</code></p>
+<h3 id="6-共享变量"><a href="#6-共享变量" class="headerlink" title="6. 共享变量"></a>6. 共享变量</h3><p>广播变量：把变量在所有节点的内存之间进行共享。缓存一个只读变量</p>
+<p>​    通过调用 <code>SparkContext.broadcast(v)</code> 来从一个普通变量 v 中创建一个广播变量</p>
+<p>​    通过调用 <code>value</code> 方法就可以获得这个广播变量的值，</p>
+<p>累加器：支持在所有不同节点之间进行累加计算</p>
+<p>​    通过调用 <code>SparkContext.longAccumulator()</code> 或者 <code>SparkContext.doubleAccumulator()</code> 来创建</p>
+<p>​    只有任务控制节点（Driver Program）可以使用 <code>value</code> 方法来读取累加器的值</p>
+<h3 id="7-数据读写"><a href="#7-数据读写" class="headerlink" title="7. 数据读写"></a>7. 数据读写</h3><h4 id="本地文件数据的读写"><a href="#本地文件数据的读写" class="headerlink" title="本地文件数据的读写"></a>本地文件数据的读写</h4><p><code>sc.textFile()</code>  惰性机制，行动操作才进行加载</p>
+<p><code>saveAsTextFile()</code>  生成一个目录  part-00000  RDD 分区，再次加载只需要写这个目录</p>
+<h4 id="分布式文件系统读写"><a href="#分布式文件系统读写" class="headerlink" title="分布式文件系统读写"></a>分布式文件系统读写</h4><p><code>sc.textFile(&quot;hdfs://&quot;)</code></p>
+<h4 id="JSON-文件读写"><a href="#JSON-文件读写" class="headerlink" title="JSON 文件读写"></a>JSON 文件读写</h4><p><code>sc.textFile()</code></p>
+<p>对 json 进行解析 scala.util.parsing.json.Json 可以实现对 JSON 数据的解析</p>
+<h3 id="8-HBase"><a href="#8-HBase" class="headerlink" title="8. HBase"></a>8. HBase</h3><p>HBase 中需要根据行键、列族、列限定符和时间戳来确定一个单元格</p>
+<p>HBase 需要时间戳是因为 HBAse 的底层是 HDFS，HDFS 要求一次写入不能进行修改，所以要修改单元格的数据只能生成新的版本，让最新的数指向最新的版本</p>
+<p>四维坐标定位【行键、列族、列、版本时间戳】</p>
+<p>一个单元格一个插入数据</p>
+<h2 id="五、Spark-SQL"><a href="#五、Spark-SQL" class="headerlink" title="五、Spark SQL"></a>五、Spark SQL</h2><p>RDD 是分布式的 Java 对象的集合</p>
+<p>DataFrame 是一种以 RDD 为基础的分布式数据集</p>
+<p><code>spark.read.json()</code> 读取 json 文件</p>
+<p><code>spark.read.parquet(&quot;people.parquet&quot;)</code> </p>
+<p><code>spark.read.csv(&quot;people.csv&quot;)</code></p>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+      
+    </div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Spark/" rel="tag"># Spark</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/24/HBase-%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/" rel="prev" title="HBase 基础总结">
+      <i class="fa fa-chevron-left"></i> HBase 基础总结
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/19/Maven-%E5%88%9B%E5%BB%BA-Spark-%E9%A1%B9%E7%9B%AE%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/" rel="next" title="Maven 创建 Spark 项目采坑记录">
+      Maven 创建 Spark 项目采坑记录 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spark-学习笔记"><span class="nav-number">1.</span> <span class="nav-text">Spark 学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Spark-简介"><span class="nav-number">1.1.</span> <span class="nav-text">一、Spark 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Spark-生态系统"><span class="nav-number">1.2.</span> <span class="nav-text">二、Spark 生态系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、Spark-运行架构"><span class="nav-number">1.3.</span> <span class="nav-text">三、Spark 运行架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spark-运行基本流程"><span class="nav-number">1.3.1.</span> <span class="nav-text">Spark 运行基本流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、RDD-编程"><span class="nav-number">1.4.</span> <span class="nav-text">四、RDD 编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-RDD-创建"><span class="nav-number">1.4.1.</span> <span class="nav-text">1. RDD 创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-RDD-操作-惰性求值"><span class="nav-number">1.4.2.</span> <span class="nav-text">2. RDD 操作 惰性求值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#转换操作"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">转换操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行动操作-真正触发计算"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">行动操作  真正触发计算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-RDD-持久化"><span class="nav-number">1.4.3.</span> <span class="nav-text">3. RDD 持久化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-RDD-分区"><span class="nav-number">1.4.4.</span> <span class="nav-text">4. RDD 分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-键值对-RDD"><span class="nav-number">1.4.5.</span> <span class="nav-text">5. 键值对 RDD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-共享变量"><span class="nav-number">1.4.6.</span> <span class="nav-text">6. 共享变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-数据读写"><span class="nav-number">1.4.7.</span> <span class="nav-text">7. 数据读写</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地文件数据的读写"><span class="nav-number">1.4.7.1.</span> <span class="nav-text">本地文件数据的读写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式文件系统读写"><span class="nav-number">1.4.7.2.</span> <span class="nav-text">分布式文件系统读写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSON-文件读写"><span class="nav-number">1.4.7.3.</span> <span class="nav-text">JSON 文件读写</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-HBase"><span class="nav-number">1.4.8.</span> <span class="nav-text">8. HBase</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、Spark-SQL"><span class="nav-number">1.5.</span> <span class="nav-text">五、Spark SQL</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tiantian Liu"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Tiantian Liu</p>
+  <div class="site-description" itemprop="description">The Space to record my life.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tiantianliu2018" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tiantianliu2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tiantianliu2018@outlook.com" title="E-Mail → mailto:tiantianliu2018@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tiantian liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">138k</span>
+</div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共61.8k字</span>
+  <span class="post-meta-divider">|</span>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  <span class="post-meta-divider">|</span>
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  <span class="post-meta-divider">|</span>
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共61.8k字</span>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'FhWVmso5TyqrTqtDNNtpuBeC-gzGzoHsz',
+      appKey     : 'd5yz5CVcPPfEmfA5p2ovH6g9',
+      placeholder: "欢迎交流讨论...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-CN' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

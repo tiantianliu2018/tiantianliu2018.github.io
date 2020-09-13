@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8332.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8316.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Mapping Users across Social Media Platforms by Integrating Text and Structure Information - 2017 IEEE ISISummary这篇文章的思路比较简单清晰：首先将不同社交网络获得的用户信息分为文本信息和网络结构信息。 文本信息又分为用户描述（word2vec embedding)、用户名（表示成单词列表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读《Mapping Users across Social Media Platforms by Integrating Text and Structure Information》">
+<meta property="og:url" content="http://tiantianliu2018.github.io/2019/10/06/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AMapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information%E3%80%8B/index.html">
+<meta property="og:site_name" content="Tiantian&#39;s Blogs">
+<meta property="og:description" content="Mapping Users across Social Media Platforms by Integrating Text and Structure Information - 2017 IEEE ISISummary这篇文章的思路比较简单清晰：首先将不同社交网络获得的用户信息分为文本信息和网络结构信息。 文本信息又分为用户描述（word2vec embedding)、用户名（表示成单词列表">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tiantianliu2018.github.io/2019/10/06/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AMapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information%E3%80%8B/overview.png">
+<meta property="article:published_time" content="2019-10-06T06:07:15.000Z">
+<meta property="article:modified_time" content="2020-09-13T01:54:50.979Z">
+<meta property="article:author" content="Tiantian Liu">
+<meta property="article:tag" content="CS_learn">
+<meta property="article:tag" content=" Keep moving">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tiantianliu2018.github.io/2019/10/06/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AMapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information%E3%80%8B/overview.png">
+
+<link rel="canonical" href="http://tiantianliu2018.github.io/2019/10/06/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AMapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information%E3%80%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>论文阅读《Mapping Users across Social Media Platforms by Integrating Text and Structure Information》 | Tiantian's Blogs</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tiantian's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">To Be Better</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">35</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">36</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">78</span></a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/06/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AMapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information%E3%80%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Tiantian Liu">
+      <meta itemprop="description" content="The Space to record my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiantian's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          论文阅读《Mapping Users across Social Media Platforms by Integrating Text and Structure Information》
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-06 14:07:15" itemprop="dateCreated datePublished" datetime="2019-10-06T14:07:15+08:00">2019-10-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-13 09:54:50" itemprop="dateModified" datetime="2020-09-13T09:54:50+08:00">2020-09-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/" itemprop="url" rel="index"><span itemprop="name">Social Networks</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/10/06/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AMapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information%E3%80%8B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/06/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AMapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information%E3%80%8B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Mapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information-2017-IEEE-ISI"><a href="#Mapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information-2017-IEEE-ISI" class="headerlink" title="Mapping Users across Social Media Platforms by Integrating Text and Structure Information - 2017 IEEE ISI"></a>Mapping Users across Social Media Platforms by Integrating Text and Structure Information - 2017 IEEE ISI</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>这篇文章的思路比较简单清晰：首先将不同社交网络获得的用户信息分为文本信息和网络结构信息。</p>
+<p>文本信息又分为用户描述（word2vec embedding)、用户名（表示成单词列表）和地理位置信息（分层次划分），网络结构信息就是获得不同平台上两个用户的共同朋友，作为一个集合。对于用户描述，计算两个用户之间的余弦相似性，对于用户名和朋友关系，计算 Jaccard Index，对于地理位置，直接匹配最低层次的划分是否相同，相同则相似性为1，最后通过线性加权的方式得到整体的相似性。给整体相似性设置一个阈值，如果大于该阈值，表明这两个用户是一个人，否则，不是一个人。</p>
+<p>这篇文章有很多可以改进的东西。</p>
+<h2 id="Research-Objective"><a href="#Research-Objective" class="headerlink" title="Research Objective"></a>Research Objective</h2><p>提出一种 mapping method 能够整个 <strong>文本</strong> 和 <strong>结构</strong> 的信息</p>
+<p>模型首先基于word2vec或字符串匹配来表示用户名、描述、位置信息，以关系网络表示的朋友关系信息作为结构信息。然后利用这些信息，利用 Jaccard index 或余弦相似度进行相似度计算。采用线性模型获取用户对的整体相似度，进行用户映射。</p>
+<h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p>文本信息和社交网络特征的融合应用。</p>
+<p>关键是文本和结构信息的有效表示和相似性的计算。</p>
+<p>文本信息和社交网络结构信息反映了用户的行为模式。但目前存在的方法都是基于单一信息的user mapping。</p>
+<h3 id="Text-information-based-mapping-method"><a href="#Text-information-based-mapping-method" class="headerlink" title="Text information based mapping method"></a>Text information based mapping method</h3><p>利用用户的文本信息：用户名、位置、年龄、标签以及用户在社交网络中产生的content等</p>
+<h3 id="Structure-information-based-mapping-method"><a href="#Structure-information-based-mapping-method" class="headerlink" title="Structure information based mapping method"></a>Structure information based mapping method</h3><p>anchor link prediction </p>
+<ul>
+<li>监督方法：需要知道一部分已经存在的 anchor links 作为训练集来训练模型。<ul>
+<li>一些方法直接使用人工提取的特征，如度、聚类系数、三角形数和共同邻居等，这些方法没有利用网络的内部结构规律。</li>
+<li>表示学习的方法</li>
+<li>probability network</li>
+</ul>
+</li>
+<li>无监督的方法：NP-hard 组合优化问题</li>
+</ul>
+<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><p><img src="/2019/10/06/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AMapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information%E3%80%8B/overview.png" alt="An overview of the research framework "></p>
+<h3 id="Theoretical-Background"><a href="#Theoretical-Background" class="headerlink" title="Theoretical Background"></a>Theoretical Background</h3><ul>
+<li>Subjective description：主要是用户的职业、兴趣等</li>
+<li>Objective Information：真实姓名、地理位置信息等真实的信息</li>
+<li>Social Relationship：通过模型的构建，将用户的社会关系和角色特征转化为结构特征。Graph algorithms 可以应用</li>
+</ul>
+<h3 id="Information-representation"><a href="#Information-representation" class="headerlink" title="Information representation"></a>Information representation</h3><ol>
+<li><p>User description：用户描述是一小段对自己的描述，其中包括用户的爱好、职业等信息</p>
+<p>应用 word2vec 模型将描述文本转为向量表示</p>
+<p>通过去除stopwords和一些其他的自然语言预处理操作，获得一系列单词$(word<em>{1}, word</em>{2}, …, word<em>{k})$ 通过预训练的 n-dimension word2vec模型，可以得到每个单词的向量表示 $(wordvector</em>{1}, wordvector<em>{2}, …, wordvector</em>{k})$</p>
+<p>因此在社交平台A上的用户N可以描述为：</p>
+<script type="math/tex; mode=display">
+D_{N}^{A}=\left\{w_{1}, w_{2}, \ldots, w_{n}\right\}=\sum_{i=1}^{k} \frac{\text {wordvector}_{i}}{k}</script></li>
+<li><p>Username：将用户名转换为 word list</p>
+<p>社交平台A上用户N的用户名可以表示为 </p>
+<script type="math/tex; mode=display">
+D_{N}^{A} = \left(word_{1}, word_{2},..., word_{j}\right)</script></li>
+<li><p>Friend information</p>
+<p>假定平台 A 上的用户 N 有 n 个朋友 $F^{A} = \left[f<em>{1}^{A}, f</em>{2}^{A}, \ldots, f<em>{n}^{A}\right]$, 平台B上用户 M 有 m 个朋友 $F^{B}=\left[f</em>{1}^{B}, f<em>{2}^{B}, \ldots, f</em>{m}^{B}\right]$ ，那么他们有 k 个重叠的朋友的话，表示为 $F^{o}=\left[f<em>{1}, f</em>{2}, \ldots, f_{k}\right]$</p>
+</li>
+<li><p>Location</p>
+<p>将地理位置信息划分为不同的层次：$L<em>{N}^{A}=\left[C i t y</em>{N}, \text { State}<em>{N}, Nation</em>{N}\right]$</p>
+</li>
+</ol>
+<h3 id="Similarity-Computation"><a href="#Similarity-Computation" class="headerlink" title="Similarity Computation"></a>Similarity Computation</h3><ol>
+<li><p>User description - Cosine similarity</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \operatorname{sim}\left(D_{N}^{A}, D_{M}^{B}\right) &=\frac{D_{N}^{A} \cdot D_{M}^{B}}{\left\|D_{N}^{A}\right\| \| D_{M}^{B}} \\ &=\frac{\sum_{i=1}^{n} D_{N i}^{A} D_{M i}^{B}}{\sqrt{\sum_{i=1}^{n} D_{N i}^{A}} \sqrt{\sum_{i=1}^{n} D_{M i}^{B_{2}^{2}}}} \end{aligned}</script></li>
+<li><p>Username and Friend - Jaccard index</p>
+<p>用户名：</p>
+<script type="math/tex; mode=display">
+J\left(U_{N}^{A}, U_{M}^{B}\right)=\frac{\left|U_{N}^{A} \cap U_{M}^{B}\right|}{\left|U_{N}^{A} \cup U_{M}^{B}\right|}</script><p>Friend：</p>
+<script type="math/tex; mode=display">
+J\left(F^{A}, F^{B}\right)=\frac{\left|F^{A} \cap F^{B}\right|}{\left|F^{A} \cup F^{B}\right|}=\frac{\left|F^{O}\right|}{\left|F^{A}\right|+\left|F^{B}\right|-\left|F^{O}\right|}</script></li>
+<li><p>Location - Matching</p>
+<p>如果最低的非空区域划分等级中是一致的，则 $Sim(L<em>{N}^{A}, L</em>{M}^{B}) = 1$, 若不匹配，则 $Sim(L<em>{N}^{A}, L</em>{M}^{B}) = 0$</p>
+</li>
+</ol>
+<h3 id="Information-Integration"><a href="#Information-Integration" class="headerlink" title="Information Integration"></a>Information Integration</h3><script type="math/tex; mode=display">
+S=\eta_{d} S_{d}+\eta_{u} S_{u}+\eta_{l} S_{l}+\eta_{f} S_{f}</script><h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2><blockquote>
+<p>Sun S , Li Q , Yan P , et al. Mapping users across social media platforms by integrating text and structure information[C]// 2017 IEEE International Conference on Intelligence and Security Informatics (ISI). IEEE, 2017.</p>
+</blockquote>
+<p>数据集来自于文章《<a href="http://dx.doi.org/10.1109%2FICME.2013.6607510" target="_blank" rel="noopener">Friend transfer: Cold-start friend recommendation with cross-platform transfer learning of social knowledge</a>》目前还没找到数据。</p>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+      
+    </div>
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/10/03/Java-%E9%AB%98%E7%BA%A7%E7%B1%BB%E7%89%B9%E6%80%A7/" rel="prev" title="Java 高级类特性">
+      <i class="fa fa-chevron-left"></i> Java 高级类特性
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/10/07/Java-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A72/" rel="next" title="Java 高级特性2">
+      Java 高级特性2 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information-2017-IEEE-ISI"><span class="nav-number">1.</span> <span class="nav-text">Mapping Users across Social Media Platforms by Integrating Text and Structure Information - 2017 IEEE ISI</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">1.1.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Research-Objective"><span class="nav-number">1.2.</span> <span class="nav-text">Research Objective</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-Statement"><span class="nav-number">1.3.</span> <span class="nav-text">Problem Statement</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Text-information-based-mapping-method"><span class="nav-number">1.3.1.</span> <span class="nav-text">Text information based mapping method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Structure-information-based-mapping-method"><span class="nav-number">1.3.2.</span> <span class="nav-text">Structure information based mapping method</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Methods"><span class="nav-number">1.4.</span> <span class="nav-text">Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Theoretical-Background"><span class="nav-number">1.4.1.</span> <span class="nav-text">Theoretical Background</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Information-representation"><span class="nav-number">1.4.2.</span> <span class="nav-text">Information representation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Similarity-Computation"><span class="nav-number">1.4.3.</span> <span class="nav-text">Similarity Computation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Information-Integration"><span class="nav-number">1.4.4.</span> <span class="nav-text">Information Integration</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Notes"><span class="nav-number">1.5.</span> <span class="nav-text">Notes</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tiantian Liu"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Tiantian Liu</p>
+  <div class="site-description" itemprop="description">The Space to record my life.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tiantianliu2018" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tiantianliu2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tiantianliu2018@outlook.com" title="E-Mail → mailto:tiantianliu2018@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tiantian liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">138k</span>
+</div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共61.8k字</span>
+  <span class="post-meta-divider">|</span>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  <span class="post-meta-divider">|</span>
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  <span class="post-meta-divider">|</span>
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共61.8k字</span>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'FhWVmso5TyqrTqtDNNtpuBeC-gzGzoHsz',
+      appKey     : 'd5yz5CVcPPfEmfA5p2ovH6g9',
+      placeholder: "欢迎交流讨论...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-CN' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
