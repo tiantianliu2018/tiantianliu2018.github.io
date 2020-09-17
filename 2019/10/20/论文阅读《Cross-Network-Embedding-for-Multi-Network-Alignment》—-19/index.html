@@ -1,163 +1,77 @@
 <!DOCTYPE html>
-<html lang=zh>
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
+<html lang="en">
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Cross-Network Embedding for Multi-Network Alignment — WWW19SummaryResearch Objective提出了一个新的跨网络的嵌入方法 CrossMNA，解决 multi-network alignment 问题。  Problem Statement锚节点（anchor nodes）：网络间共享的用户 锚链接（anchor link">
-<meta property="og:type" content="article">
-<meta property="og:title" content="论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19">
-<meta property="og:url" content="http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/index.html">
-<meta property="og:site_name" content="Kelly&#39;s Blogs">
-<meta property="og:description" content="Cross-Network Embedding for Multi-Network Alignment — WWW19SummaryResearch Objective提出了一个新的跨网络的嵌入方法 CrossMNA，解决 multi-network alignment 问题。  Problem Statement锚节点（anchor nodes）：网络间共享的用户 锚链接（anchor link">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-10-20T07:40:04.000Z">
-<meta property="article:modified_time" content="2020-09-13T01:52:01.544Z">
-<meta property="article:author" content="Kelly Liu">
-<meta property="article:tag" content="Network Alignment">
-<meta name="twitter:card" content="summary">
+  <meta charset="utf-8">
+  
+  
+    <meta name="keywords" content="CS_learn, Keep Moving...">
+  
+  
+    <meta name="description" content="The Space to record knowledge and my life.">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19 |
     
-    
-        
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
-        
-        
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
-        
-        
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
-        
-    
-    <!-- title -->
-    <title>论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19</title>
-    <!-- styles -->
-    
+    Kelly&#39;s Blogs</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
+  
     
-      
-<link rel="stylesheet" href="/css/rtl.css">
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-    
-    <!-- rss -->
-    
-    
+  
+  
+<script src="/js/pace.min.js"></script>
+
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-         
-          <li><a href="/">首页</a></li>
-         
-          <li><a href="/about/">关于</a></li>
-         
-          <li><a href="/archives/">归档</a></li>
-         
-          <li><a href="https://github.com/tiantianliu2018" target="_blank" rel="noopener">项目</a></li>
-        
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" href="/2019/10/24/Java-%E5%8F%8D%E5%B0%84/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" href="/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AJoint-Link-Prediction-and-Network-Alignment-via-Cross-graph-Embedding%E3%80%8BIJCAI19/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/&text=论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/&title=论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/&is_video=false&description=论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19&body=Check out this article: http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/&title=论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/&title=论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/&title=论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/&title=论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/&name=论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-</ul>
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-论文阅读《Cross-Network-Embedding-for-Multi-Network-Alignment》—-19" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
-    </div>
-    <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Cross-Network-Embedding-for-Multi-Network-Alignment-—-WWW19"><span class="toc-number">1.</span> <span class="toc-text">Cross-Network Embedding for Multi-Network Alignment — WWW19</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary"><span class="toc-number">1.1.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Research-Objective"><span class="toc-number">1.2.</span> <span class="toc-text">Research Objective</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-Statement"><span class="toc-number">1.3.</span> <span class="toc-text">Problem Statement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Methods"><span class="toc-number">1.4.</span> <span class="toc-text">Methods</span></a></li></ol></li></ol>
-    </div>
-  </span>
-</div>
-
+  <div class="article-inner">
     
-    <div class="content index py4">
+      <header class="article-header">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle" itemprop="name headline">
-        论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19
+  
+    <h1 class="article-title" itemprop="name">
+      论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19
     </h1>
-
-
-
-    <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">Kelly's Blogs</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2019-10-20T07:40:04.000Z" itemprop="datePublished">2019-10-20</time>
-        
-      
-    </div>
-
-
-      
-    <div class="article-category">
-        <i class="fas fa-archive"></i>
-        <a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a> › <a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Network-Alignment/">Network Alignment</a>
-    </div>
-
-
-      
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/Network-Alignment/" rel="tag">Network Alignment</a>
-    </div>
-
-
-    </div>
-  </header>
+  
   
 
-  <div class="content" itemprop="articleBody">
-    <h1 id="Cross-Network-Embedding-for-Multi-Network-Alignment-—-WWW19"><a href="#Cross-Network-Embedding-for-Multi-Network-Alignment-—-WWW19" class="headerlink" title="Cross-Network Embedding for Multi-Network Alignment — WWW19"></a>Cross-Network Embedding for Multi-Network Alignment — WWW19</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><h2 id="Research-Objective"><a href="#Research-Objective" class="headerlink" title="Research Objective"></a>Research Objective</h2><p>提出了一个新的跨网络的嵌入方法 CrossMNA，解决 multi-network alignment 问题。 </p>
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/" class="article-date">
+  <time datetime="2019-10-20T07:40:04.000Z" itemprop="datePublished">2019-10-20</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a> / <a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Network-Alignment/">Network Alignment</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h1 id="Cross-Network-Embedding-for-Multi-Network-Alignment-—-WWW19"><a href="#Cross-Network-Embedding-for-Multi-Network-Alignment-—-WWW19" class="headerlink" title="Cross-Network Embedding for Multi-Network Alignment — WWW19"></a>Cross-Network Embedding for Multi-Network Alignment — WWW19</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><h2 id="Research-Objective"><a href="#Research-Objective" class="headerlink" title="Research Objective"></a>Research Objective</h2><p>提出了一个新的跨网络的嵌入方法 CrossMNA，解决 multi-network alignment 问题。 </p>
 <h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p>锚节点（anchor nodes）：网络间共享的用户</p>
 <p>锚链接（anchor link）：跨网络的锚节点之间的关系 </p>
 <p>目前网络对齐方法存在的问题：</p>
@@ -168,139 +82,153 @@
 </ul>
 <h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><p>CrossMNA 对每一个网络提取一个额外的特征向量 network vector，反映了网络之间全局结构的差异。如果两个网络的这两个向量是相似的，那么这两个网络的全局结构是相似的。</p>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/" data-id="ckf6s582f005lxpttd17kdng2"
+         class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Network-Alignment/" rel="tag">Network Alignment</a></li></ul>
+
+    </footer>
+
   </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/10/24/Java-%E5%8F%8D%E5%B0%84/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            Java 反射
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AJoint-Link-Prediction-and-Network-Alignment-via-Cross-graph-Embedding%E3%80%8BIJCAI19/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">论文阅读《Joint Link Prediction and Network Alignment via Cross-graph Embedding》IJCAI19</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
 </article>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-         
-          <li><a href="/">首页</a></li>
-         
-          <li><a href="/about/">关于</a></li>
-         
-          <li><a href="/archives/">归档</a></li>
-         
-          <li><a href="https://github.com/tiantianliu2018" target="_blank" rel="noopener">项目</a></li>
-        
-      </ul>
-    </div>
-
-    <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Cross-Network-Embedding-for-Multi-Network-Alignment-—-WWW19"><span class="toc-number">1.</span> <span class="toc-text">Cross-Network Embedding for Multi-Network Alignment — WWW19</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary"><span class="toc-number">1.1.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Research-Objective"><span class="toc-number">1.2.</span> <span class="toc-text">Research Objective</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-Statement"><span class="toc-number">1.3.</span> <span class="toc-text">Problem Statement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Methods"><span class="toc-number">1.4.</span> <span class="toc-text">Methods</span></a></li></ol></li></ol>
-    </div>
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/&text=论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/&title=论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/&is_video=false&description=论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19&body=Check out this article: http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/&title=论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/&title=论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/&title=论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/&title=论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/&name=论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
 </ul>
-
     </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
-    </div>
-
-  </div>
-</div>
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy; 2020 Kelly Liu
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/">首页</a></li>
-         
-          <li><a href="/about/">关于</a></li>
-         
-          <li><a href="/archives/">归档</a></li>
-         
-          <li><a href="https://github.com/tiantianliu2018" target="_blank" rel="noopener">项目</a></li>
-        
-      </ul>
-    </nav>
+    <ul class="list-inline">
+      <li>&copy; 2020 Kelly&#39;s Blogs</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
   </div>
 </footer>
 
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="Kelly&#39;s Blogs"></a>
     </div>
-    <!-- styles -->
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
 
 
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+<script src="/js/lazyload.min.js"></script>
 
 
-    <!-- jquery -->
-
-<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
 
 
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
 
-<!-- clipboard -->
+
 
   
-<script src="/lib/clipboard/clipboard.min.js"></script>
-
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
-    btn += '<i class="far fa-clone"></i>';
-    btn += '</span>'; 
-    // mount it!
-    $(".highlight .code pre").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      target: function(trigger) {
-        return trigger.nextElementSibling;
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功!");
-      e.clearSelection();
-    })
-  })
-  </script>
-
-
-<script src="/js/main.js"></script>
-
-<!-- search -->
-
-<!-- Google Analytics -->
-
-<!-- Baidu Analytics -->
-
-<!-- Disqus Comments -->
+<script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
-  <!--   {% if theme.canvas_nest %} -->
-	<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
-	<!-- {% endif %} -->
-    
+
+
+<script src="/js/ocean.js"></script>
+
+
 </body>
 </html>

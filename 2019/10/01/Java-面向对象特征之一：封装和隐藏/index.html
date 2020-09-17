@@ -1,163 +1,77 @@
 <!DOCTYPE html>
-<html lang=zh>
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
+<html lang="en">
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Java 面向对象特征之一：封装和隐藏信息的封装和隐藏Java 中通过将数据声明为私有的（private），再提供公共的（public）方法：getXxx()和 setXxx() 实现对该属性的操作，以实现下述目的： 隐藏一个类中不需要对外提供的实现细节； 使用者只能通过事先定值好的方法来访问数据，可以方便地加入控制逻辑，限制对属性的不合理操作； 便于修改，增强代码的可维护性。   四种访问权限修">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java 面向对象特征之一：封装和隐藏">
-<meta property="og:url" content="http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/index.html">
-<meta property="og:site_name" content="Kelly&#39;s Blogs">
-<meta property="og:description" content="Java 面向对象特征之一：封装和隐藏信息的封装和隐藏Java 中通过将数据声明为私有的（private），再提供公共的（public）方法：getXxx()和 setXxx() 实现对该属性的操作，以实现下述目的： 隐藏一个类中不需要对外提供的实现细节； 使用者只能通过事先定值好的方法来访问数据，可以方便地加入控制逻辑，限制对属性的不合理操作； 便于修改，增强代码的可维护性。   四种访问权限修">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-10-01T01:11:54.000Z">
-<meta property="article:modified_time" content="2020-09-13T01:48:59.776Z">
-<meta property="article:author" content="Kelly Liu">
-<meta property="article:tag" content="Java">
-<meta name="twitter:card" content="summary">
+  <meta charset="utf-8">
+  
+  
+    <meta name="keywords" content="CS_learn, Keep Moving...">
+  
+  
+    <meta name="description" content="The Space to record knowledge and my life.">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Java 面向对象特征之一：封装和隐藏 |
     
-    
-        
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
-        
-        
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
-        
-        
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
-        
-    
-    <!-- title -->
-    <title>Java 面向对象特征之一：封装和隐藏</title>
-    <!-- styles -->
-    
+    Kelly&#39;s Blogs</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
+  
     
-      
-<link rel="stylesheet" href="/css/rtl.css">
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-    
-    <!-- rss -->
-    
-    
+  
+  
+<script src="/js/pace.min.js"></script>
+
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-         
-          <li><a href="/">首页</a></li>
-         
-          <li><a href="/about/">关于</a></li>
-         
-          <li><a href="/archives/">归档</a></li>
-         
-          <li><a href="https://github.com/tiantianliu2018" target="_blank" rel="noopener">项目</a></li>
-        
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" href="/2019/10/02/Java-%E6%9E%84%E9%80%A0%E5%99%A8/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" href="/2019/10/01/Java-%E5%8C%85%E5%92%8C%E5%BC%95%E7%94%A8/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/&text=Java 面向对象特征之一：封装和隐藏" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/&title=Java 面向对象特征之一：封装和隐藏" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/&is_video=false&description=Java 面向对象特征之一：封装和隐藏" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Java 面向对象特征之一：封装和隐藏&body=Check out this article: http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/&title=Java 面向对象特征之一：封装和隐藏" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/&title=Java 面向对象特征之一：封装和隐藏" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/&title=Java 面向对象特征之一：封装和隐藏" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/&title=Java 面向对象特征之一：封装和隐藏" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/&name=Java 面向对象特征之一：封装和隐藏&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-</ul>
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-Java-面向对象特征之一：封装和隐藏" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
-    </div>
-    <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-面向对象特征之一：封装和隐藏"><span class="toc-number">1.</span> <span class="toc-text">Java 面向对象特征之一：封装和隐藏</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#信息的封装和隐藏"><span class="toc-number">1.1.</span> <span class="toc-text">信息的封装和隐藏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四种访问权限修饰符"><span class="toc-number">1.2.</span> <span class="toc-text">四种访问权限修饰符</span></a></li></ol></li></ol>
-    </div>
-  </span>
-</div>
-
+  <div class="article-inner">
     
-    <div class="content index py4">
+      <header class="article-header">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle" itemprop="name headline">
-        Java 面向对象特征之一：封装和隐藏
+  
+    <h1 class="article-title" itemprop="name">
+      Java 面向对象特征之一：封装和隐藏
     </h1>
-
-
-
-    <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">Kelly's Blogs</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2019-10-01T01:11:54.000Z" itemprop="datePublished">2019-10-01</time>
-        
-      
-    </div>
-
-
-      
-    <div class="article-category">
-        <i class="fas fa-archive"></i>
-        <a class="category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-      
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/Java/" rel="tag">Java</a>
-    </div>
-
-
-    </div>
-  </header>
+  
   
 
-  <div class="content" itemprop="articleBody">
-    <h1 id="Java-面向对象特征之一：封装和隐藏"><a href="#Java-面向对象特征之一：封装和隐藏" class="headerlink" title="Java 面向对象特征之一：封装和隐藏"></a>Java 面向对象特征之一：封装和隐藏</h1><h2 id="信息的封装和隐藏"><a href="#信息的封装和隐藏" class="headerlink" title="信息的封装和隐藏"></a>信息的封装和隐藏</h2><p>Java 中通过将数据声明为私有的（private），再提供公共的（public）方法：<code>getXxx()</code>和 <code>setXxx()</code> 实现对该属性的操作，以实现下述目的：</p>
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/" class="article-date">
+  <time datetime="2019-10-01T01:11:54.000Z" itemprop="datePublished">2019-10-01</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h1 id="Java-面向对象特征之一：封装和隐藏"><a href="#Java-面向对象特征之一：封装和隐藏" class="headerlink" title="Java 面向对象特征之一：封装和隐藏"></a>Java 面向对象特征之一：封装和隐藏</h1><h2 id="信息的封装和隐藏"><a href="#信息的封装和隐藏" class="headerlink" title="信息的封装和隐藏"></a>信息的封装和隐藏</h2><p>Java 中通过将数据声明为私有的（private），再提供公共的（public）方法：<code>getXxx()</code>和 <code>setXxx()</code> 实现对该属性的操作，以实现下述目的：</p>
 <p>隐藏一个类中不需要对外提供的实现细节；</p>
 <p>使用者只能通过事先定值好的方法来访问数据，可以方便地加入控制逻辑，限制对属性的不合理操作；</p>
 <p>便于修改，增强代码的可维护性。</p>
@@ -211,139 +125,153 @@
 <p>public 类可以在任意地方被访问。</p>
 <p>default 类只可以被同一个包内部的内访问。</p>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/" data-id="ckf6s581g002gxptt4uo68wfi"
+         class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+
   </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2019/10/02/Java-%E6%9E%84%E9%80%A0%E5%99%A8/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            Java 构造器
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/10/01/Java-%E5%8C%85%E5%92%8C%E5%BC%95%E7%94%A8/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">Java 包和引用</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
 </article>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-         
-          <li><a href="/">首页</a></li>
-         
-          <li><a href="/about/">关于</a></li>
-         
-          <li><a href="/archives/">归档</a></li>
-         
-          <li><a href="https://github.com/tiantianliu2018" target="_blank" rel="noopener">项目</a></li>
-        
-      </ul>
-    </div>
-
-    <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-面向对象特征之一：封装和隐藏"><span class="toc-number">1.</span> <span class="toc-text">Java 面向对象特征之一：封装和隐藏</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#信息的封装和隐藏"><span class="toc-number">1.1.</span> <span class="toc-text">信息的封装和隐藏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四种访问权限修饰符"><span class="toc-number">1.2.</span> <span class="toc-text">四种访问权限修饰符</span></a></li></ol></li></ol>
-    </div>
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/&text=Java 面向对象特征之一：封装和隐藏" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/&title=Java 面向对象特征之一：封装和隐藏" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/&is_video=false&description=Java 面向对象特征之一：封装和隐藏" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Java 面向对象特征之一：封装和隐藏&body=Check out this article: http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/&title=Java 面向对象特征之一：封装和隐藏" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/&title=Java 面向对象特征之一：封装和隐藏" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/&title=Java 面向对象特征之一：封装和隐藏" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/&title=Java 面向对象特征之一：封装和隐藏" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/&name=Java 面向对象特征之一：封装和隐藏&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
 </ul>
-
     </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
-    </div>
-
-  </div>
-</div>
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy; 2020 Kelly Liu
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/">首页</a></li>
-         
-          <li><a href="/about/">关于</a></li>
-         
-          <li><a href="/archives/">归档</a></li>
-         
-          <li><a href="https://github.com/tiantianliu2018" target="_blank" rel="noopener">项目</a></li>
-        
-      </ul>
-    </nav>
+    <ul class="list-inline">
+      <li>&copy; 2020 Kelly&#39;s Blogs</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
   </div>
 </footer>
 
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="Kelly&#39;s Blogs"></a>
     </div>
-    <!-- styles -->
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
 
 
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+<script src="/js/lazyload.min.js"></script>
 
 
-    <!-- jquery -->
-
-<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
 
 
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
 
-<!-- clipboard -->
+
 
   
-<script src="/lib/clipboard/clipboard.min.js"></script>
-
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
-    btn += '<i class="far fa-clone"></i>';
-    btn += '</span>'; 
-    // mount it!
-    $(".highlight .code pre").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      target: function(trigger) {
-        return trigger.nextElementSibling;
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功!");
-      e.clearSelection();
-    })
-  })
-  </script>
-
-
-<script src="/js/main.js"></script>
-
-<!-- search -->
-
-<!-- Google Analytics -->
-
-<!-- Baidu Analytics -->
-
-<!-- Disqus Comments -->
+<script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
-  <!--   {% if theme.canvas_nest %} -->
-	<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
-	<!-- {% endif %} -->
-    
+
+
+<script src="/js/ocean.js"></script>
+
+
 </body>
 </html>

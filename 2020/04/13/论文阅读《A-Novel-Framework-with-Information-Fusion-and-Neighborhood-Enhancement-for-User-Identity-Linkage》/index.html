@@ -1,169 +1,77 @@
 <!DOCTYPE html>
-<html lang=zh>
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" rel="stylesheet" type="text/css">
+<html lang="en">
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》Information Fusion整合不同信息的统一框架 Profiles：screen name —&gt; 编辑距离计算相似性 Contents：将所有的帖子放在一个文档中，然后输入到 Do">
-<meta property="og:type" content="article">
-<meta property="og:title" content="论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》">
-<meta property="og:url" content="http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/index.html">
-<meta property="og:site_name" content="Kelly&#39;s Blogs">
-<meta property="og:description" content="论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》Information Fusion整合不同信息的统一框架 Profiles：screen name —&gt; 编辑距离计算相似性 Contents：将所有的帖子放在一个文档中，然后输入到 Do">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/stage1.png">
-<meta property="og:image" content="http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/stage2.png">
-<meta property="article:published_time" content="2020-04-13T07:08:10.000Z">
-<meta property="article:modified_time" content="2020-04-13T09:06:42.833Z">
-<meta property="article:author" content="Kelly Liu">
-<meta property="article:tag" content="social network">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/stage1.png">
+  <meta charset="utf-8">
+  
+  
+    <meta name="keywords" content="CS_learn, Keep Moving...">
+  
+  
+    <meta name="description" content="The Space to record knowledge and my life.">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》 |
     
-    
-        
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
-        
-        
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
-        
-        
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
-        
-    
-    <!-- title -->
-    <title>论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》</title>
-    <!-- styles -->
-    
+    Kelly&#39;s Blogs</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
+  
     
-      
-<link rel="stylesheet" href="/css/rtl.css">
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-    
-    <!-- rss -->
-    
-    
+  
+  
+<script src="/js/pace.min.js"></script>
+
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-         
-          <li><a href="/">首页</a></li>
-         
-          <li><a href="/about/">关于</a></li>
-         
-          <li><a href="/archives/">归档</a></li>
-         
-          <li><a href="https://github.com/tiantianliu2018" target="_blank" rel="noopener">项目</a></li>
-        
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" href="/2020/04/14/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AGraph-Neural-Networks-for-User-Identity-Linkage%E3%80%8B/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" href="/2020/04/07/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-Java-%E8%99%9A%E6%8B%9F%E6%9C%BA%E3%80%8BOOM-%E7%AC%94%E8%AE%B0/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/&text=论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/&title=论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/&is_video=false&description=论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》&body=Check out this article: http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/&title=论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/&title=论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/&title=论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/&title=论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/&name=论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》&description=&lt;h2 id=&#34;论文阅读《A-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage》&#34;&gt;&lt;a href=&#34;#论文阅读《A-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage》&#34; class=&#34;headerlink&#34; title=&#34;论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》&#34;&gt;&lt;/a&gt;论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》&lt;/h2&gt;&lt;h3 id=&#34;Information-Fusion&#34;&gt;&lt;a href=&#34;#Information-Fusion&#34; class=&#34;headerlink&#34; title=&#34;Information Fusion&#34;&gt;&lt;/a&gt;Information Fusion&lt;/h3&gt;&lt;p&gt;整合不同信息的统一框架&lt;/p&gt;
-&lt;p&gt;Profiles：screen name —&amp;gt; 编辑距离计算相似性&lt;/p&gt;
-&lt;p&gt;Contents：将所有的帖子放在一个文档中，然后输入到 Doc2Vec 模型计算相似性&lt;/p&gt;
-&lt;p&gt;Network Structure&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-</ul>
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-论文阅读《A-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage》" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
-    </div>
-    <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#论文阅读《A-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage》"><span class="toc-number">1.</span> <span class="toc-text">论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Information-Fusion"><span class="toc-number">1.1.</span> <span class="toc-text">Information Fusion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Neighborhood-Enhancement"><span class="toc-number">1.2.</span> <span class="toc-text">Neighborhood Enhancement</span></a></li></ol></li></ol>
-    </div>
-  </span>
-</div>
-
+  <div class="article-inner">
     
-    <div class="content index py4">
+      <header class="article-header">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle" itemprop="name headline">
-        论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》
+  
+    <h1 class="article-title" itemprop="name">
+      论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》
     </h1>
-
-
-
-    <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">Kelly's Blogs</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2020-04-13T07:08:10.000Z" itemprop="datePublished">2020-04-13</time>
-        
-      
-    </div>
-
-
-      
-    <div class="article-category">
-        <i class="fas fa-archive"></i>
-        <a class="category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>
-    </div>
-
-
-      
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/social-network/" rel="tag">social network</a>
-    </div>
-
-
-    </div>
-  </header>
+  
   
 
-  <div class="content" itemprop="articleBody">
-    <h2 id="论文阅读《A-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage》"><a href="#论文阅读《A-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage》" class="headerlink" title="论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》"></a>论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》</h2><h3 id="Information-Fusion"><a href="#Information-Fusion" class="headerlink" title="Information Fusion"></a>Information Fusion</h3><p>整合不同信息的统一框架</p>
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/" class="article-date">
+  <time datetime="2020-04-13T07:08:10.000Z" itemprop="datePublished">2020-04-13</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>
+  </div>
+
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h2 id="论文阅读《A-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage》"><a href="#论文阅读《A-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage》" class="headerlink" title="论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》"></a>论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》</h2><h3 id="Information-Fusion"><a href="#Information-Fusion" class="headerlink" title="Information Fusion"></a>Information Fusion</h3><p>整合不同信息的统一框架</p>
 <p>Profiles：screen name —&gt; 编辑距离计算相似性</p>
 <p>Contents：将所有的帖子放在一个文档中，然后输入到 Doc2Vec 模型计算相似性</p>
 <p>Network Structure</p>
@@ -172,142 +80,153 @@
 <h3 id="Neighborhood-Enhancement"><a href="#Neighborhood-Enhancement" class="headerlink" title="Neighborhood Enhancement"></a>Neighborhood Enhancement</h3><p>graph neural network</p>
 <p><img src="/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/stage2.png" alt="Neighborhood Enhancement"></p>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/" data-id="ckf6s582a0058xptt9jzz3nbu"
+         class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/social-network/" rel="tag">social network</a></li></ul>
+
+    </footer>
+
   </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/2020/04/14/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AGraph-Neural-Networks-for-User-Identity-Linkage%E3%80%8B/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            论文阅读《Graph Neural Networks for User Identity Linkage》
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/04/07/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-Java-%E8%99%9A%E6%8B%9F%E6%9C%BA%E3%80%8BOOM-%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">《深入理解 Java 虚拟机》OOM 笔记</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
 </article>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-         
-          <li><a href="/">首页</a></li>
-         
-          <li><a href="/about/">关于</a></li>
-         
-          <li><a href="/archives/">归档</a></li>
-         
-          <li><a href="https://github.com/tiantianliu2018" target="_blank" rel="noopener">项目</a></li>
-        
-      </ul>
-    </div>
-
-    <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#论文阅读《A-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage》"><span class="toc-number">1.</span> <span class="toc-text">论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Information-Fusion"><span class="toc-number">1.1.</span> <span class="toc-text">Information Fusion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Neighborhood-Enhancement"><span class="toc-number">1.2.</span> <span class="toc-text">Neighborhood Enhancement</span></a></li></ol></li></ol>
-    </div>
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/&text=论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/&title=论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/&is_video=false&description=论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》&body=Check out this article: http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/&title=论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/&title=论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/&title=论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/&title=论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://tiantianliu2018.github.io/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/&name=论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》&description=&lt;h2 id=&#34;论文阅读《A-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage》&#34;&gt;&lt;a href=&#34;#论文阅读《A-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage》&#34; class=&#34;headerlink&#34; title=&#34;论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》&#34;&gt;&lt;/a&gt;论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》&lt;/h2&gt;&lt;h3 id=&#34;Information-Fusion&#34;&gt;&lt;a href=&#34;#Information-Fusion&#34; class=&#34;headerlink&#34; title=&#34;Information Fusion&#34;&gt;&lt;/a&gt;Information Fusion&lt;/h3&gt;&lt;p&gt;整合不同信息的统一框架&lt;/p&gt;
-&lt;p&gt;Profiles：screen name —&amp;gt; 编辑距离计算相似性&lt;/p&gt;
-&lt;p&gt;Contents：将所有的帖子放在一个文档中，然后输入到 Doc2Vec 模型计算相似性&lt;/p&gt;
-&lt;p&gt;Network Structure&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
 </ul>
-
     </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
-    </div>
-
-  </div>
-</div>
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy; 2020 Kelly Liu
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/">首页</a></li>
-         
-          <li><a href="/about/">关于</a></li>
-         
-          <li><a href="/archives/">归档</a></li>
-         
-          <li><a href="https://github.com/tiantianliu2018" target="_blank" rel="noopener">项目</a></li>
-        
-      </ul>
-    </nav>
+    <ul class="list-inline">
+      <li>&copy; 2020 Kelly&#39;s Blogs</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
   </div>
 </footer>
 
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="Kelly&#39;s Blogs"></a>
     </div>
-    <!-- styles -->
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
 
 
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+<script src="/js/lazyload.min.js"></script>
 
 
-    <!-- jquery -->
-
-<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/js/snap.svg-min.js"></script>
 
 
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
 
-<!-- clipboard -->
+
 
   
-<script src="/lib/clipboard/clipboard.min.js"></script>
-
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
-    btn += '<i class="far fa-clone"></i>';
-    btn += '</span>'; 
-    // mount it!
-    $(".highlight .code pre").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      target: function(trigger) {
-        return trigger.nextElementSibling;
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功!");
-      e.clearSelection();
-    })
-  })
-  </script>
-
-
-<script src="/js/main.js"></script>
-
-<!-- search -->
-
-<!-- Google Analytics -->
-
-<!-- Baidu Analytics -->
-
-<!-- Disqus Comments -->
+<script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
-  <!--   {% if theme.canvas_nest %} -->
-	<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
-	<!-- {% endif %} -->
-    
+
+
+<script src="/js/ocean.js"></script>
+
+
 </body>
 </html>
