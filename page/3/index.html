@@ -1,424 +1,755 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  
-    <meta name="keywords" content="CS_learn, Keep Moving...">
-  
-  
-    <meta name="description" content="The Space to record knowledge and my life.">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
-    
-    Kelly&#39;s Blogs</title>
-  
-    <link rel="shortcut icon" href="/favicon.ico">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8332.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8316.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/css/main.css">
 
-  
-  
-<script src="/js/pace.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-<body>
-<main class="content">
-  <section class="jumbotron">
-  <div class="video">
-    
-      <div class="video-frame">
-        <img src="/images/ocean/overlay-hero.png" alt="Decorative image frame">
-      </div>
-    
-    <div class="video-media">
-      <video playsinline="" autoplay="" loop="" muted="" data-autoplay=""
-             poster="/images/ocean/ocean.png" x5-video-player-type="h5">
-        <source src="/images/ocean/ocean.mp4" type="video/mp4">
-        <source src="/images/ocean/ocean.ogv" type="video/ogg">
-        <source src="/images/ocean/ocean.webm" type="video/webm">
-        <p>Your user agent does not support the HTML5 Video element.</p>
-      </video>
-      <div class="video-overlay"></div>
-    </div>
-    <div class="video-inner text-center text-white">
-      <h1><a href="/">Kelly&#39;s Blogs</a></h1>
-      <p>To Be Better</p>
-      <div><img src="/images/hexo-inverted.svg" class="brand" alt="Kelly&#39;s Blogs"></div>
-    </div>
-    <div class="video-learn-more">
-      <a class="anchor" href="#landingpage"><i class="fe fe-mouse"></i></a>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="The Space to record knowledge and my life.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kelly&#39;s Blogs">
+<meta property="og:url" content="http://tiantianliu2018.github.io/page/3/index.html">
+<meta property="og:site_name" content="Kelly&#39;s Blogs">
+<meta property="og:description" content="The Space to record knowledge and my life.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Kelly Liu">
+<meta property="article:tag" content="CS_learn">
+<meta property="article:tag" content=" Keep Moving...">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://tiantianliu2018.github.io/page/3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false
+  };
+</script>
+
+  <title>Kelly's Blogs</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
-</section>
 
-<div id="landingpage">
-  <section class="outer">
-  <article class="articles">
-    
-    <h1 class="page-type-title"></h1>
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Kelly's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">To Be Better</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">36</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">37</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">80</span></a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
       
-        <article id="post-华为云服务器大数据环境配置" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/22/%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
 
-  <div class="article-inner">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/22/%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">华为云服务器大数据环境配置</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-22 13:51:21 / 修改时间：15:41:35" itemprop="dateCreated datePublished" datetime="2020-03-22T13:51:21+08:00">2020-03-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" itemprop="url" rel="index"><span itemprop="name">软件安装</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
     
-      <header class="article-header">
-        
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/22/%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/22/%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" itemprop="commentCount"></span>
+    </a>
+  </span>
   
-    <h2 itemprop="name">
-      <a class="article-title" href="/2020/03/22/%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">华为云服务器大数据环境配置</a>
-    </h2>
-  
-  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.4k</span>
+            </span>
 
-
-
-
+        </div>
       </header>
-    
 
     
-      <div class="article-meta">
-        <a href="/2020/03/22/%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="article-date">
-  <time datetime="2020-03-22T05:51:21.000Z" itemprop="datePublished">2020-03-22</time>
-</a>
-        
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">软件安装</a>
-  </div>
-
-      </div>
     
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="华为云服务器大数据环境配置"><a href="#华为云服务器大数据环境配置" class="headerlink" title="华为云服务器大数据环境配置"></a>华为云服务器大数据环境配置</h2><p>参加牛客🐂的活动，买了一台华为云服务器，40G，可以搭建一个伪分布式的大数据环境用来学习，终于可以放过自己的小本本了，开心😍🤗</p>
+          <h2 id="华为云服务器大数据环境配置"><a href="#华为云服务器大数据环境配置" class="headerlink" title="华为云服务器大数据环境配置"></a>华为云服务器大数据环境配置</h2><p>参加牛客🐂的活动，买了一台华为云服务器，40G，可以搭建一个伪分布式的大数据环境用来学习，终于可以放过自己的小本本了，开心😍🤗</p>
 <h3 id="一、Hadoop-伪分布式安装与配置"><a href="#一、Hadoop-伪分布式安装与配置" class="headerlink" title="一、Hadoop 伪分布式安装与配置"></a>一、Hadoop 伪分布式安装与配置</h3><p>参考博客：<a href="https://bbs.huaweicloud.com/forum/thread-27950-1-1.html" target="_blank" rel="noopener">“化鲲为鹏，我有话说”十七，基于鲲鹏搭建 Hadoop 伪分布式环境</a></p>
 <h4 id="1-Java-环境配置"><a href="#1-Java-环境配置" class="headerlink" title="1. Java 环境配置"></a>1. Java 环境配置</h4><p>安装 JDK1.8 并配置 JAVA_HOME<br></p>
-        
-          <a class="article-more-link" href="/2020/03/22/%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">Read More...</a>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/22/%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
         
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://tiantianliu2018.github.io/2020/03/22/%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" data-id="ckf6s5823004nxpttggl4gxq6"
-         class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">大数据</a></li></ul>
 
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-Java-Thread-源码阅读笔记" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
     
-      <header class="article-header">
-        
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
-    <h2 itemprop="name">
-      <a class="article-title" href="/2020/03/20/Java-Thread-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">Java Thread 源码阅读笔记</a>
-    </h2>
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/20/Java-Thread-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
 
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/20/Java-Thread-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Java Thread 源码阅读笔记</a>
+        </h1>
 
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-20 10:34:38" itemprop="dateCreated datePublished" datetime="2020-03-20T10:34:38+08:00">2020-03-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-26 10:42:40" itemprop="dateModified" datetime="2020-03-26T10:42:40+08:00">2020-03-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/20/Java-Thread-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/20/Java-Thread-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2k</span>
+            </span>
+
+        </div>
       </header>
-    
 
     
-      <div class="article-meta">
-        <a href="/2020/03/20/Java-Thread-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-03-20T02:34:38.000Z" itemprop="datePublished">2020-03-20</time>
-</a>
-        
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-  </div>
-
-      </div>
     
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="java-lang-Thread-源码阅读笔记"><a href="#java-lang-Thread-源码阅读笔记" class="headerlink" title="java.lang.Thread 源码阅读笔记"></a>java.lang.Thread 源码阅读笔记</h2><p>Thread 类实现了 Runnable 接口</p>
+          <h2 id="java-lang-Thread-源码阅读笔记"><a href="#java-lang-Thread-源码阅读笔记" class="headerlink" title="java.lang.Thread 源码阅读笔记"></a>java.lang.Thread 源码阅读笔记</h2><p>Thread 类实现了 Runnable 接口</p>
 <p>sleep,  yield, join, wait 方法的比较</p>
-        
-          <a class="article-more-link" href="/2020/03/20/Java-Thread-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">Read More...</a>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/20/Java-Thread-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
         
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://tiantianliu2018.github.io/2020/03/20/Java-Thread-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" data-id="ckf6s5815001cxptten2ve9xd"
-         class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag">Java基础</a></li></ul>
 
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-Java-AtomicInteger-源码阅读笔记" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
     
-      <header class="article-header">
-        
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
-    <h2 itemprop="name">
-      <a class="article-title" href="/2020/03/20/Java-AtomicInteger-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">Java AtomicInteger 源码阅读笔记</a>
-    </h2>
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/20/Java-AtomicInteger-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
 
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/20/Java-AtomicInteger-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Java AtomicInteger 源码阅读笔记</a>
+        </h1>
 
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-20 09:26:12" itemprop="dateCreated datePublished" datetime="2020-03-20T09:26:12+08:00">2020-03-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-26 10:43:01" itemprop="dateModified" datetime="2020-03-26T10:43:01+08:00">2020-03-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/20/Java-AtomicInteger-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/20/Java-AtomicInteger-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.5k</span>
+            </span>
+
+        </div>
       </header>
-    
 
     
-      <div class="article-meta">
-        <a href="/2020/03/20/Java-AtomicInteger-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-03-20T01:26:12.000Z" itemprop="datePublished">2020-03-20</time>
-</a>
-        
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-  </div>
-
-      </div>
     
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="java-util-concurrent-AtomicInteger-源码阅读笔记"><a href="#java-util-concurrent-AtomicInteger-源码阅读笔记" class="headerlink" title="java.util.concurrent.AtomicInteger 源码阅读笔记"></a>java.util.concurrent.AtomicInteger 源码阅读笔记</h2><h3 id="CAS-机制"><a href="#CAS-机制" class="headerlink" title="CAS 机制"></a>CAS 机制</h3><p><strong>自旋锁 + Unsafe类</strong></p>
+          <h2 id="java-util-concurrent-AtomicInteger-源码阅读笔记"><a href="#java-util-concurrent-AtomicInteger-源码阅读笔记" class="headerlink" title="java.util.concurrent.AtomicInteger 源码阅读笔记"></a>java.util.concurrent.AtomicInteger 源码阅读笔记</h2><h3 id="CAS-机制"><a href="#CAS-机制" class="headerlink" title="CAS 机制"></a>CAS 机制</h3><p><strong>自旋锁 + Unsafe类</strong></p>
 <p>比较当前工作内存中的值和主物理内存中的值，相同则执行规定操作，否则比较直到主内存和工作内存中的值一致为止。</p>
 <h3 id="CAS-底层原理"><a href="#CAS-底层原理" class="headerlink" title="CAS 底层原理"></a>CAS 底层原理</h3><p>CAS的原理是拿期望的值和原本的一个值作比较，如果相同则更新成新的值。</p>
 <p>UnSafe 类的 objectFieldOffset() 方法是一个本地方法，这个方法是用来拿到“原来的值”的内存地址，返回值是 valueOffset。</p>
 <p>value 是由 volatile 修饰的，保证了value修改的可见性，在任何时刻任何线程总能拿到该变量的最新值。</p>
-        
-          <a class="article-more-link" href="/2020/03/20/Java-AtomicInteger-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">Read More...</a>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://tiantianliu2018.github.io/2020/03/20/Java-AtomicInteger-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" data-id="ckf6s58120015xpttdu350qo3"
-         class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-%E5%9F%BA%E7%A1%80/" rel="tag">Java 基础</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-SpringBoot-2-x-学习一" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2020/03/19/SpringBoot-2-x-%E5%AD%A6%E4%B9%A0%E4%B8%80/">SpringBoot 2.x 学习一</a>
-    </h2>
-  
-  
-
-
-
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2020/03/19/SpringBoot-2-x-%E5%AD%A6%E4%B9%A0%E4%B8%80/" class="article-date">
-  <time datetime="2020-03-19T07:54:38.000Z" itemprop="datePublished">2020-03-19</time>
-</a>
-        
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a>
-  </div>
-
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <h2 id="SpringBoot-学习记录"><a href="#SpringBoot-学习记录" class="headerlink" title="SpringBoot 学习记录"></a>SpringBoot 学习记录</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://tiantianliu2018.github.io/2020/03/19/SpringBoot-2-x-%E5%AD%A6%E4%B9%A0%E4%B8%80/" data-id="ckf6s581v003rxptt78d70k9t"
-         class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-ThreadLocal 学习" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2020/03/17/ThreadLocal%20%E5%AD%A6%E4%B9%A0/">ThreadLocal 学习</a>
-    </h2>
-  
-  
-
-
-
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2020/03/17/ThreadLocal%20%E5%AD%A6%E4%B9%A0/" class="article-date">
-  <time datetime="2020-03-17T12:57:20.798Z" itemprop="datePublished">2020-03-17</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <h2 id="ThreadLocal-学习"><a href="#ThreadLocal-学习" class="headerlink" title="ThreadLocal 学习"></a>ThreadLocal 学习</h2><h3 id="一、是什么"><a href="#一、是什么" class="headerlink" title="一、是什么"></a>一、是什么</h3><p><code>java.lang.ThreadLocal&lt;T&gt;</code> 根据 Java 8 Docs 的翻译，ThreadLocal 提供线程局部变量，每一个线程都有一个独立的变量副本。ThreadLocal 一般是一个类的 private static 字段。</p>
-        
-          <a class="article-more-link" href="/2020/03/17/ThreadLocal%20%E5%AD%A6%E4%B9%A0/">Read More...</a>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/20/Java-AtomicInteger-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
         
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://tiantianliu2018.github.io/2020/03/17/ThreadLocal%20%E5%AD%A6%E4%B9%A0/" data-id="ckf6s581w003uxptt9tre3qhq"
-         class="article-share-link">Share</a>
-      
-    </footer>
 
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-Java-ArrayList-那些小事情" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
     
-      <header class="article-header">
-        
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
-    <h2 itemprop="name">
-      <a class="article-title" href="/2020/03/15/Java-ArrayList-%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%BA%8B%E6%83%85/">Java ArrayList 那些小事情</a>
-    </h2>
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/19/SpringBoot-2-x-%E5%AD%A6%E4%B9%A0%E4%B8%80/">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
 
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/19/SpringBoot-2-x-%E5%AD%A6%E4%B9%A0%E4%B8%80/" class="post-title-link" itemprop="url">SpringBoot 2.x 学习一</a>
+        </h1>
 
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-19 15:54:38 / 修改时间：15:59:00" itemprop="dateCreated datePublished" datetime="2020-03-19T15:54:38+08:00">2020-03-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/19/SpringBoot-2-x-%E5%AD%A6%E4%B9%A0%E4%B8%80/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/19/SpringBoot-2-x-%E5%AD%A6%E4%B9%A0%E4%B8%80/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>14</span>
+            </span>
+
+        </div>
       </header>
-    
 
     
-      <div class="article-meta">
-        <a href="/2020/03/15/Java-ArrayList-%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%BA%8B%E6%83%85/" class="article-date">
-  <time datetime="2020-03-15T02:32:51.000Z" itemprop="datePublished">2020-03-15</time>
-</a>
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="SpringBoot-学习记录"><a href="#SpringBoot-学习记录" class="headerlink" title="SpringBoot 学习记录"></a>SpringBoot 学习记录</h2>
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/17/ThreadLocal%20%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/17/ThreadLocal%20%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">ThreadLocal 学习</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-17 20:57:20" itemprop="dateCreated datePublished" datetime="2020-03-17T20:57:20+08:00">2020-03-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-26 10:41:38" itemprop="dateModified" datetime="2020-03-26T10:41:38+08:00">2020-03-26</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/17/ThreadLocal%20%E5%AD%A6%E4%B9%A0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/17/ThreadLocal%20%E5%AD%A6%E4%B9%A0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.7k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="ThreadLocal-学习"><a href="#ThreadLocal-学习" class="headerlink" title="ThreadLocal 学习"></a>ThreadLocal 学习</h2><h3 id="一、是什么"><a href="#一、是什么" class="headerlink" title="一、是什么"></a>一、是什么</h3><p><code>java.lang.ThreadLocal&lt;T&gt;</code> 根据 Java 8 Docs 的翻译，ThreadLocal 提供线程局部变量，每一个线程都有一个独立的变量副本。ThreadLocal 一般是一个类的 private static 字段。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/17/ThreadLocal%20%E5%AD%A6%E4%B9%A0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
         
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-  </div>
+      
+    </div>
 
-      </div>
+    
+    
     
 
-    <div class="article-entry" itemprop="articleBody">
+    <div>
       
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
       
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/15/Java-ArrayList-%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%BA%8B%E6%83%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/15/Java-ArrayList-%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%BA%8B%E6%83%85/" class="post-title-link" itemprop="url">Java ArrayList 那些小事情</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-15 10:32:51" itemprop="dateCreated datePublished" datetime="2020-03-15T10:32:51+08:00">2020-03-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-28 23:45:05" itemprop="dateModified" datetime="2020-03-28T23:45:05+08:00">2020-03-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/15/Java-ArrayList-%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%BA%8B%E6%83%85/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/15/Java-ArrayList-%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%BA%8B%E6%83%85/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>226</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="ArrayList-那些小事情"><a href="#ArrayList-那些小事情" class="headerlink" title="ArrayList 那些小事情"></a>ArrayList 那些小事情</h2><p>我们都知道在 Java Collection 集合中 ，ArrayList 是最常用的，但不能保证线程安全的集合类。如何进行改进呢？</p>
+          <h2 id="ArrayList-那些小事情"><a href="#ArrayList-那些小事情" class="headerlink" title="ArrayList 那些小事情"></a>ArrayList 那些小事情</h2><p>我们都知道在 Java Collection 集合中 ，ArrayList 是最常用的，但不能保证线程安全的集合类。如何进行改进呢？</p>
 <ol>
 <li>Vector 类</li>
 <li>Collections.synchronizedList</li>
@@ -427,405 +758,712 @@
 <h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><h3 id="Collections-synchronizedList"><a href="#Collections-synchronizedList" class="headerlink" title="Collections.synchronizedList"></a>Collections.synchronizedList</h3><h3 id="java-util-concurrent-CopyOnWriteArrayList"><a href="#java-util-concurrent-CopyOnWriteArrayList" class="headerlink" title="java.util.concurrent.CopyOnWriteArrayList"></a>java.util.concurrent.CopyOnWriteArrayList</h3><h3 id><a href="#" class="headerlink" title=" "></a> </h3>
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://tiantianliu2018.github.io/2020/03/15/Java-ArrayList-%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%BA%8B%E6%83%85/" data-id="ckf6s580v000wxpttbw0l1wgl"
-         class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-%E5%9F%BA%E7%A1%80/" rel="tag">Java 基础</a></li></ul>
 
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-Java-开发错误记录1" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
     
-      <header class="article-header">
-        
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
-    <h2 itemprop="name">
-      <a class="article-title" href="/2020/03/15/Java-%E5%BC%80%E5%8F%91%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%951/">Java 开发错误记录1</a>
-    </h2>
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/15/Java-%E5%BC%80%E5%8F%91%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%951/">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
 
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/15/Java-%E5%BC%80%E5%8F%91%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%951/" class="post-title-link" itemprop="url">Java 开发错误记录1</a>
+        </h1>
 
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-15 09:56:10" itemprop="dateCreated datePublished" datetime="2020-03-15T09:56:10+08:00">2020-03-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-20 11:30:51" itemprop="dateModified" datetime="2020-03-20T11:30:51+08:00">2020-03-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">开发错误记录</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/15/Java-%E5%BC%80%E5%8F%91%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%951/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/15/Java-%E5%BC%80%E5%8F%91%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%951/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>239</span>
+            </span>
+
+        </div>
       </header>
-    
 
     
-      <div class="article-meta">
-        <a href="/2020/03/15/Java-%E5%BC%80%E5%8F%91%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%951/" class="article-date">
-  <time datetime="2020-03-15T01:56:10.000Z" itemprop="datePublished">2020-03-15</time>
-</a>
-        
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/">开发错误记录</a>
-  </div>
-
-      </div>
     
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Java-开发错误记录"><a href="#Java-开发错误记录" class="headerlink" title="Java 开发错误记录"></a>Java 开发错误记录</h2><p>记录开发中遇到的错误，希望可以避免再犯。</p>
+          <h2 id="Java-开发错误记录"><a href="#Java-开发错误记录" class="headerlink" title="Java 开发错误记录"></a>Java 开发错误记录</h2><p>记录开发中遇到的错误，希望可以避免再犯。</p>
 <p>成长为一个优秀的 Java 工程师，在犯错改错，避免再犯的路上一直前进！</p>
-        
-          <a class="article-more-link" href="/2020/03/15/Java-%E5%BC%80%E5%8F%91%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%951/">Read More...</a>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/15/Java-%E5%BC%80%E5%8F%91%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%951/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
         
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://tiantianliu2018.github.io/2020/03/15/Java-%E5%BC%80%E5%8F%91%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%951/" data-id="ckf6s5816001gxptt941wb5sy"
-         class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-Spring-Data-Jpa-二" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
     
-      <header class="article-header">
-        
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
-    <h2 itemprop="name">
-      <a class="article-title" href="/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/">Spring Data Jpa (二)</a>
-    </h2>
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
 
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/" class="post-title-link" itemprop="url">Spring Data Jpa (二)</a>
+        </h1>
 
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-06 23:27:26" itemprop="dateCreated datePublished" datetime="2020-03-06T23:27:26+08:00">2020-03-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-11 20:39:04" itemprop="dateModified" datetime="2020-03-11T20:39:04+08:00">2020-03-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.4k</span>
+            </span>
+
+        </div>
       </header>
-    
 
     
-      <div class="article-meta">
-        <a href="/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/" class="article-date">
-  <time datetime="2020-03-06T15:27:26.000Z" itemprop="datePublished">2020-03-06</time>
-</a>
-        
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a>
-  </div>
-
-      </div>
     
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Spring-Data-JPA-二"><a href="#Spring-Data-JPA-二" class="headerlink" title="Spring Data JPA  (二)"></a>Spring Data JPA  (二)</h2><h3 id="一、定义查询方法"><a href="#一、定义查询方法" class="headerlink" title="一、定义查询方法"></a>一、定义查询方法</h3><p>两种定义查询方法：</p>
+          <h2 id="Spring-Data-JPA-二"><a href="#Spring-Data-JPA-二" class="headerlink" title="Spring Data JPA  (二)"></a>Spring Data JPA  (二)</h2><h3 id="一、定义查询方法"><a href="#一、定义查询方法" class="headerlink" title="一、定义查询方法"></a>一、定义查询方法</h3><p>两种定义查询方法：</p>
 <ol>
 <li>从方法名派生查询</li>
 <li>手动定义 @Query</li>
 </ol>
 <p>待查询功能的方法名由查询策略（关键字）、查 询字段和一些限制性条件组成。</p>
 <p>一些关键字：And，Or，Is，Equals，Between，LessThan，IsNull，Like，OrderBy，Not，In，IgnoreCase 等</p>
-        
-          <a class="article-more-link" href="/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/">Read More...</a>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
         
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://tiantianliu2018.github.io/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/" data-id="ckf6s58200048xptt2dlk5eac"
-         class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
 
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-Spring-Data-JPA-一" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
     
-      <header class="article-header">
-        
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
-    <h2 itemprop="name">
-      <a class="article-title" href="/2020/03/05/Spring-Data-JPA-%E4%B8%80/">Spring Data JPA (一)</a>
-    </h2>
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/05/Spring-Data-JPA-%E4%B8%80/">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
 
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/05/Spring-Data-JPA-%E4%B8%80/" class="post-title-link" itemprop="url">Spring Data JPA (一)</a>
+        </h1>
 
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-05 16:59:28" itemprop="dateCreated datePublished" datetime="2020-03-05T16:59:28+08:00">2020-03-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-22 14:32:25" itemprop="dateModified" datetime="2020-03-22T14:32:25+08:00">2020-03-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/05/Spring-Data-JPA-%E4%B8%80/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/05/Spring-Data-JPA-%E4%B8%80/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+
+        </div>
       </header>
-    
 
     
-      <div class="article-meta">
-        <a href="/2020/03/05/Spring-Data-JPA-%E4%B8%80/" class="article-date">
-  <time datetime="2020-03-05T08:59:28.000Z" itemprop="datePublished">2020-03-05</time>
-</a>
-        
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a>
-  </div>
-
-      </div>
     
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Spring-Data-JPA"><a href="#Spring-Data-JPA" class="headerlink" title="Spring Data JPA"></a>Spring Data JPA</h2><h3 id="一-JPA"><a href="#一-JPA" class="headerlink" title="一. JPA"></a>一. JPA</h3><p>JPA 是 <code>Java Persistence API</code> 的简称，包括：</p>
+          <h2 id="Spring-Data-JPA"><a href="#Spring-Data-JPA" class="headerlink" title="Spring Data JPA"></a>Spring Data JPA</h2><h3 id="一-JPA"><a href="#一-JPA" class="headerlink" title="一. JPA"></a>一. JPA</h3><p>JPA 是 <code>Java Persistence API</code> 的简称，包括：</p>
 <ol>
 <li>一套 API 标准</li>
 <li>面向对象的查询语言</li>
 <li>ORM(object/relational metadata) 元数据的映射</li>
 </ol>
-        
-          <a class="article-more-link" href="/2020/03/05/Spring-Data-JPA-%E4%B8%80/">Read More...</a>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://tiantianliu2018.github.io/2020/03/05/Spring-Data-JPA-%E4%B8%80/" data-id="ckf6s581r003jxptt0qk9hfpc"
-         class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JPA/" rel="tag">JPA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-Mac-安装配置Hadoop-3-X-采坑记录" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2020/03/04/Mac-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEHadoop-3-X-%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/">Mac 安装配置Hadoop 3.X 采坑记录</a>
-    </h2>
-  
-  
-
-
-
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2020/03/04/Mac-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEHadoop-3-X-%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/" class="article-date">
-  <time datetime="2020-03-04T00:37:13.000Z" itemprop="datePublished">2020-03-04</time>
-</a>
-        
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">软件安装</a>
-  </div>
-
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-      
-
-      
-        <h2 id="Mac-安装配置Hadoop-3-X-采坑记录"><a href="#Mac-安装配置Hadoop-3-X-采坑记录" class="headerlink" title="Mac 安装配置Hadoop 3.X 采坑记录"></a>Mac 安装配置Hadoop 3.X 采坑记录</h2><p>想要学习Hadoop，于是在Mac本机上想要配置Hadoop 伪分布式集群，折腾了一上午，在各种报错修改下，终于搞定了，于是写下该文，供参考。</p>
-<p>环境配置基础：</p>
-<p>已经安装 JDK1.8，homebrew， 具体细节不做阐述</p>
-        
-          <a class="article-more-link" href="/2020/03/04/Mac-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEHadoop-3-X-%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/">Read More...</a>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/05/Spring-Data-JPA-%E4%B8%80/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
         
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://tiantianliu2018.github.io/2020/03/04/Mac-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEHadoop-3-X-%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/" data-id="ckf6s581n0034xptt5uf5e5e1"
-         class="article-share-link">Share</a>
+
+    
+    
+    
+
+    <div>
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">大数据</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
   </article>
   
-
   
-    <nav class="page-nav">
+  
+
       
-      <a class="extend prev" rel="prev" href="/page/2/">Prev page</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">Next page</a>
-    </nav>
   
-</section>
-</div>
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/04/Mac-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEHadoop-3-X-%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/">
 
-  <footer class="footer">
-  <div class="outer">
-    <div class="float-right">
-      <ul class="list-inline">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/04/Mac-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEHadoop-3-X-%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">Mac 安装配置Hadoop 3.X 采坑记录</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-04 08:37:13" itemprop="dateCreated datePublished" datetime="2020-03-04T08:37:13+08:00">2020-03-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-22 14:31:30" itemprop="dateModified" datetime="2020-03-22T14:31:30+08:00">2020-03-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" itemprop="url" rel="index"><span itemprop="name">软件安装</span></a>
+                </span>
+            </span>
+
+          
   
-    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/04/Mac-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEHadoop-3-X-%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/04/Mac-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEHadoop-3-X-%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
   
-</ul>
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.8k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Mac-安装配置Hadoop-3-X-采坑记录"><a href="#Mac-安装配置Hadoop-3-X-采坑记录" class="headerlink" title="Mac 安装配置Hadoop 3.X 采坑记录"></a>Mac 安装配置Hadoop 3.X 采坑记录</h2><p>想要学习Hadoop，于是在Mac本机上想要配置Hadoop 伪分布式集群，折腾了一上午，在各种报错修改下，终于搞定了，于是写下该文，供参考。</p>
+<p>环境配置基础：</p>
+<p>已经安装 JDK1.8，homebrew， 具体细节不做阐述</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/04/Mac-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEHadoop-3-X-%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
     </div>
-    <ul class="list-inline">
-      <li>&copy; 2020 Kelly&#39;s Blogs</li>
-      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
-      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
-    </ul>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
   </div>
-</footer>
 
-</main>
-<aside class="sidebar">
-  <button class="navbar-toggle"></button>
-
-<nav class="navbar">
   
-    <div class="logo">
-      <a href="/"><img src="/images/hexo.svg" alt="Kelly&#39;s Blogs"></a>
-    </div>
-  
-  <ul class="nav nav-main">
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/">Home</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/archives">Archives</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/gallery">Gallery</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/about">About</a>
-      </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="搜索">
-        <i class="fe fe-search"></i>
-        Search
-      </a>
-    </li>
-  </ul>
-</nav>
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      <div class="totop" id="totop">
-  <i class="fe fe-rocket"></i>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kelly Liu"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Kelly Liu</p>
+  <div class="site-description" itemprop="description">The Space to record knowledge and my life.</div>
 </div>
-    </li>
-    <li class="nav-item">
-      
-        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-          <i class="fe fe-feed"></i>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-name">日志</span>
         </a>
-      
-    </li>
-  </ul>
-</nav>
-
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tiantianliu2018" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tiantianliu2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tiantianliu2018@outlook.com" title="E-Mail → mailto:tiantianliu2018@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kelly liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">143k</span>
 </div>
-</aside>
 
-<script src="/js/jquery-2.0.3.min.js"></script>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共65k字</span>
+  <span class="post-meta-divider">|</span>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  <span class="post-meta-divider">|</span>
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  <span class="post-meta-divider">|</span>
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共65k字</span>
+</div>
 
 
-<script src="/js/lazyload.min.js"></script>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
-<script src="/js/snap.svg-min.js"></script>
 
 
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
 
 
-<script src="/js/ocean.js"></script>
 
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'FhWVmso5TyqrTqtDNNtpuBeC-gzGzoHsz',
+      appKey     : 'd5yz5CVcPPfEmfA5p2ovH6g9',
+      placeholder: "欢迎交流讨论...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-CN' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
 
 </body>
 </html>
