@@ -74,15 +74,15 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/" target="_blank">主页</a></li>
+				<li><a href="/" >主页</a></li>
 			
-				<li><a href="/archives/" target="_blank">笔记</a></li>
+				<li><a href="/archives/" >笔记</a></li>
 			
-				<li><a href="/categories/" target="_blank">分类</a></li>
+				<li><a href="/categories/" >分类</a></li>
 			
-				<li><a href="/archives/" target="_blank">归档</a></li>
+				<li><a href="/archives/" >归档</a></li>
 			
-				<li><a href="/about/" target="_blank">关于</a></li>
+				<li><a href="/about/" >关于</a></li>
 			
 			</ul>
 		</nav>
@@ -103,7 +103,7 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" href="https://github.com/tiantianliu2018" title="GitHub" target="_blank"><i class="icon-github"></i></a>
+					<a class="github" href="https://github.com/tiantianliu2018" target="_blank" rel="noopener" title="GitHub" ><i class="icon-github"></i></a>
 				
 			</div>
 		
@@ -619,6 +619,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DQL-Review"><span class="toc-number">1.</span> <span class="toc-text">DQL Review</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查询表中的字段"><span class="toc-number">1.0.1.</span> <span class="toc-text">查询表中的字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-DISTINCT-过滤重复数据"><span class="toc-number">1.0.2.</span> <span class="toc-text">使用 DISTINCT 过滤重复数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-LIMIT-限制查询结果的条数"><span class="toc-number">1.0.3.</span> <span class="toc-text">使用 LIMIT 限制查询结果的条数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-ODER-BY-排序"><span class="toc-number">1.0.4.</span> <span class="toc-text">使用 ODER BY 排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-WHERE-条件查询"><span class="toc-number">1.0.5.</span> <span class="toc-text">使用 WHERE 条件查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模糊查询"><span class="toc-number">1.0.6.</span> <span class="toc-text">模糊查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BETWEEN-AND-范围查询"><span class="toc-number">1.0.7.</span> <span class="toc-text">BETWEEN AND 范围查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#空值查询"><span class="toc-number">1.0.8.</span> <span class="toc-text">空值查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GROUP-BY-分组查询"><span class="toc-number">1.0.9.</span> <span class="toc-text">GROUP BY 分组查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HAVING-过滤分组"><span class="toc-number">1.0.10.</span> <span class="toc-text">HAVING 过滤分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连接"><span class="toc-number">1.0.11.</span> <span class="toc-text">连接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#COSS-JOIN-交叉连接-—-笛卡尔积"><span class="toc-number">1.0.11.1.</span> <span class="toc-text">COSS JOIN 交叉连接  — 笛卡尔积</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#INNER-JOIN-内连接"><span class="toc-number">1.0.11.2.</span> <span class="toc-text">INNER JOIN 内连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LEFT-RIGHT-JOIN-外连接"><span class="toc-number">1.0.11.3.</span> <span class="toc-text">LEFT&#x2F;RIGHT JOIN 外连接</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子查询"><span class="toc-number">1.0.12.</span> <span class="toc-text">子查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#联合查询"><span class="toc-number">1.0.13.</span> <span class="toc-text">联合查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#处理无效数据"><span class="toc-number">1.0.14.</span> <span class="toc-text">处理无效数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用函数"><span class="toc-number">1.1.</span> <span class="toc-text">常用函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串函数"><span class="toc-number">1.1.1.</span> <span class="toc-text">字符串函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数值函数"><span class="toc-number">1.1.2.</span> <span class="toc-text">数值函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日期和时间函数"><span class="toc-number">1.1.3.</span> <span class="toc-text">日期和时间函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流程函数"><span class="toc-number">1.1.4.</span> <span class="toc-text">流程函数</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -774,15 +787,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Attention</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Algorithms</a>
+                <a href="javascript:void(0)" class="js-tag color5">Attention</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -791,6 +800,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Echarts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Algorithms</a>
               </li>
              
               <li class="article-tag-list-item">

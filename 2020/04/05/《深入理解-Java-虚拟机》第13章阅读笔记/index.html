@@ -77,15 +77,15 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/" target="_blank">主页</a></li>
+				<li><a href="/" >主页</a></li>
 			
-				<li><a href="/archives/" target="_blank">笔记</a></li>
+				<li><a href="/archives/" >笔记</a></li>
 			
-				<li><a href="/categories/" target="_blank">分类</a></li>
+				<li><a href="/categories/" >分类</a></li>
 			
-				<li><a href="/archives/" target="_blank">归档</a></li>
+				<li><a href="/archives/" >归档</a></li>
 			
-				<li><a href="/about/" target="_blank">关于</a></li>
+				<li><a href="/about/" >关于</a></li>
 			
 			</ul>
 		</nav>
@@ -106,7 +106,7 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" href="https://github.com/tiantianliu2018" title="GitHub" target="_blank"><i class="icon-github"></i></a>
+					<a class="github" href="https://github.com/tiantianliu2018" target="_blank" rel="noopener" title="GitHub" ><i class="icon-github"></i></a>
 				
 			</div>
 		
@@ -472,6 +472,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第-13-章-线程安全与锁优化"><span class="toc-number">1.</span> <span class="toc-text">第 13 章 线程安全与锁优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、线程安全"><span class="toc-number">1.1.</span> <span class="toc-text">一、线程安全</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Java-语言中的线程安全"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. Java 语言中的线程安全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-不可变"><span class="toc-number">1.1.2.</span> <span class="toc-text">1) . 不可变</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-绝对线程安全"><span class="toc-number">1.1.3.</span> <span class="toc-text">2) . 绝对线程安全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-相对线程安全"><span class="toc-number">1.1.4.</span> <span class="toc-text">3) . 相对线程安全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-线程兼容"><span class="toc-number">1.1.5.</span> <span class="toc-text">4) . 线程兼容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-线程对立"><span class="toc-number">1.1.6.</span> <span class="toc-text">5) . 线程对立</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-线程安全的实现方法"><span class="toc-number">1.1.7.</span> <span class="toc-text">2. 线程安全的实现方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-互斥同步-阻塞同步"><span class="toc-number">1.1.8.</span> <span class="toc-text">2.1. 互斥同步(阻塞同步)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#synchronized-关键字：最基本的互斥同步手段"><span class="toc-number">1.1.9.</span> <span class="toc-text">synchronized 关键字：最基本的互斥同步手段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#java-util-concurrent-locks-Lock接口"><span class="toc-number">1.1.10.</span> <span class="toc-text">java.util.concurrent.locks.Lock接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">1.1.11.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-非阻塞同步"><span class="toc-number">1.1.12.</span> <span class="toc-text">2.2. 非阻塞同步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-无同步的方案"><span class="toc-number">1.1.13.</span> <span class="toc-text">2.3 无同步的方案</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、锁优化"><span class="toc-number">1.2.</span> <span class="toc-text">二、锁优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-自旋锁与自适应锁"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 自旋锁与自适应锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-锁消除"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 锁消除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-锁粗化"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. 锁粗化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-轻量级锁"><span class="toc-number">1.2.4.</span> <span class="toc-text">4. 轻量级锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-偏向锁"><span class="toc-number">1.2.5.</span> <span class="toc-text">5. 偏向锁</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -627,15 +640,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Attention</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Algorithms</a>
+                <a href="javascript:void(0)" class="js-tag color5">Attention</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,6 +653,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Echarts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Algorithms</a>
               </li>
              
               <li class="article-tag-list-item">
