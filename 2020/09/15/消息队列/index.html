@@ -10,19 +10,19 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="消息队列实习过程中用到了 kafka 作为消息队列，但是对于 kafka 的了解并不是特别多，特别学习部分内容作为记录。 消息队列的优缺点优点：解耦，异步，削峰 缺点：系统可用性降低，系统复杂度提高（消息重复消费、消息丢失、消息传递的顺序性），一致性问题 Kafka1. 定义Apache Kafka是由 Apache 开发的一种发布订阅消息系统，它是一个分布式的、分区的和可复制的提交日志服务。 应">
+  <meta name="description" content="消息队列实习过程中用到了 kafka 作为消息队列，但是对于 kafka 的了解并不是特别多，特别学习部分内容作为记录。 消息队列的优缺点优点：解耦，异步，削峰 缺点：系统可用性降低，系统复杂度提高（消息重复消费、消息丢失、消息传递的顺序性），一致性问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="消息队列">
 <meta property="og:url" content="http://tiantianliu2018.github.io/2020/09/15/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/index.html">
 <meta property="og:site_name" content="Tiantian&#39;s Blogs">
-<meta property="og:description" content="消息队列实习过程中用到了 kafka 作为消息队列，但是对于 kafka 的了解并不是特别多，特别学习部分内容作为记录。 消息队列的优缺点优点：解耦，异步，削峰 缺点：系统可用性降低，系统复杂度提高（消息重复消费、消息丢失、消息传递的顺序性），一致性问题 Kafka1. 定义Apache Kafka是由 Apache 开发的一种发布订阅消息系统，它是一个分布式的、分区的和可复制的提交日志服务。 应">
+<meta property="og:description" content="消息队列实习过程中用到了 kafka 作为消息队列，但是对于 kafka 的了解并不是特别多，特别学习部分内容作为记录。 消息队列的优缺点优点：解耦，异步，削峰 缺点：系统可用性降低，系统复杂度提高（消息重复消费、消息丢失、消息传递的顺序性），一致性问题">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://tiantianliu2018.github.io/2020/09/15/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kafka%20artitec.png">
 <meta property="og:image" content="http://tiantianliu2018.github.io/2020/09/15/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/produce.png">
 <meta property="og:image" content="http://tiantianliu2018.github.io/2020/09/15/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/file.png">
 <meta property="og:image" content="http://tiantianliu2018.github.io/2020/09/15/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/index%E6%96%87%E4%BB%B6%E5%92%8Clog%E6%96%87%E4%BB%B6%E7%9A%84%E7%BB%93%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg">
 <meta property="article:published_time" content="2020-09-15T13:40:39.000Z">
-<meta property="article:modified_time" content="2020-09-17T07:05:20.434Z">
+<meta property="article:modified_time" content="2020-09-17T07:11:38.016Z">
 <meta property="article:author" content="Tiantian Liu">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -255,6 +255,7 @@
     <h1 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h1><p>实习过程中用到了 kafka 作为消息队列，但是对于 kafka 的了解并不是特别多，特别学习部分内容作为记录。</p>
 <h2 id="消息队列的优缺点"><a href="#消息队列的优缺点" class="headerlink" title="消息队列的优缺点"></a>消息队列的优缺点</h2><p>优点：解耦，异步，削峰</p>
 <p>缺点：系统可用性降低，系统复杂度提高（消息重复消费、消息丢失、消息传递的顺序性），一致性问题</p>
+<a id="more"></a>
 <h2 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h2><h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h3><p>Apache Kafka是由 Apache 开发的一种<strong>发布订阅消息系统</strong>，它是一个<strong>分布式的、分区的和可复制的</strong>提交日志服务。</p>
 <p><strong>应用</strong>：</p>
 <ul>
@@ -663,11 +664,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color5">Attention</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Attention</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -695,15 +696,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Java 基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -747,6 +748,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Spark</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
@@ -756,10 +761,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spark</a>
               </li>
              
               <li class="article-tag-list-item">
