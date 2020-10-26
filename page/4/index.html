@@ -1,1749 +1,834 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8332.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8316.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="The Space to record knowledge and my life.">
+  <meta name="author" content="Kelly Liu">
+  <meta name="keywords" content="CS_learn, Keep Moving...">
+  <title>Kelly&#39;s Blogs</title>
 
-<link rel="stylesheet" href="/css/main.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/">Spring Data Jpa (二)</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/">
+          
+          
+            
+          
+          Spring Data JPA  (二)一、定义查询方法两种定义查询方法：
+
+从方法名派生查询
+手动定义 @Query
+
+待查询功能的方法名由查询策略（关键字）、查 询字段和一些限制性条件组成。
+一些关键字：And，Or，Is，Equals，Between，LessThan，IsNull，Like，OrderBy，Not，In，IgnoreCase 等
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-06 23:27" pubdate>
+              2020-03-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Spring/">Spring</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/03/05/Spring-Data-JPA-%E4%B8%80/">Spring Data JPA (一)</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/03/05/Spring-Data-JPA-%E4%B8%80/">
+          
+          
+            
+          
+          Spring Data JPA一. JPAJPA 是 Java Persistence API 的简称，包括：
+
+一套 API 标准
+面向对象的查询语言
+ORM(object/relational metadata) 元数据的映射
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-05 16:59" pubdate>
+              2020-03-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Spring/">Spring</a>
+            
+              <a href="/tags/JPA/">JPA</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/03/04/Mac-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEHadoop-3-X-%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/">Mac 安装配置Hadoop 3.X 采坑记录</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/03/04/Mac-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEHadoop-3-X-%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/">
+          
+          
+            
+          
+          Mac 安装配置Hadoop 3.X 采坑记录想要学习Hadoop，于是在Mac本机上想要配置Hadoop 伪分布式集群，折腾了一上午，在各种报错修改下，终于搞定了，于是写下该文，供参考。
+环境配置基础：
+已经安装 JDK1.8，homebrew， 具体细节不做阐述
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-04 08:37" pubdate>
+              2020-03-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">软件安装</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/03/04/Mac-MySQL-%E5%AE%89%E8%A3%85/">Mac MySQL 安装</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/03/04/Mac-MySQL-%E5%AE%89%E8%A3%85/">
+          
+          
+            
+          
+          Mac MySql 安装配置安装完后，mysql -h localhost -u root -p 时候报错，
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-04 08:29" pubdate>
+              2020-03-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/software/">software</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/10/26/Java-%E7%BA%BF%E7%A8%8B/">Java 线程</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/26/Java-%E7%BA%BF%E7%A8%8B/">
+          
+          
+            
+          
+          Java 线程1. 基本概念：程序 - 进程 - 线程程序(program) 是为完成特定任务、用某种语言编写的一组指令的集合。即指一段静态的代码，静态对象。
+进程(process) 是程序的一次执行过程，或是正在运行的一个程序。动态过程：有它自身的产生、存在和消亡的过程。
+如：运行中的QQ，运行中的MP3播放器
+PS: 程序是静态的，进程是动态的
+线程(thread)，进程可进一步细化为线程，是
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-26 08:53" pubdate>
+              2019-10-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Java/">Java</a>
+            
+              <a href="/categories/Java/%E7%BA%BF%E7%A8%8B/">线程</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java/">Java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/10/24/Java-%E5%8F%8D%E5%B0%84/">Java 反射</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/24/Java-%E5%8F%8D%E5%B0%84/">
+          
+          
+            
+          
+          Java 反射Java 能够反射的前提：已经加载过这个类，就可以通过类名来寻找到这个类的所有相关信息
+Java Reflection
+Reflection（反射）是被视为动态语言的关键，反射机制允许程序在执行期借助于Reflection API 取得任何类的内部信息，并能直接操作任意对象的内部属性及方法
+Java反射机制提供的功能
+​    在运行时判断任意一个对象所属的类
+​    在运行时构造
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-24 08:49" pubdate>
+              2019-10-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Java/">Java</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java/">Java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/">论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/">
+          
+          
+            
+          
+          Cross-Network Embedding for Multi-Network Alignment — WWW19SummaryResearch Objective提出了一个新的跨网络的嵌入方法 CrossMNA，解决 multi-network alignment 问题。 
+Problem Statement锚节点（anchor nodes）：网络间共享的用户
+锚链接（anchor link
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-20 15:40" pubdate>
+              2019-10-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Network-Alignment/">Network Alignment</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Network-Alignment/">Network Alignment</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AJoint-Link-Prediction-and-Network-Alignment-via-Cross-graph-Embedding%E3%80%8BIJCAI19/">论文阅读《Joint Link Prediction and Network Alignment via Cross-graph Embedding》IJCAI19</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AJoint-Link-Prediction-and-Network-Alignment-via-Cross-graph-Embedding%E3%80%8BIJCAI19/">
+          
+          
+            
+          
+          Joint Link Prediction and Network Alignment via Cross-graph Embedding - IJCAI19SummaryResearch Objective网络对齐与链路预测任务是相关的，交替地进行两个任务，可以相互促进，特别是对于提高两个任务的 recall 性能。本文提出了一个联合链路预测和网络对齐的框架，并据此设计了一种新的交叉网络的节点嵌
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-20 10:56" pubdate>
+              2019-10-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Network-Alignment/">Network Alignment</a>
+            
+              <a href="/tags/Link-Prediction/">Link Prediction</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/10/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ANeural-Link-Prediction-Over-Aligned-Networks%E3%80%8B-AAAI18/">论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ANeural-Link-Prediction-Over-Aligned-Networks%E3%80%8B-AAAI18/">
+          
+          
+            
+          
+          Neural Link Prediction Over Aligned NetworksSummary这篇文章是如何利用对齐的两个网络增强一个网络中的链路预测性能。对于特征分别利用深度网络进行提取，最后一起用来进行链路预测。
+链路预测问题，不是社交网络对齐问题。
+Research Objective 给定两个对齐的网络，本文的目标是对这两个网络进行联合建模，以提高两个网络的预测质量。
+提出一个基于
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-19 15:00" pubdate>
+              2019-10-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/">Social Networks</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Network-Alignment/">Network Alignment</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/10/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AStructure-Based-User-Identification-across-Social-Networks%E3%80%8B/">论文阅读《Structure Based User Identification across Social Networks》</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AStructure-Based-User-Identification-across-Social-Networks%E3%80%8B/">
+          
+          
+            
+          
+          Structure Based User Identification across Social NetworksSummaryResearch Objective 纯粹通过朋友关系用无监督方法识别不同社交网络中的匿名的相同用户
+提出了一种无监督的用户身份识别算法 —— Friend Relationship-based User Identification without Prior Kno
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-17 14:34" pubdate>
+              2019-10-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/">Social Networks</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/User-Identification/">User Identification</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/3/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
   </script>
 
-  <meta name="description" content="The Space to record knowledge and my life.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Kelly&#39;s Blogs">
-<meta property="og:url" content="http://tiantianliu2018.github.io/page/4/index.html">
-<meta property="og:site_name" content="Kelly&#39;s Blogs">
-<meta property="og:description" content="The Space to record knowledge and my life.">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="Kelly Liu">
-<meta property="article:tag" content="CS_learn">
-<meta property="article:tag" content=" Keep Moving...">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://tiantianliu2018.github.io/page/4/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false
-  };
-</script>
-
-  <title>Kelly's Blogs</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/clicklove.js"></script>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Kelly's Blogs</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">To Be Better</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">38</span></a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">38</span></a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">83</span></a>
-
-  </li>
-  </ul>
-
-</nav>
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content">
-            
-
-  <div class="posts-expand">
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/" class="post-title-link" itemprop="url">Spring Data Jpa (二)</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-06 23:27:26" itemprop="dateCreated datePublished" datetime="2020-03-06T23:27:26+08:00">2020-03-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-11 20:39:04" itemprop="dateModified" datetime="2020-03-11T20:39:04+08:00">2020-03-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.4k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Spring-Data-JPA-二"><a href="#Spring-Data-JPA-二" class="headerlink" title="Spring Data JPA  (二)"></a>Spring Data JPA  (二)</h2><h3 id="一、定义查询方法"><a href="#一、定义查询方法" class="headerlink" title="一、定义查询方法"></a>一、定义查询方法</h3><p>两种定义查询方法：</p>
-<ol>
-<li>从方法名派生查询</li>
-<li>手动定义 @Query</li>
-</ol>
-<p>待查询功能的方法名由查询策略（关键字）、查 询字段和一些限制性条件组成。</p>
-<p>一些关键字：And，Or，Is，Equals，Between，LessThan，IsNull，Like，OrderBy，Not，In，IgnoreCase 等</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
+              </div>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/05/Spring-Data-JPA-%E4%B8%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/05/Spring-Data-JPA-%E4%B8%80/" class="post-title-link" itemprop="url">Spring Data JPA (一)</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-05 16:59:28" itemprop="dateCreated datePublished" datetime="2020-03-05T16:59:28+08:00">2020-03-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-22 14:32:25" itemprop="dateModified" datetime="2020-03-22T14:32:25+08:00">2020-03-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/03/05/Spring-Data-JPA-%E4%B8%80/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/05/Spring-Data-JPA-%E4%B8%80/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.2k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Spring-Data-JPA"><a href="#Spring-Data-JPA" class="headerlink" title="Spring Data JPA"></a>Spring Data JPA</h2><h3 id="一-JPA"><a href="#一-JPA" class="headerlink" title="一. JPA"></a>一. JPA</h3><p>JPA 是 <code>Java Persistence API</code> 的简称，包括：</p>
-<ol>
-<li>一套 API 标准</li>
-<li>面向对象的查询语言</li>
-<li>ORM(object/relational metadata) 元数据的映射</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/03/05/Spring-Data-JPA-%E4%B8%80/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/04/Mac-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEHadoop-3-X-%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/04/Mac-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEHadoop-3-X-%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">Mac 安装配置Hadoop 3.X 采坑记录</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-04 08:37:13" itemprop="dateCreated datePublished" datetime="2020-03-04T08:37:13+08:00">2020-03-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-22 14:31:30" itemprop="dateModified" datetime="2020-03-22T14:31:30+08:00">2020-03-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" itemprop="url" rel="index"><span itemprop="name">软件安装</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/03/04/Mac-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEHadoop-3-X-%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/04/Mac-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEHadoop-3-X-%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.8k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Mac-安装配置Hadoop-3-X-采坑记录"><a href="#Mac-安装配置Hadoop-3-X-采坑记录" class="headerlink" title="Mac 安装配置Hadoop 3.X 采坑记录"></a>Mac 安装配置Hadoop 3.X 采坑记录</h2><p>想要学习Hadoop，于是在Mac本机上想要配置Hadoop 伪分布式集群，折腾了一上午，在各种报错修改下，终于搞定了，于是写下该文，供参考。</p>
-<p>环境配置基础：</p>
-<p>已经安装 JDK1.8，homebrew， 具体细节不做阐述</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/03/04/Mac-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEHadoop-3-X-%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/03/04/Mac-MySQL-%E5%AE%89%E8%A3%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/04/Mac-MySQL-%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">Mac MySQL 安装</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-04 08:29:31 / 修改时间：09:54:36" itemprop="dateCreated datePublished" datetime="2020-03-04T08:29:31+08:00">2020-03-04</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/03/04/Mac-MySQL-%E5%AE%89%E8%A3%85/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/04/Mac-MySQL-%E5%AE%89%E8%A3%85/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>651</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Mac-MySql-安装配置"><a href="#Mac-MySql-安装配置" class="headerlink" title="Mac MySql 安装配置"></a>Mac MySql 安装配置</h2><p>安装完后，mysql -h localhost -u root -p 时候报错，</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">ERROR</span> 1045 (28000): Access denied <span class="keyword">for</span><span class="built_in"> user </span><span class="string">'root'</span>@<span class="string">'localhost'</span> (using password: <span class="literal">YES</span>)</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/03/04/Mac-MySQL-%E5%AE%89%E8%A3%85/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/26/Java-%E7%BA%BF%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/26/Java-%E7%BA%BF%E7%A8%8B/" class="post-title-link" itemprop="url">Java 线程</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-26 08:53:07" itemprop="dateCreated datePublished" datetime="2019-10-26T08:53:07+08:00">2019-10-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:48:44" itemprop="dateModified" datetime="2020-09-13T09:48:44+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/%E7%BA%BF%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">线程</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/26/Java-%E7%BA%BF%E7%A8%8B/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/26/Java-%E7%BA%BF%E7%A8%8B/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.5k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Java-线程"><a href="#Java-线程" class="headerlink" title="Java 线程"></a>Java 线程</h1><h2 id="1-基本概念：程序-进程-线程"><a href="#1-基本概念：程序-进程-线程" class="headerlink" title="1. 基本概念：程序 - 进程 - 线程"></a>1. 基本概念：程序 - 进程 - 线程</h2><p><strong>程序(program)</strong> 是为完成特定任务、用某种语言编写的一组指令的集合。即指一段静态的代码，静态对象。</p>
-<p><strong>进程(process)</strong> 是<strong>程序的一次执行过程</strong>，或是正在运行的一个程序。动态过程：有它自身的产生、存在和消亡的过程。</p>
-<p>如：运行中的QQ，运行中的MP3播放器</p>
-<p>PS: 程序是静态的，进程是动态的</p>
-<p><strong>线程(thread)</strong>，进程可进一步细化为线程，是一个程序内部的一条执行路径。</p>
-<p>一个进程（程序的执行过程），可以分化为并行执行的多个线程（多个子程序）</p>
-<p>若一个程序可同一时间执行多个线程，就是支持多线程的</p>
-<h4 id="何时需要多线程？"><a href="#何时需要多线程？" class="headerlink" title="何时需要多线程？"></a>何时需要多线程？</h4><p>程序需要同时执行两个或多个任务。</p>
-<p>程序需要实现一些需要等待的任务时，如用户输入、文件读写操作、网络操作、搜索等。</p>
-<p>需要一些后台运行的程序时。</p>
-<h2 id="2-多线程的创建和启动"><a href="#2-多线程的创建和启动" class="headerlink" title="2. 多线程的创建和启动"></a>2. 多线程的创建和启动</h2><p>Java语言的JVM允许程序运行多个线程，它通过 <code>java.lang.Thread</code> 类来实现。</p>
-<p>Thread类的特性:</p>
-<ul>
-<li><p>每个线程都是通过某个特定 Thread 对象的 <code>run()</code> 方法来完成操作的，经常把 <code>run()</code> 方法的主体称为 <strong>线程体</strong>，想要在开启的多线程中运行的代码逻辑，就写到 <code>run()</code> 方法里</p>
-</li>
-<li><p>通过该 Thread 对象的 <code>start()</code> 方法来调用这个线程，即运行 <code>run()</code> 方法</p>
-</li>
-</ul>
-<h3 id="Tread-类"><a href="#Tread-类" class="headerlink" title="Tread 类"></a>Tread 类</h3><p>构造方法：</p>
-<p><strong>Thread()</strong>：创建新的Thread对象</p>
-<p><strong>Thread(String threadname)</strong>：创建线程并指定线程实例名</p>
-<p><strong>Thread(Runnable target)</strong>：指定创建线程的目标对象，它实现了Runnable接口中的run方法</p>
-<p><strong>Thread(Runnable target, String name)</strong>：创建新的Thread对象 </p>
-<h3 id="创建线程的两种方式"><a href="#创建线程的两种方式" class="headerlink" title="创建线程的两种方式"></a>创建线程的两种方式</h3><ol>
-<li><p>继承 Thread 类</p>
-<ul>
-<li>定义子类继承Thread类。</li>
-<li>子类中重写Thread类中的run方法。</li>
-<li>创建Thread子类对象，即创建了线程对象。</li>
-<li>调用线程对象start方法：启动线程，调用run方法。</li>
-</ul>
-</li>
-<li><p>实现 Runnable 接口</p>
-<ul>
-<li><p>定义子类，实现 Runnable 接口。</p>
-</li>
-<li><p>子类中重写 Runnable 接口中的 run 方法。</p>
-</li>
-<li><p>通过 Thread 类含参构造器创建线程对象。</p>
-</li>
-<li><p>将 Runnable 接口的子类对象作为实际参数传递给 Thread 类的构造方法中。</p>
-</li>
-<li><p>调用 Thread 类的 start 方法：开启线程，调用 Runnable 子类接口的 run 方法。</p>
-</li>
-</ul>
-</li>
-</ol>
-<p><strong>继承方式和实现方式的联系与区别</strong><br><code>public class Thread extends Object implements Runnable</code></p>
-<p><strong>区别</strong><br>继承 Thread:    线程代码存放 Thread 子类 run 方法中。重写 run 方法<br>实现 Runnable：线程代码存在接口的子类的 run 方法。实现 run 方法</p>
-<p><strong>实现接口方式的好处</strong></p>
-<ul>
-<li>避免了单继承的局限性</li>
-<li>多个线程可以共享同一个接口实现类的对象，非常适合多个相同线程来处理同一份资源。</li>
-</ul>
-<p><strong>一般使用实现接口方式来实现多线程</strong></p>
-<p><strong>使用多线程的优点</strong></p>
-<ol>
-<li>提高应用程序的响应。对图形化界面更有意义，可增强用户体验。</li>
-<li>提高计算机系统CPU的利用率</li>
-<li>改善程序结构。将既长又复杂的进程分为多个线程，独立运行，利于理解和修改</li>
-</ol>
-<h4 id="Thread-类的有关方法"><a href="#Thread-类的有关方法" class="headerlink" title="Thread 类的有关方法"></a>Thread 类的有关方法</h4><p><strong>void start():</strong> 启动线程，并执行对象的 run() 方法</p>
-<p><strong>run():</strong> 线程在被调度时执行的操作</p>
-<p><strong>String  getName():</strong> 返回线程的名称</p>
-<p><strong>void setName(String name)</strong>: 设置该线程名称</p>
-<p><strong>static currentThread():</strong>  返回当前线程</p>
-<p><strong>static void yield()</strong>： 线程让步<br>暂停当前正在执行的线程，把执行机会让给优先级相同或更高的线程<br>若队列中没有同优先级的线程，忽略此方法</p>
-<p><strong>join()</strong> ：当某个程序执行流中调用其他线程的 join() 方法时，调用线程将被阻塞，直到 join() 方法加入的 join 线程执行完为止<br>低优先级的线程也可以获得执行 </p>
-<p><strong>static void sleep(long millis)</strong>：(指定时间:毫秒)<br>令当前活动线程在指定时间段内放弃对CPU控制,使其他线程有机会被执行,时间到后重排队。<br>抛出InterruptedException异常</p>
-<p><strong>stop():</strong> 强制线程生命期结束</p>
-<p><strong>boolean isAlive()</strong>：返回boolean，判断线程是否还活着</p>
-<h4 id="线程的优先级-哪个线程有较大的概率被执行"><a href="#线程的优先级-哪个线程有较大的概率被执行" class="headerlink" title="线程的优先级: 哪个线程有较大的概率被执行"></a>线程的优先级: 哪个线程有较大的概率被执行</h4><p>线程的优先级是用数字1-10表示的，数字越大优先级越高，如果没有设置优先级，默认为5</p>
-<p><strong>线程的优先级控制</strong><br>MAX_PRIORITY (10);<br>MIN _PRIORITY（1）;<br>NORM_PRIORITY（5）;</p>
-<p><strong>涉及的方法：</strong><br>getPriority()：返回线程优先值<br>setPriority(int newPriority)：改变线程的优先级<br>线程创建时继承父线程的优先级</p>
-<h2 id="3-线程的生命周期"><a href="#3-线程的生命周期" class="headerlink" title="3. 线程的生命周期"></a>3. 线程的生命周期</h2><p>JDK 中用 <code>Thread.State</code> 枚举表示了线程的几种状态</p>
-<p>要想实现多线程，必须在主线程中创建新的线程对象。Java语言使用 Thread 类及其子类的对象来表示线程，在它的一个完整的生命周期中通常要经历如下的 <strong>五种状态</strong>：</p>
-<p><strong>新建</strong>： 当一个 Thread 类或其子类的对象被声明并创建时，新生的线程对象处于新建状态（线程实例的创建）</p>
-<p><strong>就绪</strong>：处于新建状态的线程被 start() 后，将进入线程队列等待 CPU 时间片，此时它已具备了运行的条件</p>
-<p><strong>运行</strong>：当就绪的线程被调度并获得处理器资源时,便进入运行状态， run() 方法定义了线程的操作和功能（run方法的代码开始执行）</p>
-<p><strong>阻塞</strong>：在某种特殊情况下，被人为挂起或执行输入输出操作时，让出 CPU 并临时中止自己的执行，进入阻塞状态（run 方法的代码暂停执行）</p>
-<p><strong>死亡</strong>： 线程完成了它的全部工作或线程被提前强制性地中止 （执行stop() 方法，断电，杀掉进程）</p>
-<p><img src="/2019/10/26/Java-%E7%BA%BF%E7%A8%8B/Thread_state.png" alt="Thread State"> </p>
-<h2 id="4-线程的同步"><a href="#4-线程的同步" class="headerlink" title="4. 线程的同步"></a>4. 线程的同步</h2><p><strong>问题的提出</strong></p>
-<p>多个线程执行的不确定性引起执行结果的不稳定</p>
-<p>多个线程对账本的共享，会造成操作的不完整性，会破坏数据。</p>
-<p><strong>多线程出现了安全问题</strong></p>
-<p><strong>问题的原因</strong></p>
-<p>当多条语句在操作同一个线程共享数据时，一个线程对多条语句只执行了一部分，还没有执行完，另一个线程参与进来执行。导致共享数据的错误。</p>
-<p><strong>解决办法</strong></p>
-<p>对多条操作共享数据的语句，只能让一个线程都执行完，在执行过程中，其他线程不可以参与执行。</p>
-<p><strong>Synchronized 关键字的使用</strong></p>
-<ul>
-<li><p>synchronized 放在方法声明中，表示整个方法为 <strong>同步方法</strong>。<strong>针对对象加同步锁</strong></p>
-<p>例如：</p>
-<p><code>public synchronized void show (String name){ ….}</code></p>
-</li>
-<li><p>synchronized (对象）{// 需要被同步的代码；}  <strong>针对某一段代码加同步锁</strong></p>
-<p><code>synchronized(this);</code> // 用 this 锁代码块是代表当前的对象，如果在方法中也有 <code>synchronized(this)</code> 的代码块使用的都是同一个同步锁。</p>
-</li>
-</ul>
-<p><strong>总结</strong>：</p>
-<p>在普通方法上加同步锁 synchronized 锁的是当前方法对应的对象，当前对象的所有加了同步锁的方法共用一个同步锁</p>
-<p>静态方法加  synchronized 同步锁，所有对象共用一个同步锁</p>
-<p>代码块加同步锁：</p>
-<ul>
-<li>代码块  <code>synchronized (this)</code> 所有当前对象的  <code>synchronized (this)</code> 同步的代码都是使用同一个同步锁</li>
-<li>代码块  <code>synchronized (对象)</code>  不同对象不同锁</li>
-</ul>
-<h4 id="线程的死锁"><a href="#线程的死锁" class="headerlink" title="线程的死锁"></a>线程的死锁</h4><p>死锁</p>
-<p>不同的线程分别占用对方需要的同步资源不放弃，都在等待对方放弃自己需要的同步资源，就形成了线程的死锁</p>
-<p>解决方法</p>
-<p>专门的算法、原则，比如加锁顺序一致</p>
-<p>尽量减少同步资源的定义，尽量避免锁未释放的场景</p>
-<h2 id="5-线程通信"><a href="#5-线程通信" class="headerlink" title="5. 线程通信"></a>5. 线程通信</h2><p><strong>wait() 与 notify() 和 notifyAll()</strong></p>
-<p><strong>wait()</strong>：令当前线程挂起并放弃CPU、同步资源，使别的线程可访问并修改共享资源，而当前线程排队等候再次对资源的访问</p>
-<p><strong>notify()</strong>：唤醒正在排队等待同步资源的线程中优先级最高者结束等待</p>
-<p><strong>notifyAll()</strong>：唤醒正在排队等待资源的所有线程结束等待.</p>
-<p><code>Java.lang.Object</code> 提供的这三个方法 <strong>只有在 synchronized 方法或 synchronized 代码块中才能使用</strong>，否则会报 <code>java.lang.IllegalMonitorStateException</code> 异常</p>
-<h4 id="wait-方法"><a href="#wait-方法" class="headerlink" title="wait() 方法"></a>wait() 方法</h4><p>在当前线程中调用方法： <code>对象名.wait()</code></p>
-<p>使当前线程进入等待（某对象）状态 ，直到另一线程对该对象发出 <code>notify</code> (或<code>notifyAll</code>) 为止。</p>
-<p>调用方法的必要条件：当前线程必须具有对该对象的监控权（加锁）</p>
-<p><strong>调用此方法后，当前线程将释放对象监控权 ，然后进入等待</strong></p>
-<p>在当前线程被 notify 后，要重新获得监控权，然后从断点处继续代码的执行。</p>
-<h4 id="notify-notifyAll"><a href="#notify-notifyAll" class="headerlink" title="notify()/notifyAll()"></a>notify()/notifyAll()</h4><p>在当前线程中调用方法： <code>对象名.notify()</code></p>
-<p>功能：唤醒等待该对象监控权的一个线程。</p>
-<p>调用方法的必要条件：当前线程必须具有对该对象的监控权（加锁）</p>
-<h2 id="经典：生产者-消费者问题"><a href="#经典：生产者-消费者问题" class="headerlink" title="经典：生产者/消费者问题"></a>经典：生产者/消费者问题</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/24/Java-%E5%8F%8D%E5%B0%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/24/Java-%E5%8F%8D%E5%B0%84/" class="post-title-link" itemprop="url">Java 反射</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-24 08:49:22" itemprop="dateCreated datePublished" datetime="2019-10-24T08:49:22+08:00">2019-10-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:47:46" itemprop="dateModified" datetime="2020-09-13T09:47:46+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/24/Java-%E5%8F%8D%E5%B0%84/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/24/Java-%E5%8F%8D%E5%B0%84/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.3k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Java-反射"><a href="#Java-反射" class="headerlink" title="Java 反射"></a>Java 反射</h1><p>Java 能够反射的前提：已经加载过这个类，就可以通过类名来寻找到这个类的所有相关信息</p>
-<p><strong>Java Reflection</strong></p>
-<p>Reflection（反射）是被视为动态语言的关键，反射机制允许程序在执行期借助于Reflection API 取得任何类的内部信息，并能直接操作任意对象的内部属性及方法</p>
-<p><strong>Java反射机制提供的功能</strong></p>
-<p>​    在运行时判断任意一个对象所属的类</p>
-<p>​    在运行时构造任意一个类的对象</p>
-<p>​    在运行时判断任意一个类所具有的成员变量和方法</p>
-<p>​    在运行时调用任意一个对象的成员变量和方法</p>
-<p>​    生成动态代理</p>
-<p><strong>Java反射机制研究及应用</strong></p>
-<p><strong>反射相关的主要API：</strong><br><code>java.lang.Class</code> ：代表一个类<br><code>java.lang.reflect.Method</code>：代表类的方法<br><code>java.lang.reflect.Field</code>：代表类的成员变量<br><code>java.lang.reflect.Constructor</code>：代表类的构造方法</p>
-<h2 id="Class-类"><a href="#Class-类" class="headerlink" title="Class 类"></a>Class 类</h2><p>反射可以得到的信息：某个类的属性、方法和构造器、某个类到底实现了哪些接口。对于每个类而言，JRE 都为其保留一个不变的 Class 类型的对象。一个 Class 对象包含了特定某个类的有关信息。</p>
-<p> Class本身也是一个类</p>
-<p> Class 对象只能由系统建立对象</p>
-<p> 一个类在 JVM 中只会有一个Class实例 </p>
-<p> 一个Class对象对应的是一个加载到 JVM 中的一个 .class 文件</p>
-<p> 每个类的实例都会记得自己是由哪个 Class 实例所生成</p>
-<p> 通过 Class 可以完整地得到一个类中的完整结构 </p>
-<p><strong>实例化 Class 类对象(四种方法)</strong> </p>
-<ul>
-<li><p>前提：若已知具体的类，通过类的 <code>class</code> 属性获取，该方法 最为安全可靠，程序性能最高<br>​      实例：<code>Class  clazz = String.class;</code></p>
-</li>
-<li><p>前提：已知某个类的实例，调用该实例的 <code>getClass()</code> 方法获取 Class 对象<br>​     实例：<code>Class clazz = “www.xyd.com”.getClass();</code></p>
-</li>
-<li><p>前提：已知一个类的全类名，且该类在类路径下，可通过 Class 类的静态方法 <code>forName()</code> 获取，可能抛出 <code>ClassNotFoundException</code><br>​     实例： <code>Class clazz = Class.forName (“java.lang.String”);</code></p>
-</li>
-</ul>
-<p>其他方式(不做要求)<br>   <code>ClassLoader cl = this.getClass().getClassLoader();</code><br>   <code>Class clazz4 = cl.loadClass(“类的全类名”);</code></p>
-<h2 id="通过反射调用类的完整结构"><a href="#通过反射调用类的完整结构" class="headerlink" title="通过反射调用类的完整结构"></a>通过反射调用类的完整结构</h2><p>使用反射可以取得：</p>
-<p><strong>1. 实现的全部接口</strong></p>
-<p><code>public Class&lt;?&gt;[] getInterfaces()</code>  确定此对象所表示的类或接口实现的接口。 </p>
-<p><strong>2. 所继承的父类</strong></p>
-<p><code>public Class&lt;? Super T&gt; getSuperclass()</code> 返回表示此 Class 所表示的实体（类、接口、基本类型）的父类的 Class。</p>
-<p><strong>3. 全部的构造器</strong></p>
-<p><code>public Constructor&lt;T&gt;[] getConstructors()</code> 返回此 Class 对象所表示的类的所有 public 构造方法。</p>
-<p><code>public Constructor&lt;T&gt;[] getDeclaredConstructors()</code> 返回此 Class 对象表示的类声明的所有构造方法。</p>
-<p>Constructor类中：</p>
-<p>取得修饰符: <code>public int getModifiers();</code></p>
-<p>取得方法名称: <code>public String getName();</code></p>
-<p>取得参数的类型：<code>public Class&lt;?&gt;[] getParameterTypes();</code></p>
-<p><strong>4. 全部的方法</strong></p>
-<p> <code>public Method[] getDeclaredMethods()</code></p>
-<p> 返回此 Class 对象所表示的类或接口的全部方法</p>
-<p> <code>public Method[] getMethods()</code></p>
-<p> 返回此 Class 对象所表示的类或接口的 public 的方法</p>
-<p> Method类中：</p>
-<p> <code>public Class&lt;?&gt; getReturnType()</code> 取得全部的返回值</p>
-<p> <code>public Class&lt;?&gt;[] getParameterTypes()</code> 取得全部的参数</p>
-<p> <code>public int getModifiers()</code> 取得修饰符</p>
-<p> <strong>5. 全部的Field</strong></p>
-<p><code>public Field[] getFields()</code>  返回此Class对象所表示的类或接口的 public 的 Field。</p>
-<p><code>public Field[] getDeclaredFields()</code>  返回此Class对象所表示的类或接口的全部Field。</p>
-<p>Field方法中：</p>
-<p><code>public int getModifiers()</code>  以整数形式返回此 Field 的修饰符</p>
-<p><code>public Class&lt;?&gt; getType()</code>  得到Field的属性类型</p>
-<p><code>public String getName()</code>  返回Field的名称。</p>
-<p><strong>6. 类所在的包</strong>  </p>
-<p><code>Package getPackage()</code></p>
-<h2 id="通过反射调用类中的指定方法、指定属性"><a href="#通过反射调用类中的指定方法、指定属性" class="headerlink" title="通过反射调用类中的指定方法、指定属性"></a>通过反射调用类中的指定方法、指定属性</h2><p> <strong>1. 调用指定方法</strong></p>
-<p> 通过反射，调用类中的方法，通过Method类完成。</p>
-<p>步骤：</p>
-<ul>
-<li><p>通过 Class 类的 <code>getMethod (String name, Class…parameterTypes)</code> 方法取得一个 Method 对象，并设置此方法操作时所需要的参数类型。</p>
-</li>
-<li><p>之后使用 <code>Object invoke(Object obj, Object[] args)</code> 进行调用，并向方法中传递要设置的 obj 对象的参数信息。</p>
-</li>
-</ul>
-<p><strong>Object invoke(Object obj, Object …  args)</strong></p>
-<p> <strong>说明：</strong></p>
-<ul>
-<li><p>Object 对应原方法的返回值，若原方法无返回值，此时返回 null</p>
-</li>
-<li><p>若原方法若为静态方法，此时形参 Object obj 可为 null</p>
-</li>
-<li><p>若原方法形参列表为空，则 Object[] args 为 null</p>
-</li>
-<li><p>若原方法声明为 private,则需要在调用此 invoke() 方法前，显式调用方法对象的setAccessible(true) 方法，将可访问 private 的方法。    </p>
-</li>
-</ul>
-<p><strong>2. 调用指定属性</strong>  </p>
-<p>在反射机制中，可以直接通过 Field 类操作类中的属性，通过 Field 类提供的 set() 和 get() 方法就可以完成设置和取得属性内容的操作。</p>
-<p><code>public Field getField(String name)</code> 返回此 Class 对象表示的类或接口的指定的public 的 Field。</p>
-<p><code>public Field getDeclaredField(String name)</code> 返回此 Class 对象表示的类或接口的指定的Field。</p>
-<p> <strong>在Field中：</strong></p>
-<p><code>public Object get(Object obj)</code> 取得指定对象 obj 上此 Field 的属性内容</p>
-<p><code>public void set(Object obj,Object value)</code> 设置指定对象 obj 上此 Field 的属性内容</p>
-<p>注：在类中属性都设置为 private 的前提下，在使用 set() 和 get() 方法时，首先要使用 Field 类中的 <code>setAccessible(true)</code> 方法将需要操作的属性设置为可以被外部访问。</p>
-<p><code>public void setAccessible(true)</code> 访问私有属性时，让这个属性可见。 </p>
-<h2 id="Java-动态代理"><a href="#Java-动态代理" class="headerlink" title="Java 动态代理"></a>Java 动态代理</h2><p><strong>Proxy</strong> ：专门完成代理的操作类，是所有动态代理类的父类。通过此类为一个或多个接口动态地生成实现类。</p>
-<p>创建一个动态代理类所对应的Class对象</p>
-<p><code>static Object newProxyInstance(ClassLoader loader, Class[] interfaces, InvocationHandler h)</code> 直接创建一个动态代理对象</p>
-<p><strong>注意</strong></p>
-<p>如果一个对象想要通过 <code>Proxy.newProxyInstance</code> 方法被代理，那么这个对象的类一定要有相应的接口。</p>
-<p><strong>动态代理步骤</strong>  </p>
-<ul>
-<li><p>创建一个实现接口 <strong>InvocationHandler</strong> 的类，它必须实现 <code>invoke</code> 方法，以完成代理的具体操作。</p>
-</li>
-<li><p>创建被代理的类以及接口</p>
-</li>
-<li><p>通过 Proxy 的静态方法 <code>newProxyInstance(ClassLoader loader, Class[] interfaces, InvocationHandler h)</code> 创建一个Subject接口代理</p>
-</li>
-<li><p>通过 Subject 代理调用 RealSubject 实现类的方法</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/" class="post-title-link" itemprop="url">论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-20 15:40:04" itemprop="dateCreated datePublished" datetime="2019-10-20T15:40:04+08:00">2019-10-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:52:01" itemprop="dateModified" datetime="2020-09-13T09:52:01+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Network-Alignment/" itemprop="url" rel="index"><span itemprop="name">Network Alignment</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>421</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Cross-Network-Embedding-for-Multi-Network-Alignment-—-WWW19"><a href="#Cross-Network-Embedding-for-Multi-Network-Alignment-—-WWW19" class="headerlink" title="Cross-Network Embedding for Multi-Network Alignment — WWW19"></a>Cross-Network Embedding for Multi-Network Alignment — WWW19</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><h2 id="Research-Objective"><a href="#Research-Objective" class="headerlink" title="Research Objective"></a>Research Objective</h2><p>提出了一个新的跨网络的嵌入方法 CrossMNA，解决 multi-network alignment 问题。 </p>
-<h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p>锚节点（anchor nodes）：网络间共享的用户</p>
-<p>锚链接（anchor link）：跨网络的锚节点之间的关系 </p>
-<p>目前网络对齐方法存在的问题：</p>
-<ul>
-<li>拓扑一致性：不同网络中的相同节点拥有一致的连接结构。虽然一个节点在相关网络中可能具有某些相似的特征，但由于网络语义的特殊性，每个网络中的局部结构连接可能完全不同。  </li>
-<li>样本点对学习：多个网络的学习</li>
-<li>Attributes Dependence  </li>
-</ul>
-<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><p>CrossMNA 对每一个网络提取一个额外的特征向量 network vector，反映了网络之间全局结构的差异。如果两个网络的这两个向量是相似的，那么这两个网络的全局结构是相似的。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AJoint-Link-Prediction-and-Network-Alignment-via-Cross-graph-Embedding%E3%80%8BIJCAI19/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AJoint-Link-Prediction-and-Network-Alignment-via-Cross-graph-Embedding%E3%80%8BIJCAI19/" class="post-title-link" itemprop="url">论文阅读《Joint Link Prediction and Network Alignment via Cross-graph Embedding》IJCAI19</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-20 10:56:56" itemprop="dateCreated datePublished" datetime="2019-10-20T10:56:56+08:00">2019-10-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:53:02" itemprop="dateModified" datetime="2020-09-13T09:53:02+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AJoint-Link-Prediction-and-Network-Alignment-via-Cross-graph-Embedding%E3%80%8BIJCAI19/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AJoint-Link-Prediction-and-Network-Alignment-via-Cross-graph-Embedding%E3%80%8BIJCAI19/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>503</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Joint-Link-Prediction-and-Network-Alignment-via-Cross-graph-Embedding-IJCAI19"><a href="#Joint-Link-Prediction-and-Network-Alignment-via-Cross-graph-Embedding-IJCAI19" class="headerlink" title="Joint Link Prediction and Network Alignment via Cross-graph Embedding - IJCAI19"></a>Joint Link Prediction and Network Alignment via Cross-graph Embedding - IJCAI19</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><h2 id="Research-Objective"><a href="#Research-Objective" class="headerlink" title="Research Objective"></a>Research Objective</h2><p>网络对齐与链路预测任务是相关的，交替地进行两个任务，可以相互促进，特别是对于提高两个任务的 recall 性能。本文提出了一个联合链路预测和网络对齐的框架，并据此设计了一种新的交叉网络的节点嵌入技术来进行信息传播。</p>
-<h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p><strong>Network Alignment</strong></p>
-<p><strong>Seed vertices and seed set</strong></p>
-<p><strong>Link Prediction within a network</strong></p>
-<p><strong>The k-hop neighbors</strong></p>
-<p><strong>Topological and structural similarity</strong></p>
-<ul>
-<li><p>topological similarity：两个节点之间最短路径的倒数</p>
-</li>
-<li><p>structural similarity ：两个网络中两个节点之间的距离</p>
-<script type="math/tex; mode=display">
-f(u, v)=\sum_{k=0}^{K} \operatorname{dist}\left(s_{k}(u), s_{k}(v)\right)</script></li>
-</ul>
-<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ANeural-Link-Prediction-Over-Aligned-Networks%E3%80%8B-AAAI18/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ANeural-Link-Prediction-Over-Aligned-Networks%E3%80%8B-AAAI18/" class="post-title-link" itemprop="url">论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-19 15:00:09" itemprop="dateCreated datePublished" datetime="2019-10-19T15:00:09+08:00">2019-10-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:53:11" itemprop="dateModified" datetime="2020-09-13T09:53:11+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/" itemprop="url" rel="index"><span itemprop="name">Social Networks</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ANeural-Link-Prediction-Over-Aligned-Networks%E3%80%8B-AAAI18/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ANeural-Link-Prediction-Over-Aligned-Networks%E3%80%8B-AAAI18/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>711</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Neural-Link-Prediction-Over-Aligned-Networks"><a href="#Neural-Link-Prediction-Over-Aligned-Networks" class="headerlink" title="Neural Link Prediction Over Aligned Networks"></a>Neural Link Prediction Over Aligned Networks</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>这篇文章是如何利用对齐的两个网络增强一个网络中的链路预测性能。对于特征分别利用深度网络进行提取，最后一起用来进行链路预测。</p>
-<p>链路预测问题，不是社交网络对齐问题。</p>
-<h2 id="Research-Objective"><a href="#Research-Objective" class="headerlink" title="Research Objective"></a>Research Objective</h2><p> 给定两个对齐的网络，本文的目标是对这两个网络进行联合建模，以提高两个网络的预测质量。</p>
-<p>提出一个基于对齐网络的多层神经网络框架 MNN,  在该框架中，将每个异质目标或特征视为一个单独的目标通道。分别为每个目标通道构造一个神经网络，而所有的神经网络共享一组公共的顶点嵌入。 </p>
-<h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><h3 id="Link-Prediction"><a href="#Link-Prediction" class="headerlink" title="Link Prediction"></a>Link Prediction</h3><p>单个网络的链路预测问题可以分为<strong>基于相似性的方法</strong>和<strong>基于模型的方法</strong>。</p>
-<p><strong>Similarity-based</strong></p>
-<p>为每一对节点分配相似性分数，然后根据相似性分数进行链路预测。</p>
-<ul>
-<li>common neighbors</li>
-<li>Leicht-Holme-Newman index</li>
-<li>node rank based algorithms </li>
-</ul>
-<p><strong>Model-based</strong></p>
-<p> 基于网络结构或连接机制的假设建立模型，然后用观测到的网络结构去训练网络</p>
-<ul>
-<li>hierarchical graph based models 基于层次图的模型</li>
-<li>latent factor models </li>
-<li>深度模型<ul>
-<li>DeepWork：DeepWalk将节点视为单词，将随机游动序列视为句子，然后应用单词嵌入技术来计算顶点嵌入。</li>
-<li>node2vec：biased random walk</li>
-<li>SDNE</li>
-</ul>
-</li>
-</ul>
-<h3 id="Network-Alignment"><a href="#Network-Alignment" class="headerlink" title="Network Alignment"></a>Network Alignment</h3><h3 id="Multi-Task-Learning"><a href="#Multi-Task-Learning" class="headerlink" title="Multi-Task Learning"></a>Multi-Task Learning</h3><p><strong>Aligned Network</strong></p>
-<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AStructure-Based-User-Identification-across-Social-Networks%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AStructure-Based-User-Identification-across-Social-Networks%E3%80%8B/" class="post-title-link" itemprop="url">论文阅读《Structure Based User Identification across Social Networks》</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-17 14:34:34" itemprop="dateCreated datePublished" datetime="2019-10-17T14:34:34+08:00">2019-10-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:53:29" itemprop="dateModified" datetime="2020-09-13T09:53:29+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/" itemprop="url" rel="index"><span itemprop="name">Social Networks</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AStructure-Based-User-Identification-across-Social-Networks%E3%80%8B/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AStructure-Based-User-Identification-across-Social-Networks%E3%80%8B/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.1k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Structure-Based-User-Identification-across-Social-Networks"><a href="#Structure-Based-User-Identification-across-Social-Networks" class="headerlink" title="Structure Based User Identification across Social Networks"></a>Structure Based User Identification across Social Networks</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><h2 id="Research-Objective"><a href="#Research-Objective" class="headerlink" title="Research Objective"></a>Research Objective</h2><p> 纯粹通过朋友关系用无监督方法识别不同社交网络中的匿名的相同用户</p>
-<p>提出了一种无监督的用户身份识别算法 —— Friend Relationship-based User Identification without Prior Knowledge（FRUI-P）。从网络结构中提取每个用户的多个维度的特征， 然后从多维特征中评价任意两个不同SNs用户的相似性。</p>
-<p>提出一个 Friend Feature Vector Machine（FFVM）来进行网络的随机游走。 </p>
-<h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><h4 id="1-Candidate-Identical-User-Pair"><a href="#1-Candidate-Identical-User-Pair" class="headerlink" title="1 Candidate Identical User Pair"></a>1 Candidate Identical User Pair</h4><h4 id="2-Identical-Users"><a href="#2-Identical-Users" class="headerlink" title="2 Identical Users"></a>2 Identical Users</h4><script type="math/tex; mode=display">
-\ddot{\mathrm{I}}\left(\mathrm{U}_{i}^{A}, \mathrm{U}_{j}^{B}\right)  \\ 
-如果 U_i^A 和 U_j^B是真实世界的一个人，那么  U_i^A = U_j^B</script><h4 id="3-Context"><a href="#3-Context" class="headerlink" title="3 Context"></a>3 Context</h4><p>具有较高概率预测用户$U_i$的用户集合，通过随机游走来构建用户的上下文</p>
-<h4 id="4-Positive-Sample"><a href="#4-Positive-Sample" class="headerlink" title="4 Positive Sample"></a>4 Positive Sample</h4><p>$(C_i, U_i)$</p>
-<h4 id="5-Negative-User-Set，Negative-Sample"><a href="#5-Negative-User-Set，Negative-Sample" class="headerlink" title="5 Negative User Set，Negative Sample"></a>5 Negative User Set，Negative Sample</h4><p>除了$U_i$以外的用户定义为$N_i$, 是$C_i$的负用户，$N_i = U - {U_i}$</p>
-<h4 id="6-Friend-Feature-Vector"><a href="#6-Friend-Feature-Vector" class="headerlink" title="6 Friend Feature Vector"></a>6 Friend Feature Vector</h4><p>嵌入 friend 特征的 x 维向量</p>
-<h4 id="7-Friend-Feature-Similarity"><a href="#7-Friend-Feature-Similarity" class="headerlink" title="7 Friend Feature Similarity"></a>7 Friend Feature Similarity</h4><p>跨平台的用户识别问题可以定义为：</p>
-<script type="math/tex; mode=display">
-f\left(\mathrm{U}_{i}^{A}, \mathrm{U}_{j}^{B} | \mathrm{SN}^{A}, \mathrm{SN}^{B}\right)=\left\{\begin{array}{ll}{1,} & {\mathrm{U}_{i}^{A}=\mathrm{U}_{j}^{B}} \\ {0,} & {\text { otherwise }}\end{array}\right.</script><h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><p><strong>Profile-Based User Identification </strong></p>
-<p>Screen name，gender，birthday，city，profile image</p>
-<p><strong>Content-Based User Identification</strong></p>
-<p>基于用户发布 posts 的时间和位置以及用户的写作风格</p>
-<p><strong>Network Structure-Based User Identification</strong></p>
-<ul>
-<li><p>监督方法</p>
-</li>
-<li><p>半监督方法</p>
-</li>
-<li><p>无监督方法</p>
-</li>
-</ul>
-<p><strong>Network Embedding </strong></p>
-<h3 id="无先验知识的用户识别"><a href="#无先验知识的用户识别" class="headerlink" title="无先验知识的用户识别"></a>无先验知识的用户识别</h3><h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-  </div>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
-
-
           </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
         </div>
-          
+      </div>
+    
+  </main>
+
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Kelly Liu"
-      src="/uploads/avatar.jpeg">
-  <p class="site-author-name" itemprop="name">Kelly Liu</p>
-  <div class="site-description" itemprop="description">The Space to record knowledge and my life.</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">83</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
       </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">38</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">38</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/tiantianliu2018" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tiantianliu2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:tiantianliu2018@outlook.com" title="E-Mail → mailto:tiantianliu2018@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-  </div>
-
-
-
-      </div>
-
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright">
-  
-  &copy; 2019 – 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Kelly liu</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-      <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">169k</span>
-</div>
-
-<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="theme-info">
-  <div class="powered-by"></div>
-  <span class="post-count">博客全站共73.6k字</span>
-  <span class="post-meta-divider">|</span>
-  本站总访问量<span id="busuanzi_value_site_pv"></span>次
-  <span class="post-meta-divider">|</span>
-  本站访客数<span id="busuanzi_value_site_uv"></span>人次
-  <span class="post-meta-divider">|</span>
-  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-</div>
-
-<div class="theme-info">
-  <div class="powered-by"></div>
-  <span class="post-count">博客全站共73.6k字</span>
-</div>
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
   </div>
-
+</div>
   
-  
-  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
 
   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
   
 
   
 
   
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
 
 
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "An elegant Material-Design theme for Hexo&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
     });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : true,
-      notify     : true,
-      appId      : 'FhWVmso5TyqrTqtDNNtpuBeC-gzGzoHsz',
-      appKey     : 'd5yz5CVcPPfEmfA5p2ovH6g9',
-      placeholder: "欢迎交流讨论...",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : 'zh-CN' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
     });
-  }, window.Valine);
-});
-</script>
+  </script>
+
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>

@@ -1,254 +1,226 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8332.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8316.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="The Space to record knowledge and my life.">
+  <meta name="author" content="Kelly Liu">
+  <meta name="keywords" content="CS_learn, Keep Moving...">
+  <title>树专题总结 - Kelly&#39;s Blogs</title>
 
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta name="description" content="树专题总结树是一种经常用到的数据结构，用来模拟具有树状结构性质的数据集合。 树里的每一个节点有一个值和一个包含所有子节点的列表。从图的观点来看，树也可视为一个拥有 N 个节点和 N-1 条边的一个有向无环图。 二叉树是一种更为典型的树状结构。二叉树是每个节点最多有两个子树的树结构，通常子树被称作“左子树”和“右子树”。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="树专题总结">
-<meta property="og:url" content="http://tiantianliu2018.github.io/2020/10/24/%E6%A0%91%E4%B8%93%E9%A2%98%E6%80%BB%E7%BB%93/index.html">
-<meta property="og:site_name" content="Kelly&#39;s Blogs">
-<meta property="og:description" content="树专题总结树是一种经常用到的数据结构，用来模拟具有树状结构性质的数据集合。 树里的每一个节点有一个值和一个包含所有子节点的列表。从图的观点来看，树也可视为一个拥有 N 个节点和 N-1 条边的一个有向无环图。 二叉树是一种更为典型的树状结构。二叉树是每个节点最多有两个子树的树结构，通常子树被称作“左子树”和“右子树”。">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-10-24T01:13:39.000Z">
-<meta property="article:modified_time" content="2020-10-26T08:19:37.546Z">
-<meta property="article:author" content="Kelly Liu">
-<meta property="article:tag" content="树">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://tiantianliu2018.github.io/2020/10/24/%E6%A0%91%E4%B8%93%E9%A2%98%E6%80%BB%E7%BB%93/">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true
-  };
-</script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-  <title>树专题总结 | Kelly's Blogs</title>
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
   
 
 
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
+<link  rel="stylesheet" href="/css/main.css" />
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
+<!-- 自定义样式保持在最底部 -->
 
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/clicklove.js"></script>
-</head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Kelly's Blogs</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">To Be Better</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">38</span></a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">38</span></a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">83</span></a>
-
-  </li>
-  </ul>
-
 </nav>
-</div>
-    </header>
 
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
 
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content">
             
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-10-24 09:13" pubdate>
+        2020年10月24日 上午
+      </time>
+    </span>
+  
+</div>
 
-  <div class="posts-expand">
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
       
+      
+      69
+       分钟
+    </span>
+  
+
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/10/24/%E6%A0%91%E4%B8%93%E9%A2%98%E6%80%BB%E7%BB%93/">
+</div>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          树专题总结
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-10-24 09:13:39" itemprop="dateCreated datePublished" datetime="2020-10-24T09:13:39+08:00">2020-10-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-26 16:19:37" itemprop="dateModified" datetime="2020-10-26T16:19:37+08:00">2020-10-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
+            
+          </div>
 
           
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/10/24/%E6%A0%91%E4%B8%93%E9%A2%98%E6%80%BB%E7%BB%93/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/10/24/%E6%A0%91%E4%B8%93%E9%A2%98%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>15k</span>
-            </span>
-
         </div>
-      </header>
+      </div>
+    </div>
+  </header>
 
+  <main>
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
       
-        <h1 id="树专题总结"><a href="#树专题总结" class="headerlink" title="树专题总结"></a>树专题总结</h1><p><strong>树</strong>是一种经常用到的数据结构，用来模拟具有树状结构性质的数据集合。</p>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">树专题总结</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="树专题总结"><a href="#树专题总结" class="headerlink" title="树专题总结"></a>树专题总结</h1><p><strong>树</strong>是一种经常用到的数据结构，用来模拟具有树状结构性质的数据集合。</p>
 <p>树里的每一个节点有一个值和一个包含所有子节点的列表。从图的观点来看，树也可视为一个拥有 N 个节点和 N-1 条边的一个有向无环图。</p>
 <p>二叉树是一种更为典型的树状结构。二叉树是每个节点最多有两个子树的树结构，通常子树被称作“左子树”和“右子树”。</p>
 <a id="more"></a>
@@ -259,9 +231,40 @@
 <p>输入: [1,null,2,3]<br>   1<br>    \<br>     2<br>    /<br>   3 </p>
 <p>输出: [1,2,3]</p>
 </blockquote>
-<h6 id="递归方法"><a href="#递归方法" class="headerlink" title="递归方法"></a>递归方法</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">    preOrder(res, root);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preOrder</span><span class="params">(List&lt;Integer&gt; res, TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">// 根节点</span></span><br><span class="line">    res.add(root.val);</span><br><span class="line">    <span class="comment">// 左子树</span></span><br><span class="line">    preOrder(res, root.left);</span><br><span class="line">    <span class="comment">// 右子树</span></span><br><span class="line">    preOrder(res, root.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="递归方法"><a href="#递归方法" class="headerlink" title="递归方法"></a>递归方法</h6><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">preorderTraversal</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+    List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> res;
+    preOrder(res, root);
+    <span class="hljs-keyword">return</span> res;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">preOrder</span><span class="hljs-params">(List&lt;Integer&gt; res, TreeNode root)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span>;
+    <span class="hljs-comment">// 根节点</span>
+    res.add(root.val);
+    <span class="hljs-comment">// 左子树</span>
+    preOrder(res, root.left);
+    <span class="hljs-comment">// 右子树</span>
+    preOrder(res, root.right);
+&#125;</code></pre>
 <h6 id="迭代方法"><a href="#迭代方法" class="headerlink" title="迭代方法"></a>迭代方法</h6><p>迭代方法需要用一个辅助栈来实现,模拟递归</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">    Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    stack.add(root);</span><br><span class="line">    <span class="keyword">while</span>(!stack.isEmpty()) &#123;</span><br><span class="line">        TreeNode node = stack.pop();</span><br><span class="line">        res.add(node.val);</span><br><span class="line">        <span class="comment">// 栈先进后出，因此要先将右子树先入栈，可以后访问</span></span><br><span class="line">        <span class="keyword">if</span> (node.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">            stack.push(node.right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (node.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">            stack.push(node.left);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">preorderTraversal</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+    List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> res;
+    Stack&lt;TreeNode&gt; stack = <span class="hljs-keyword">new</span> Stack&lt;&gt;();
+    stack.add(root);
+    <span class="hljs-keyword">while</span>(!stack.isEmpty()) &#123;
+        TreeNode node = stack.pop();
+        res.add(node.val);
+        <span class="hljs-comment">// 栈先进后出，因此要先将右子树先入栈，可以后访问</span>
+        <span class="hljs-keyword">if</span> (node.right != <span class="hljs-keyword">null</span>) &#123;
+            stack.push(node.right);
+        &#125;
+        <span class="hljs-keyword">if</span> (node.left != <span class="hljs-keyword">null</span>) &#123;
+            stack.push(node.left);
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> res;
+&#125;</code></pre>
 <hr>
 <h3 id="1-2-中序遍历"><a href="#1-2-中序遍历" class="headerlink" title="1.2 中序遍历"></a>1.2 中序遍历</h3><p>中序遍历：==左子树 -&gt; 根节点 -&gt; 右子树==</p>
 <h5 id="Leetcode-94-二叉树的中序遍历"><a href="#Leetcode-94-二叉树的中序遍历" class="headerlink" title="Leetcode 94. 二叉树的中序遍历"></a><a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/" target="_blank" rel="noopener">Leetcode 94. 二叉树的中序遍历</a></h5><blockquote>
@@ -270,8 +273,42 @@
 <p>输入: [1,null,2,3]<br>   1<br>    \<br>     2<br>    /<br>   3</p>
 <p>输出: [1,3,2]</p>
 </blockquote>
-<h6 id="递归方法-1"><a href="#递归方法-1" class="headerlink" title="递归方法"></a>递归方法</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">    inOrder(res, root);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">inOrder</span><span class="params">(List&lt;Integer&gt; res, TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">// 左子树</span></span><br><span class="line">    inOrder(res, root.left);</span><br><span class="line">    <span class="comment">// 根节点</span></span><br><span class="line">    res.add(root.val);</span><br><span class="line">    <span class="comment">// 右子树</span></span><br><span class="line">    inOrder(res, root.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="迭代方法-1"><a href="#迭代方法-1" class="headerlink" title="迭代方法"></a>迭代方法</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">    <span class="comment">// 辅助栈用来模拟递归</span></span><br><span class="line">    Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    TreeNode curr = root;</span><br><span class="line">    <span class="keyword">while</span>(!stack.isEmpty() || curr != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="comment">// 一直往左走，直到走到最左子节点</span></span><br><span class="line">        <span class="keyword">while</span> (curr != <span class="keyword">null</span>) &#123;</span><br><span class="line">            stack.push(curr);</span><br><span class="line">            curr = curr.left;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode node = stack.pop();</span><br><span class="line">        res.add(node.val);</span><br><span class="line">        <span class="comment">// 往右走</span></span><br><span class="line">        <span class="keyword">if</span> (node.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">            curr = node.right;</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="递归方法-1"><a href="#递归方法-1" class="headerlink" title="递归方法"></a>递归方法</h6><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+    List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> res;
+    inOrder(res, root);
+    <span class="hljs-keyword">return</span> res;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">inOrder</span><span class="hljs-params">(List&lt;Integer&gt; res, TreeNode root)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span>;
+    <span class="hljs-comment">// 左子树</span>
+    inOrder(res, root.left);
+    <span class="hljs-comment">// 根节点</span>
+    res.add(root.val);
+    <span class="hljs-comment">// 右子树</span>
+    inOrder(res, root.right);
+&#125;</code></pre>
+<h6 id="迭代方法-1"><a href="#迭代方法-1" class="headerlink" title="迭代方法"></a>迭代方法</h6><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+    List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> res;
+    <span class="hljs-comment">// 辅助栈用来模拟递归</span>
+    Stack&lt;TreeNode&gt; stack = <span class="hljs-keyword">new</span> Stack&lt;&gt;();
+    TreeNode curr = root;
+    <span class="hljs-keyword">while</span>(!stack.isEmpty() || curr != <span class="hljs-keyword">null</span>) &#123;
+        <span class="hljs-comment">// 一直往左走，直到走到最左子节点</span>
+        <span class="hljs-keyword">while</span> (curr != <span class="hljs-keyword">null</span>) &#123;
+            stack.push(curr);
+            curr = curr.left;
+        &#125;
+        TreeNode node = stack.pop();
+        res.add(node.val);
+        <span class="hljs-comment">// 往右走</span>
+        <span class="hljs-keyword">if</span> (node.right != <span class="hljs-keyword">null</span>) &#123;
+            curr = node.right;
+        &#125; 
+    &#125;
+    <span class="hljs-keyword">return</span> res;
+&#125;</code></pre>
 <hr>
 <h3 id="1-3-后序遍历"><a href="#1-3-后序遍历" class="headerlink" title="1.3 后序遍历"></a>1.3 后序遍历</h3><p>后序遍历：==左子树 -&gt; 右子树 -&gt; 根节点==</p>
 <h5 id="Leetcode-145-二叉树的后序遍历"><a href="#Leetcode-145-二叉树的后序遍历" class="headerlink" title="Leetcode 145. 二叉树的后序遍历"></a><a href="https://leetcode-cn.com/problems/binary-tree-postorder-traversal/" target="_blank" rel="noopener">Leetcode 145. 二叉树的后序遍历</a></h5><blockquote>
@@ -280,9 +317,42 @@
 <p>输入: [1,null,2,3]<br>   1<br>    \<br>     2<br>    /<br>   3 </p>
 <p>输出: [3,2,1]</p>
 </blockquote>
-<h6 id="递归方法-2"><a href="#递归方法-2" class="headerlink" title="递归方法"></a>递归方法</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">postorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">    postOrder(res, root);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">postOrder</span><span class="params">(List&lt;Integer&gt; res, TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">// 左子树</span></span><br><span class="line">    postOrder(res, root.left);</span><br><span class="line">    <span class="comment">// 右子树</span></span><br><span class="line">    postOrder(res, root.right);</span><br><span class="line">    <span class="comment">// 根节点</span></span><br><span class="line">    res.add(root.val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="递归方法-2"><a href="#递归方法-2" class="headerlink" title="递归方法"></a>递归方法</h6><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">postorderTraversal</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+    List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> res;
+    postOrder(res, root);
+    <span class="hljs-keyword">return</span> res;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">postOrder</span><span class="hljs-params">(List&lt;Integer&gt; res, TreeNode root)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span>;
+    <span class="hljs-comment">// 左子树</span>
+    postOrder(res, root.left);
+    <span class="hljs-comment">// 右子树</span>
+    postOrder(res, root.right);
+    <span class="hljs-comment">// 根节点</span>
+    res.add(root.val);
+&#125;</code></pre>
 <h6 id="迭代方法-2"><a href="#迭代方法-2" class="headerlink" title="迭代方法"></a>迭代方法</h6><p>后序遍历可以看做前序遍历的逆序列，当前序遍历是 根节点 - 右子树 - 左子树 的时候，因此可以按照前序遍历的方法进行迭代，返回其逆序列。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">postorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">    Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    stack.add(root);</span><br><span class="line">    <span class="keyword">while</span>(!stack.isEmpty()) &#123;</span><br><span class="line">        TreeNode node = stack.pop();</span><br><span class="line">        <span class="comment">// 逆序添加结果</span></span><br><span class="line">        res.add(<span class="number">0</span>, node.val);</span><br><span class="line">        <span class="comment">// 先将左子树入栈</span></span><br><span class="line">        <span class="keyword">if</span> (node.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">            stack.push(node.left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 右子树入栈</span></span><br><span class="line">        <span class="keyword">if</span> (node.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">            stack.push(node.right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">postorderTraversal</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+    List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> res;
+    Stack&lt;TreeNode&gt; stack = <span class="hljs-keyword">new</span> Stack&lt;&gt;();
+    stack.add(root);
+    <span class="hljs-keyword">while</span>(!stack.isEmpty()) &#123;
+        TreeNode node = stack.pop();
+        <span class="hljs-comment">// 逆序添加结果</span>
+        res.add(<span class="hljs-number">0</span>, node.val);
+        <span class="hljs-comment">// 先将左子树入栈</span>
+        <span class="hljs-keyword">if</span> (node.left != <span class="hljs-keyword">null</span>) &#123;
+            stack.push(node.left);
+        &#125;
+        <span class="hljs-comment">// 右子树入栈</span>
+        <span class="hljs-keyword">if</span> (node.right != <span class="hljs-keyword">null</span>) &#123;
+            stack.push(node.right);
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> res;
+&#125;</code></pre>
 <hr>
 <h3 id="1-4-层次遍历"><a href="#1-4-层次遍历" class="headerlink" title="1.4 层次遍历"></a>1.4 层次遍历</h3><p><strong>层序遍历</strong>就是逐层遍历树结构。</p>
 <p><strong>广度优先搜索</strong>是一种广泛运用在树或图这类数据结构中，遍历或搜索的算法。 该算法从一个根节点开始，首先访问节点本身。 然后遍历它的相邻节点，其次遍历它的二级邻节点、三级邻节点，以此类推。</p>
@@ -295,7 +365,26 @@
 </code></pre><p>   / \<br>  9  20<br>    /  \<br>   15   7<br>返回其层次遍历结果：</p>
 <p>[<br>  [3],<br>  [9,20],<br>  [15,7]<br>]</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) &#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">    <span class="comment">// 辅助队列</span></span><br><span class="line">    Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    queue.add(root);</span><br><span class="line">    <span class="keyword">while</span>(!queue.isEmpty()) &#123;</span><br><span class="line">        <span class="comment">// 当前层</span></span><br><span class="line">        <span class="keyword">int</span> size = queue.size();</span><br><span class="line">        List&lt;Integer&gt; layer = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">            TreeNode node = queue.poll();</span><br><span class="line">            layer.add(node.val);</span><br><span class="line">            <span class="keyword">if</span> (node.left != <span class="keyword">null</span>) queue.add(node.left);</span><br><span class="line">            <span class="keyword">if</span> (node.right != <span class="keyword">null</span>) queue.add(node.right);</span><br><span class="line">        &#125;</span><br><span class="line">        res.add(layer);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) &#123;
+    List&lt;List&lt;Integer&gt;&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> res;
+    <span class="hljs-comment">// 辅助队列</span>
+    Queue&lt;TreeNode&gt; queue = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+    queue.add(root);
+    <span class="hljs-keyword">while</span>(!queue.isEmpty()) &#123;
+        <span class="hljs-comment">// 当前层</span>
+        <span class="hljs-keyword">int</span> size = queue.size();
+        List&lt;Integer&gt; layer = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) &#123;
+            TreeNode node = queue.poll();
+            layer.add(node.val);
+            <span class="hljs-keyword">if</span> (node.left != <span class="hljs-keyword">null</span>) queue.add(node.left);
+            <span class="hljs-keyword">if</span> (node.right != <span class="hljs-keyword">null</span>) queue.add(node.right);
+        &#125;
+        res.add(layer);
+    &#125;
+    <span class="hljs-keyword">return</span> res;
+&#125;</code></pre>
 <hr>
 <h3 id="1-5-遍历应用"><a href="#1-5-遍历应用" class="headerlink" title="1.5 遍历应用"></a>1.5 遍历应用</h3><p>有些题目是通过调整树的遍历顺序来实现特定目标的，基本思想还是树的遍历。</p>
 <h4 id="1-5-1-层次遍历变形"><a href="#1-5-1-层次遍历变形" class="headerlink" title="1.5.1 层次遍历变形"></a>1.5.1 层次遍历变形</h4><h5 id="Leetcode-103-二叉树的锯齿形层次遍历"><a href="#Leetcode-103-二叉树的锯齿形层次遍历" class="headerlink" title="Leetcode 103. 二叉树的锯齿形层次遍历"></a><a href="https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal/" target="_blank" rel="noopener">Leetcode 103. 二叉树的锯齿形层次遍历</a></h5><blockquote>
@@ -307,19 +396,89 @@
 </blockquote>
 <p><strong>解题思路</strong></p>
 <p>本质上还是==层次遍历==，只是每一层的元素添加顺序不同。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; zigzagLevelOrder(TreeNode root) &#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">    Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    queue.add(root);</span><br><span class="line">    <span class="keyword">while</span>(!queue.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">int</span> size = queue.size();</span><br><span class="line">        <span class="comment">// 链表记录当前层的元素</span></span><br><span class="line">        LinkedList&lt;Integer&gt; layer = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">            TreeNode node = queue.poll();</span><br><span class="line">            <span class="comment">// 通过 结果列表中元素的个数 来标记是【正向】添加元素还是【反向】添加</span></span><br><span class="line">            <span class="keyword">if</span> (res.size() % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                layer.addLast(node.val);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                layer.addFirst(node.val);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (node.left != <span class="keyword">null</span>) queue.add(node.left);</span><br><span class="line">            <span class="keyword">if</span> (node.right != <span class="keyword">null</span>) queue.add(node.right);</span><br><span class="line">        &#125;</span><br><span class="line">        res.add(layer);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; zigzagLevelOrder(TreeNode root) &#123;
+    List&lt;List&lt;Integer&gt;&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> res;
+    Queue&lt;TreeNode&gt; queue = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+    queue.add(root);
+    <span class="hljs-keyword">while</span>(!queue.isEmpty()) &#123;
+        <span class="hljs-keyword">int</span> size = queue.size();
+        <span class="hljs-comment">// 链表记录当前层的元素</span>
+        LinkedList&lt;Integer&gt; layer = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) &#123;
+            TreeNode node = queue.poll();
+            <span class="hljs-comment">// 通过 结果列表中元素的个数 来标记是【正向】添加元素还是【反向】添加</span>
+            <span class="hljs-keyword">if</span> (res.size() % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) &#123;
+                layer.addLast(node.val);
+            &#125; <span class="hljs-keyword">else</span> &#123;
+                layer.addFirst(node.val);
+            &#125;
+            <span class="hljs-keyword">if</span> (node.left != <span class="hljs-keyword">null</span>) queue.add(node.left);
+            <span class="hljs-keyword">if</span> (node.right != <span class="hljs-keyword">null</span>) queue.add(node.right);
+        &#125;
+        res.add(layer);
+    &#125;
+    <span class="hljs-keyword">return</span> res;
+&#125;</code></pre>
 <h5 id="Leetcode-958-二叉树的完全性检验"><a href="#Leetcode-958-二叉树的完全性检验" class="headerlink" title="Leetcode 958. 二叉树的完全性检验"></a><a href="https://leetcode-cn.com/problems/check-completeness-of-a-binary-tree/" target="_blank" rel="noopener">Leetcode 958. 二叉树的完全性检验</a></h5><blockquote>
 <p>给定一个二叉树，确定它是否是一个<em>完全二叉树</em>。</p>
 </blockquote>
 <p>层次遍历，用一个 boolean 变量标记是否遇到空节点，如果空节点后面出现了非空节点，则一定不是完全二叉树。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isCompleteTree</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    queue.add(root);</span><br><span class="line">    <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;  <span class="comment">// 标记是否出现 null</span></span><br><span class="line">    <span class="keyword">while</span>(!queue.isEmpty()) &#123;</span><br><span class="line">        TreeNode node = queue.poll();</span><br><span class="line">        <span class="keyword">if</span> (node != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (flag) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            queue.add(node.left);</span><br><span class="line">            queue.add(node.right);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            flag = <span class="keyword">true</span>;  <span class="comment">// 当前节点是空节点</span></span><br><span class="line">        &#125;      </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isCompleteTree</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    Queue&lt;TreeNode&gt; queue = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+    queue.add(root);
+    <span class="hljs-keyword">boolean</span> flag = <span class="hljs-keyword">false</span>;  <span class="hljs-comment">// 标记是否出现 null</span>
+    <span class="hljs-keyword">while</span>(!queue.isEmpty()) &#123;
+        TreeNode node = queue.poll();
+        <span class="hljs-keyword">if</span> (node != <span class="hljs-keyword">null</span>) &#123;
+            <span class="hljs-keyword">if</span> (flag) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+            queue.add(node.left);
+            queue.add(node.right);
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            flag = <span class="hljs-keyword">true</span>;  <span class="hljs-comment">// 当前节点是空节点</span>
+        &#125;      
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+&#125;</code></pre>
 <h5 id="Leetcode-199-二叉树的右视图"><a href="#Leetcode-199-二叉树的右视图" class="headerlink" title="Leetcode 199. 二叉树的右视图"></a><a href="https://leetcode-cn.com/problems/binary-tree-right-side-view/" target="_blank" rel="noopener">Leetcode 199. 二叉树的右视图</a></h5><blockquote>
 <p>给定一棵二叉树，想象自己站在它的右侧，按照从顶部到底部的顺序，返回从右侧所能看到的节点值。</p>
 </blockquote>
 <h6 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h6><p>层次遍历，将每一层的最后一个节点加入结果列表。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">rightSideView</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">    Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    queue.add(root);</span><br><span class="line">    <span class="keyword">while</span>(!queue.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">int</span> size = queue.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">            TreeNode node = queue.poll();</span><br><span class="line">            <span class="keyword">if</span> (i == size - <span class="number">1</span>) &#123;</span><br><span class="line">                res.add(node.val);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (node.left != <span class="keyword">null</span>) queue.add(node.left);</span><br><span class="line">            <span class="keyword">if</span> (node.right != <span class="keyword">null</span>) queue.add(node.right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">rightSideView</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+    List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> res;
+    Queue&lt;TreeNode&gt; queue = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+    queue.add(root);
+    <span class="hljs-keyword">while</span>(!queue.isEmpty()) &#123;
+        <span class="hljs-keyword">int</span> size = queue.size();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) &#123;
+            TreeNode node = queue.poll();
+            <span class="hljs-keyword">if</span> (i == size - <span class="hljs-number">1</span>) &#123;
+                res.add(node.val);
+            &#125;
+            <span class="hljs-keyword">if</span> (node.left != <span class="hljs-keyword">null</span>) queue.add(node.left);
+            <span class="hljs-keyword">if</span> (node.right != <span class="hljs-keyword">null</span>) queue.add(node.right);
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> res;
+&#125;</code></pre>
 <h6 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h6><p>按照 ==根节点 -&gt; 右子树 -&gt; 左子树== 的顺序遍历二叉树，每一层最先访问的就是最右侧的节点</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">rightSideView</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">    dfs(res, <span class="number">0</span>, root);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(List&lt;Integer&gt; res, <span class="keyword">int</span> depth, TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">// 本层的第一个节点</span></span><br><span class="line">    <span class="keyword">if</span> (depth == res.size()) &#123;</span><br><span class="line">        res.add(root.val);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(res, depth + <span class="number">1</span>, root.right);</span><br><span class="line">    dfs(res, depth + <span class="number">1</span>, root.left);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">rightSideView</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+    List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> res;
+    dfs(res, <span class="hljs-number">0</span>, root);
+    <span class="hljs-keyword">return</span> res;
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(List&lt;Integer&gt; res, <span class="hljs-keyword">int</span> depth, TreeNode root)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span>;
+    <span class="hljs-comment">// 本层的第一个节点</span>
+    <span class="hljs-keyword">if</span> (depth == res.size()) &#123;
+        res.add(root.val);
+    &#125;
+    dfs(res, depth + <span class="hljs-number">1</span>, root.right);
+    dfs(res, depth + <span class="hljs-number">1</span>, root.left);
+&#125;</code></pre>
 <hr>
 <h4 id="1-5-2-根据遍历序列构造二叉树"><a href="#1-5-2-根据遍历序列构造二叉树" class="headerlink" title="1.5.2 根据遍历序列构造二叉树"></a>1.5.2 根据遍历序列构造二叉树</h4><h5 id="Leetcode-105-从前序与中序遍历序列构造二叉树"><a href="#Leetcode-105-从前序与中序遍历序列构造二叉树" class="headerlink" title="Leetcode 105. 从前序与中序遍历序列构造二叉树"></a><a href="https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="noopener">Leetcode 105. 从前序与中序遍历序列构造二叉树</a></h5><blockquote>
 <p>根据一棵树的前序遍历与中序遍历构造二叉树。</p>
@@ -332,7 +491,27 @@
 <p>前序遍历：根节点 -&gt; 左子树 -&gt; 右子树</p>
 <p>中序遍历：左子树 -&gt; 根节点 -&gt; 右子树</p>
 <p>根据前序遍历序列，可以将中序序列分为左子树，根，和右子树，然后递归的将其序列分割,建树</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">buildTree</span><span class="params">(<span class="keyword">int</span>[] preorder, <span class="keyword">int</span>[] inorder)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (preorder == <span class="keyword">null</span> || inorder == <span class="keyword">null</span> || preorder.length == <span class="number">0</span> || inorder.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="comment">// HashMap 记录中序遍历序列中元素的位置，加快查找</span></span><br><span class="line">    HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; inorder.length; i++) &#123;</span><br><span class="line">        map.put(inorder[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> build(preorder, <span class="number">0</span>, preorder.length - <span class="number">1</span>, inorder, <span class="number">0</span>, inorder.length - <span class="number">1</span>, map);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> TreeNode <span class="title">build</span><span class="params">(<span class="keyword">int</span>[] preorder, <span class="keyword">int</span> preS, <span class="keyword">int</span> preE, <span class="keyword">int</span>[] inorder, <span class="keyword">int</span> inS, <span class="keyword">int</span> inE, HashMap&lt;Integer,Integer&gt; map)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (preS &gt; preE || inS &gt; inE) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">int</span> rootVal = preorder[preS];</span><br><span class="line">    TreeNode root = <span class="keyword">new</span> TreeNode(rootVal);</span><br><span class="line">    <span class="comment">// 根节点在中序遍历序列中的位置</span></span><br><span class="line">    <span class="keyword">int</span> index = map.get(rootVal);</span><br><span class="line">    <span class="comment">// 递归地构建树</span></span><br><span class="line">    root.left = build(preorder, preS + <span class="number">1</span>, preS + index - inS, inorder, inS, index - <span class="number">1</span>, map);</span><br><span class="line">    root.right = build(preorder, preS + index - inS + <span class="number">1</span>, preE, inorder, index + <span class="number">1</span>, inE, map);</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">buildTree</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] preorder, <span class="hljs-keyword">int</span>[] inorder)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (preorder == <span class="hljs-keyword">null</span> || inorder == <span class="hljs-keyword">null</span> || preorder.length == <span class="hljs-number">0</span> || inorder.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    <span class="hljs-comment">// HashMap 记录中序遍历序列中元素的位置，加快查找</span>
+    HashMap&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; inorder.length; i++) &#123;
+        map.put(inorder[i], i);
+    &#125;
+    <span class="hljs-keyword">return</span> build(preorder, <span class="hljs-number">0</span>, preorder.length - <span class="hljs-number">1</span>, inorder, <span class="hljs-number">0</span>, inorder.length - <span class="hljs-number">1</span>, map);
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">private</span> TreeNode <span class="hljs-title">build</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] preorder, <span class="hljs-keyword">int</span> preS, <span class="hljs-keyword">int</span> preE, <span class="hljs-keyword">int</span>[] inorder, <span class="hljs-keyword">int</span> inS, <span class="hljs-keyword">int</span> inE, HashMap&lt;Integer,Integer&gt; map)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (preS &gt; preE || inS &gt; inE) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">int</span> rootVal = preorder[preS];
+    TreeNode root = <span class="hljs-keyword">new</span> TreeNode(rootVal);
+    <span class="hljs-comment">// 根节点在中序遍历序列中的位置</span>
+    <span class="hljs-keyword">int</span> index = map.get(rootVal);
+    <span class="hljs-comment">// 递归地构建树</span>
+    root.left = build(preorder, preS + <span class="hljs-number">1</span>, preS + index - inS, inorder, inS, index - <span class="hljs-number">1</span>, map);
+    root.right = build(preorder, preS + index - inS + <span class="hljs-number">1</span>, preE, inorder, index + <span class="hljs-number">1</span>, inE, map);
+    <span class="hljs-keyword">return</span> root;
+&#125;</code></pre>
 <h5 id="Leetcode-106-从中序与后序遍历序列构造二叉树"><a href="#Leetcode-106-从中序与后序遍历序列构造二叉树" class="headerlink" title="Leetcode 106. 从中序与后序遍历序列构造二叉树"></a><a href="https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/" target="_blank" rel="noopener">Leetcode 106. 从中序与后序遍历序列构造二叉树</a></h5><blockquote>
 <p>根据一棵树的中序遍历与后序遍历构造二叉树。</p>
 <p>注意: 你可以假设树中没有重复的元素。</p>
@@ -344,24 +523,85 @@
 <p>后序遍历：左子树 -&gt; 右子树 -&gt; 根节点</p>
 <p>中序遍历：左子树 -&gt; 根节点 -&gt; 右子树</p>
 <p>后序遍历序列的最后一个元素是根节点，倒序遍历后序遍历序列，将中序遍历序列分为左右子树，递归地构建树。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">buildTree</span><span class="params">(<span class="keyword">int</span>[] inorder, <span class="keyword">int</span>[] postorder)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (inorder == <span class="keyword">null</span> || postorder == <span class="keyword">null</span> || inorder.length == <span class="number">0</span> || postorder.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; inorder.length; i++) &#123;</span><br><span class="line">        map.put(inorder[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> build(inorder, <span class="number">0</span>, inorder.length - <span class="number">1</span>, postorder, <span class="number">0</span>, postorder.length - <span class="number">1</span>, map);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> TreeNode <span class="title">build</span><span class="params">(<span class="keyword">int</span>[] inorder, <span class="keyword">int</span> inS, <span class="keyword">int</span> inE, <span class="keyword">int</span>[] postorder, <span class="keyword">int</span> postS, <span class="keyword">int</span> postE, HashMap&lt;Integer, Integer&gt; map)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (inS &gt; inE || postS &gt; postE) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">int</span> rootVal = postorder[postE];</span><br><span class="line">    TreeNode root = <span class="keyword">new</span> TreeNode(rootVal);</span><br><span class="line">    <span class="comment">// 根节点在中序遍历序列中的位置</span></span><br><span class="line">    <span class="keyword">int</span> index = map.get(rootVal);</span><br><span class="line">    <span class="keyword">int</span> rightCount = inE - index;  <span class="comment">// 右子树的元素个数</span></span><br><span class="line">    root.left = build(inorder, inS,index - <span class="number">1</span>,postorder,postS, postE - rightCount - <span class="number">1</span>, map);</span><br><span class="line">    root.right = build(inorder,index + <span class="number">1</span>,inE, postorder,postE - rightCount,postE - <span class="number">1</span>,map);</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">buildTree</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] inorder, <span class="hljs-keyword">int</span>[] postorder)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (inorder == <span class="hljs-keyword">null</span> || postorder == <span class="hljs-keyword">null</span> || inorder.length == <span class="hljs-number">0</span> || postorder.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    HashMap&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; inorder.length; i++) &#123;
+        map.put(inorder[i], i);
+    &#125;
+    <span class="hljs-keyword">return</span> build(inorder, <span class="hljs-number">0</span>, inorder.length - <span class="hljs-number">1</span>, postorder, <span class="hljs-number">0</span>, postorder.length - <span class="hljs-number">1</span>, map);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">private</span> TreeNode <span class="hljs-title">build</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] inorder, <span class="hljs-keyword">int</span> inS, <span class="hljs-keyword">int</span> inE, <span class="hljs-keyword">int</span>[] postorder, <span class="hljs-keyword">int</span> postS, <span class="hljs-keyword">int</span> postE, HashMap&lt;Integer, Integer&gt; map)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (inS &gt; inE || postS &gt; postE) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">int</span> rootVal = postorder[postE];
+    TreeNode root = <span class="hljs-keyword">new</span> TreeNode(rootVal);
+    <span class="hljs-comment">// 根节点在中序遍历序列中的位置</span>
+    <span class="hljs-keyword">int</span> index = map.get(rootVal);
+    <span class="hljs-keyword">int</span> rightCount = inE - index;  <span class="hljs-comment">// 右子树的元素个数</span>
+    root.left = build(inorder, inS,index - <span class="hljs-number">1</span>,postorder,postS, postE - rightCount - <span class="hljs-number">1</span>, map);
+    root.right = build(inorder,index + <span class="hljs-number">1</span>,inE, postorder,postE - rightCount,postE - <span class="hljs-number">1</span>,map);
+    <span class="hljs-keyword">return</span> root;
+&#125;</code></pre>
 <hr>
 <h2 id="2-递归应用"><a href="#2-递归应用" class="headerlink" title="2. 递归应用"></a>2. 递归应用</h2><h3 id="2-1-路径和"><a href="#2-1-路径和" class="headerlink" title="2.1 路径和"></a>2.1 路径和</h3><h5 id="Leetcode-112-路径总和"><a href="#Leetcode-112-路径总和" class="headerlink" title="Leetcode 112. 路径总和"></a><a href="https://leetcode-cn.com/problems/path-sum/" target="_blank" rel="noopener">Leetcode 112. 路径总和</a></h5><blockquote>
 <p>给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。</p>
 <p><strong>说明:</strong> 叶子节点是指没有子节点的节点。</p>
 </blockquote>
 <p><strong>递归方法</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasPathSum</span><span class="params">(TreeNode root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="comment">// 叶子节点，判断当前叶子节点的值是否和最后的 sum 相等</span></span><br><span class="line">    <span class="keyword">if</span> (root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span> &amp;&amp; sum == root.val) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="comment">// 递归地看左右子树</span></span><br><span class="line">    <span class="keyword">return</span> hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">hasPathSum</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> sum)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-comment">// 叶子节点，判断当前叶子节点的值是否和最后的 sum 相等</span>
+    <span class="hljs-keyword">if</span> (root.left == <span class="hljs-keyword">null</span> &amp;&amp; root.right == <span class="hljs-keyword">null</span> &amp;&amp; sum == root.val) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    <span class="hljs-comment">// 递归地看左右子树</span>
+    <span class="hljs-keyword">return</span> hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
+&#125;</code></pre>
 <p><strong>迭代方法</strong></p>
 <p>借助辅助栈模拟递归</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasPathSum</span><span class="params">(TreeNode root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="comment">// 用于存储当前节点以及还剩的路径和</span></span><br><span class="line">    Stack&lt;Pair&lt;TreeNode, Integer&gt;&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    stack.push(<span class="keyword">new</span> Pair&lt;&gt;(root, sum));</span><br><span class="line">    <span class="keyword">while</span> (!stack.isEmpty()) &#123;</span><br><span class="line">        Pair&lt;TreeNode, Integer&gt; pair = stack.pop();</span><br><span class="line">        TreeNode node = pair.getKey();</span><br><span class="line">        <span class="keyword">int</span> val = pair.getValue();</span><br><span class="line">        <span class="keyword">if</span> (node.left == <span class="keyword">null</span> &amp;&amp; node.right == <span class="keyword">null</span> &amp;&amp; node.val == val) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (node.left != <span class="keyword">null</span>) stack.push(<span class="keyword">new</span> Pair&lt;&gt;(node.left, val - node.val));</span><br><span class="line">        <span class="keyword">if</span> (node.right != <span class="keyword">null</span>) stack.push(<span class="keyword">new</span> Pair&lt;&gt;(node.right, val - node.val));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">hasPathSum</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> sum)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-comment">// 用于存储当前节点以及还剩的路径和</span>
+    Stack&lt;Pair&lt;TreeNode, Integer&gt;&gt; stack = <span class="hljs-keyword">new</span> Stack&lt;&gt;();
+    stack.push(<span class="hljs-keyword">new</span> Pair&lt;&gt;(root, sum));
+    <span class="hljs-keyword">while</span> (!stack.isEmpty()) &#123;
+        Pair&lt;TreeNode, Integer&gt; pair = stack.pop();
+        TreeNode node = pair.getKey();
+        <span class="hljs-keyword">int</span> val = pair.getValue();
+        <span class="hljs-keyword">if</span> (node.left == <span class="hljs-keyword">null</span> &amp;&amp; node.right == <span class="hljs-keyword">null</span> &amp;&amp; node.val == val) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        <span class="hljs-keyword">if</span> (node.left != <span class="hljs-keyword">null</span>) stack.push(<span class="hljs-keyword">new</span> Pair&lt;&gt;(node.left, val - node.val));
+        <span class="hljs-keyword">if</span> (node.right != <span class="hljs-keyword">null</span>) stack.push(<span class="hljs-keyword">new</span> Pair&lt;&gt;(node.right, val - node.val));
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+&#125;</code></pre>
 <h5 id="Leetcode-113-路径总和-II"><a href="#Leetcode-113-路径总和-II" class="headerlink" title="Leetcode 113. 路径总和 II"></a><a href="https://leetcode-cn.com/problems/path-sum-ii/" target="_blank" rel="noopener">Leetcode 113. 路径总和 II</a></h5><blockquote>
 <p>给定一个二叉树和一个目标和，找到所有从根节点到叶子节点路径总和等于给定目标和的路径。</p>
 <p><strong>说明:</strong> 叶子节点是指没有子节点的节点。</p>
 </blockquote>
 <p><strong>解题思路</strong></p>
 <p>与 T112 相区别的是，该题目不仅要判断是否存在一个路径和，还要找到该路径，因此在递归的时候需要将走过的路径记录下来。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; pathSum(TreeNode root, <span class="keyword">int</span> sum) &#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> res;</span><br><span class="line">    search(res, root, sum, <span class="keyword">new</span> ArrayList&lt;Integer&gt;());</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">search</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; res, TreeNode root, <span class="keyword">int</span> sum, ArrayList&lt;Integer&gt; curr)</span> </span>&#123;</span><br><span class="line">    curr.add(root.val);</span><br><span class="line">    <span class="comment">// 走到了叶子节点</span></span><br><span class="line">    <span class="keyword">if</span> (root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span> &amp;&amp; root.val == sum) &#123;</span><br><span class="line">        <span class="comment">// 找到了一个解</span></span><br><span class="line">        res.add(<span class="keyword">new</span> ArrayList&lt;&gt;(curr));</span><br><span class="line">        <span class="comment">// 当前记录路径删除最后一个节点</span></span><br><span class="line">        curr.remove(curr.size() - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 搜索左子树</span></span><br><span class="line">    <span class="keyword">if</span> (root.left != <span class="keyword">null</span>) search(res, root.left, sum - root.val, curr);</span><br><span class="line">    <span class="comment">// 搜索右子树</span></span><br><span class="line">    <span class="keyword">if</span> (root.right != <span class="keyword">null</span>) search(res, root.right, sum - root.val, curr);</span><br><span class="line">    <span class="comment">// 撤销选择</span></span><br><span class="line">    curr.remove(curr.size() - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; pathSum(TreeNode root, <span class="hljs-keyword">int</span> sum) &#123;
+    List&lt;List&lt;Integer&gt;&gt; res = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> res;
+    search(res, root, sum, <span class="hljs-keyword">new</span> ArrayList&lt;Integer&gt;());
+    <span class="hljs-keyword">return</span> res;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">search</span><span class="hljs-params">(List&lt;List&lt;Integer&gt;&gt; res, TreeNode root, <span class="hljs-keyword">int</span> sum, ArrayList&lt;Integer&gt; curr)</span> </span>&#123;
+    curr.add(root.val);
+    <span class="hljs-comment">// 走到了叶子节点</span>
+    <span class="hljs-keyword">if</span> (root.left == <span class="hljs-keyword">null</span> &amp;&amp; root.right == <span class="hljs-keyword">null</span> &amp;&amp; root.val == sum) &#123;
+        <span class="hljs-comment">// 找到了一个解</span>
+        res.add(<span class="hljs-keyword">new</span> ArrayList&lt;&gt;(curr));
+        <span class="hljs-comment">// 当前记录路径删除最后一个节点</span>
+        curr.remove(curr.size() - <span class="hljs-number">1</span>);
+        <span class="hljs-keyword">return</span>;
+    &#125;
+    <span class="hljs-comment">// 搜索左子树</span>
+    <span class="hljs-keyword">if</span> (root.left != <span class="hljs-keyword">null</span>) search(res, root.left, sum - root.val, curr);
+    <span class="hljs-comment">// 搜索右子树</span>
+    <span class="hljs-keyword">if</span> (root.right != <span class="hljs-keyword">null</span>) search(res, root.right, sum - root.val, curr);
+    <span class="hljs-comment">// 撤销选择</span>
+    curr.remove(curr.size() - <span class="hljs-number">1</span>);
+&#125;</code></pre>
 <h5 id="Leetcode-437-路径总和-III"><a href="#Leetcode-437-路径总和-III" class="headerlink" title="Leetcode 437. 路径总和 III"></a><a href="https://leetcode-cn.com/problems/path-sum-iii/" target="_blank" rel="noopener">Leetcode 437. 路径总和 III</a></h5><blockquote>
 <p>给定一个二叉树，它的每个结点都存放着一个整数值。</p>
 <p>找出路径和等于给定数值的路径总数。</p>
@@ -370,23 +610,74 @@
 </blockquote>
 <p><strong>解题思路</strong></p>
 <p>双重递归</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pathSum</span><span class="params">(TreeNode root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">   	<span class="comment">// 搜索以根节点为起始位置的路径个数</span></span><br><span class="line">    <span class="comment">// 搜索以左孩子节点为起始点的路径个数</span></span><br><span class="line">    <span class="comment">// 搜索以右孩子节点为起始点的路径个数</span></span><br><span class="line">    <span class="keyword">return</span> search(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 计算以某个节点为起始节点，符合条件的路径个数</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">search</span><span class="params">(TreeNode root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (root.val == sum) count++;</span><br><span class="line">    count += search(root.left, sum - root.val);</span><br><span class="line">    count += search(root.right, sum - root.val);</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">pathSum</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> sum)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+   	<span class="hljs-comment">// 搜索以根节点为起始位置的路径个数</span>
+    <span class="hljs-comment">// 搜索以左孩子节点为起始点的路径个数</span>
+    <span class="hljs-comment">// 搜索以右孩子节点为起始点的路径个数</span>
+    <span class="hljs-keyword">return</span> search(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum);
+&#125;
+<span class="hljs-comment">// 计算以某个节点为起始节点，符合条件的路径个数</span>
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">search</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> sum)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span> (root.val == sum) count++;
+    count += search(root.left, sum - root.val);
+    count += search(root.right, sum - root.val);
+    <span class="hljs-keyword">return</span> count;
+&#125;</code></pre>
 <h5 id="Leetcode-124-二叉树中的最大路径和"><a href="#Leetcode-124-二叉树中的最大路径和" class="headerlink" title="Leetcode 124. 二叉树中的最大路径和"></a><a href="https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/" target="_blank" rel="noopener">Leetcode 124. 二叉树中的最大路径和</a></h5><blockquote>
 <p>给定一个非空二叉树，返回其最大路径和。</p>
 <p>本题中，路径被定义为一条从树中任意节点出发，沿父节点-子节点连接，达到任意节点的序列。该路径至少包含一个节点，且不一定经过根节点。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局最大值</span></span><br><span class="line"><span class="keyword">int</span> maxSum = Integer.MIN_VALUE;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxPathSum</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    dfs(root);</span><br><span class="line">    <span class="keyword">return</span> maxSum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 返回以当前节点为根节点，子树中的最大值</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">dfs</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 以左子树为根的最大值</span></span><br><span class="line">    <span class="keyword">int</span> left = Math.max(<span class="number">0</span>, dfs(root.left));</span><br><span class="line">    <span class="comment">// 以右子树为根的最大值</span></span><br><span class="line">    <span class="keyword">int</span> right = Math.max(<span class="number">0</span>, dfs(root.right));</span><br><span class="line">    <span class="comment">// 更新全局最大值</span></span><br><span class="line">    maxSum = Math.max(maxSum, left + right + root.val);</span><br><span class="line">    <span class="comment">// 返回上层的时候只能返回左子树或者右子树的最大值</span></span><br><span class="line">    <span class="keyword">return</span> Math.max(left, right) + root.val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-comment">// 全局最大值</span>
+<span class="hljs-keyword">int</span> maxSum = Integer.MIN_VALUE;
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxPathSum</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    dfs(root);
+    <span class="hljs-keyword">return</span> maxSum;
+&#125;
+<span class="hljs-comment">// 返回以当前节点为根节点，子树中的最大值</span>
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-comment">// 以左子树为根的最大值</span>
+    <span class="hljs-keyword">int</span> left = Math.max(<span class="hljs-number">0</span>, dfs(root.left));
+    <span class="hljs-comment">// 以右子树为根的最大值</span>
+    <span class="hljs-keyword">int</span> right = Math.max(<span class="hljs-number">0</span>, dfs(root.right));
+    <span class="hljs-comment">// 更新全局最大值</span>
+    maxSum = Math.max(maxSum, left + right + root.val);
+    <span class="hljs-comment">// 返回上层的时候只能返回左子树或者右子树的最大值</span>
+    <span class="hljs-keyword">return</span> Math.max(left, right) + root.val;
+&#125;</code></pre>
 <hr>
 <h3 id="2-2-二叉树的性质相关"><a href="#2-2-二叉树的性质相关" class="headerlink" title="2.2 二叉树的性质相关"></a>2.2 二叉树的性质相关</h3><h5 id="Leetcode-100-相同的树"><a href="#Leetcode-100-相同的树" class="headerlink" title="Leetcode 100. 相同的树"></a><a href="https://leetcode-cn.com/problems/same-tree/" target="_blank" rel="noopener">Leetcode 100. 相同的树</a></h5><blockquote>
 <p>给定两个二叉树，编写一个函数来检验它们是否相同。</p>
 <p>如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSameTree</span><span class="params">(TreeNode p, TreeNode q)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="keyword">null</span> &amp;&amp; q == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="keyword">null</span> || q == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (p.val != q.val) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">return</span> isSameTree(p.left, q.left) &amp;&amp; isSameTree(p.right, q.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isSameTree</span><span class="hljs-params">(TreeNode p, TreeNode q)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (p == <span class="hljs-keyword">null</span> &amp;&amp; q == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    <span class="hljs-keyword">if</span> (p == <span class="hljs-keyword">null</span> || q == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">if</span> (p.val != q.val) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">return</span> isSameTree(p.left, q.left) &amp;&amp; isSameTree(p.right, q.right);
+&#125;</code></pre>
 <h5 id="Leetcode-101-对称二叉树"><a href="#Leetcode-101-对称二叉树" class="headerlink" title="Leetcode 101. 对称二叉树"></a><a href="https://leetcode-cn.com/problems/symmetric-tree/" target="_blank" rel="noopener">Leetcode 101. 对称二叉树</a></h5><blockquote>
 <p>给定一个二叉树，检查它是否是镜像对称的。</p>
 <p>例如，二叉树 <code>[1,2,2,3,4,4,3]</code> 是对称的。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSymmetric</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="comment">// 看一个树的左子树和右子树是否镜像对称</span></span><br><span class="line">    <span class="keyword">return</span> isMirror(root.left, root.right);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 两棵树镜像对称的条件：根节点相同</span></span><br><span class="line"><span class="comment">// 一棵树的左子树等于另一棵树的右子树</span></span><br><span class="line"><span class="comment">// 一棵树的右子树等于另一棵树的左子树</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMirror</span><span class="params">(TreeNode node1, TreeNode node2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (node1 == <span class="keyword">null</span> &amp;&amp; node2 == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">if</span> (node1 == <span class="keyword">null</span> || node2 == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (node1.val != node2.val) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">return</span> isMirror(node1.left, node2.right) &amp;&amp; isMirror(node1.right, node2.left);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isSymmetric</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    <span class="hljs-comment">// 看一个树的左子树和右子树是否镜像对称</span>
+    <span class="hljs-keyword">return</span> isMirror(root.left, root.right);
+&#125;
+<span class="hljs-comment">// 两棵树镜像对称的条件：根节点相同</span>
+<span class="hljs-comment">// 一棵树的左子树等于另一棵树的右子树</span>
+<span class="hljs-comment">// 一棵树的右子树等于另一棵树的左子树</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isMirror</span><span class="hljs-params">(TreeNode node1, TreeNode node2)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (node1 == <span class="hljs-keyword">null</span> &amp;&amp; node2 == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    <span class="hljs-keyword">if</span> (node1 == <span class="hljs-keyword">null</span> || node2 == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">if</span> (node1.val != node2.val) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">return</span> isMirror(node1.left, node2.right) &amp;&amp; isMirror(node1.right, node2.left);
+&#125;</code></pre>
 <h5 id="Leetcode-226-翻转二叉树"><a href="#Leetcode-226-翻转二叉树" class="headerlink" title="Leetcode 226. 翻转二叉树"></a><a href="https://leetcode-cn.com/problems/invert-binary-tree/" target="_blank" rel="noopener">Leetcode 226. 翻转二叉树</a></h5><blockquote>
 <p>翻转一棵二叉树。</p>
 <p>示例：</p>
@@ -395,317 +686,333 @@
 <p>输出：</p>
 <p>   ​    4<br>     /  \<br>   7    2<br> / \  / \<br>9  6 3   1</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">invertTree</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span> || (root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>)) <span class="keyword">return</span> root;</span><br><span class="line">    TreeNode left = invertTree(root.left);</span><br><span class="line">    TreeNode right = invertTree(root.right);</span><br><span class="line">    root.left = right;</span><br><span class="line">    root.right = left;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">invertTree</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span> || (root.left == <span class="hljs-keyword">null</span> &amp;&amp; root.right == <span class="hljs-keyword">null</span>)) <span class="hljs-keyword">return</span> root;
+    TreeNode left = invertTree(root.left);
+    TreeNode right = invertTree(root.right);
+    root.left = right;
+    root.right = left;
+    <span class="hljs-keyword">return</span> root;
+&#125;</code></pre>
 <h5 id="Leetcode-236-二叉树的最近公共祖先"><a href="#Leetcode-236-二叉树的最近公共祖先" class="headerlink" title="Leetcode 236. 二叉树的最近公共祖先"></a><a href="https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/" target="_blank" rel="noopener">Leetcode 236. 二叉树的最近公共祖先</a></h5><blockquote>
 <p>给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。</p>
 <p>百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">lowestCommonAncestor</span><span class="params">(TreeNode root, TreeNode p, TreeNode q)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 其中的一个节点是根节点</span></span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span> || root == p || root == q) <span class="keyword">return</span> root;</span><br><span class="line">    <span class="comment">// 从左子树中找最近公共祖先</span></span><br><span class="line">    TreeNode left = lowestCommonAncestor(root.left, p, q);</span><br><span class="line">    <span class="comment">// 从右子树中找最近公共祖先</span></span><br><span class="line">    TreeNode right = lowestCommonAncestor(root.right, p, q);</span><br><span class="line">    <span class="comment">// 左边找不到，返回右子树中的</span></span><br><span class="line">    <span class="keyword">if</span> (left == <span class="keyword">null</span>) <span class="keyword">return</span> right;</span><br><span class="line">    <span class="comment">// left != null 并且右子树中找不到，返回左子树中找到的</span></span><br><span class="line">    <span class="keyword">if</span> (right == <span class="keyword">null</span>) <span class="keyword">return</span> left;</span><br><span class="line">    <span class="comment">// 左右子树均不为空，就是根节点</span></span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">lowestCommonAncestor</span><span class="hljs-params">(TreeNode root, TreeNode p, TreeNode q)</span> </span>&#123;
+    <span class="hljs-comment">// 其中的一个节点是根节点</span>
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span> || root == p || root == q) <span class="hljs-keyword">return</span> root;
+    <span class="hljs-comment">// 从左子树中找最近公共祖先</span>
+    TreeNode left = lowestCommonAncestor(root.left, p, q);
+    <span class="hljs-comment">// 从右子树中找最近公共祖先</span>
+    TreeNode right = lowestCommonAncestor(root.right, p, q);
+    <span class="hljs-comment">// 左边找不到，返回右子树中的</span>
+    <span class="hljs-keyword">if</span> (left == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> right;
+    <span class="hljs-comment">// left != null 并且右子树中找不到，返回左子树中找到的</span>
+    <span class="hljs-keyword">if</span> (right == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> left;
+    <span class="hljs-comment">// 左右子树均不为空，就是根节点</span>
+    <span class="hljs-keyword">return</span> root;
+&#125;</code></pre>
 <h5 id="Leetcode-110-平衡二叉树"><a href="#Leetcode-110-平衡二叉树" class="headerlink" title="Leetcode 110. 平衡二叉树"></a><a href="https://leetcode-cn.com/problems/balanced-binary-tree/" target="_blank" rel="noopener">Leetcode 110. 平衡二叉树</a></h5><blockquote>
 <p>给定一个二叉树，判断它是否是高度平衡的二叉树。</p>
 <p>本题中，一棵高度平衡二叉树定义为：一个二叉树每个节点的左右两个子树的高度差的绝对值不超过 1 。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBalanced</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">return</span> dfs(root) != -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 自底向上,返回子树的高度，若不是平衡树，返回 -1</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">dfs</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> left = dfs(root.left);</span><br><span class="line">    <span class="keyword">int</span> right = dfs(root.right);</span><br><span class="line">    <span class="comment">// 左右子树中有一个非平衡，直接返回 false</span></span><br><span class="line">    <span class="keyword">if</span> (left == -<span class="number">1</span> || right == -<span class="number">1</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 左右子树高度差大于 1，非平衡，返回 -1</span></span><br><span class="line">    <span class="keyword">if</span> (Math.abs(left - right) &gt; <span class="number">1</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 返回该子树的高度</span></span><br><span class="line">    <span class="keyword">return</span> Math.max(left, right) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isBalanced</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    <span class="hljs-keyword">return</span> dfs(root) != -<span class="hljs-number">1</span>;
+&#125;
+<span class="hljs-comment">// 自底向上,返回子树的高度，若不是平衡树，返回 -1</span>
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> left = dfs(root.left);
+    <span class="hljs-keyword">int</span> right = dfs(root.right);
+    <span class="hljs-comment">// 左右子树中有一个非平衡，直接返回 false</span>
+    <span class="hljs-keyword">if</span> (left == -<span class="hljs-number">1</span> || right == -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+    <span class="hljs-comment">// 左右子树高度差大于 1，非平衡，返回 -1</span>
+    <span class="hljs-keyword">if</span> (Math.abs(left - right) &gt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+    <span class="hljs-comment">// 返回该子树的高度</span>
+    <span class="hljs-keyword">return</span> Math.max(left, right) + <span class="hljs-number">1</span>;
+&#125;</code></pre>
 <h5 id="Leetcode-404-左叶子之和"><a href="#Leetcode-404-左叶子之和" class="headerlink" title="Leetcode 404. 左叶子之和"></a><a href="https://leetcode-cn.com/problems/sum-of-left-leaves/" target="_blank" rel="noopener">Leetcode 404. 左叶子之和</a></h5><blockquote>
 <p>计算给定二叉树的所有左叶子之和。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumOfLeftLeaves</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 左叶子</span></span><br><span class="line">    <span class="keyword">if</span> (root.left != <span class="keyword">null</span> &amp;&amp; root.left.left == <span class="keyword">null</span> &amp;&amp; root.left.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">        sum += root.left.val;</span><br><span class="line">    &#125;</span><br><span class="line">    sum += sumOfLeftLeaves(root.left);</span><br><span class="line">    sum += sumOfLeftLeaves(root.right);</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">sumOfLeftLeaves</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+    <span class="hljs-comment">// 左叶子</span>
+    <span class="hljs-keyword">if</span> (root.left != <span class="hljs-keyword">null</span> &amp;&amp; root.left.left == <span class="hljs-keyword">null</span> &amp;&amp; root.left.right == <span class="hljs-keyword">null</span>) &#123;
+        sum += root.left.val;
+    &#125;
+    sum += sumOfLeftLeaves(root.left);
+    sum += sumOfLeftLeaves(root.right);
+    <span class="hljs-keyword">return</span> sum;
+&#125;</code></pre>
 <h5 id="Leetcode-671-二叉树中第二小的节点"><a href="#Leetcode-671-二叉树中第二小的节点" class="headerlink" title="Leetcode 671. 二叉树中第二小的节点"></a><a href="https://leetcode-cn.com/problems/second-minimum-node-in-a-binary-tree/" target="_blank" rel="noopener">Leetcode 671. 二叉树中第二小的节点</a></h5><blockquote>
 <p>给定一个非空特殊的二叉树，每个节点都是正数，并且每个节点的子节点数量只能为 2 或 0。如果一个节点有两个子节点的话，那么该节点的值等于两个子节点中较小的一个。</p>
 <p>更正式地说，<code>root.val = min(root.left.val, root.right.val)</code> 总成立。</p>
 <p>给出这样的一个二叉树，你需要输出所有节点中的第二小的值。如果第二小的值不存在的话，输出 -1 。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findSecondMinimumValue</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 空树 或者 只有一个节点</span></span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span> || root.left == <span class="keyword">null</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> left = root.left.val;</span><br><span class="line">    <span class="keyword">int</span> right = root.right.val;</span><br><span class="line">    <span class="comment">// 根节点和左孩子的值一样，左子树更小</span></span><br><span class="line">    <span class="keyword">if</span> (root.val == left) &#123;</span><br><span class="line">        left = findSecondMinimumValue(root.left);</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="comment">// 根节点和右孩子的值一样, 右子树中的值更小</span></span><br><span class="line">    <span class="keyword">if</span> (root.val == right) &#123;       </span><br><span class="line">        right = findSecondMinimumValue(root.right);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 左子树和右子树均找到了一个解，返回二者中更小的一个</span></span><br><span class="line">    <span class="keyword">if</span> (left != -<span class="number">1</span> &amp;&amp; right != -<span class="number">1</span>) <span class="keyword">return</span> Math.min(left, right);</span><br><span class="line">    <span class="comment">// 否则，返回找到的值</span></span><br><span class="line">    <span class="keyword">if</span> (left != -<span class="number">1</span>) <span class="keyword">return</span> left;</span><br><span class="line">    <span class="keyword">return</span> right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findSecondMinimumValue</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
+    <span class="hljs-comment">// 空树 或者 只有一个节点</span>
+    <span class="hljs-keyword">if</span> (root == <span class="hljs-keyword">null</span> || root.left == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">int</span> left = root.left.val;
+    <span class="hljs-keyword">int</span> right = root.right.val;
+    <span class="hljs-comment">// 根节点和左孩子的值一样，左子树更小</span>
+    <span class="hljs-keyword">if</span> (root.val == left) &#123;
+        left = findSecondMinimumValue(root.left);
+    &#125; 
+    <span class="hljs-comment">// 根节点和右孩子的值一样, 右子树中的值更小</span>
+    <span class="hljs-keyword">if</span> (root.val == right) &#123;       
+        right = findSecondMinimumValue(root.right);
+    &#125;
+    <span class="hljs-comment">// 左子树和右子树均找到了一个解，返回二者中更小的一个</span>
+    <span class="hljs-keyword">if</span> (left != -<span class="hljs-number">1</span> &amp;&amp; right != -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> Math.min(left, right);
+    <span class="hljs-comment">// 否则，返回找到的值</span>
+    <span class="hljs-keyword">if</span> (left != -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> left;
+    <span class="hljs-keyword">return</span> right;
+&#125;</code></pre>
 <hr>
 <h2 id="3-二叉搜索树"><a href="#3-二叉搜索树" class="headerlink" title="3. 二叉搜索树"></a>3. 二叉搜索树</h2>
-    </div>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A0%91/">树</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/10/23/%E9%93%BE%E8%A1%A8%E4%B8%93%E9%A2%98%E6%80%BB%E7%BB%93/">
+                        <span class="hidden-mobile">链表专题总结</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-    
-    
-    
-
-    <div>
-      
-        <div>
-    
-        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
-    
-</div>
-
-      
-    </div>
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E6%A0%91/" rel="tag"># 树</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2020/10/23/%E9%93%BE%E8%A1%A8%E4%B8%93%E9%A2%98%E6%80%BB%E7%BB%93/" rel="prev" title="链表专题总结">
-      <i class="fa fa-chevron-left"></i> 链表专题总结
-    </a></div>
-      <div class="post-nav-item"></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-  </div>
-
-
-          </div>
-          
-    <div class="comments" id="valine-comments"></div>
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
+            
+          </article>
         </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#树专题总结"><span class="nav-number">1.</span> <span class="nav-text">树专题总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-树的遍历"><span class="nav-number">1.1.</span> <span class="nav-text">1. 树的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-前序遍历"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 前序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-144-二叉树的前序遍历"><span class="nav-number">1.1.1.0.1.</span> <span class="nav-text">Leetcode 144. 二叉树的前序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#递归方法"><span class="nav-number">1.1.1.0.1.1.</span> <span class="nav-text">递归方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#迭代方法"><span class="nav-number">1.1.1.0.1.2.</span> <span class="nav-text">迭代方法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-中序遍历"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 中序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-94-二叉树的中序遍历"><span class="nav-number">1.1.2.0.1.</span> <span class="nav-text">Leetcode 94. 二叉树的中序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#递归方法-1"><span class="nav-number">1.1.2.0.1.1.</span> <span class="nav-text">递归方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#迭代方法-1"><span class="nav-number">1.1.2.0.1.2.</span> <span class="nav-text">迭代方法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-后序遍历"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 后序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-145-二叉树的后序遍历"><span class="nav-number">1.1.3.0.1.</span> <span class="nav-text">Leetcode 145. 二叉树的后序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#递归方法-2"><span class="nav-number">1.1.3.0.1.1.</span> <span class="nav-text">递归方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#迭代方法-2"><span class="nav-number">1.1.3.0.1.2.</span> <span class="nav-text">迭代方法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-层次遍历"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 层次遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-102-二叉树的层序遍历"><span class="nav-number">1.1.4.0.1.</span> <span class="nav-text">Leetcode 102. 二叉树的层序遍历</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-遍历应用"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.5 遍历应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-1-层次遍历变形"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">1.5.1 层次遍历变形</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-103-二叉树的锯齿形层次遍历"><span class="nav-number">1.1.5.1.1.</span> <span class="nav-text">Leetcode 103. 二叉树的锯齿形层次遍历</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-958-二叉树的完全性检验"><span class="nav-number">1.1.5.1.2.</span> <span class="nav-text">Leetcode 958. 二叉树的完全性检验</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-199-二叉树的右视图"><span class="nav-number">1.1.5.1.3.</span> <span class="nav-text">Leetcode 199. 二叉树的右视图</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#BFS"><span class="nav-number">1.1.5.1.3.1.</span> <span class="nav-text">BFS</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#DFS"><span class="nav-number">1.1.5.1.3.2.</span> <span class="nav-text">DFS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-2-根据遍历序列构造二叉树"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">1.5.2 根据遍历序列构造二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-105-从前序与中序遍历序列构造二叉树"><span class="nav-number">1.1.5.2.1.</span> <span class="nav-text">Leetcode 105. 从前序与中序遍历序列构造二叉树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-106-从中序与后序遍历序列构造二叉树"><span class="nav-number">1.1.5.2.2.</span> <span class="nav-text">Leetcode 106. 从中序与后序遍历序列构造二叉树</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-递归应用"><span class="nav-number">1.2.</span> <span class="nav-text">2. 递归应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-路径和"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 路径和</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-112-路径总和"><span class="nav-number">1.2.1.0.1.</span> <span class="nav-text">Leetcode 112. 路径总和</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-113-路径总和-II"><span class="nav-number">1.2.1.0.2.</span> <span class="nav-text">Leetcode 113. 路径总和 II</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-437-路径总和-III"><span class="nav-number">1.2.1.0.3.</span> <span class="nav-text">Leetcode 437. 路径总和 III</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-124-二叉树中的最大路径和"><span class="nav-number">1.2.1.0.4.</span> <span class="nav-text">Leetcode 124. 二叉树中的最大路径和</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-二叉树的性质相关"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 二叉树的性质相关</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-100-相同的树"><span class="nav-number">1.2.2.0.1.</span> <span class="nav-text">Leetcode 100. 相同的树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-101-对称二叉树"><span class="nav-number">1.2.2.0.2.</span> <span class="nav-text">Leetcode 101. 对称二叉树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-226-翻转二叉树"><span class="nav-number">1.2.2.0.3.</span> <span class="nav-text">Leetcode 226. 翻转二叉树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-236-二叉树的最近公共祖先"><span class="nav-number">1.2.2.0.4.</span> <span class="nav-text">Leetcode 236. 二叉树的最近公共祖先</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-110-平衡二叉树"><span class="nav-number">1.2.2.0.5.</span> <span class="nav-text">Leetcode 110. 平衡二叉树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-404-左叶子之和"><span class="nav-number">1.2.2.0.6.</span> <span class="nav-text">Leetcode 404. 左叶子之和</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Leetcode-671-二叉树中第二小的节点"><span class="nav-number">1.2.2.0.7.</span> <span class="nav-text">Leetcode 671. 二叉树中第二小的节点</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-二叉搜索树"><span class="nav-number">1.3.</span> <span class="nav-text">3. 二叉搜索树</span></a></li></ol></li></ol></div>
       </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Kelly Liu"
-      src="/uploads/avatar.jpeg">
-  <p class="site-author-name" itemprop="name">Kelly Liu</p>
-  <div class="site-description" itemprop="description">The Space to record knowledge and my life.</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">83</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">38</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">38</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/tiantianliu2018" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tiantianliu2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:tiantianliu2018@outlook.com" title="E-Mail → mailto:tiantianliu2018@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-  </div>
-
-
-
-      </div>
-
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
 
       </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright">
-  
-  &copy; 2019 – 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Kelly liu</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-      <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">169k</span>
-</div>
-
-<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="theme-info">
-  <div class="powered-by"></div>
-  <span class="post-count">博客全站共73.6k字</span>
-  <span class="post-meta-divider">|</span>
-  本站总访问量<span id="busuanzi_value_site_pv"></span>次
-  <span class="post-meta-divider">|</span>
-  本站访客数<span id="busuanzi_value_site_uv"></span>人次
-  <span class="post-meta-divider">|</span>
-  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-</div>
-
-<div class="theme-info">
-  <div class="powered-by"></div>
-  <span class="post-count">博客全站共73.6k字</span>
-</div>
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
+    
   </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
 
   
-  
-  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   
-
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
   
 
   
 
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
 
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
     });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : true,
-      notify     : true,
-      appId      : 'FhWVmso5TyqrTqtDNNtpuBeC-gzGzoHsz',
-      appKey     : 'd5yz5CVcPPfEmfA5p2ovH6g9',
-      placeholder: "欢迎交流讨论...",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : 'zh-CN' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "树专题总结&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
     });
-  }, window.Valine);
-});
-</script>
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>

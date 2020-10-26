@@ -1,408 +1,1818 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8332.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8316.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="The Space to record knowledge and my life.">
+  <meta name="author" content="Kelly Liu">
+  <meta name="keywords" content="CS_learn, Keep Moving...">
+  <title>分类 - Kelly&#39;s Blogs</title>
 
-<link rel="stylesheet" href="/css/main.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 60vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+
+
+
+
+
+<div class="category-list">
+  
+  
+  
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahocr001ln9tt69bv90b1" role="tab" data-toggle="collapse" href="#collapse-ckgqahocr001ln9tt69bv90b1"
+        aria-expanded="false"
+      >
+        Java
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Java/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>18</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahocr001ln9tt69bv90b1" class="collapse in " role="tabpanel"
+       aria-labelledby="heading-ckgqahocr001ln9tt69bv90b1">
+    
+  
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahod3002kn9tt3p0j8omi" role="tab" data-toggle="collapse" href="#collapse-ckgqahod3002kn9tt3p0j8omi"
+        aria-expanded="false"
+      >
+        this关键字
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Java/this%E5%85%B3%E9%94%AE%E5%AD%97/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahod3002kn9tt3p0j8omi" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahod3002kn9tt3p0j8omi">
+    
+    
+    
+      
+      
+        <a href="/2019/10/02/Java-this%E5%85%B3%E9%94%AE%E5%AD%97/" class="list-group-item list-group-item-action">
+          <span class="category-post">Java this关键字</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahod5002rn9tt88ct3ub3" role="tab" data-toggle="collapse" href="#collapse-ckgqahod5002rn9tt88ct3ub3"
+        aria-expanded="false"
+      >
+        IO流
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Java/IO%E6%B5%81/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahod5002rn9tt88ct3ub3" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahod5002rn9tt88ct3ub3">
+    
+    
+    
+      
+      
+        <a href="/2019/10/16/Java-IO%E6%B5%81/" class="list-group-item list-group-item-action">
+          <span class="category-post">Java IO流</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahod7002zn9ttd6ejfl5e" role="tab" data-toggle="collapse" href="#collapse-ckgqahod7002zn9ttd6ejfl5e"
+        aria-expanded="false"
+      >
+        构造器
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Java/%E6%9E%84%E9%80%A0%E5%99%A8/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahod7002zn9ttd6ejfl5e" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahod7002zn9ttd6ejfl5e">
+    
+    
+    
+      
+      
+        <a href="/2019/10/02/Java-%E6%9E%84%E9%80%A0%E5%99%A8/" class="list-group-item list-group-item-action">
+          <span class="category-post">Java 构造器</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahodb003en9ttajl99v9t" role="tab" data-toggle="collapse" href="#collapse-ckgqahodb003en9ttajl99v9t"
+        aria-expanded="false"
+      >
+        枚举
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Java/%E6%9E%9A%E4%B8%BE/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahodb003en9ttajl99v9t" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahodb003en9ttajl99v9t">
+    
+    
+    
+      
+      
+        <a href="/2019/10/15/Java-%E6%9E%9A%E4%B8%BE%E7%B1%BB/" class="list-group-item list-group-item-action">
+          <span class="category-post">Java 枚举类</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahodd003ln9tt8jtwhmkn" role="tab" data-toggle="collapse" href="#collapse-ckgqahodd003ln9tt8jtwhmkn"
+        aria-expanded="false"
+      >
+        泛型
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Java/%E6%B3%9B%E5%9E%8B/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahodd003ln9tt8jtwhmkn" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahodd003ln9tt8jtwhmkn">
+    
+    
+    
+      
+      
+        <a href="/2019/10/14/Java-%E6%B3%9B%E5%9E%8B/" class="list-group-item list-group-item-action">
+          <span class="category-post">Java 泛型</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahodg003tn9ttd4xkglmz" role="tab" data-toggle="collapse" href="#collapse-ckgqahodg003tn9ttd4xkglmz"
+        aria-expanded="false"
+      >
+        线程
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Java/%E7%BA%BF%E7%A8%8B/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahodg003tn9ttd4xkglmz" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahodg003tn9ttd4xkglmz">
+    
+    
+    
+      
+      
+        <a href="/2019/10/26/Java-%E7%BA%BF%E7%A8%8B/" class="list-group-item list-group-item-action">
+          <span class="category-post">Java 线程</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahodj0040n9tt0f6jbpym" role="tab" data-toggle="collapse" href="#collapse-ckgqahodj0040n9tt0f6jbpym"
+        aria-expanded="false"
+      >
+        集合
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Java/%E9%9B%86%E5%90%88/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahodj0040n9tt0f6jbpym" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahodj0040n9tt0f6jbpym">
+    
+    
+    
+      
+      
+        <a href="/2019/10/12/Java-%E9%9B%86%E5%90%88/" class="list-group-item list-group-item-action">
+          <span class="category-post">Java 集合</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahodm0048n9tt3ca0esd8" role="tab" data-toggle="collapse" href="#collapse-ckgqahodm0048n9tt3ca0esd8"
+        aria-expanded="false"
+      >
+        高级特性
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Java/%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahodm0048n9tt3ca0esd8" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahodm0048n9tt3ca0esd8">
+    
+    
+    
+      
+      
+        <a href="/2019/10/07/Java-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A72/" class="list-group-item list-group-item-action">
+          <span class="category-post">Java 高级特性2</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahodp004fn9tt0o434v49" role="tab" data-toggle="collapse" href="#collapse-ckgqahodp004fn9tt0o434v49"
+        aria-expanded="false"
+      >
+        高级类特性
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Java/%E9%AB%98%E7%BA%A7%E7%B1%BB%E7%89%B9%E6%80%A7/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahodp004fn9tt0o434v49" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahodp004fn9tt0o434v49">
+    
+    
+    
+      
+      
+        <a href="/2019/10/03/Java-%E9%AB%98%E7%BA%A7%E7%B1%BB%E7%89%B9%E6%80%A7/" class="list-group-item list-group-item-action">
+          <span class="category-post">Java 高级类特性</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahoet007mn9ttco1ehb3h" role="tab" data-toggle="collapse" href="#collapse-ckgqahoet007mn9ttco1ehb3h"
+        aria-expanded="false"
+      >
+        论文阅读
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>13</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahoet007mn9ttco1ehb3h" class="collapse in " role="tabpanel"
+       aria-labelledby="heading-ckgqahoet007mn9ttco1ehb3h">
+    
+  
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahof60097n9tt6n0m64cw" role="tab" data-toggle="collapse" href="#collapse-ckgqahof60097n9tt6n0m64cw"
+        aria-expanded="false"
+      >
+        Social Networks
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>8</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahof60097n9tt6n0m64cw" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahof60097n9tt6n0m64cw">
+    
+    
+    
+      
+      
+        <a href="/2019/10/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ANeural-Link-Prediction-Over-Aligned-Networks%E3%80%8B-AAAI18/" class="list-group-item list-group-item-action">
+          <span class="category-post">论文阅读《Neural Link Prediction Over Aligned Networks》_AAAI18</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2019/10/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AStructure-Based-User-Identification-across-Social-Networks%E3%80%8B/" class="list-group-item list-group-item-action">
+          <span class="category-post">论文阅读《Structure Based User Identification across Social Networks》</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2019/10/10/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AConnecting-Users-across-Social-Media-Sites-A-Behavioral-Modeling-Approach%E3%80%8B/" class="list-group-item list-group-item-action">
+          <span class="category-post">论文阅读《Connecting Users across Social Media Sites: A Behavioral-Modeling Approach》</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/" class="list-group-item list-group-item-action">
+          <span class="category-post">论文阅读《A comparative study on network alignment techniques》</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2019/10/06/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AMapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information%E3%80%8B/" class="list-group-item list-group-item-action">
+          <span class="category-post">论文阅读《Mapping Users across Social Media Platforms by Integrating Text and Structure Information》</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2019/09/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ATransLink-User-Identity-Linkage-across-Heterogeneous-Social-Networks-via-Translating-Embeddings%E3%80%8B/" class="list-group-item list-group-item-action">
+          <span class="category-post">论文阅读《TransLink: User Identity Linkage across Heterogeneous Social Networks via Translating Embeddings》</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2019/09/16/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADPLink-User-Identity-Linkage-via-Deep-Neural-Network-From-Heterogeneous-Mobility-Data%E3%80%8B/" class="list-group-item list-group-item-action">
+          <span class="category-post">论文阅读《DPLink: User Identity Linkage via Deep Neural Network From Heterogeneous Mobility Data》</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2019/09/15/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeepLink-A-Deep-Learning-Approach-for-User-Identity-Linkage%E3%80%8B/" class="list-group-item list-group-item-action">
+          <span class="category-post">论文阅读《DeepLink: A Deep Learning Approach for User Identity Linkage》</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahof7009in9tt7ii3bpye" role="tab" data-toggle="collapse" href="#collapse-ckgqahof7009in9tt7ii3bpye"
+        aria-expanded="false"
+      >
+        Network Alignment
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Network-Alignment/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahof7009in9tt7ii3bpye" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahof7009in9tt7ii3bpye">
+    
+    
+    
+      
+      
+        <a href="/2019/10/20/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ACross-Network-Embedding-for-Multi-Network-Alignment%E3%80%8B%E2%80%94-19/" class="list-group-item list-group-item-action">
+          <span class="category-post">论文阅读《Cross-Network Embedding for Multi-Network Alignment》—_19</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahocb000gn9ttcwf1afgq" role="tab" data-toggle="collapse" href="#collapse-ckgqahocb000gn9ttcwf1afgq"
+        aria-expanded="false"
+      >
+        大数据
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>8</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahocb000gn9ttcwf1afgq" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahocb000gn9ttcwf1afgq">
+    
+    
+    
+      
+      
+        <a href="/2020/06/12/Spark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="list-group-item list-group-item-action">
+          <span class="category-post">Spark 学习笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/04/24/HBase-%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/" class="list-group-item list-group-item-action">
+          <span class="category-post">HBase 基础总结</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/03/31/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Event-Time/" class="list-group-item list-group-item-action">
+          <span class="category-post">Flink 学习笔记 Event Time</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/03/27/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89Sink/" class="list-group-item list-group-item-action">
+          <span class="category-post">Flink 学习笔记（五）Sink</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89Transformation/" class="list-group-item list-group-item-action">
+          <span class="category-post">Flink 学习笔记（四）Transformation</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/03/26/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89-DataSource/" class="list-group-item list-group-item-action">
+          <span class="category-post">Flink 学习笔记(三) DataSource</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/03/24/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0API%EF%BC%88%E4%BA%8C%EF%BC%89/" class="list-group-item list-group-item-action">
+          <span class="category-post">Flink 学习笔记API（二）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/03/24/Flink-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" class="list-group-item list-group-item-action">
+          <span class="category-post">Flink 学习笔记（一）</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahoco001fn9tt0dms8vdz" role="tab" data-toggle="collapse" href="#collapse-ckgqahoco001fn9tt0dms8vdz"
+        aria-expanded="false"
+      >
+        学习笔记
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>8</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahoco001fn9tt0dms8vdz" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahoco001fn9tt0dms8vdz">
+    
+    
+    
+      
+      
+        <a href="/2020/04/07/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-Java-%E8%99%9A%E6%8B%9F%E6%9C%BA%E3%80%8BOOM-%E7%AC%94%E8%AE%B0/" class="list-group-item list-group-item-action">
+          <span class="category-post">《深入理解 Java 虚拟机》OOM 笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/04/05/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-Java-%E8%99%9A%E6%8B%9F%E6%9C%BA%E3%80%8B%E7%AC%AC13%E7%AB%A0%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="list-group-item list-group-item-action">
+          <span class="category-post">《深入理解 Java 虚拟机》第13章阅读笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/03/30/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-Java-%E8%99%9A%E6%8B%9F%E6%9C%BA%E3%80%8B%E7%AC%AC12%E7%AB%A0%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="list-group-item list-group-item-action">
+          <span class="category-post">《深入理解 Java 虚拟机》第12章阅读笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/03/28/Java-ArrayList-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="list-group-item list-group-item-action">
+          <span class="category-post">Java ArrayList 源码阅读笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/03/26/HashMap-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" class="list-group-item list-group-item-action">
+          <span class="category-post">HashMap 源码阅读</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/03/20/Java-Thread-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="list-group-item list-group-item-action">
+          <span class="category-post">Java Thread 源码阅读笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/03/20/Java-AtomicInteger-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="list-group-item list-group-item-action">
+          <span class="category-post">Java AtomicInteger 源码阅读笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/03/15/Java-ArrayList-%E9%82%A3%E4%BA%9B%E5%B0%8F%E4%BA%8B%E6%83%85/" class="list-group-item list-group-item-action">
+          <span class="category-post">Java ArrayList 那些小事情</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahodv004xn9tt1nx4ftt3" role="tab" data-toggle="collapse" href="#collapse-ckgqahodv004xn9tt1nx4ftt3"
+        aria-expanded="false"
+      >
+        软件安装
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>3</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahodv004xn9tt1nx4ftt3" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahodv004xn9tt1nx4ftt3">
+    
+    
+    
+      
+      
+        <a href="/2020/03/26/%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-Flink-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="list-group-item list-group-item-action">
+          <span class="category-post">华为云服务器 Flink 环境搭建</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/03/22/%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="list-group-item list-group-item-action">
+          <span class="category-post">华为云服务器大数据环境配置</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/03/04/Mac-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEHadoop-3-X-%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/" class="list-group-item list-group-item-action">
+          <span class="category-post">Mac 安装配置Hadoop 3.X 采坑记录</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahoe8005nn9tt6a31bjq5" role="tab" data-toggle="collapse" href="#collapse-ckgqahoe8005nn9tt6a31bjq5"
+        aria-expanded="false"
+      >
+        后端开发
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>3</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahoe8005nn9tt6a31bjq5" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahoe8005nn9tt6a31bjq5">
+    
+    
+    
+      
+      
+        <a href="/2020/03/19/SpringBoot-2-x-%E5%AD%A6%E4%B9%A0%E4%B8%80/" class="list-group-item list-group-item-action">
+          <span class="category-post">SpringBoot 2.x 学习一</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/03/06/Spring-Data-Jpa-%E4%BA%8C/" class="list-group-item list-group-item-action">
+          <span class="category-post">Spring Data Jpa (二)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/03/05/Spring-Data-JPA-%E4%B8%80/" class="list-group-item list-group-item-action">
+          <span class="category-post">Spring Data JPA (一)</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahoef006bn9tt5ctk3h6w" role="tab" data-toggle="collapse" href="#collapse-ckgqahoef006bn9tt5ctk3h6w"
+        aria-expanded="false"
+      >
+        leetcode
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/leetcode/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>2</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahoef006bn9tt5ctk3h6w" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahoef006bn9tt5ctk3h6w">
+    
+    
+    
+      
+      
+        <a href="/2019/09/30/leetcode-Dynamic-Programming/" class="list-group-item list-group-item-action">
+          <span class="category-post">leetcode_Dynamic_Programming</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2019/09/18/leetcode-%E5%88%B7%E9%A2%98/" class="list-group-item list-group-item-action">
+          <span class="category-post">leetcode 刷题</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahoer007hn9tt3ey33ki6" role="tab" data-toggle="collapse" href="#collapse-ckgqahoer007hn9tt3ey33ki6"
+        aria-expanded="false"
+      >
+        算法
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>2</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahoer007hn9tt3ey33ki6" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahoer007hn9tt3ey33ki6">
+    
+    
+    
+      
+      
+        <a href="/2020/10/24/%E6%A0%91%E4%B8%93%E9%A2%98%E6%80%BB%E7%BB%93/" class="list-group-item list-group-item-action">
+          <span class="category-post">树专题总结</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/10/23/%E9%93%BE%E8%A1%A8%E4%B8%93%E9%A2%98%E6%80%BB%E7%BB%93/" class="list-group-item list-group-item-action">
+          <span class="category-post">链表专题总结</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahoew007un9tt9lhff5da" role="tab" data-toggle="collapse" href="#collapse-ckgqahoew007un9tt9lhff5da"
+        aria-expanded="false"
+      >
+        Paper阅读
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Paper%E9%98%85%E8%AF%BB/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>2</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahoew007un9tt9lhff5da" class="collapse in " role="tabpanel"
+       aria-labelledby="heading-ckgqahoew007un9tt9lhff5da">
+    
+  
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahof60099n9ttczqxfa8g" role="tab" data-toggle="collapse" href="#collapse-ckgqahof60099n9ttczqxfa8g"
+        aria-expanded="false"
+      >
+        Social Networks
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Paper%E9%98%85%E8%AF%BB/Social-Networks/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>2</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahof60099n9ttczqxfa8g" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahof60099n9ttczqxfa8g">
+    
+    
+    
+      
+      
+        <a href="/2019/09/30/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AAligning-Users-Across-Social-Networks-Using-Network-Embedding%E3%80%8B/" class="list-group-item list-group-item-action">
+          <span class="category-post">论文阅读《Aligning Users Across Social Networks Using Network Embedding》</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/" class="list-group-item list-group-item-action">
+          <span class="category-post">论文阅读《User Identity Linkage across Online Social Networks：A Review》</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahoc20004n9tt77lw9al5" role="tab" data-toggle="collapse" href="#collapse-ckgqahoc20004n9tt77lw9al5"
+        aria-expanded="false"
+      >
+        NLP
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/NLP/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahoc20004n9tt77lw9al5" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahoc20004n9tt77lw9al5">
+    
+    
+    
+      
+      
+        <a href="/2019/08/17/Attention-is-All-you-Need/" class="list-group-item list-group-item-action">
+          <span class="category-post">Attention is All you Need</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahoc8000an9tt8v8e2oca" role="tab" data-toggle="collapse" href="#collapse-ckgqahoc8000an9tt8v8e2oca"
+        aria-expanded="false"
+      >
+        Algorithms
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Algorithms/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahoc8000an9tt8v8e2oca" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahoc8000an9tt8v8e2oca">
+    
+    
+    
+      
+      
+        <a href="/2019/08/12/Dynamic-Programming-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="list-group-item list-group-item-action">
+          <span class="category-post">Dynamic Programming 动态规划</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahoce000mn9tt8qbg47ku" role="tab" data-toggle="collapse" href="#collapse-ckgqahoce000mn9tt8qbg47ku"
+        aria-expanded="false"
+      >
+        数据库
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahoce000mn9tt8qbg47ku" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahoce000mn9tt8qbg47ku">
+    
+    
+    
+      
+      
+        <a href="/2020/07/05/DQL-Review/" class="list-group-item list-group-item-action">
+          <span class="category-post">DQL Review</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahocg000rn9tt16dgdics" role="tab" data-toggle="collapse" href="#collapse-ckgqahocg000rn9tt16dgdics"
+        aria-expanded="false"
+      >
+        NLP Model
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/NLP-Model/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahocg000rn9tt16dgdics" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahocg000rn9tt16dgdics">
+    
+    
+    
+      
+      
+        <a href="/2019/08/18/ELMO-Deep-contextualized-word-representations/" class="list-group-item list-group-item-action">
+          <span class="category-post">ELMO -- Deep contextualized word representations</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahocl0017n9tt7v1w8lxi" role="tab" data-toggle="collapse" href="#collapse-ckgqahocl0017n9tt7v1w8lxi"
+        aria-expanded="false"
+      >
+        Machine Learning
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Machine-Learning/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahocl0017n9tt7v1w8lxi" class="collapse in " role="tabpanel"
+       aria-labelledby="heading-ckgqahocl0017n9tt7v1w8lxi">
+    
+  
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahocx0024n9tteq1i4k5d" role="tab" data-toggle="collapse" href="#collapse-ckgqahocx0024n9tteq1i4k5d"
+        aria-expanded="false"
+      >
+        Algorithms
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Machine-Learning/Algorithms/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahocx0024n9tteq1i4k5d" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahocx0024n9tteq1i4k5d">
+    
+    
+    
+      
+      
+        <a href="/2019/09/09/How-to-tackle-with-overfitting/" class="list-group-item list-group-item-action">
+          <span class="category-post">How to tackle with overfitting?</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahod90036n9ttads61h1v" role="tab" data-toggle="collapse" href="#collapse-ckgqahod90036n9ttads61h1v"
+        aria-expanded="false"
+      >
+        开发错误记录
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E5%BC%80%E5%8F%91%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahod90036n9ttads61h1v" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahod90036n9ttads61h1v">
+    
+    
+    
+      
+      
+        <a href="/2020/03/15/Java-%E5%BC%80%E5%8F%91%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%951/" class="list-group-item list-group-item-action">
+          <span class="category-post">Java 开发错误记录1</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahodr004on9tt5x9ue90b" role="tab" data-toggle="collapse" href="#collapse-ckgqahodr004on9tt5x9ue90b"
+        aria-expanded="false"
+      >
+        Math
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Math/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahodr004on9tt5x9ue90b" class="collapse in " role="tabpanel"
+       aria-labelledby="heading-ckgqahodr004on9tt5x9ue90b">
+    
+  
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahoek006pn9ttdvmzbm0w" role="tab" data-toggle="collapse" href="#collapse-ckgqahoek006pn9ttdvmzbm0w"
+        aria-expanded="false"
+      >
+        Basic Knowledge
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Math/Basic-Knowledge/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahoek006pn9ttdvmzbm0w" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahoek006pn9ttdvmzbm0w">
+    
+    
+    
+      
+      
+        <a href="/2019/08/13/Linear-Algebra-01-LHY/" class="list-group-item list-group-item-action">
+          <span class="category-post">Linear Algebra 01 -- LHY</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahoe30056n9ttczrxa8m4" role="tab" data-toggle="collapse" href="#collapse-ckgqahoe30056n9ttczrxa8m4"
+        aria-expanded="false"
+      >
+        杂项
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E6%9D%82%E9%A1%B9/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahoe30056n9ttczrxa8m4" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahoe30056n9ttczrxa8m4">
+    
+    
+    
+      
+      
+        <a href="/2020/03/24/Maven%20%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/" class="list-group-item list-group-item-action">
+          <span class="category-post">Maven 学习小记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahoe6005en9tt7p5y46pb" role="tab" data-toggle="collapse" href="#collapse-ckgqahoe6005en9tt7p5y46pb"
+        aria-expanded="false"
+      >
+        NLP Models
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/NLP-Models/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahoe6005en9tt7p5y46pb" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahoe6005en9tt7p5y46pb">
+    
+    
+    
+      
+      
+        <a href="/2019/08/17/Seq2Seq-Learning-with-Nerual-Network-code/" class="list-group-item list-group-item-action">
+          <span class="category-post">Seq2Seq-Learning-with-Nerual-Network-code</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahoem006wn9ttb6pq5a4q" role="tab" data-toggle="collapse" href="#collapse-ckgqahoem006wn9ttb6pq5a4q"
+        aria-expanded="false"
+      >
+        algorithms
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/algorithms/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahoem006wn9ttb6pq5a4q" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahoem006wn9ttb6pq5a4q">
+    
+    
+    
+      
+      
+        <a href="/2019/09/12/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/" class="list-group-item list-group-item-action">
+          <span class="category-post">推荐系统学习</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahoeo0072n9tt94tygs0l" role="tab" data-toggle="collapse" href="#collapse-ckgqahoeo0072n9tt94tygs0l"
+        aria-expanded="false"
+      >
+        tools
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/tools/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahoeo0072n9tt94tygs0l" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahoeo0072n9tt94tygs0l">
+    
+    
+    
+      
+      
+        <a href="/2019/09/07/%E6%9C%AC%E5%9C%B0%E9%85%8D%E7%BD%AE%E4%B8%A4%E6%AE%B5%E8%B7%B3%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="list-group-item list-group-item-action">
+          <span class="category-post">本地配置两段跳的服务器</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahoep0079n9tt58jxghee" role="tab" data-toggle="collapse" href="#collapse-ckgqahoep0079n9tt58jxghee"
+        aria-expanded="false"
+      >
+        Leetcode 刷题记录
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Leetcode-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahoep0079n9tt58jxghee" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahoep0079n9tt58jxghee">
+    
+    
+    
+      
+      
+        <a href="/2019/08/16/%E7%89%9B%E9%A1%BF%E6%B1%82%E6%A0%B9%E6%B3%95/" class="list-group-item list-group-item-action">
+          <span class="category-post">牛顿求根法</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahof0008cn9tthumxe6vj" role="tab" data-toggle="collapse" href="#collapse-ckgqahof0008cn9tthumxe6vj"
+        aria-expanded="false"
+      >
+        Deep Learning
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Deep-Learning/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahof0008cn9tthumxe6vj" class="collapse in " role="tabpanel"
+       aria-labelledby="heading-ckgqahof0008cn9tthumxe6vj">
+    
+  
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahof9009wn9tt6xvh31zd" role="tab" data-toggle="collapse" href="#collapse-ckgqahof9009wn9tt6xvh31zd"
+        aria-expanded="false"
+      >
+        Graph Neural Network
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/Deep-Learning/Graph-Neural-Network/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahof9009wn9tt6xvh31zd" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahof9009wn9tt6xvh31zd">
+    
+    
+    
+      
+      
+        <a href="/2019/10/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AGraph-Neural-Networks-A-Review-of-Methods-and-Applications%E3%80%8B/" class="list-group-item list-group-item-action">
+          <span class="category-post">论文阅读《Graph-Neural-Networks-A-Review-of-Methods-and-Applications》</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckgqahof4008yn9ttfsfge39f" role="tab" data-toggle="collapse" href="#collapse-ckgqahof4008yn9ttfsfge39f"
+        aria-expanded="false"
+      >
+        -论文阅读; -Social Networks
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Social-Networks/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckgqahof4008yn9ttfsfge39f" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckgqahof4008yn9ttfsfge39f">
+    
+    
+    
+      
+      
+        <a href="/2019/09/28/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8APredict-Anchor-Links-across-Social-Networks-via-an-Embedding-Approach%E3%80%8B/" class="list-group-item list-group-item-action">
+          <span class="category-post">论文阅读《Predict Anchor Links across Social Networks via an Embedding Approach》</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "分类&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
   </script>
 
-  <meta name="description" content="The Space to record knowledge and my life.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://tiantianliu2018.github.io/categories/index.html">
-<meta property="og:site_name" content="Kelly&#39;s Blogs">
-<meta property="og:description" content="The Space to record knowledge and my life.">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-04T01:42:59.000Z">
-<meta property="article:modified_time" content="2020-09-13T01:33:35.511Z">
-<meta property="article:author" content="Kelly Liu">
-<meta property="article:tag" content="CS_learn">
-<meta property="article:tag" content=" Keep Moving...">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://tiantianliu2018.github.io/categories/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : false
-  };
-</script>
-
-  <title>categories | Kelly's Blogs
-  </title>
-  
 
 
 
 
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/clicklove.js"></script>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Kelly's Blogs</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">To Be Better</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">38</span></a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">38</span></a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">83</span></a>
-
-  </li>
-  </ul>
-
-</nav>
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-  
-  
-
-          <div class="content">
-            
-
-  <div class="posts-expand">
-    
-    
-    
-    <div class="post-block" lang="zh-CN">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">categories
-</h1>
-
-<div class="post-meta">
-  
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <div class="category-all-page">
-            <div class="category-all-title">
-              目前共计 38 个分类
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Social-Networks/">-论文阅读; -Social Networks</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Deep-Learning/">Deep Learning</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Deep-Learning/Graph-Neural-Network/">Graph Neural Network</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/IO%E6%B5%81/">IO流</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/this%E5%85%B3%E9%94%AE%E5%AD%97/">this关键字</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/%E6%9E%84%E9%80%A0%E5%99%A8/">构造器</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/%E6%9E%9A%E4%B8%BE/">枚举</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/%E6%B3%9B%E5%9E%8B/">泛型</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/%E7%BA%BF%E7%A8%8B/">线程</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/%E9%9B%86%E5%90%88/">集合</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/">高级特性</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/%E9%AB%98%E7%BA%A7%E7%B1%BB%E7%89%B9%E6%80%A7/">高级类特性</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">Leetcode 刷题记录</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine Learning</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/Algorithms/">Algorithms</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Math/">Math</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Math/Basic-Knowledge/">Basic Knowledge</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP-Model/">NLP Model</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP-Models/">NLP Models</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper%E9%98%85%E8%AF%BB/">Paper阅读</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Paper%E9%98%85%E8%AF%BB/Social-Networks/">Social Networks</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithms/">algorithms</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/">开发错误记录</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Network-Alignment/">Network Alignment</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/">Social Networks</a><span class="category-list-count">8</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">软件安装</a><span class="category-list-count">3</span></li></ul>
-            </div>
-          </div>
-        
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
-  </div>
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
     }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Kelly Liu"
-      src="/uploads/avatar.jpeg">
-  <p class="site-author-name" itemprop="name">Kelly Liu</p>
-  <div class="site-description" itemprop="description">The Space to record knowledge and my life.</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">83</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">38</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">38</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/tiantianliu2018" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tiantianliu2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:tiantianliu2018@outlook.com" title="E-Mail → mailto:tiantianliu2018@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-  </div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright">
-  
-  &copy; 2019 – 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Kelly liu</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-      <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">169k</span>
-</div>
-
-<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="theme-info">
-  <div class="powered-by"></div>
-  <span class="post-count">博客全站共73.6k字</span>
-  <span class="post-meta-divider">|</span>
-  本站总访问量<span id="busuanzi_value_site_pv"></span>次
-  <span class="post-meta-divider">|</span>
-  本站访客数<span id="busuanzi_value_site_uv"></span>人次
-  <span class="post-meta-divider">|</span>
-  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-</div>
-
-<div class="theme-info">
-  <div class="powered-by"></div>
-  <span class="post-count">博客全站共73.6k字</span>
-</div>
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  
-  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
+  </script>
 
 
 
@@ -418,40 +1828,7 @@
 
 
 
-  
 
-  
-
-  
-
-
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : true,
-      notify     : true,
-      appId      : 'FhWVmso5TyqrTqtDNNtpuBeC-gzGzoHsz',
-      appKey     : 'd5yz5CVcPPfEmfA5p2ovH6g9',
-      placeholder: "欢迎交流讨论...",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : 'zh-CN' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
-    });
-  }, window.Valine);
-});
-</script>
 
 </body>
 </html>

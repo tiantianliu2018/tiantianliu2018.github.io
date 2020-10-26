@@ -1,2238 +1,856 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8332.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8316.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="The Space to record knowledge and my life.">
+  <meta name="author" content="Kelly Liu">
+  <meta name="keywords" content="CS_learn, Keep Moving...">
+  <title>Kelly&#39;s Blogs</title>
 
-<link rel="stylesheet" href="/css/main.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/10/16/Java-IO%E6%B5%81/">Java IO流</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/16/Java-IO%E6%B5%81/">
+          
+          
+            
+          
+          Java IO 流java.io.File 类的使用File 类
+java.io.file 类：文件和目录路径名的抽象表示形式，与平台无关
+File 能新建、删除、重命名文件和目录，但 File 不能访问文件内容本身。如果需要访问文件内容本身，则需要使用输入/输出流。
+File 类的方法：
+访问文件名：
+file.getName(); // 获取文件名
+file.getPath(); // 获取文
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-16 08:37" pubdate>
+              2019-10-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Java/">Java</a>
+            
+              <a href="/categories/Java/IO%E6%B5%81/">IO流</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java/">Java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/10/15/Java-%E6%9E%9A%E4%B8%BE%E7%B1%BB/">Java 枚举类</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/15/Java-%E6%9E%9A%E4%B8%BE%E7%B1%BB/">
+          
+          
+            
+          
+          Java 枚举和注解枚举在某些情况下，一个类的对象是有限而且固定的。
+手动实现枚举类：
+
+private 修饰构造器
+属性使用 private final 修饰
+把该类的所有实例都使用 public static final 修饰
+
+enum 关键字用于定义枚举类枚举类和普通类的区别：
+
+使用 enum 定义的枚举类默认继承了 java.lang.Enum 类
+枚举类的构造器只能使用 privat
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-15 08:38" pubdate>
+              2019-10-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Java/">Java</a>
+            
+              <a href="/categories/Java/%E6%9E%9A%E4%B8%BE/">枚举</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java/">Java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/10/14/Java-%E6%B3%9B%E5%9E%8B/">Java 泛型</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/14/Java-%E6%B3%9B%E5%9E%8B/">
+          
+          
+            
+          
+          Java 泛型为什么？只有指定类型才可以添加到集合中：类型安全
+读取出来的对象不需要强转，便捷
+Java中的泛型，只在编译阶段有效。在编译过程中，正确检验泛型结果后，会将泛型的相关信息擦除，并且在对象进入和离开方法的边界处添加类型检查和类型转换的方法。也就是说，泛型信息不会进入到运行阶段。
+泛型的使用1. 泛型类对象实例化时不指定泛型，默认为Object
+泛型不同的引用不能相互赋值
+/**
+ * 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-14 08:38" pubdate>
+              2019-10-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Java/">Java</a>
+            
+              <a href="/categories/Java/%E6%B3%9B%E5%9E%8B/">泛型</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java/">Java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/10/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AGraph-Neural-Networks-A-Review-of-Methods-and-Applications%E3%80%8B/">论文阅读《Graph-Neural-Networks-A-Review-of-Methods-and-Applications》</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AGraph-Neural-Networks-A-Review-of-Methods-and-Applications%E3%80%8B/">
+          
+          
+            
+          
+          论文阅读《Graph-Neural-Networks-A-Review-of-Methods-and-Applications》Graph Nerual Network
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-13 14:09" pubdate>
+              2019-10-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Deep-Learning/">Deep Learning</a>
+            
+              <a href="/categories/Deep-Learning/Graph-Neural-Network/">Graph Neural Network</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/GNN/">GNN</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/10/12/Java-%E9%9B%86%E5%90%88/">Java 集合</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/12/Java-%E9%9B%86%E5%90%88/">
+          
+          
+            
+          
+          集合Java 集合类存放于 java.util 包中，是一个用来存放对象的容器
+
+Java 集合只能存放对象。
+集合存放的是多个对象的引用，对象本身还是存放在堆内存中
+集合可以存放不同类型，不限数量的数据类型
+
+Java 集合可分为 Set、List、Map 三种大体系：
+
+Set：无序、不可重复集合
+List：有序，可重复集合
+Map：具有映射关系的集合
+
+在 JDK5 之后，增加了泛型，Jav
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-12 08:38" pubdate>
+              2019-10-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Java/">Java</a>
+            
+              <a href="/categories/Java/%E9%9B%86%E5%90%88/">集合</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java/">Java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/10/11/Java-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">Java 异常处理</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/11/Java-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">
+          
+          
+            
+          
+          Java 异常处理任何一种程序设计语言设计的程序在运行时都有可能出现错误，例如：除数为0，数组下标越界，要读写的文件不存在等
+捕获错误最理想的是在编译期间，但有的错误只有在运行时才会发生
+对于这些错误，一般有两种解决方法：
+
+遇到错误就终止程序的运行
+由程序员在编写程序时，就考虑到错误的检测、错误消息的提示，以及错误的处理
+
+异常：在Java语言中，将程序执行中发生的不正常情况称为“异常”
+Jav
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-11 08:44" pubdate>
+              2019-10-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Java/">Java</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java/">Java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/10/10/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AConnecting-Users-across-Social-Media-Sites-A-Behavioral-Modeling-Approach%E3%80%8B/">论文阅读《Connecting Users across Social Media Sites: A Behavioral-Modeling Approach》</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/10/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AConnecting-Users-across-Social-Media-Sites-A-Behavioral-Modeling-Approach%E3%80%8B/">
+          
+          
+            
+          
+          Connecting Users across Social Media Sites: A Behavioral-Modeling Approach
+Zafarani R , Liu H . Connecting users across social media sites: a behavioral-modeling approach.[C]// Acm Sigkdd Internationa
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-10 13:46" pubdate>
+              2019-10-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/">Social Networks</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/">论文阅读《A comparative study on network alignment techniques》</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/">
+          
+          
+            
+          
+          A comparative study on network alignment techniquesSummary从矩阵对齐和网络表示学习的角度总结了state-of-the-art的7种方法，并建立了一个统一的基准平台。同时他们还研究了不同网络因素对于这些方法的影响。
+这篇文章对于7种方法的介绍非常详细（数学真得好难），可以参考。
+但是数据集对于该问题是主要的影响因素，但是公开数据集特别少。
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-07 14:47" pubdate>
+              2019-10-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/">Social Networks</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Network-Alignment/">Network Alignment</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/10/07/Java-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A72/">Java 高级特性2</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/07/Java-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A72/">
+          
+          
+            
+          
+          Java 高级特性2关键字 static无论是否产生了对象或无论产生了多少对象，某些特定的数据在内存空间里只有一份
+如果想让一个类的所有实例共享数据，应该使用类变量
+类变量：不用实例化，直接类名.属性名 就可以使用，是类的一部分，被所有这个类的实例化对象所共享，也可以叫做静态变量，用static 来修饰
+实例变量：只有实例化后才能使用，属于实例化对象的一部分
+类属性、类方法的设计思想
+类属性作为该
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-07 08:44" pubdate>
+              2019-10-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Java/">Java</a>
+            
+              <a href="/categories/Java/%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/">高级特性</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java/">Java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/10/06/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AMapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information%E3%80%8B/">论文阅读《Mapping Users across Social Media Platforms by Integrating Text and Structure Information》</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/10/06/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AMapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information%E3%80%8B/">
+          
+          
+            
+          
+          Mapping Users across Social Media Platforms by Integrating Text and Structure Information - 2017 IEEE ISISummary这篇文章的思路比较简单清晰：首先将不同社交网络获得的用户信息分为文本信息和网络结构信息。
+文本信息又分为用户描述（word2vec embedding)、用户名（表示成单词列表
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-10-06 14:07" pubdate>
+              2019-10-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/">Social Networks</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/4/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
   </script>
 
-  <meta name="description" content="The Space to record knowledge and my life.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Kelly&#39;s Blogs">
-<meta property="og:url" content="http://tiantianliu2018.github.io/page/5/index.html">
-<meta property="og:site_name" content="Kelly&#39;s Blogs">
-<meta property="og:description" content="The Space to record knowledge and my life.">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="Kelly Liu">
-<meta property="article:tag" content="CS_learn">
-<meta property="article:tag" content=" Keep Moving...">
-<meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://tiantianliu2018.github.io/page/5/">
 
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false
-  };
-</script>
-
-  <title>Kelly's Blogs</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/clicklove.js"></script>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Kelly's Blogs</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">To Be Better</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">38</span></a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">38</span></a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">83</span></a>
-
-  </li>
-  </ul>
-
-</nav>
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content">
-            
-
-  <div class="posts-expand">
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/16/Java-IO%E6%B5%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/16/Java-IO%E6%B5%81/" class="post-title-link" itemprop="url">Java IO流</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-16 08:37:14" itemprop="dateCreated datePublished" datetime="2019-10-16T08:37:14+08:00">2019-10-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:47:19" itemprop="dateModified" datetime="2020-09-13T09:47:19+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/IO%E6%B5%81/" itemprop="url" rel="index"><span itemprop="name">IO流</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/16/Java-IO%E6%B5%81/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/16/Java-IO%E6%B5%81/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.5k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Java-IO-流"><a href="#Java-IO-流" class="headerlink" title="Java IO 流"></a>Java IO 流</h1><h2 id="java-io-File-类的使用"><a href="#java-io-File-类的使用" class="headerlink" title="java.io.File 类的使用"></a>java.io.File 类的使用</h2><p><strong>File 类</strong></p>
-<p><code>java.io.file</code> 类：文件和目录路径名的抽象表示形式，与平台无关</p>
-<p><code>File</code> 能新建、删除、重命名文件和目录，但 <code>File</code> 不能访问文件内容本身。如果需要访问文件内容本身，则需要使用输入/输出流。</p>
-<p>File 类的方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">访问文件名：</span><br><span class="line">file.getName(); <span class="comment">// 获取文件名</span></span><br><span class="line">file.getPath(); <span class="comment">// 获取文件或文件夹的路径,就是 new file 时候写的文件路径</span></span><br><span class="line">file.getAbsolutePath(); <span class="comment">// 获取当前文件的绝对路径</span></span><br><span class="line">file.getAbsoluteFile(); <span class="comment">// 获取一个用当前文件的绝对路径构建的file对象</span></span><br><span class="line">file.getParent(); <span class="comment">// 返回当前文件或者文件夹的父级路径</span></span><br><span class="line">file.renameTo(<span class="keyword">new</span> File(<span class="string">"D:\\learn\\Java\\t1.txt"</span>));   <span class="comment">// 给文件或文件夹重命名</span></span><br><span class="line"></span><br><span class="line">文件检测</span><br><span class="line">file.exists(); <span class="comment">// 判断文件或文件夹是否存在</span></span><br><span class="line">file.canWrite();</span><br><span class="line">file.canRead();</span><br><span class="line">file.isFile(); <span class="comment">// 判断当前file对象是否是文件</span></span><br><span class="line">file.isDictionary();</span><br><span class="line">file.lastModified(); <span class="comment">// 获取文件的最后修改时间，返回的是一个毫秒数</span></span><br><span class="line">file.length();  <span class="comment">// 返回文件的长度，单位是字节数</span></span><br><span class="line"></span><br><span class="line">文件的相关操作</span><br><span class="line">file.createNewFile();  <span class="comment">// 创建新文件</span></span><br><span class="line">file.delete();  <span class="comment">// 删除文件</span></span><br><span class="line"></span><br><span class="line">目录操作</span><br><span class="line">file.mkdir();  <span class="comment">// 创建单层目录</span></span><br><span class="line">file.mkdirs(); <span class="comment">// 创建多层目录</span></span><br><span class="line">file.list();  <span class="comment">// 返回当前文件夹的子集的名称，包括文件和目录</span></span><br><span class="line">file.listFiles();  <span class="comment">// 返回当前文件夹的子集的File对象</span></span><br></pre></td></tr></table></figure>
-<p><code>File</code> 对象可以作为参数传递给流的构造函数。</p>
-<p><code>File</code> 类的常见构造方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">File</span><span class="params">(String pathname)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">File</span><span class="params">(String parent, String child)</span></span></span><br></pre></td></tr></table></figure>
-<h2 id="IO-原理及流的分类"><a href="#IO-原理及流的分类" class="headerlink" title="IO 原理及流的分类"></a>IO 原理及流的分类</h2><p>IO 流用来处理设备之间的数据传输。</p>
-<p>Java 程序中，对于数据的输入/输出操作以“流”的方式进行。</p>
-<p>Java.io 包下提供了各种“流”类和接口，用以获取不同中类的数据，并通过标准的方法输入或输出数据。</p>
-<p>输入 input：读取外部数据（磁盘、光盘等存储设备的数据）到程序（内存）中</p>
-<p>输出 output：将程序（内存）数据输出到磁盘、光盘等存储设备中</p>
-<p><strong>流的分类</strong></p>
-<p>按操作<strong>数据单位</strong>不同分为：字节流（8 bit），字符流（16 bit）</p>
-<p>按数据流的流向不同分为：输入流、输出流</p>
-<p>按流的角色的不同分为：节点流、处理流</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>抽象基类</th>
-<th>字节流</th>
-<th>字符流</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>输入流</td>
-<td>InputStream</td>
-<td>Reader</td>
-</tr>
-<tr>
-<td>输出流</td>
-<td>OutputStream</td>
-<td>Writer</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>IO 流体系</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>分类</th>
-<th>字节输入流</th>
-<th>字节输出流</th>
-<th>字符输入流</th>
-<th>字符输出流</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>抽象基类</td>
-<td>InputStream</td>
-<td>OutputStream</td>
-<td>Reader</td>
-<td>Writer</td>
-</tr>
-<tr>
-<td>访问文件</td>
-<td>FileInputStream</td>
-<td>FileOutputStream</td>
-<td>FileReader</td>
-<td>FileWriter</td>
-</tr>
-<tr>
-<td>缓冲流</td>
-<td>BufferedInputStream</td>
-<td>BufferedOutputStream</td>
-<td>BufferedReader</td>
-<td>BufferedWriter</td>
-</tr>
-<tr>
-<td>转换流</td>
-<td></td>
-<td></td>
-<td>InputStreamReader</td>
-<td>OutputStreamWriter</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="文件流"><a href="#文件流" class="headerlink" title="文件流"></a>文件流</h2><p><strong>文件字节流</strong></p>
-<p>非常通用，可以用来操作字符的文档，还可以操作任何其他类型文件（图片、压缩包等），因为字节流直接使用二进制</p>
-<p><strong>文件字符输入流</strong></p>
-<p>读取文件操作步骤：</p>
-<ol>
-<li><p>建立一个流对象，将已存在的一个文件加载进流</p>
-<p>FileReader fr = new FileReader(“Test.txt”);</p>
-</li>
-<li><p>创建一个临时存放数据的数组</p>
-<p>char[] ch = new char[1024];</p>
-</li>
-<li><p>调用流对象的读取方法将流中的数据读入到数组中</p>
-<p>fr.read(ch);</p>
-</li>
-</ol>
-<p><strong>注意</strong></p>
-<p>定义文件路径时，可以用 <code>/</code> 或 <code>\\</code></p>
-<p>在写入一个文件时，如果目录下有同名文件将被覆盖</p>
-<p>在读文件时，必须保证该文件已存在，否则出现异常。</p>
-<h2 id="缓冲流"><a href="#缓冲流" class="headerlink" title="缓冲流"></a>缓冲流</h2><p>为了提高数据读写的速度，Java API 提供了带缓冲功能的流类，在使用这些流类时，会创建一个内部缓冲区数组。</p>
-<p>BufferedInputStream 和 BufferedOutputStream</p>
-<p>BufferedReader 和 BufferedWriter</p>
-<p>对于输出的缓冲流，写出的数据会先在内存中缓存，使用 flush() 将会使内存中的数据立刻写出。</p>
-<p>缓冲流就是先把数据缓冲到内存里，在内存中去做io操作，基于内存的io操作大概能比基于硬盘的io操作快75000多倍。</p>
-<h2 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h2><p>转换流提供了在字节流和字符流之间的转换</p>
-<p><code>InputStreamReader</code> 和 <code>OutputStreamWriter</code></p>
-<p>字节流中的数据都是字符时，转成字符流操作更高效。</p>
-<p><code>InputStreamReader</code> 用于将字节流中读取的字节按照字符集解码成字符，需要和 <code>InputStream</code> 套接.</p>
-<h2 id="标准输入输出流"><a href="#标准输入输出流" class="headerlink" title="标准输入输出流"></a>标准输入输出流</h2><p><code>System.in</code> 和 <code>System.out</code> 分别代表了系统标准的输入和输出设备</p>
-<p>默认输入设备是键盘，输出设备是显示器</p>
-<p><code>System.in</code> 的类型是 <code>InputStream</code></p>
-<p><code>System.out</code> 的类型是 <code>PrintStream</code>，其是 <code>OutputStream</code> 的子类 <code>FileOutputStream</code> 的子类</p>
-<h2 id="打印流"><a href="#打印流" class="headerlink" title="打印流"></a>打印流</h2><p><code>PrintStream(字节打印流)</code> 和 <code>PrintWriter(字符打印流)</code> 提供了一系列重载的 <code>print</code> 和 <code>println</code> 方法，用于多种数据类型的输出。</p>
-<p><code>PrintStream</code> 和 <code>PrintWriter</code> 的输出不会抛出异常，有自动 <code>flush</code> 功能。</p>
-<p><code>System.out</code> 返回的是 <code>PrintStream</code> 的实例。</p>
-<h2 id="数据流"><a href="#数据流" class="headerlink" title="数据流"></a>数据流</h2><p>读取基本数据类型</p>
-<p>DataInputStream </p>
-<p>DataOutputStream</p>
-<h2 id="对象流"><a href="#对象流" class="headerlink" title="对象流"></a>对象流</h2><p>ObjectInputStream</p>
-<p>ObjectOutputStream</p>
-<p>用于存储和读取对象的处理流。它的强大之处就是可以把 Java 中的对象写入到数据源中，也能把对象从数据源中还原回来。</p>
-<p>序列化（Serialize）：用 <code>ObjectOutputStream</code> 类将一个 Java 写入IO流中</p>
-<p>反序列化（Deserialize）：用 <code>ObjectInputStream</code> 类从IO流中恢复该 Java 对象</p>
-<p>不能序列化 static 和 transient 修饰的成员变量。因为序列化和反序列化针对的是<strong>对象</strong>的各种属性，不包括类的属性。</p>
-<p>序列化的好处是可将任何实现了 Serializable 接口的对象转换为字节数据，使其在保存和传输时可被还原。</p>
-<p>如果需要让某个对象支持序列化机制，则必须让其类是可序列化的，为了让某个类是可序列化的，该类必须实现如下两个接口：<code>Serializable</code> 、<code>Externalizable</code> 一般用后面那个</p>
-<p>凡是实现了 <code>Serializable</code>  接口的类都有一个表示序列化版本标识符的静态变量：</p>
-<p><code>private static final long serialVersionUID;</code> <code>serialVersionUID</code> 表示不同版本的兼容性</p>
-<p>若某个类实现了 <code>Serializable</code> 接口，该类的对象就是可序列化的：<br>    创建一个 <code>ObjectOutputStream</code><br>    调用 <code>ObjectOutputStream</code> 对象的 <code>writeObject(对象)</code> 方法输出可序列化对象。注意写出一次，操作 <code>flush()</code><br>反序列化<br>    创建一个 <code>ObjectInputStream</code><br>    调用 <code>readObject()</code> 方法读取流中的对象</p>
-<h2 id="RandomAccessFile-类"><a href="#RandomAccessFile-类" class="headerlink" title="RandomAccessFile 类"></a>RandomAccessFile 类</h2><p>RandomAccessFile 类支持“随机访问”方式，程序可以直接跳到文件的任意位置来读、写文件</p>
-<p>​    支持只访问文件的部分内容</p>
-<p>​    可以向已存在的文件后追加内容</p>
-<p>RandomAccessFile 对象包含一个记录指针，用以标示当前读写处的位置。    </p>
-<p>RandomAccessFile 类对象可以自由移动记录指针：</p>
-<p>   <code>long getFilePointer()</code>：获取文件记录<strong>指针</strong>的当前<strong>位置</strong></p>
-<p>   <code>void seek(long pos)</code> ： 将文件记录指针定位到<strong>pos</strong> 位置</p>
-<p><strong>构造器</strong></p>
-<p>   <code>public RandomAccessFile(File file, String mode)</code></p>
-<p>   <code>public RandomAccessFile(String name, String mode)</code></p>
-<p>创建 RandomAccessFile 类实例需要指定一个 <code>mode</code> 参数，该参数指定 RandomAccessFile 的访问模式：</p>
-<p><strong>r:</strong> 以只读方式打开</p>
-<p><strong>rw</strong>：打开以便读取和写入</p>
-<p><strong>rwd</strong>：打开以便读取和写入；同步文件内容的更新</p>
-<p><strong>rws</strong>：打开以便读取和写入；同步文件内容和元数据的更新</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/15/Java-%E6%9E%9A%E4%B8%BE%E7%B1%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/15/Java-%E6%9E%9A%E4%B8%BE%E7%B1%BB/" class="post-title-link" itemprop="url">Java 枚举类</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-15 08:38:28" itemprop="dateCreated datePublished" datetime="2019-10-15T08:38:28+08:00">2019-10-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:48:19" itemprop="dateModified" datetime="2020-09-13T09:48:19+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/%E6%9E%9A%E4%B8%BE/" itemprop="url" rel="index"><span itemprop="name">枚举</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/15/Java-%E6%9E%9A%E4%B8%BE%E7%B1%BB/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/15/Java-%E6%9E%9A%E4%B8%BE%E7%B1%BB/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>931</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Java-枚举和注解"><a href="#Java-枚举和注解" class="headerlink" title="Java 枚举和注解"></a>Java 枚举和注解</h1><h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><p>在某些情况下，一个类的对象是有限而且固定的。</p>
-<p>手动实现枚举类：</p>
-<ul>
-<li><code>private</code> 修饰构造器</li>
-<li>属性使用 <code>private final</code> 修饰</li>
-<li>把该类的所有实例都使用 <code>public static final</code> 修饰</li>
-</ul>
-<h3 id="enum-关键字用于定义枚举类"><a href="#enum-关键字用于定义枚举类" class="headerlink" title="enum 关键字用于定义枚举类"></a><code>enum</code> 关键字用于定义枚举类</h3><p>枚举类和普通类的区别：</p>
-<ul>
-<li>使用 <code>enum</code> 定义的枚举类默认继承了 <code>java.lang.Enum</code> 类</li>
-<li>枚举类的构造器只能使用 <code>private</code> 访问控制符</li>
-<li>枚举类的所有实例必须在枚举类中显式列出（<code>，</code>分隔 <code>；</code>结尾）。列出的所有实例系统会自动添加 <code>public static final</code> 修饰</li>
-<li>所有的枚举类都提供了一个 <code>values</code> 方法，该方法可以很方便地遍历所有的枚举值</li>
-</ul>
-<p>JDK 1.5 中可以在 <code>switch</code> 表达式中使用枚举类的对象作为表达式，<code>case</code> 子句可以直接使用枚举值的名字，无需添加枚举类作为限定。</p>
-<p>若枚举只有一个成员，则可以作为一种单子模式的实现方式。</p>
-<h3 id="实现接口的枚举类"><a href="#实现接口的枚举类" class="headerlink" title="实现接口的枚举类"></a>实现接口的枚举类</h3><p>和普通 Java 类一样枚举类可以实现一个或多个接口</p>
-<p>若需要每个枚举值在调用实现的接口方法呈现出不同的行为方式，则可以让每个枚举值分别来实现该方法。</p>
-<h2 id="Annotation（注解）概述"><a href="#Annotation（注解）概述" class="headerlink" title="Annotation（注解）概述"></a>Annotation（注解）概述</h2><p>从JDK5开始，Java增加了对元数据（MetaData）的支持，也就是 Annotation</p>
-<p>Annotation 其实就是代码里的特殊标记，这些标记可以在编译，类加载，运行时被读取，并执行相应的处理。通过使用 Annotation，程序员可以在不改变原有逻辑的情况下，在源文件中嵌入一些补充信息。</p>
-<p>Annotation 可以像修饰一样被使用，可用于<strong>修饰包，类，构造器，方法，成员变量，参数，局部变量的声明</strong>，这些信息被保存在 Annotation 的 <code>“name = value&quot;</code> 对中</p>
-<p>Annotation 能被用来为程序元素（类，方法，成员变量等）设置元数据。</p>
-<p>使用 Annotation 时要在其前面增加@符号，并把该 Annotation 当成一个修饰符使用。用于修饰它支持的程序元素。</p>
-<p>三个基本的 Annotation：</p>
-<ul>
-<li>@Override ：限定重写父类方法，该注释只能用于方法</li>
-<li>@Deprecated：用于表示某个程序元素（类、方法等）已过时</li>
-<li>@SuppressWarnings：抑制编译器警告</li>
-</ul>
-<p>自定义 Annotation，使用 <code>@interface</code> 关键字</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/14/Java-%E6%B3%9B%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/14/Java-%E6%B3%9B%E5%9E%8B/" class="post-title-link" itemprop="url">Java 泛型</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-14 08:38:39" itemprop="dateCreated datePublished" datetime="2019-10-14T08:38:39+08:00">2019-10-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:48:25" itemprop="dateModified" datetime="2020-09-13T09:48:25+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/%E6%B3%9B%E5%9E%8B/" itemprop="url" rel="index"><span itemprop="name">泛型</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/14/Java-%E6%B3%9B%E5%9E%8B/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/14/Java-%E6%B3%9B%E5%9E%8B/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Java-泛型"><a href="#Java-泛型" class="headerlink" title="Java 泛型"></a>Java 泛型</h1><h2 id="为什么？"><a href="#为什么？" class="headerlink" title="为什么？"></a>为什么？</h2><p>只有指定类型才可以添加到集合中：类型安全</p>
-<p>读取出来的对象不需要强转，便捷</p>
-<p><strong>Java中的泛型，只在编译阶段有效。</strong>在编译过程中，正确检验泛型结果后，会将泛型的相关信息擦除，并且在对象进入和离开方法的边界处添加类型检查和类型转换的方法。也就是说，<strong>泛型信息不会进入到运行阶段。</strong></p>
-<h2 id="泛型的使用"><a href="#泛型的使用" class="headerlink" title="泛型的使用"></a>泛型的使用</h2><h3 id="1-泛型类"><a href="#1-泛型类" class="headerlink" title="1. 泛型类"></a>1. 泛型类</h3><p>对象实例化时不指定泛型，默认为Object</p>
-<p>泛型不同的引用不能相互赋值</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 泛型类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &lt;T&gt;  此处的泛型T可以任意取名，一般使用T(type)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> T t;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setT</span><span class="params">(T t)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.t = t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getT</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-泛型方法"><a href="#2-泛型方法" class="headerlink" title="2. 泛型方法"></a>2. 泛型方法</h3><p>方法，也可以被泛型化，不管此时定义在其中的类是不是泛型化的。在泛型方法中可以定义泛型参数，此时，参数的类型就是传入数据的类型。</p>
-<p>在类上定义的泛型，可以在普通的方法中使用。</p>
-<p>在静态方法中，不能使用类定义的泛型，如果使用泛型，只能使用静态方法自己定义的泛型。</p>
-<p>泛型方法在调用之前没有固定的数据类型，在调用时，传入的参数是什么类型，就会把泛型改成什么类型。也就说，泛型方法会在调用时确定泛型具体的数据类型。</p>
-<h3 id="3-泛型接口"><a href="#3-泛型接口" class="headerlink" title="3. 泛型接口"></a>3. 泛型接口</h3><p><strong>接口定义</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Generator</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    <span class="function">T <span class="title">next</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>实现接口</strong></p>
-<p>未传入泛型实参时，与泛型类的定义相同，在声明类的时候，需要将泛型的声明也一起加到类中。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FruitGenerator</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Generator</span>&lt;<span class="title">T</span>&gt;</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>传入泛型实参时，定义一个生产器实现这个接口，虽然只创建了一个泛型接口 <code>Generator&lt;T&gt;</code>, 但是我们可以为 <code>T</code> 传入无数个实参, 形成无数种类型的 Generator 接口</p>
-<p>在实现类实现泛型接口时，如已将泛型类型传入实参类型，则所有使用泛型的地方都要替换成传入的实参类型。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Generator&lt;T&gt;, <span class="function"><span class="keyword">public</span> T <span class="title">next</span><span class="params">()</span></span>; <span class="comment">// 中的T都要替换成传入的String类型</span></span><br></pre></td></tr></table></figure>
-<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><p>不确定集合中的元素具体的数据类型，使用 <code>？</code> 表示所有类型</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// test 方法需要一个list集合的参数，但是不确定list集合中数据的具体类型</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(List&lt;?&gt; list)</span></span>&#123; </span><br><span class="line">	System.out.println(list);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>有限制的通配符</strong></p>
-<p><code>&lt;? extends Person&gt;</code>（无穷小，Person）</p>
-<p>只允许泛型为 Person 及 Person 子类的引用调用</p>
-<p><code>&lt;? super Person&gt;</code>（Person，无穷大）</p>
-<p>只允许泛型为 Person 及 Person 父类的引用调用</p>
-<p><code>&lt;? extends Comparable&gt;</code>（无穷小，Person）</p>
-<p>只允许泛型为实现 Comparable 接口的实现类的引用调用</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AGraph-Neural-Networks-A-Review-of-Methods-and-Applications%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AGraph-Neural-Networks-A-Review-of-Methods-and-Applications%E3%80%8B/" class="post-title-link" itemprop="url">论文阅读《Graph-Neural-Networks-A-Review-of-Methods-and-Applications》</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-13 14:09:25" itemprop="dateCreated datePublished" datetime="2019-10-13T14:09:25+08:00">2019-10-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:52:49" itemprop="dateModified" datetime="2020-09-13T09:52:49+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Deep-Learning/" itemprop="url" rel="index"><span itemprop="name">Deep Learning</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Deep-Learning/Graph-Neural-Network/" itemprop="url" rel="index"><span itemprop="name">Graph Neural Network</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AGraph-Neural-Networks-A-Review-of-Methods-and-Applications%E3%80%8B/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AGraph-Neural-Networks-A-Review-of-Methods-and-Applications%E3%80%8B/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>82</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="论文阅读《Graph-Neural-Networks-A-Review-of-Methods-and-Applications》"><a href="#论文阅读《Graph-Neural-Networks-A-Review-of-Methods-and-Applications》" class="headerlink" title="论文阅读《Graph-Neural-Networks-A-Review-of-Methods-and-Applications》"></a>论文阅读《Graph-Neural-Networks-A-Review-of-Methods-and-Applications》</h1><h2 id="Graph-Nerual-Network"><a href="#Graph-Nerual-Network" class="headerlink" title="Graph Nerual Network"></a>Graph Nerual Network</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/12/Java-%E9%9B%86%E5%90%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/12/Java-%E9%9B%86%E5%90%88/" class="post-title-link" itemprop="url">Java 集合</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-12 08:38:34" itemprop="dateCreated datePublished" datetime="2019-10-12T08:38:34+08:00">2019-10-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:48:50" itemprop="dateModified" datetime="2020-09-13T09:48:50+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/%E9%9B%86%E5%90%88/" itemprop="url" rel="index"><span itemprop="name">集合</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/12/Java-%E9%9B%86%E5%90%88/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/12/Java-%E9%9B%86%E5%90%88/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.6k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><p>Java 集合类存放于 <code>java.util</code> 包中，是一个用来存放对象的容器</p>
-<ul>
-<li>Java 集合只能存放对象。</li>
-<li>集合存放的是多个对象的引用，对象本身还是存放在堆内存中</li>
-<li>集合可以存放不同类型，不限数量的数据类型</li>
-</ul>
-<p>Java 集合可分为 <code>Set</code>、<code>List</code>、<code>Map</code> 三种大体系：</p>
-<ul>
-<li><code>Set</code>：无序、不可重复集合</li>
-<li><code>List</code>：有序，可重复集合</li>
-<li><code>Map</code>：具有映射关系的集合</li>
-</ul>
-<p>在 JDK5 之后，增加了泛型，Java集合可以记住容器中对象的数据类型</p>
-<h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><p><code>HashSet</code> 是 <code>Set</code> 接口的典型实现，大多数时候使用 <code>Set</code> 集合时都使用这个实现类。我们大多数时候说的 <code>Set</code> 集合值得都是 <code>HashSet</code></p>
-<p><code>HashSet</code> 按 <code>Hash</code> 算法来存储集合中的元素，因此具有很好的存取和查找性能。</p>
-<p><code>HashSet</code> 具有以下特点：</p>
-<ul>
-<li>不能保证元素的排列顺序</li>
-<li>不可重复</li>
-<li><code>HashSet</code> 不是线程安全的</li>
-<li>集合元素可以是 <code>null</code></li>
-</ul>
-<p>当向 <code>HashSet</code> 集合中存入一个元素时，<code>HashSet</code> 会调用该对象的 <code>hashCode()</code> 方法来得到该对象的 <code>hashCode</code> 值，然后根据 <code>hashCode</code> 值确定该对象在 <code>HashSet</code> 中的存储位置。</p>
-<p>如果两个元素的 <code>equals()</code> 方法返回 <code>true</code>，但它们的 <code>hashCode()</code> 返回值不相等，<code>hashSet</code> 将会把它们存储在不同的位置，但依然可以添加成功。</p>
-<p><strong>Hashset 方法</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">set.add(); 		<span class="comment">// 添加元素</span></span><br><span class="line">set.remove(); 	<span class="comment">// 移除元素</span></span><br><span class="line">set.contains(); <span class="comment">// 判断是否包含某个元素</span></span><br><span class="line">set.clear();	<span class="comment">// 清空集合</span></span><br><span class="line">set.size(); 	<span class="comment">// 集合中元素的个数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 集合的遍历 */</span></span><br><span class="line"><span class="comment">// 使用迭代器遍历集合</span></span><br><span class="line">Iterator iterator = set.iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext())&#123;</span><br><span class="line">    System.out.println(iterator.next());</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// for each 迭代集合</span></span><br><span class="line"><span class="keyword">for</span> (Object object: set) &#123;  <span class="comment">// 取出set中的每一个元素，赋值给object，直到循环set所有值</span></span><br><span class="line">    System.out.println(object);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>hashCode() 方法</strong></p>
-<p>HashSet集合判断两个元素相等的标准：两个对象通过 <code>equals()</code> 方法比较相等，并且两个对象的 <code>hashCode()</code> 方法返回值也相等。</p>
-<p>如果两个对象通过 <code>equals()</code> 方法返回 <code>true</code>，这两个对象的 <code>hashCode</code> 值也应该相同。</p>
-<p>如果想让集合只能存同样类型的对象，使用<strong>泛型</strong>:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;String&gt; set = <span class="keyword">new</span> HashSet&lt;String&gt;();  <span class="comment">// 该集合只能存 String 类型的数据</span></span><br></pre></td></tr></table></figure>
-<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><p><code>TreeSet</code> 是 <code>SortedSet</code> 接口的实现类，<code>TreeSet</code> 可以确保集合元素处于排序状态。<code>TreeSet</code> 支持两种排序方法：<strong>自然排序</strong>和<strong>定制排序</strong>。默认情况下，<code>TreeSet</code> 采用自然排序。</p>
-<p><strong>自然排序</strong></p>
-<p>排序：<code>TreeSet</code> 会调用集合元素的 <code>compareTo(Object obj)</code> 方法来比较元素之间的大小关系，然后将集合元素按升序排列</p>
-<ul>
-<li>如果 this &gt; obj, 返回正数 1</li>
-<li>如果 this &lt; obj, 返回负数 -1</li>
-<li>如果 this = obj, 返回 0，则认为这两个对象相等</li>
-<li>必须放入同样类的对象（默认会进行排序）否则可能会发生类型转换异常，可以使用泛型来进行限制。</li>
-</ul>
-<p><strong>定制排序</strong></p>
-<p>如果要实现定制排序，则需要在创建 <code>TreeSet</code> 集合对象时，提供一个 <code>Comparator</code> 接口的实现类对象。由该 <code>Comparator</code> 对象负责集合元素的排序逻辑。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Person</span>&gt; </span>&#123;  <span class="comment">// 按照年龄排序</span></span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(<span class="keyword">int</span> age, String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Person o1, Person o2)</span> </span>&#123;  <span class="comment">// 按年龄从小到大排序</span></span><br><span class="line">        <span class="keyword">if</span> (o1.age &gt; o2.age)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (o1.age &lt; o2.age)&#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="List-与-ArrayList"><a href="#List-与-ArrayList" class="headerlink" title="List 与 ArrayList"></a>List 与 ArrayList</h3><p><code>List</code> 代表一个元素有序，且可重复的集合，集合中的每个元素都有其对应的顺序</p>
-<p><code>List</code> 允许使用重复元素，可以通过索引来访问指定位置的元素集合</p>
-<p><code>List</code> 默认按元素的添加顺序设置元素的索引</p>
-<p><code>List</code> 集合里添加了一些根据索引来操作集合的方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">list.get(<span class="number">2</span>);  <span class="comment">// 通过索引来访问指定位置的集合元素</span></span><br><span class="line"></span><br><span class="line">list.add(<span class="number">1</span>,<span class="string">"f"</span>);  <span class="comment">// 在指定索引下标的位置插入数据</span></span><br><span class="line"></span><br><span class="line">List&lt;String&gt; l = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">l.add(<span class="string">"123"</span>);</span><br><span class="line">l.add(<span class="string">"456"</span>);</span><br><span class="line">list.addAll(<span class="number">2</span>, l); <span class="comment">// 在指定索引下标的位置插入集合</span></span><br><span class="line"></span><br><span class="line">list.indexOf(<span class="string">"d"</span>);  <span class="comment">// 获取指定元素在集合中第一次出现的索引下标</span></span><br><span class="line">list.lastIndexOf(<span class="string">"d"</span>);  <span class="comment">// 获取指定元素在集合中最后一次出现的索引下标</span></span><br><span class="line"></span><br><span class="line">list.remove(<span class="number">2</span>);  <span class="comment">// 根据指定的索引下标移除数据</span></span><br><span class="line"></span><br><span class="line">list.set(<span class="number">1</span>, <span class="string">"ff"</span>); <span class="comment">// 根据指定索引下标修改元素</span></span><br><span class="line"></span><br><span class="line">List&lt;String&gt; sublist = list.subList(<span class="number">2</span>,<span class="number">4</span>);  <span class="comment">// 根据索引下标的起始位置截取元素，前闭后开</span></span><br></pre></td></tr></table></figure>
-<h3 id="ArrayList-和-Vector"><a href="#ArrayList-和-Vector" class="headerlink" title="ArrayList 和 Vector"></a>ArrayList 和 Vector</h3><p><code>ArrayList</code> 和 <code>Vector</code> 是 <code>List</code> 接口的两个典型实现。</p>
-<p>区别：</p>
-<ul>
-<li><code>Vector</code> 是一个古老的集合，通常建议使用 <code>ArrayList</code></li>
-<li><code>ArrayList</code> 是线程不安全的， 而 <code>Vector</code> 是线程安全的</li>
-<li>即使为保证 <code>List</code> 集合线程安全，也不推荐使用 <code>Vector</code></li>
-</ul>
-<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p><code>Map</code> 用于保存具有映射关系的数据，因此 <code>Map</code> 集合里保存着两组值，一组值用于保存 <code>Map</code> 里的 <code>Key</code>，另外一组用于保存 <code>Map</code> 里的 <code>Value</code></p>
-<p><code>Map</code> 中的 <code>Key</code> 和 <code>Value</code> 都可以是任何引用类型的数据</p>
-<p><code>Map</code> 中的 <code>key</code> 不允许重复，即同一个 <code>Map</code> 对象的任何两个 <code>Key</code> 通过 <code>equals()</code> 方法比较返回 <code>false</code></p>
-<p><code>Key</code> 和 <code>Value</code> 之间存在单向一对一关系，即通过指定的 <code>Key</code> 总能找到唯一的确定的 <code>Value</code> </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">map.put(<span class="string">"b"</span>,<span class="number">1</span>);  <span class="comment">// 添加数据</span></span><br><span class="line">   </span><br><span class="line">map.get(<span class="string">"b"</span>);  <span class="comment">// 根据 key 取值</span></span><br><span class="line">map.remove(<span class="string">"c"</span>);  <span class="comment">// 根据 key 移除键值对</span></span><br><span class="line">map.size();  <span class="comment">// map 集合的元素个数</span></span><br><span class="line"></span><br><span class="line">System.out.println(map.containsKey(<span class="string">"e"</span>));  <span class="comment">// 判断当前的 map 集合是否包含指定的 key</span></span><br><span class="line">System.out.println(map.containsValue(<span class="number">10</span>)); <span class="comment">// 判断当前的 map 集合是否包含指定的 value</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历 map 集合</span></span><br><span class="line">Set&lt;String&gt; keySet = map.keySet(); <span class="comment">// 获取 map 所有的 key</span></span><br><span class="line">map.values(); <span class="comment">// 获取 map 所有的 value</span></span><br><span class="line"><span class="keyword">for</span> (String key:keySet)&#123;</span><br><span class="line">System.out.println(<span class="string">"Key: "</span> + key + <span class="string">"\t Value: "</span>+ map.get(key));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// map.entrySet();</span></span><br><span class="line">Set&lt;Map.Entry&lt;String, Integer&gt;&gt; entrySet = map.entrySet();</span><br><span class="line"><span class="keyword">for</span>(Map.Entry&lt;String, Integer&gt; en: entrySet)&#123;</span><br><span class="line">System.out.println(<span class="string">"Key: "</span> + en.getKey() + <span class="string">"\t Value: "</span> + en.getValue());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="HashMap-和-Hashtable"><a href="#HashMap-和-Hashtable" class="headerlink" title="HashMap 和 Hashtable"></a>HashMap 和 Hashtable</h3><p><code>HashMap</code> 和 <code>HashValue</code> 是 Map 接口的两个典型实现类。</p>
-<p>区别：</p>
-<ul>
-<li><code>Hashtable</code> 是一个古老的 Map 实现类，不建议使用</li>
-<li><code>Hashtable</code> 是一个线程安全的 Map 实现，但 <code>HashMap</code> 是线程不安全的</li>
-<li><code>Hashtable</code> 不允许使用 <code>null</code> 作为 <code>key</code> 和 <code>value</code>， 而 <code>HashMap</code> 可以</li>
-</ul>
-<p>与 <code>HashSet</code> 集合不能保证元素的顺序一样，<code>Hashtable</code>、<code>HashMap</code> 也不能保证其中 <code>key-value</code> 对的顺序</p>
-<p><code>Hashtable</code>、<code>HashMap</code> 判断两个 <code>Key</code> 相等的标准是：两个 <code>key</code> 通过 <code>equals()</code> 方法返回 <code>true</code>，<code>hashCode</code>值也相等</p>
-<p><code>Hashtable</code>、<code>HashMap</code>  相等的标准是：两个<code>value</code> 通过 <code>equalsHashMap</code> 判断两个 <code>Values</code> 方法返回 <code>true</code></p>
-<h3 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h3><p><code>TreeMap</code> 存储 <code>Key-Value</code> 对时，需要根据 <code>Key</code> 对 <code>key-value</code> 对进行排序。<code>TreeMap</code> 可以保证所有的 <code>Key-Value</code> 对处于有序状态.</p>
-<p><code>TreeMap</code> 的 <code>key</code> 的排序：</p>
-<ul>
-<li>自然排序：<code>TreeMap</code> 的所有的 <code>Key</code> 必须实现 <code>Comparable</code> 接口，而且所有的 <code>Key</code> 应该是同一个类的对象，否则会抛出 <code>ClassCastException</code></li>
-<li>定制排序：创建 <code>TreeMap</code> 时，传入一个 <code>Comparator</code> 对象，该对象负责对 <code>TreeMap</code> 中所有 <code>key</code> 进行排序。此时，不需要 <code>Map</code> 的 <code>Key</code> 实现 <code>Comparable</code> 接口</li>
-</ul>
-<h3 id="操作集合的工具类-Collections"><a href="#操作集合的工具类-Collections" class="headerlink" title="操作集合的工具类 Collections"></a>操作集合的工具类 Collections</h3><p>Collections 是一个操作 Set、List 和 Map 等集合的工具类</p>
-<p>Collections 中提供了大量方法对集合进行排序、查询和修改等操作，还提供了对集合对象设置不可变、对集合对象实现同步控制等方法。</p>
-<p>排序操作：</p>
-<ul>
-<li><code>reverse(List)</code>: 反转 List 元素顺序</li>
-<li><code>shuffle(List)</code>  对 List 集合元素进行随机排序</li>
-<li><code>sort(List)</code> 根据元素的自然顺序对指定 List 集合元素按升序排序</li>
-<li><code>sort(List, Comparator)</code> 根据指定的 Comparator 产生的顺序对 List 集合元素进行排序</li>
-<li><code>swap(List, int i, int j)</code> 将指定 list 集合中的 i 处元素 和 j 处元素进行交换</li>
-</ul>
-<p><strong>查找、替换</strong></p>
-<ul>
-<li><code>Object max(Collection)</code>：根据元素的自然顺序，返回给定集合中的最大元素</li>
-<li><code>Object max(Collection, Comparator)</code>：根据 Comparator 指定的顺序，返回给定集合中的最大元素</li>
-<li><code>Object min(Collection)</code></li>
-<li><code>Object min(Collection, Comparator)</code></li>
-<li><code>int frequency(Collection, Object)</code>：返回指定集合中指定元素的出现次数</li>
-<li><code>boolean replaceAll(List list, Object oldVal, Object newVal)</code> ：使用新值替换 List 对象的所有指定旧值</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/11/Java-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/11/Java-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">Java 异常处理</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-11 08:44:38" itemprop="dateCreated datePublished" datetime="2019-10-11T08:44:38+08:00">2019-10-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:47:52" itemprop="dateModified" datetime="2020-09-13T09:47:52+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/11/Java-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/11/Java-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.4k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Java-异常处理"><a href="#Java-异常处理" class="headerlink" title="Java 异常处理"></a>Java 异常处理</h1><p>任何一种程序设计语言设计的程序在运行时都有可能出现错误，例如：除数为0，数组下标越界，要读写的文件不存在等</p>
-<p>捕获错误最理想的是在编译期间，但有的错误只有在运行时才会发生</p>
-<p>对于这些错误，一般有两种解决方法：</p>
-<ul>
-<li>遇到错误就终止程序的运行</li>
-<li>由程序员在编写程序时，就考虑到错误的检测、错误消息的提示，以及错误的处理</li>
-</ul>
-<p><strong>异常</strong>：在Java语言中，将程序执行中发生的不正常情况称为“异常”</p>
-<p>Java中的异常用于处理非预期的情况，如文件没找到，、网络错误、非法参数</p>
-<p>Java程序运行过程中所发生的异常事件可分为两类：</p>
-<ul>
-<li>Error：JVM系统内部错误、资源耗尽等严重情况</li>
-<li>Exception：其他因编程错误或偶然的外在因素导致的一般性问题，例如：<ul>
-<li>空指针访问</li>
-<li>试图读取不存在的文件</li>
-<li>网络连接中断</li>
-</ul>
-</li>
-</ul>
-<p><strong>异常处理机制</strong></p>
-<p>在编写程序时，经常要在可能出现错误的地方加上检测的代码，如进行x/y运算时，要检测分母为0，数据为空，输入的不是数据而是字符等。过多的分支会导致程序的代码加长，可读性差。因此采用异常机制。</p>
-<p>Java 异常处理：Java采用异常处理机制，将异常处理的程序代码集中在一起，与正常的程序代码分开，使得程序简洁，并易于维护</p>
-<p>Java 提供的是异常处理的抓抛模型。</p>
-<p>Java 程序的执行过程中如出现异常，会自动生成一个异常类对象，该异常对象将被提交给 Java 运行时系统，这个过程为抛出（throw）异常。</p>
-<p>如果一个方法内抛出异常，该异常会被抛出到调用方法中。如果异常没有在调用方法中处理，它继续被抛出给这个方法的调用者。这个程序将一直继续下去，直到异常被处理。这一过程称为捕获（catch）异常。</p>
-<p>如果一个异常回到 <code>main()</code> 方法，并且 <code>main()</code> 也不处理，则程序运行终止。</p>
-<p>程序员通常只能处理 Exception，而对 Error 无能为力</p>
-<p><strong>捕获异常</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    ... <span class="comment">// 可能产生异常的代码</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(ExceptionName1 e)&#123;</span><br><span class="line">    ... <span class="comment">// 当产生ExceptionName1 型异常时的处置措施</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(ExceptionName2 e)&#123;</span><br><span class="line">    ... <span class="comment">// 当产生ExceptionName2 型异常时的处置措施</span></span><br><span class="line">&#125;[<span class="keyword">finally</span>]&#123;</span><br><span class="line">    ... <span class="comment">// 无条件执行的语句</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>声明抛出异常</strong></p>
-<p>声明抛出异常是Java中处理异常的第二种方式</p>
-<p>​    如果一个方法（中的语句执行）可能生成某种异常，但是并不能确定如何处理这种异常，则此方法应显式地声明抛出异常，表明该方法将不对这些异常进行处理，而由该方法的调用者负责处理</p>
-<p>​    在方法声明中用  <code>throws</code> 子句可以声明抛出异常的列表， <code>throws</code> 后面的异常类型可以是方法中产生的异常类型，也可以是它的父类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">readFile</span><span class="params">(String file)</span> <span class="keyword">throws</span> FileNotFoundException</span>&#123;</span><br><span class="line">    ......</span><br><span class="line">    <span class="comment">// 读文件的操作可能产生 FileNotFoundException 类型的异常</span></span><br><span class="line">    FileInputStream fis = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>重写方法声明抛出异常的原则：重写方法不能抛出比被重写方法范围更大的异常类型，即<strong>子类不能抛出比父类方法更大范围的异常</strong></p>
-<p><strong>人工抛出异常</strong></p>
-<p><strong>创建用户自定义异常类</strong></p>
-<p>用户自定义异常类 <code>MyException</code> ，用于描述数据取值范围错误信息。用户自己的异常类必须继承现有的异常类。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/10/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AConnecting-Users-across-Social-Media-Sites-A-Behavioral-Modeling-Approach%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/10/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AConnecting-Users-across-Social-Media-Sites-A-Behavioral-Modeling-Approach%E3%80%8B/" class="post-title-link" itemprop="url">论文阅读《Connecting Users across Social Media Sites: A Behavioral-Modeling Approach》</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-10 13:46:43" itemprop="dateCreated datePublished" datetime="2019-10-10T13:46:43+08:00">2019-10-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:51:54" itemprop="dateModified" datetime="2020-09-13T09:51:54+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/" itemprop="url" rel="index"><span itemprop="name">Social Networks</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/10/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AConnecting-Users-across-Social-Media-Sites-A-Behavioral-Modeling-Approach%E3%80%8B/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/10/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AConnecting-Users-across-Social-Media-Sites-A-Behavioral-Modeling-Approach%E3%80%8B/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.6k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Connecting-Users-across-Social-Media-Sites-A-Behavioral-Modeling-Approach"><a href="#Connecting-Users-across-Social-Media-Sites-A-Behavioral-Modeling-Approach" class="headerlink" title="Connecting Users across Social Media Sites: A Behavioral-Modeling Approach"></a>Connecting Users across Social Media Sites: A Behavioral-Modeling Approach</h1><blockquote>
-<p>Zafarani R , Liu H . Connecting users across social media sites: a behavioral-modeling approach.[C]// Acm Sigkdd International Conference on Knowledge Discovery &amp; Data Mining. ACM, 2013.</p>
-</blockquote>
-<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>这篇文章真得是绝了，信息量少，通过各种角度各种层面构建特征的方式可谓无所不用其极。但也值得学习。</p>
-<p>而且必须拿到很多个社交网站的用户名数据，先验用户名数据集才比较好。</p>
-<p>2013年发表在KDD上的文章，由此可见计算机发展得迅速。</p>
-<h2 id="Research-Objective"><a href="#Research-Objective" class="headerlink" title="Research Objective"></a>Research Objective</h2><p>解决跨社交媒体的用户标识问题：</p>
-<ol>
-<li>识别用户的独一无二的行为模式</li>
-<li>利用这些行为模式构建特征</li>
-<li>使用机器学习方法进行用户的识别</li>
-</ol>
-<h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p>使用最少的信息确定两个用户是否是同一个身份。</p>
-<p>已知一个用户在一些社交网站上的 <strong>用户名</strong> ，现有一个候选用户名 c ，判断c是否是该用户在该社交网站上的用户名。</p>
-<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><h3 id="MOBIUS：行为模式与特征构建"><a href="#MOBIUS：行为模式与特征构建" class="headerlink" title="MOBIUS：行为模式与特征构建"></a>MOBIUS：行为模式与特征构建</h3><p>MOBIUS: MOdeling Behavior for Identifying Users across Sites </p>
-<p>在一个社交网络上，尽量使自己的用户名和别人的不同。人类个体倾向于选择 “not long, not random, and have abundant redundancy”的用户名，这可以帮助我们挖掘其中的特征。</p>
-<p>从用户选择不同社交网络用户名的行为模式中可以提取一下三类特征：</p>
-<ul>
-<li>（candidate）Username Features：从候选用户名中提取的特征，例如：用户名的长度</li>
-<li>Prior-Username Features：例如：先验用户名的个数</li>
-<li>Username  &lt;-&gt; Prior-Username Features ：先验用户名和候选用户名之间的关系，例如：相似性</li>
-</ul>
-<h4 id="1-Patterns-due-to-Human-Limitations"><a href="#1-Patterns-due-to-Human-Limitations" class="headerlink" title="1. Patterns due to Human Limitations"></a>1. Patterns due to Human Limitations</h4><ul>
-<li><p>Limitations in Time and Memory </p>
-<ul>
-<li><p>选择之前用过的用户名 — &gt; 将候选用户名 c 在以前的用户名中重复的次数作为一个特征</p>
-</li>
-<li><p>用户名的长度：$\min <em>{u \in U} l</em>{u} \leq l<em>{c} \leq \max </em>{u \in U} l_{u}$  候选用户名的长度应该在之前用过的用户名的长度之间。 — &gt;  将候选用户名的长度和以前用户名的长度分布作为特征。</p>
-<p>用户名长度的分布特征可以用一个五元组来表示：</p>
-</li>
-</ul>
-<script type="math/tex; mode=display">
-\left(\mathbb{E}\left[l_{u}\right], \sigma\left[l_{u}\right], \operatorname{med}\left[l_{u}\right], \min _{u \in U} l_{u}, \max _{u \in U} l_{u}\right)</script><ul>
-<li>在之前的用户名中有多少个唯一的新的用户名 $uniqueness=\frac{|u n i q(U)|}{|U|}$</li>
-</ul>
-</li>
-<li><p>Knowledge Limitation</p>
-<ul>
-<li>用户名中单词的数量</li>
-<li>用户名单词数量的分布特征</li>
-<li>用户名使用的字母的数量</li>
-</ul>
-</li>
-</ul>
-<h4 id="2-外在因素"><a href="#2-外在因素" class="headerlink" title="2. 外在因素"></a>2. 外在因素</h4><ul>
-<li>Typing Patterns </li>
-<li>Language Patterns ：用户名的语言</li>
-</ul>
-<h4 id="3-内部因素"><a href="#3-内部因素" class="headerlink" title="3. 内部因素"></a>3. 内部因素</h4><ul>
-<li>Personal Attributes and Personality Traits <ul>
-<li>Personal Information：使用字母的分布情况</li>
-<li>Username Randomness：用户名字母分布的熵</li>
-</ul>
-</li>
-<li>Habits<ul>
-<li>Username Modification </li>
-<li>Generating Similar Usernames </li>
-<li>Username Observation Likelihood </li>
-</ul>
-</li>
-</ul>
-<p><img src="/2019/10/10/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AConnecting-Users-across-Social-Media-Sites-A-Behavioral-Modeling-Approach%E3%80%8B/features.png" alt="features"></p>
-<h3 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h3><p>Naive Bayes </p>
-<p>十折交叉验证</p>
-<h4 id="Feature-Importance-Analysis"><a href="#Feature-Importance-Analysis" class="headerlink" title="Feature Importance Analysis"></a>Feature Importance Analysis</h4><p>odds-ratios（逻辑回归系数）</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/" class="post-title-link" itemprop="url">论文阅读《A comparative study on network alignment techniques》</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-07 14:47:39" itemprop="dateCreated datePublished" datetime="2019-10-07T14:47:39+08:00">2019-10-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:51:43" itemprop="dateModified" datetime="2020-09-13T09:51:43+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/" itemprop="url" rel="index"><span itemprop="name">Social Networks</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>9k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="A-comparative-study-on-network-alignment-techniques"><a href="#A-comparative-study-on-network-alignment-techniques" class="headerlink" title="A comparative study on network alignment techniques"></a>A comparative study on network alignment techniques</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>从矩阵对齐和网络表示学习的角度总结了state-of-the-art的7种方法，并建立了一个统一的基准平台。同时他们还研究了不同网络因素对于这些方法的影响。</p>
-<p>这篇文章对于7种方法的介绍非常详细（数学真得好难），可以参考。</p>
-<p>但是数据集对于该问题是主要的影响因素，但是公开数据集特别少。</p>
-<h2 id="Research-Objective"><a href="#Research-Objective" class="headerlink" title="Research Objective"></a>Research Objective</h2><p>比较现有网络对齐的方法</p>
-<p>评估公共框架下的 Network Alignment 技术</p>
-<p>本研究的主要目的是提供一个灵活而强大的工具，以支持比较和促进网络对齐技术的基准分析。</p>
-<h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p>文章中将目前的 Network Align 方法分为 <strong>spectral methods</strong>（基于邻接矩阵的操作） 和 <strong>network representation methods</strong> (节点用嵌入向量表示，能够捕捉到网络的结构信息)</p>
-<p>虽然Network Alignment方法的研究已经很长时间了，但由于缺少公共数据集和共同的评价指标，还没有比较过这些方法的性能。</p>
-<h3 id="Network-alignment-methods"><a href="#Network-alignment-methods" class="headerlink" title="Network alignment methods"></a>Network alignment methods</h3><p>网络对齐技术利用结构一致性和属性一致性假设来构建它们的模型。</p>
-<p>结构一致性：同质性原则，即邻近的节点倾向于在不同的网络中维持它们之间的关系</p>
-<p>属性一致性：属于同一身份的在不同网络上的节点可能保持相同的属性(特征)</p>
-<ul>
-<li><h4 id="Spectral-methods-—-matrix-factorization-矩阵分解"><a href="#Spectral-methods-—-matrix-factorization-矩阵分解" class="headerlink" title="Spectral methods — matrix factorization 矩阵分解"></a>Spectral methods — matrix factorization 矩阵分解</h4><p>使用矩阵分解，直接计算对齐矩阵 S </p>
-<p><img src="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/spectral_method.png" alt="spectral_method"></p>
-<p>将输入的图用连接矩阵的形式表示，Spectral methods 以损失函数的形式定义模型，模型考虑了源和目标网络的邻接矩阵；节点特征为常量，对齐矩阵S为变量。在对准过程中，根据结构和/或属性一致性假设，通过优化损失函数来学习得到对准矩阵。</p>
-<p>Spectral methods 不同之处在于构建模型时使用什么一致性原则以及该原则如何使用的</p>
-<ul>
-<li><p><strong>IsoRank</strong>：如果来自不同网络的两个节点的邻居是相似的，那么这两个节点是相似的。因此该方法中，节点的相似性取决于两个节点邻居的相似性。</p>
-<p>similarity：</p>
-<script type="math/tex; mode=display">
-\mathbf{S}\left(u_{s}, v_{t}\right)=\sum_{w_{s} \in N\left(u_{s}\right)} \sum_{w_{t} \in N\left(v_{t}\right)} \frac{1}{\left|N\left(u_{s}\right)\right|\left|N\left(v_{t}\right)\right|} \mathbf{S}\left(w_{s}, w_{t}\right)  \\
-u_{s}源网络的节点，v_t目标网络的节点，N(u)节点u的邻居集合  \\
-上面的公式可以写成：S=CS \\
-where \\
-\mathbf{C}[i, j][u, v]=\left\{\begin{array}{ll}{\frac{1}{|N(u)||N(v)|},} & {\text { if }(i, u) \in E_{s},(i, v) \in E_{t}} \\ {0,} & {\text { otherwise }}\end{array}\right.  \\
-通过迭代的方法更新S\\
-\mathbf{S}^{k+1} \leftarrow \frac{\mathbf{C S}^{k}}{\left|\mathbf{C S}^{k}\right|}  \\
-其中S^{k}是第k次迭代的对齐矩阵</script><p>该方法对于网络的结构较敏感</p>
-</li>
-<li><p><strong>BigAlign</strong></p>
-<p>利用网络节点的原始特征和手工提取的特征，如节点度、权重、集群系数等，将源网络和目标网络转换成二分图，从而解决网络对齐问题。</p>
-<p>求置换矩阵 P，使损失函数最小化:</p>
-<script type="math/tex; mode=display">
-\mathbb{L}(\mathbf{P})=\left\|\mathbf{P D}_{s} \mathbf{P}^{T}-\mathbf{D}_{t}\right\|_{F}^{2}</script><p>P 用于对 $D<em>{s}$ 的行进行重新排序，$P^{t}$ 用于对 $D</em>{t}$ 的列进行重新排序。难解。</p>
-<p>将图转化成二分图然后最小化损失函数：</p>
-<script type="math/tex; mode=display">
-\begin{aligned} \mathbb{L}(\mathbf{P}, \mathbf{Q}) &=\left\|\mathbf{P D}_{s} \mathbf{Q}-\mathbf{D}_{t}\right\|_{F}^{2}+\lambda \sum_{i, j} \mathbf{P}(i, j)+\phi \sum_{i, j} \mathbf{Q}(i, j) \\ &=\operatorname{Tr}\left(\mathbf{P D}_{s} \mathbf{Q}\left(\mathbf{P D}_{s} \mathbf{Q}\right)^{T}-2 \mathbf{P D}_{s} \mathbf{Q} \mathbf{D}_{t}^{T}\right)+\lambda \mathbf{1}^{T} \mathbf{P} \mathbf{1}+\phi \mathbf{1}^{T} \mathbf{Q} \mathbf{1} \end{aligned} \\
-其中 Tr(·) 是矩阵的迹, \lambda \sum_{i, j} \mathbf{P}(i, j) 是矩阵的稀疏性约束 \\</script><p>上面的损失函数可以通过 <strong>alternating projected gradient descent (APGD)  </strong>来优化：</p>
-<script type="math/tex; mode=display">
-\begin{array}{l}{\mathbf{P}_{k+1}=\mathbf{P}_{k}-\eta_{P} \cdot\left(2\left(\mathbf{P}_{k} \mathbf{D}_{s} \mathbf{Q}_{k}-\mathbf{D}_{t}\right) \mathbf{Q}_{k}^{T} \mathbf{D}_{s}^{T}+\lambda \mathbf{1} \mathbf{I}^{T}\right)} \\ {\left.\mathbf{Q}_{k+1}=\mathbf{Q}_{k}-\eta_{Q} \cdot\left(2 \mathbf{D}_{s}^{T} \mathbf{P}_{k+1}^{T} \mathbf{D}_{s} \mathbf{Q}_{k}-\mathbf{D}_{t}\right)+\phi \mathbf{1} \mathbf{1}^{T}\right)}\end{array} \\
-P_k 是第k次迭代的矩阵P，\eta_{P},\eta_{Q}为APGD算法的步长</script><p>仅用属性信息而忽略了拓扑信息。</p>
-</li>
-<li><p><strong>FINAL</strong></p>
-<p>通过定义结构相似性、节点特征相似性和边特征的相似性条件</p>
-<script type="math/tex; mode=display">
-\begin{aligned} \mathbb{L}(\mathbf{S}) &=\sum_{u_{s}, v_{s}, u_{t}, v_{t}}\left[\frac{\mathbf{S}\left(u_{s}, u_{t}\right)}{\sqrt{f\left(u_{s}, u_{t}\right)}}-\frac{\mathbf{S}\left(v_{s}, v_{t}\right)}{\sqrt{f\left(v_{s}, v_{t}\right)}}\right] \\ & \times \mathbf{D}_{s}\left(u_{s}, v_{s}\right) \mathbf{D}_{t}\left(u_{t}, v_{t}\right) \end{aligned} \\
-\begin{array}{l}{\times \mathbb{1}\left(A\left(u_{s}\right)=A\left(u_{t}\right)\right) \mathbb{1}\left(A\left(v_{s}\right)=A\left(v_{t}\right)\right)} \\ {\times \mathbb{1}\left(A_{e}\left(u_{s}, v_{s}\right)=A_{e}\left(u_{t}, v_{t}\right)\right)}\end{array} \\
-其中A_e是边属性矩阵，\mathbb{1}(\cdot)是一个指示函数，如果括号中的条件正确，则返回1，\sqrt{f\left(u, u\right)} 是一个归一化因子</script><p><img src="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/FINAL.png" alt="FINAL"></p>
-<blockquote>
-<p>数学好难，没看懂。。。</p>
-</blockquote>
-</li>
-<li><p><strong>REGAL</strong></p>
-<p>两个节点之间的相似性：</p>
-<script type="math/tex; mode=display">
-\mathbf{S}^{\prime}(u, v)=\exp \left(-\lambda_{s} \cdot\left\|\mathbf{d}_{u}-\mathbf{d}_{v}\right\|^{2}-\lambda_{a} \cdot \operatorname{dist}(\mathbf{A}(u), \mathbf{A}(v))\right)</script></li>
-<li></li>
-</ul>
-</li>
-<li><h4 id="Representation-learning-methods"><a href="#Representation-learning-methods" class="headerlink" title="Representation learning methods"></a>Representation learning methods</h4><p>embedding generation 嵌入的生成</p>
-<p>alignment matrix generation 对齐矩阵的生成</p>
-<p>对于基于嵌入的网络对齐方法，不同之处在于embedding function 和 mapping function</p>
-<ul>
-<li><p><strong>PALE</strong></p>
-<p><img src="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/PALE.png" alt="PALE"></p>
-<blockquote>
-<p><a href="https://tiantianliu2018.github.io/2019/09/28/论文阅读《Predict-Anchor-Links-across-Social-Networks-via-an-Embedding-Approach》/">https://tiantianliu2018.github.io/2019/09/28/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8APredict-Anchor-Links-across-Social-Networks-via-an-Embedding-Approach%E3%80%8B/</a></p>
-<p>我之前的阅读笔记。</p>
-</blockquote>
-<p>首先对网络进行扩展：如果在source网络中 $u_s$ 和 $v_s$存在边，并且知道这两个在target网络中对应的节点 $u_t$ 和 $v_t$, 那么  $u_t$ 和 $v_t$ 之间也应该有边，因此通过这样的方式扩展网络</p>
-<p><strong>Emdedding function</strong></p>
-<script type="math/tex; mode=display">
-\theta(v_i) = E[i]</script><p>其中 $E$ 是 embedding matrix，它是通过最小化如下损失得到的：</p>
-<script type="math/tex; mode=display">
-\mathbb{L}(\mathbf{E})=\log \sigma\left(\mathbf{u}^{T} \cdot \mathbf{v}\right)+\sum_{k=1}^{K} \mathbb{E}_{w \alpha P_{n}(v)}\left[\log \left(1-\sigma\left(\mathbf{u}^{T} \cdot \mathbf{w}\right)\right)\right]</script><p>其中 $(u,v) \in E$  是观测到的边，$w$ 是通过在E中负采样的节点</p>
-<p><strong>Mapping function</strong></p>
-<script type="math/tex; mode=display">
-\phi\left(\mathbf{u}_{s}\right)=\mathbf{M} \times \mathbf{u}_{s}</script><p>$M$ 是一个$d×d$ 的矩阵，通过最小化下面的损失函数得到：</p>
-<script type="math/tex; mode=display">
-\mathbb{L}(\mathbf{M})=\sum_{\mathbf{H}\left(v_{s}, v_{t}\right)=1}\left\|\phi\left(\mathbf{v}_{\mathbf{s}}\right)-\mathbf{v}_{t}\right\|</script><p>$H$ 是先验对齐矩阵</p>
-</li>
-<li><p><strong>DeepLink</strong></p>
-<p>embedding graph 与PALE是一样的，但在mapping function中考虑了mapping的方向</p>
-<p><img src="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/DEEPLINK.png" alt="DEEPLINK"></p>
-<p><strong>Emdedding function</strong></p>
-<script type="math/tex; mode=display">
-\theta(v_i) = E[i]</script><p>参数 $E$ 的 loss function:</p>
-<script type="math/tex; mode=display">
-\mathbb{L}_{\theta}(\mathbf{E})=\log \sigma(\mathbf{u} \cdot \mathbf{v})+\sum_{k=1}^{K} \mathbb{E}_{w \propto P_{n}(v)}[\log (1-\sigma(\mathbf{u} \cdot \mathbf{w}))]</script><p>DeepLink方法认为如果 $v$ 是 $u$随机游走过程中的节点，则认为这两个节点相似。</p>
-<p><strong>Mapping function</strong></p>
-<p>从源网络 $G_s$ 到目标网络 $G_t$ 的 mapping function</p>
-<script type="math/tex; mode=display">
-\phi_{s, t}\left(\mathbf{u}_{s}\right)=\mathbf{M}_{s, t} \times \mathbf{u}_{s}+\mathbf{b}_{s, t}</script><p>类似的 从目标网络 $G_t$ 到源网络 $G_s$ 的 mapping function</p>
-<script type="math/tex; mode=display">
-\phi_{t, s}\left(\mathbf{u}_{t}\right)=\mathbf{M}_{t, s} \times \mathbf{v}_{t}+\mathbf{b}_{t, s}</script><p>参数 $\phi<em>{s, t}$ 通过最优化如下loss function得到（$\phi</em>{t, s}$ 类似）：</p>
-<script type="math/tex; mode=display">
-\mathbb{L}\left(\mathbf{W}_{s, t}, \mathbf{b}_{s, t}\right) =\sum_{\left(v_{s}, v_{t}\right) \in H} \min \left(1-\cos \left(\phi\left(\mathbf{v}_{s}\right), \mathbf{v}_{t}\right)\right)</script><p>对于两个网络中的同一个用户，他们的嵌入向量应该是相似的，因此，通过最小化损失函数来改进 $\phi<em>{s, t}$ 和 $\phi</em>{t, s}$:</p>
-<script type="math/tex; mode=display">
-\mathbb{L}\left(\mathbf{W}_{s, t}, \mathbf{b}_{s, t}, \mathbf{W}_{t, s}, \mathbf{b}_{t, s}\right)=\operatorname{dist}\left(\phi_{t, s}\left(\phi_{s, t}(\mathbf{u})\right), \mathbf{u}\right)</script><p>对于监督学习，最大化 reward function</p>
-<script type="math/tex; mode=display">
-r_{s, t}^{u}=\frac{1}{k} \sum_{w \in T_{k}(u)} \log (\cos (\mathbf{w}, \mathbf{v})+1)  \\
-其中 T_k(u) 是G_t中与\phi_{s,t}(u) embedding最接近的top-k个节点  \\
-\phi_{t,s}的reward \, function 为：\\
-r_{t, s}^{v}=\frac{1}{k} \sum_{w \in T_{k}(v)} \log (\cos (\mathbf{w}, \mathbf{u})+1)</script><blockquote>
-<p><a href="https://tiantianliu2018.github.io/2019/09/15/论文阅读《DeepLink-A-Deep-Learning-Approach-for-User-Identity-Linkage》/">https://tiantianliu2018.github.io/2019/09/15/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeepLink-A-Deep-Learning-Approach-for-User-Identity-Linkage%E3%80%8B/</a><br> 之前的论文阅读笔记<br> 又一大堆数学公式推导，好像没有看下去。</p>
-</blockquote>
-</li>
-<li><p><strong>IONE</strong></p>
-<p>IONE 与 PALE 的 mapping function 是相同的，但是其 embedding function 更加复杂，它在计算节点的嵌入时考虑了节点的邻居特征。</p>
-<p><strong>Embedding function</strong></p>
-<p>一个 embedding 矩阵，其中的每一行是由三个向量拼接到一起的：节点向量、输入上下文向量、输出上下文向量，最终其 embedding function 为：</p>
-<script type="math/tex; mode=display">
-\theta_i = E[i], E \in \mathbb{R}^{|V| \times 3 d}</script><p>该方法的思想是：一个节点的节点向量可以影响其邻居的输入上下文向量，而其邻居的节点向量可以影响其输出上下文向量。</p>
-<p>为了学习 $E$, 该方法需要满足两个目标：</p>
-<ol>
-<li><p>每个图中相邻的节点应该具有类似的节点嵌入</p>
-<p>为了实现该目标，可以通过考虑一个节点向量相对于其邻居的输入上下文向量的贡献概率来实现：</p>
-<script type="math/tex; mode=display">
-p_{1}(u | v)=\frac{\exp \left(\mathbf{u}^{\prime T} \cdot \mathbf{v}\right)}{\sum_{w \in G} \exp \left(\mathbf{w}^{\prime T} \cdot \mathbf{v}\right)}</script><p>其经验定义为：</p>
-<script type="math/tex; mode=display">
-\hat{p}_{1}(u, v)=\frac{w_{u, v}}{|\{v |(u, v) \in E\}|}\\
-其中w_{u,v}是边(u,v)的权重</script><p>类似的，一个节点向量对其邻居的输出上下文向量的贡献的概率及其经验定义：</p>
-<script type="math/tex; mode=display">
-\begin{aligned} p_{2}(v | u) &=\frac{\exp \left(\mathbf{v}^{\prime \prime T} \cdot \mathbf{u}\right)}{\sum_{w \in G} \exp \left(\mathbf{w}^{\prime \prime} T \cdot \mathbf{u}\right)} \\ \hat{p}_{2}(u, v) &=\frac{w_{u, v}}{|\{v |(v, u) \in E\}|} \end{aligned}</script><p>$p_1$ 应该和 $p_2$ 是相似的，于是有如下目标函数：</p>
-<script type="math/tex; mode=display">
-\begin{aligned} \mathbb{L}_{1}(\mathbf{E})=&-\sum_{G \in\left\{G_{s}, G_{t}\right\}} \sum_{(u, v) \in G} w_{u, v} \log p_{1}(v | u) \\ &-\sum_{G \in\left\{G_{s}, G_{t}\right\}} \sum_{(u, v) \in G} w_{u, v} \log p_{2}(u | v) \end{aligned}</script></li>
-<li><p>具有近似嵌入的节点是很好的对齐节点的候选节点</p>
-<p>在两个网络中，两个节点如果是同一个用户，那么这两个节点是可以相互代替的，其代替的程度应该是由这两个节点是同一个用户的可信度确定的，基于这一点，对目标函数L1进行修改，将相应节点的信息考虑如下：</p>
-<script type="math/tex; mode=display">
-\begin{aligned} \mathbb{L}_{2}(\mathbf{E})=&-\sum_{w_{t} \in G_{t}} \sum_{\left(u_{s}, v_{s}\right) \in V_{s}} w_{u_{s}, v_{s}} p_{a}\left(u_{s} | w_{t}\right) \log p_{1}\left(v_{s} | w_{t}\right) \\ &-\sum_{w_{t} \in G_{t}} \sum_{\left(u_{s}, v_{s}\right) \in V_{s}} w_{u_{s}, v_{s}} p_{a}\left(v_{s} | w_{t}\right) \log p_{1}\left(u_{s} | w_{t}\right) \\ &-\sum_{w_{s} \in G_{s}} \sum_{\left(u_{t}, v_{t}\right) \in V_{t}} w_{u_{t}, v_{t}} p_{a}\left(u_{t} | w_{s}\right) \log p_{1}\left(v_{t} | w_{s}\right) \\ &-\sum_{w_{s} \in G_{s}} \sum_{\left(u_{t}, v_{t}\right) \in V_{t}} w_{u_{t}, v_{t}} p_{a}\left(v_{t} | w_{s}\right) \log p_{1}\left(u_{t} | w_{s}\right) \end{aligned}</script><p>最终通过最小化联合目标函数，得到嵌入的参数</p>
-<script type="math/tex; mode=display">
-\mathbb{L}(\mathbf{E}) = \mathbb{L}_{1}(\mathbf{E}) + \mathbb{L}_{2}(\mathbf{E})</script></li>
-</ol>
-<p><strong>Mapping function</strong></p>
-<p>IONE的映射函数是PALE的映射函数的一个特例，映射矩阵M是单位矩阵</p>
-<blockquote>
-<pre><code>   [https://tiantianliu2018.github.io/2019/09/30/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AAligning-Users-Across-Social-Networks-Using-Network-Embedding%E3%80%8B/](https://tiantianliu2018.github.io/2019/09/30/论文阅读《Aligning-Users-Across-Social-Networks-Using-Network-Embedding》/)
-</code></pre><p>之前的论文阅读笔记</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><p><img src="/2019/10/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-comparative-study-on-network-alignment-techniques%E3%80%8B/benchmark.png" alt="Benchmark"></p>
-<h3 id="Datasets"><a href="#Datasets" class="headerlink" title="Datasets"></a>Datasets</h3><p><strong>Real-world datasets</strong>：这些数据集的质量好像都不太高</p>
-<ul>
-<li>S1. Douban online vs Douban offline </li>
-<li>S2. Flickr vs Lastfm </li>
-<li>S3. Flickr vs MySpace</li>
-<li>S4. Twitter vs Facebook </li>
-<li>S5. Twitter vs Foursquare </li>
-</ul>
-<p><strong>Synthetic datasets</strong></p>
-<ul>
-<li>Partial synthetic：用真实网络生成目标网络</li>
-<li>Full synthetic：</li>
-</ul>
-<hr>
-
-<h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><h3 id="Metrics"><a href="#Metrics" class="headerlink" title="Metrics"></a>Metrics</h3><p><strong>Accuracy</strong></p>
-<script type="math/tex; mode=display">
-acc = \frac {\# {correctly \ \ identified \ \ node \ \ pairs}}{\# {groundtruth\ \ node\ \ pairs}}</script><p><strong>Precision@k</strong></p>
-<script type="math/tex; mode=display">
-Precision@k = \frac {\# {Times \ \ that \ \ target \ \ node \ \ in \ \ top \ k \ \ similarity \ \ candiates}}{\#{groundtruth \ \  node \ \ pairs}}</script><p><strong>Mean Average Precision (MAP) </strong></p>
-<script type="math/tex; mode=display">
-MAP = mean(\frac{1}{ra}) \\ra 是排序后的候选序列中匹配节点的rank</script><h3 id="Evaluation-procedure"><a href="#Evaluation-procedure" class="headerlink" title="Evaluation procedure"></a>Evaluation procedure</h3><ul>
-<li>Structural noise level </li>
-<li>Attribute noise level </li>
-<li>Graph size </li>
-<li>Graph size imbalance </li>
-<li>Graph density </li>
-<li>Graph connectivity </li>
-<li>Number of connected components </li>
-</ul>
-<h3 id="Experimental-evaluation"><a href="#Experimental-evaluation" class="headerlink" title="Experimental evaluation"></a>Experimental evaluation</h3><p>评估以上因素对于实验的影响</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>克服真实网络中的结构和属性不稳定性是网络对齐面临的主要挑战之一</p>
-<h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/07/Java-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A72/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/07/Java-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A72/" class="post-title-link" itemprop="url">Java 高级特性2</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-07 08:44:28" itemprop="dateCreated datePublished" datetime="2019-10-07T08:44:28+08:00">2019-10-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:49:27" itemprop="dateModified" datetime="2020-09-13T09:49:27+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" itemprop="url" rel="index"><span itemprop="name">高级特性</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/07/Java-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A72/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/07/Java-%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A72/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>5.3k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Java-高级特性2"><a href="#Java-高级特性2" class="headerlink" title="Java 高级特性2"></a>Java 高级特性2</h1><h2 id="关键字-static"><a href="#关键字-static" class="headerlink" title="关键字 static"></a>关键字 static</h2><p>无论是否产生了对象或无论产生了多少对象，某些特定的数据在内存空间里只有一份</p>
-<p>如果想让一个类的所有实例共享数据，应该使用<strong>类变量</strong></p>
-<p>类变量：不用实例化，直接<code>类名.属性名</code> 就可以使用，是类的一部分，被所有这个类的实例化对象所共享，也可以叫做静态变量，用<code>static</code> 来修饰</p>
-<p>实例变量：只有实例化后才能使用，属于实例化对象的一部分</p>
-<p><strong>类属性、类方法的设计思想</strong></p>
-<p>类属性作为该类各个对象之间共享的变量。在设计类时，分析哪些类属性不因对象的不同而改变，将这些属性设置为类属性。相应的方法设置为类方法。</p>
-<p>如果方法与调用者无关，则这样的方法通常被声明为类方法，由于不需要创建对象就可以调用类方法，从而简化了方法的调用</p>
-<p><strong>使用范围</strong></p>
-<p>可用static修饰属性、方法、代码块、内部类</p>
-<p><strong>被修饰后的成员具备以下特点</strong></p>
-<p>随着类的加载而加载</p>
-<p>优先于对象存在</p>
-<p>修饰的成员，被所有该类的对象所共享</p>
-<p>访问权限允许时，可不创建对象，直接被类调用</p>
-<p><strong>类方法</strong></p>
-<p>在static 方法内部只能访问类的<code>static</code>属性，不能访问类的非<code>static</code>属性</p>
-<p>做工具类用最多</p>
-<p>因为不需要实例就可以访问 <code>static</code> 方法，因此 <code>static</code>  方法内部不能有 <code>this</code> 和 <code>super</code></p>
-<p>重载的方法需同为 <code>static</code>  或非 <code>static</code> </p>
-<hr>
-
-<h2 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h2><p><strong>设计模式</strong> 就是在大量的实践中总结和理论化之后优选的代码结构、编程风格、以及解决问题的思考方式。即在实际编程中，逐渐总结出的一些解决问题的套路。</p>
-<p><strong>类的单例模式</strong>：采取一定的方法保证在整个软件系统中，对某个类<strong>只能存在一个对象实例</strong>，并且该类只提供一个取得其对象实例的方法。</p>
-<p>例如：实例化对象的创建要消耗大量的时间和资源。</p>
-<p><strong>单例模式的实现方式</strong></p>
-<ul>
-<li><p>饿汉式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Single</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 实现私有的构造函数，调用这个类的就不能直接用new来创建对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Single</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="comment">// 私有的Single类变量，只能在类内部访问</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Single single = <span class="keyword">new</span> Single();</span><br><span class="line">    <span class="comment">// getSingle() 为 static，不用创建对象即可访问</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Single <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> single;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Single s1 = Single.getInstance();  <span class="comment">// 访问静态方法</span></span><br><span class="line">		Single s2 = Single.getInstance();</span><br><span class="line">		<span class="keyword">if</span>(s1==s2)&#123;</span><br><span class="line">			System.out.println(<span class="string">"s1 is equals to s2!"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>懒汉式：最开始对象是null，直到有第一个人调用才new一个对象，之后都调用这个对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Single1</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 先私有化构造方法，保证在此类的外部，不能调用本类的构造器</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Single1</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="comment">// 先声明类的引用</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Single1 single = <span class="keyword">null</span>;</span><br><span class="line">	<span class="comment">// 设置公有的方法来访问类的实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Single1 <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 如果类的实例未创建，先创建，再返回给调用者</span></span><br><span class="line">        <span class="keyword">if</span> (single==<span class="keyword">null</span>)&#123;</span><br><span class="line">            single = <span class="keyword">new</span> Single1();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 若有了实例，直接返回给调用者</span></span><br><span class="line">        <span class="keyword">return</span> single;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-
-<h2 id="理解-main-方法的语法"><a href="#理解-main-方法的语法" class="headerlink" title="理解 main 方法的语法"></a>理解 main 方法的语法</h2><p>由于 Java 虚拟机需要调用类的 <code>main()</code> 方法，所以该方法的访问权限是 <code>public</code>，又因为 java 虚拟机在执行 <code>main()</code> 方法时不必创建对象，所以该方法是 <code>static</code> 的，该方法接收一个 String 类型的数组参数，该数组中保存执行 java 命令时传递给所运行的类的参数。</p>
-<p>Java 运行的类名 第一个参数 第二个参数 第三个参数 … …</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-
-<h2 id="类的成员之四：初始化块"><a href="#类的成员之四：初始化块" class="headerlink" title="类的成员之四：初始化块"></a>类的成员之四：初始化块</h2><p>初始化块（代码块）作用：对Java对象进行初始化</p>
-<p>程序的执行顺序：</p>
-<p>声明成员变量默认初始化 -&gt; 显式初始化、多个初始化块依次被执行（同级别下按先后顺序执行）-&gt; 构造器再对成员进行赋值操作</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="comment">// 非静态代码块</span></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 静态代码块，只能使用静态的成员属性和方法</span></span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>一个类中初始化块若有修饰符，则只能被 <code>static</code> 修饰，称为静态代码块，当类被载入时，类属性的声明和静态代码块先后顺序被执行，且<strong>只能被执行一次</strong>。</p>
-<p><code>static</code> 块通常用于初始化 static（类）属性</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> total;</span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        total = <span class="number">100</span>; <span class="comment">// 为 total 赋初值</span></span><br><span class="line">    &#125;</span><br><span class="line">    ...... <span class="comment">// 其他属性或方法声明</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>非静态代码块</strong>：没有 static 修饰的代码块</p>
-<ul>
-<li><p>可以有输出语句</p>
-</li>
-<li><p>可以对类的属性声明进行初始化操作</p>
-</li>
-<li><p>可以调用静态和非静态的变量或方法</p>
-</li>
-<li><p>若有多个非静态代码块，那么按照从上到下的顺序依次执行</p>
-</li>
-<li><p>每次创建对象的时候，都会执行一次，且先于构造器执行</p>
-</li>
-</ul>
-<p><strong>静态代码块</strong>：static 修饰的代码块</p>
-<ul>
-<li><p>可以有输出语句</p>
-</li>
-<li><p>可以对类的属性声明进行初始化操作</p>
-</li>
-<li>不可以对非静态的属性初始化。即：不可以调用非静态的属性和方法</li>
-<li>若有多个静态代码块，那么按照从上到下的顺序依次执行</li>
-<li>静态代码块的执行要先于非静态代码块</li>
-<li>静态代码块只执行一次</li>
-</ul>
-<p><strong>在匿名类中，用代码块代替构造方法</strong></p>
-<hr>
-
-<h2 id="关键字-final"><a href="#关键字-final" class="headerlink" title="关键字 final"></a>关键字 final</h2><p>在 Java 中声明类、属性和方法时，可以用关键字 <code>final</code> 来修饰，表示”最终“</p>
-<p><strong><code>final</code> 标记的类不能被继承。</strong> 提高安全性，提高程序的可读性。</p>
-<p>​    String 类、System 类、StringBuffer 类</p>
-<p>​    <code>final</code> 修饰类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span></span>&#123;&#125; <span class="comment">// 错误，final类不能被继承</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong><code>final</code> 标记的方法不能被子类重写</strong></p>
-<p>​    Object 类中的 getClass()</p>
-<p><strong><code>final</code> 标记的变量（成员变量或局部变量）即称为常量。</strong>名称大写，且只能被赋值一次。</p>
-<p>​    final 标记的成员变量必须在声明的同时或在每个构造方法中或代码块中显式赋值，然后才能使用。</p>
-<p>​    <code>final</code>、<code>static</code>  一起修饰变量，称为全局变量。</p>
-<p>​    常量定义名称约定使用大写，如果由多个单词组成名称，用 <code>_</code> 连接</p>
-<hr>
-
-<h2 id="抽象类（abstract-class）"><a href="#抽象类（abstract-class）" class="headerlink" title="抽象类（abstract class）"></a>抽象类（abstract class）</h2><p>随着继承层次中一个个新子类的定义，类变得越来越具体，而父类则更一般，更通用。类的设计应该保证父类和子类能够共享特征。有时将一个父类设计得非常抽象，以至于它没有具体的实例，这样的类叫做抽象类。</p>
-<p>用 <code>abstract</code> 关键字来修饰一个类时，这个类叫做抽象类；</p>
-<p>用 <code>abstract</code> 来修饰一个方法时，该方法叫做抽象方法。</p>
-<p>​    抽象方法：只有方法的声明，没有方法的实现。以分号结束：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">abstractMethod</span><span class="params">(<span class="keyword">int</span> a)</span></span>;</span><br></pre></td></tr></table></figure>
-<p>含有抽象方法的类必须声明为抽象类</p>
-<p><strong>抽象类不能被实例化。</strong>抽象类是用来作为父类被继承的，抽象类的子类必须重写父类的抽象方法，并提供方法体。若没有重写全部的抽象方法，仍为抽象类。</p>
-<p>不能用 <code>abstract</code> 修饰属性、私有方法、构造器、静态方法和 <code>final</code> 方法。</p>
-<p><strong>抽象类应用</strong></p>
-<p>抽象类是用来模型化那些父类无法确定全部实现，而是由其子类提供具体实现的对象的类。</p>
-<hr>
-
-<h2 id="模板方法设计模式（TemplateMethod）"><a href="#模板方法设计模式（TemplateMethod）" class="headerlink" title="模板方法设计模式（TemplateMethod）"></a>模板方法设计模式（TemplateMethod）</h2><p>抽象类体现的就是一种模板模式的设计，<strong>抽象类作为多个子类的通用模板，</strong>子类在抽象类的基础上进行扩展、改造，但子类总体上会保留抽象类的行为方式。</p>
-<blockquote>
-<p>抽象类就像一个大纲，里面的抽象方法就是每个章节的标题。子类，去根据这些标题将每个章节细化出来。</p>
-</blockquote>
-<p><strong>解决的问题</strong></p>
-<p>当功能内部一部分实现是确定，一部分实现是不确定的。这时可以把不确定的部分暴露出去，让子类去实现。</p>
-<p>编写一个抽象父类，父类提供了多个子类的通用方法，并把一个或多个方法留给其子类去实现，就是一种模板模式。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Template</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">getTime</span><span class="params">()</span></span>&#123;  <span class="comment">// 定义子类不能重写的方法</span></span><br><span class="line">        <span class="keyword">long</span> start = System.currentTimeMillis();</span><br><span class="line">        code();</span><br><span class="line">        <span class="keyword">long</span> end = System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">"code() 方法执行时间是："</span>+ (end - start));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">code</span><span class="params">()</span></span>;  <span class="comment">// 抽象方法，由子类去实现</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubTemplate</span> <span class="keyword">extends</span> <span class="title">Template</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">code</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10000</span>;i++)&#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-
-<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>有时必须从几个类中派生出一个子类，继承它们所有的属性和方法。但是，Java 不支持多重继承。有了接口，就可以得到多重继承的效果。</p>
-<p>接口（interface）是 <strong>抽象方法</strong> 和 <strong>常量值</strong> 的定义的集合</p>
-<p>从本质上讲，接口是一种特殊的抽象类，这种抽象类中只包含常量和方法的定义，而没有变量和方法的实现。</p>
-<p>实现接口类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubClass</span> <span class="keyword">implements</span> <span class="title">InterfaceA</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>一个类可以实现多个接口，接口也可以继承其它接口。</p>
-<p><strong>接口的特点</strong></p>
-<ul>
-<li>用 <code>interface</code> 来定义</li>
-<li>接口中所有成员变量都 <strong>默认由 <code>public static final</code> 修饰 （全局常量）</strong></li>
-<li>接口中所有方法都 <strong>默认是由 <code>public abstract</code> 修饰的 (抽象方法)</strong></li>
-<li>接口没有构造器</li>
-<li>接口采用多层继承机制</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Runner</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ID = <span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">start</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>实现接口的类必须实现提供接口中所有方法的具体实现内容，方可实例化，否则，仍为抽象类。</p>
-<p><strong>接口的主要用途是被实现类实现</strong>（面向接口编程）</p>
-<p>与继承关系类似，接口与实现类之间存在多态性。</p>
-<p>定义 Java 类的语法格式，先写 <code>extends</code>，后写 <code>implements</code></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;modifier&gt; class &lt;name&gt; [extends &lt;superclass&gt;] [implements &lt;interfce&gt;[,&lt;interface]*]&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>一个类可以实现多个无关的接口。</p>
-<p>与继承关系类似，接口与实现类之间存在多态。</p>
-<p>如果实现接口的类中没有实现接口中的全部方法，必须将此类定义为抽象类。</p>
-<p>抽象类是对于一类事物的高度抽象，其中既有属性也有方法；接口是对方法的抽象，也就是对一系列动作的抽象。</p>
-<hr>
-
-<h2 id="工厂方法（FactoryMethod）"><a href="#工厂方法（FactoryMethod）" class="headerlink" title="工厂方法（FactoryMethod）"></a>工厂方法（FactoryMethod）</h2><p>工厂方法模式是设计模式中应用最为广泛的模式，在面向对象的编程中，对象的创建工作非常简单，对象的创建时机却很重要。FactoryMethod解决的就是这个问题，它通过面向对象的手法，将所要创建的具体对象的创建工作延迟到了子类，从而提供了一种扩展的策略，较好的解决了这种紧耦合的关系。</p>
-<p>通过工厂把 new 对象隔离，通过产品的接口可以接收不同实际产品的实现类，实例的类名的改变不影响其他合作开发人员的编程。</p>
-<hr>
-
-<h2 id="类的成员之五：内部类"><a href="#类的成员之五：内部类" class="headerlink" title="类的成员之五：内部类"></a>类的成员之五：内部类</h2><p>在Java中，允许一个类的定义位于另一个类的内部，前者称为内部类，后者称为外部类。</p>
-<p>Inner class 一般用于在定义它的类或语句块之内，在外部引用它时必须给出完整的名称。</p>
-<p>​    Inner class 的名字不能与包含它的类名相同</p>
-<p>Inner class 可以使用外部类的私有数据，因为它是外部类的成员，同一个类的成员之间可相互访问。而外部类要访问内部类中的成员需要 <code>内部类.成员</code> 或者 <code>内部类对象.成员</code></p>
-<p>分类：</p>
-<ul>
-<li>成员内部类（static 成员内部类和非static成员内部类）</li>
-<li>局部内部类（不谈修饰符）、匿名内部类</li>
-</ul>
-<p><strong>内部类的特性</strong></p>
-<ul>
-<li><p>Inner class 作为类的成员</p>
-<p>​    可以声明为 <code>final</code></p>
-<p>​    和外部类不同，Inner class 可声明为 <code>private</code> 或 <code>protected</code></p>
-<p>​    Inner class 可以声明为 <code>static</code> 的，但此时就不能再使用外部类的 <code>非static</code> 成员变量</p>
-</li>
-<li><p>Inner class 作为类：</p>
-<p>​    可以声明为 <code>abstract</code> 类，因此可以被其他内部类继承</p>
-</li>
-</ul>
-<p>【注意】：非 static 的内部类中的成员不能声明为 <code>static</code> 的，只有在外部类或 <code>static</code> 的内部类中才可以声明 <code>static</code> 成员</p>
-<p><strong>作用</strong></p>
-<p>主要解决 Java 不能<strong>多重继承</strong>的问题</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/10/06/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AMapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/06/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AMapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information%E3%80%8B/" class="post-title-link" itemprop="url">论文阅读《Mapping Users across Social Media Platforms by Integrating Text and Structure Information》</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-06 14:07:15" itemprop="dateCreated datePublished" datetime="2019-10-06T14:07:15+08:00">2019-10-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:54:50" itemprop="dateModified" datetime="2020-09-13T09:54:50+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/" itemprop="url" rel="index"><span itemprop="name">Social Networks</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/06/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AMapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information%E3%80%8B/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/06/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AMapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information%E3%80%8B/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Mapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information-2017-IEEE-ISI"><a href="#Mapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information-2017-IEEE-ISI" class="headerlink" title="Mapping Users across Social Media Platforms by Integrating Text and Structure Information - 2017 IEEE ISI"></a>Mapping Users across Social Media Platforms by Integrating Text and Structure Information - 2017 IEEE ISI</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>这篇文章的思路比较简单清晰：首先将不同社交网络获得的用户信息分为文本信息和网络结构信息。</p>
-<p>文本信息又分为用户描述（word2vec embedding)、用户名（表示成单词列表）和地理位置信息（分层次划分），网络结构信息就是获得不同平台上两个用户的共同朋友，作为一个集合。对于用户描述，计算两个用户之间的余弦相似性，对于用户名和朋友关系，计算 Jaccard Index，对于地理位置，直接匹配最低层次的划分是否相同，相同则相似性为1，最后通过线性加权的方式得到整体的相似性。给整体相似性设置一个阈值，如果大于该阈值，表明这两个用户是一个人，否则，不是一个人。</p>
-<p>这篇文章有很多可以改进的东西。</p>
-<h2 id="Research-Objective"><a href="#Research-Objective" class="headerlink" title="Research Objective"></a>Research Objective</h2><p>提出一种 mapping method 能够整个 <strong>文本</strong> 和 <strong>结构</strong> 的信息</p>
-<p>模型首先基于word2vec或字符串匹配来表示用户名、描述、位置信息，以关系网络表示的朋友关系信息作为结构信息。然后利用这些信息，利用 Jaccard index 或余弦相似度进行相似度计算。采用线性模型获取用户对的整体相似度，进行用户映射。</p>
-<h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p>文本信息和社交网络特征的融合应用。</p>
-<p>关键是文本和结构信息的有效表示和相似性的计算。</p>
-<p>文本信息和社交网络结构信息反映了用户的行为模式。但目前存在的方法都是基于单一信息的user mapping。</p>
-<h3 id="Text-information-based-mapping-method"><a href="#Text-information-based-mapping-method" class="headerlink" title="Text information based mapping method"></a>Text information based mapping method</h3><p>利用用户的文本信息：用户名、位置、年龄、标签以及用户在社交网络中产生的content等</p>
-<h3 id="Structure-information-based-mapping-method"><a href="#Structure-information-based-mapping-method" class="headerlink" title="Structure information based mapping method"></a>Structure information based mapping method</h3><p>anchor link prediction </p>
-<ul>
-<li>监督方法：需要知道一部分已经存在的 anchor links 作为训练集来训练模型。<ul>
-<li>一些方法直接使用人工提取的特征，如度、聚类系数、三角形数和共同邻居等，这些方法没有利用网络的内部结构规律。</li>
-<li>表示学习的方法</li>
-<li>probability network</li>
-</ul>
-</li>
-<li>无监督的方法：NP-hard 组合优化问题</li>
-</ul>
-<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><p><img src="/2019/10/06/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AMapping-Users-across-Social-Media-Platforms-by-Integrating-Text-and-Structure-Information%E3%80%8B/overview.png" alt="An overview of the research framework "></p>
-<h3 id="Theoretical-Background"><a href="#Theoretical-Background" class="headerlink" title="Theoretical Background"></a>Theoretical Background</h3><ul>
-<li>Subjective description：主要是用户的职业、兴趣等</li>
-<li>Objective Information：真实姓名、地理位置信息等真实的信息</li>
-<li>Social Relationship：通过模型的构建，将用户的社会关系和角色特征转化为结构特征。Graph algorithms 可以应用</li>
-</ul>
-<h3 id="Information-representation"><a href="#Information-representation" class="headerlink" title="Information representation"></a>Information representation</h3><ol>
-<li><p>User description：用户描述是一小段对自己的描述，其中包括用户的爱好、职业等信息</p>
-<p>应用 word2vec 模型将描述文本转为向量表示</p>
-<p>通过去除stopwords和一些其他的自然语言预处理操作，获得一系列单词$(word<em>{1}, word</em>{2}, …, word<em>{k})$ 通过预训练的 n-dimension word2vec模型，可以得到每个单词的向量表示 $(wordvector</em>{1}, wordvector<em>{2}, …, wordvector</em>{k})$</p>
-<p>因此在社交平台A上的用户N可以描述为：</p>
-<script type="math/tex; mode=display">
-D_{N}^{A}=\left\{w_{1}, w_{2}, \ldots, w_{n}\right\}=\sum_{i=1}^{k} \frac{\text {wordvector}_{i}}{k}</script></li>
-<li><p>Username：将用户名转换为 word list</p>
-<p>社交平台A上用户N的用户名可以表示为 </p>
-<script type="math/tex; mode=display">
-D_{N}^{A} = \left(word_{1}, word_{2},..., word_{j}\right)</script></li>
-<li><p>Friend information</p>
-<p>假定平台 A 上的用户 N 有 n 个朋友 $F^{A} = \left[f<em>{1}^{A}, f</em>{2}^{A}, \ldots, f<em>{n}^{A}\right]$, 平台B上用户 M 有 m 个朋友 $F^{B}=\left[f</em>{1}^{B}, f<em>{2}^{B}, \ldots, f</em>{m}^{B}\right]$ ，那么他们有 k 个重叠的朋友的话，表示为 $F^{o}=\left[f<em>{1}, f</em>{2}, \ldots, f_{k}\right]$</p>
-</li>
-<li><p>Location</p>
-<p>将地理位置信息划分为不同的层次：$L<em>{N}^{A}=\left[C i t y</em>{N}, \text { State}<em>{N}, Nation</em>{N}\right]$</p>
-</li>
-</ol>
-<h3 id="Similarity-Computation"><a href="#Similarity-Computation" class="headerlink" title="Similarity Computation"></a>Similarity Computation</h3><ol>
-<li><p>User description - Cosine similarity</p>
-<script type="math/tex; mode=display">
-\begin{aligned} \operatorname{sim}\left(D_{N}^{A}, D_{M}^{B}\right) &=\frac{D_{N}^{A} \cdot D_{M}^{B}}{\left\|D_{N}^{A}\right\| \| D_{M}^{B}} \\ &=\frac{\sum_{i=1}^{n} D_{N i}^{A} D_{M i}^{B}}{\sqrt{\sum_{i=1}^{n} D_{N i}^{A}} \sqrt{\sum_{i=1}^{n} D_{M i}^{B_{2}^{2}}}} \end{aligned}</script></li>
-<li><p>Username and Friend - Jaccard index</p>
-<p>用户名：</p>
-<script type="math/tex; mode=display">
-J\left(U_{N}^{A}, U_{M}^{B}\right)=\frac{\left|U_{N}^{A} \cap U_{M}^{B}\right|}{\left|U_{N}^{A} \cup U_{M}^{B}\right|}</script><p>Friend：</p>
-<script type="math/tex; mode=display">
-J\left(F^{A}, F^{B}\right)=\frac{\left|F^{A} \cap F^{B}\right|}{\left|F^{A} \cup F^{B}\right|}=\frac{\left|F^{O}\right|}{\left|F^{A}\right|+\left|F^{B}\right|-\left|F^{O}\right|}</script></li>
-<li><p>Location - Matching</p>
-<p>如果最低的非空区域划分等级中是一致的，则 $Sim(L<em>{N}^{A}, L</em>{M}^{B}) = 1$, 若不匹配，则 $Sim(L<em>{N}^{A}, L</em>{M}^{B}) = 0$</p>
-</li>
-</ol>
-<h3 id="Information-Integration"><a href="#Information-Integration" class="headerlink" title="Information Integration"></a>Information Integration</h3><script type="math/tex; mode=display">
-S=\eta_{d} S_{d}+\eta_{u} S_{u}+\eta_{l} S_{l}+\eta_{f} S_{f}</script><h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2><blockquote>
-<p>Sun S , Li Q , Yan P , et al. Mapping users across social media platforms by integrating text and structure information[C]// 2017 IEEE International Conference on Intelligence and Security Informatics (ISI). IEEE, 2017.</p>
-</blockquote>
-<p>数据集来自于文章《<a href="http://dx.doi.org/10.1109%2FICME.2013.6607510" target="_blank" rel="noopener">Friend transfer: Cold-start friend recommendation with cross-platform transfer learning of social knowledge</a>》目前还没找到数据。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-  </div>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
-
-
+              </div>
+            </div>
           </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
         </div>
-          
+      </div>
+    
+  </main>
+
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Kelly Liu"
-      src="/uploads/avatar.jpeg">
-  <p class="site-author-name" itemprop="name">Kelly Liu</p>
-  <div class="site-description" itemprop="description">The Space to record knowledge and my life.</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">83</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
       </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">38</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">38</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/tiantianliu2018" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tiantianliu2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:tiantianliu2018@outlook.com" title="E-Mail → mailto:tiantianliu2018@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-  </div>
-
-
-
-      </div>
-
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright">
-  
-  &copy; 2019 – 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Kelly liu</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-      <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">169k</span>
-</div>
-
-<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="theme-info">
-  <div class="powered-by"></div>
-  <span class="post-count">博客全站共73.6k字</span>
-  <span class="post-meta-divider">|</span>
-  本站总访问量<span id="busuanzi_value_site_pv"></span>次
-  <span class="post-meta-divider">|</span>
-  本站访客数<span id="busuanzi_value_site_uv"></span>人次
-  <span class="post-meta-divider">|</span>
-  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-</div>
-
-<div class="theme-info">
-  <div class="powered-by"></div>
-  <span class="post-count">博客全站共73.6k字</span>
-</div>
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
   </div>
-
+</div>
   
-  
-  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
 
   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
   
 
   
 
   
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
 
 
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "An elegant Material-Design theme for Hexo&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
     });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : true,
-      notify     : true,
-      appId      : 'FhWVmso5TyqrTqtDNNtpuBeC-gzGzoHsz',
-      appKey     : 'd5yz5CVcPPfEmfA5p2ovH6g9',
-      placeholder: "欢迎交流讨论...",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : 'zh-CN' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
     });
-  }, window.Valine);
-});
-</script>
+  </script>
+
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>

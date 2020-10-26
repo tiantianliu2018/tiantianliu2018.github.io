@@ -1,2006 +1,833 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8332.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8316.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="The Space to record knowledge and my life.">
+  <meta name="author" content="Kelly Liu">
+  <meta name="keywords" content="CS_learn, Keep Moving...">
+  <title>Kelly&#39;s Blogs</title>
 
-<link rel="stylesheet" href="/css/main.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/09/26/Java-%E6%95%B0%E7%BB%84/">Java_数组</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/09/26/Java-%E6%95%B0%E7%BB%84/">
+          
+          
+            
+          
+          Java 数组一维数组一维数组声明type var[] 或 type[] var;
+eg: 
+int a[];
+int[] a1;
+double b[];
+Mydata[] c; //对象数组
+一维数组初始化
+动态初始化：数组声明且为数组元素分配空间与赋值的操作分开
+使用动态初始化的时候，数组的元素会有默认值，数字类型的默认值是0，对象类型的默认值是null
+int [] arr = new in
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-09-26 14:49" pubdate>
+              2019-09-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Java/">Java</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java/">Java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/">论文阅读《User Identity Linkage across Online Social Networks：A Review》</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/">
+          
+          
+            
+          
+          User Identity Linkage across Online Social Networks: A ReviewSummary
+Shu K ,  Wang S ,  Tang J , et al. User Identity Linkage across OnlineSocial Networks: A Review[J]. ACM SIGKDD Explorations Newslet
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-09-23 15:13" pubdate>
+              2019-09-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Paper%E9%98%85%E8%AF%BB/">Paper阅读</a>
+            
+              <a href="/categories/Paper%E9%98%85%E8%AF%BB/Social-Networks/">Social Networks</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/User-Identity-Linkage/">User Identity Linkage</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/09/18/%E7%BB%84%E4%BC%9A%E8%AE%B0%E5%BD%95/">组会记录</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/09/18/%E7%BB%84%E4%BC%9A%E8%AE%B0%E5%BD%95/">
+          
+          
+            
+          
+          目标检测经典网络结构RCNN 2014
+Fast RCNN 2015
+Backbone Networks
+
+VGG16/VGG19
+
+ResNet, ResNext
+
+
+RCNN: Region based CNN
+Faster RCNN
+Mask RCNN
+YOLO
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-09-18 14:12" pubdate>
+              2019-09-18
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/09/18/leetcode-%E5%88%B7%E9%A2%98/">leetcode 刷题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/09/18/leetcode-%E5%88%B7%E9%A2%98/">
+          
+          
+            
+          
+          Leetcode 刷题记录191. 位1的个数汉明重量：一串符号中非零符号的个数，在数据位符号串中，指1的个数
+方法1
+遍历一个数字的 32 位，如果某一位为 1，就将计数器加 1。
+运行时间依赖于数字 n 的位数，此题中 n 是一个 32 位数，所以运行时间是 O(1) 的
+方法2
+位操作小技巧：在二进制表示中，将 n 和 n-1 做与运算总是能把 n 中最低位的 1 变成 0，并保持其他位不变
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-09-18 09:38" pubdate>
+              2019-09-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Algoritms/">Algoritms</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/09/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ATransLink-User-Identity-Linkage-across-Heterogeneous-Social-Networks-via-Translating-Embeddings%E3%80%8B/">论文阅读《TransLink: User Identity Linkage across Heterogeneous Social Networks via Translating Embeddings》</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/09/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ATransLink-User-Identity-Linkage-across-Heterogeneous-Social-Networks-via-Translating-Embeddings%E3%80%8B/">
+          
+          
+            
+          
+          TransLink: User Identity Linkage across Heterogeneous Social Networks via Translating EmbeddingsSummaryResearch Objective针对多个社交平台的账号判断是否是同一个人，
+提出 translation-modeling approach: 对用户信息以及其交互行为一起进行嵌入
+
+网络模
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-09-17 08:18" pubdate>
+              2019-09-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/">Social Networks</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/09/16/Java-%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/">Java - 基本语法</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/09/16/Java-%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/">
+          
+          
+            
+          
+          Java 程序流程控制顺序结构从上到下逐行执行，中间没有任何判断和跳转
+分支结构根据条件，选择性地执行某段代码
+有 if… else 和 switch 两种分支语句
+if…else结构
+if 语句的三种格式
+if(true)&#123;
+	执行代码块;
+&#125;
+if(条件表达式)&#123;
+	执行代码块;
+&#125;else&#123;
+	执行代码块;
+&#125;
+if(条件表达式)&
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-09-16 20:17" pubdate>
+              2019-09-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Java/">Java</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java/">Java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/09/16/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADPLink-User-Identity-Linkage-via-Deep-Neural-Network-From-Heterogeneous-Mobility-Data%E3%80%8B/">论文阅读《DPLink: User Identity Linkage via Deep Neural Network From Heterogeneous Mobility Data》</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/09/16/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADPLink-User-Identity-Linkage-via-Deep-Neural-Network-From-Heterogeneous-Mobility-Data%E3%80%8B/">
+          
+          
+            
+          
+          DPLink: User Identity Linkage via Deep Neural Network From Heterogeneous Mobility Data
+Jie Feng1, Mingyang Zhang1, Huandong Wang1, Zeyu Yang1, Chao Zhang2, Yong Li1, Depeng Jin1 . 2019. DPLink: User I
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-09-16 08:42" pubdate>
+              2019-09-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/">Social Networks</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/09/15/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeepLink-A-Deep-Learning-Approach-for-User-Identity-Linkage%E3%80%8B/">论文阅读《DeepLink: A Deep Learning Approach for User Identity Linkage》</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/09/15/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeepLink-A-Deep-Learning-Approach-for-User-Identity-Linkage%E3%80%8B/">
+          
+          
+            
+          
+          DeepLink: A Deep Learning Approach for User Identity Linkage1. IntroductionFeature-based approaches 基于特征的方法
+从用户资料和社交平台的活动中提取独立的特征：e.g., username, gender, writing style
+Network-based approaches 基于网络的方法
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-09-15 09:06" pubdate>
+              2019-09-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/">Social Networks</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/09/12/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/">推荐系统学习</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/09/12/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/">
+          
+          
+            
+          
+          推荐系统学习个性化推荐系统一般由四部分组成：信息采集模块、数据存储模块、推荐模块、推荐结果展示模块
+1. 信息采集模块
+用户信息：性别、年龄 …….
+物品信息：种类、产地 … …
+用户对物品的行为信息：显式行为、隐式行为
+
+
+
+2. 数据存储模块
+
+3. 推荐模块推荐算法1. 基于内容的推荐算法 CB根据用户过去喜欢过的物品的内容来为其推荐具有相似内容的东西步骤:
+
+物品内容特征表示：物品的属性获
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-09-12 09:37" pubdate>
+              2019-09-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/algorithms/">algorithms</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/09/09/How-to-tackle-with-overfitting/">How to tackle with overfitting?</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/09/09/How-to-tackle-with-overfitting/">
+          
+          
+            
+          
+          如何解决过拟合问题？对于模型：
+
+Dropout: regularizing the network by randomly discarding nodes and connections during training 在训练得时候随机得使一些网络节点失活
+Batch Normalization
+Weight Decay
+
+对于模型的输入：
+
+数据增强
+data corruption
+
+
+
+对
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-09-09 13:38" pubdate>
+              2019-09-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Machine-Learning/">Machine Learning</a>
+            
+              <a href="/categories/Machine-Learning/Algorithms/">Algorithms</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/6/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
   </script>
 
-  <meta name="description" content="The Space to record knowledge and my life.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Kelly&#39;s Blogs">
-<meta property="og:url" content="http://tiantianliu2018.github.io/page/7/index.html">
-<meta property="og:site_name" content="Kelly&#39;s Blogs">
-<meta property="og:description" content="The Space to record knowledge and my life.">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="Kelly Liu">
-<meta property="article:tag" content="CS_learn">
-<meta property="article:tag" content=" Keep Moving...">
-<meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://tiantianliu2018.github.io/page/7/">
 
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false
-  };
-</script>
-
-  <title>Kelly's Blogs</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/clicklove.js"></script>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Kelly's Blogs</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">To Be Better</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">38</span></a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">38</span></a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">83</span></a>
-
-  </li>
-  </ul>
-
-</nav>
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content">
-            
-
-  <div class="posts-expand">
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/09/26/Java-%E6%95%B0%E7%BB%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/26/Java-%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">Java_数组</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-09-26 14:49:36" itemprop="dateCreated datePublished" datetime="2019-09-26T14:49:36+08:00">2019-09-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:48:06" itemprop="dateModified" datetime="2020-09-13T09:48:06+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/26/Java-%E6%95%B0%E7%BB%84/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/26/Java-%E6%95%B0%E7%BB%84/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>924</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Java-数组"><a href="#Java-数组" class="headerlink" title="Java 数组"></a>Java 数组</h2><h3 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h3><h4 id="一维数组声明"><a href="#一维数组声明" class="headerlink" title="一维数组声明"></a>一维数组声明</h4><p>type var[] 或 type[] var;</p>
-<p>eg: </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[];</span><br><span class="line"><span class="keyword">int</span>[] a1;</span><br><span class="line"><span class="keyword">double</span> b[];</span><br><span class="line">Mydata[] c; <span class="comment">//对象数组</span></span><br></pre></td></tr></table></figure>
-<h4 id="一维数组初始化"><a href="#一维数组初始化" class="headerlink" title="一维数组初始化"></a>一维数组初始化</h4><ul>
-<li><p>动态初始化：数组声明且<strong>为数组元素分配空间</strong>与<strong>赋值</strong>的操作分开</p>
-<p>使用动态初始化的时候，数组的元素会有默认值，数字类型的默认值是0，对象类型的默认值是null</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> [] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">3</span>;</span><br><span class="line">arr[<span class="number">1</span>] = <span class="number">9</span>;</span><br><span class="line">arr[<span class="number">2</span>] = <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>静态初始化：在定义数组的同时就为数组元素分配空间并赋值</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[] = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">3</span>,<span class="number">9</span>,<span class="number">8</span>&#125;;</span><br><span class="line"><span class="keyword">int</span>[] a = &#123;<span class="number">3</span>,<span class="number">9</span>,<span class="number">8</span>&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="数组元素的引用"><a href="#数组元素的引用" class="headerlink" title="数组元素的引用"></a>数组元素的引用</h4><p>定义并用运算符 <code>new</code> 为之分配空间后，才可以引用数组中的每个元素</p>
-<p>数组元素的引用方式：<code>数组名[数组元素下标]</code></p>
-<p>每个数组都有一个属性 <code>length</code> 指明它的长度：数组一旦初始化，其长度是不可变的</p>
-<hr>
-
-<h3 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h3><p>二维数组：一维数组中的元素是一维数组 数组中的数组</p>
-<ul>
-<li><p>动态初始化</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[][] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>][<span class="number">2</span>];</span><br><span class="line"><span class="comment">// 定义了名称为 arr 的二维数组</span></span><br><span class="line"><span class="comment">// 二维数组中有三个一维数组，每一个一维数组有两个元素</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>动态初始化：只定义第一维的长度，第二维不定义</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[][] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>][];</span><br><span class="line"><span class="comment">// 二维数组中有3个一维数组</span></span><br><span class="line"><span class="comment">// 每个一维数组都是默认初始化值 null</span></span><br><span class="line"><span class="comment">// 可以对这三个一维数组分别进行初始化</span></span><br><span class="line"><span class="comment">// arr[0] = new int[3]; arr[1] = new int[1]; arr[2] = new int[2];</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>静态初始化</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[][] = <span class="keyword">new</span> <span class="keyword">int</span>[][]&#123;</span><br><span class="line">	&#123;<span class="number">3</span>,<span class="number">8</span>,<span class="number">2</span>&#125;,</span><br><span class="line">	&#123;<span class="number">2</span>,<span class="number">7</span>&#125;,</span><br><span class="line">	&#123;<span class="number">0</span>,<span class="number">9</span>,<span class="number">6</span>,<span class="number">1</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>PS</strong> : <code>int []x, y[];</code> x 是一维数组，y是二维数组</p>
-<p>一维数组：<code>int[] x</code> 或者 <code>int x[]</code></p>
-<p>二维数组：<code>int [][] y</code>; 或者 <code>int[] y[];</code> 或者 <code>int y[][];</code></p>
-</li>
-</ul>
-<hr>
-
-<h3 id="数组中涉及的算法"><a href="#数组中涉及的算法" class="headerlink" title="数组中涉及的算法"></a>数组中涉及的算法</h3><p>最大值、最小值，总和，平均数</p>
-<p>数组的复制和反转</p>
-<p>排序：</p>
-<pre><code>+ 冒泡排序：每完成一次循环，就将最大的元素排在最后（从小到大排序）
-</code></pre><h3 id="数组操作常见问题"><a href="#数组操作常见问题" class="headerlink" title="数组操作常见问题"></a>数组操作常见问题</h3><p>数组下标越界异常</p>
-<p>空指针异常</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/" class="post-title-link" itemprop="url">论文阅读《User Identity Linkage across Online Social Networks：A Review》</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-09-23 15:13:09" itemprop="dateCreated datePublished" datetime="2019-09-23T15:13:09+08:00">2019-09-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:53:40" itemprop="dateModified" datetime="2020-09-13T09:53:40+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Paper%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">Paper阅读</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Paper%E9%98%85%E8%AF%BB/Social-Networks/" itemprop="url" rel="index"><span itemprop="name">Social Networks</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.9k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="User-Identity-Linkage-across-Online-Social-Networks-A-Review"><a href="#User-Identity-Linkage-across-Online-Social-Networks-A-Review" class="headerlink" title="User Identity Linkage across Online Social Networks: A Review"></a>User Identity Linkage across Online Social Networks: A Review</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><blockquote>
-<p>Shu K ,  Wang S ,  Tang J , et al. User Identity Linkage across Online<br>Social Networks: A Review[J]. ACM SIGKDD Explorations Newsletter, 2017,<br>18(2):5-17.</p>
-</blockquote>
-<p>这篇综述文章，总结了User Identity Linkage 问题的定义，现有的算法，数据集以及度量指标，并对该问题现存挑战和未来研究点进行了总结。</p>
-<p>算法包括两个阶段：特征提取（Profile、Content、Network）、模型构建（监督、半监督、无监督）</p>
-<p>数据集提供了两个可用的 public datasets:</p>
-<ul>
-<li><a href="https://www.aminer.cn/cosnet" target="_blank" rel="noopener">https://www.aminer.cn/cosnet</a></li>
-<li><a href="http://www.mpi-sws.org/~ogoga/data.html" target="_blank" rel="noopener">http://www.mpi-sws.org/~ogoga/data.html</a></li>
-<li><a href="http://www.ursino.unirc.it/pkdd-12.html" target="_blank" rel="noopener">http://www.ursino.unirc.it/pkdd-12.html</a> </li>
-</ul>
-<h2 id="Research-Objective"><a href="#Research-Objective" class="headerlink" title="Research Objective"></a>Research Objective</h2><ul>
-<li>对 User Identity linkage problem 提出了一个正式的定义</li>
-<li>提出了一个统一框架：特征提取、模型构建</li>
-<li>数据集与评价指标总结</li>
-<li>未来研究方向</li>
-</ul>
-<h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p>目前，越来越多的人使用多个社交平台，每个社交平台的功能不同，因此通过不同平台搜集的用户信息实际上是刻画每一个用户不同方面的特征。单一社交平台并不能捕捉用户的个性和兴趣。如果我们能够将不同平台上的同一个用户身份识别出来，利用用户来自多个不同社交平台的信息，就能够更好得理解用户的兴趣，为其提供更好的推荐和服务。另外，利用用户多个社交网络的信息，能够整合其社交模式，帮助解决冷启动和数据稀疏性问题。</p>
-<h4 id="Linking-User-Identity-定义："><a href="#Linking-User-Identity-定义：" class="headerlink" title="Linking User Identity 定义："></a>Linking User Identity 定义：</h4><ul>
-<li><p><strong>Enhancing Friend Recommendation</strong></p>
-<p>对于一个社交网络中的用户 A 和 B 有共同好友 C，因此会将用户 A 推荐给用户 B。若可以应用跨社交网络的补充信息，即使 A 和 B 在另一个社交网络中没有共同好友，将用户 A 推荐给 B 也是较好的 friend recommendation</p>
-<p><img src="/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/application.png" alt="application"></p>
-</li>
-<li><p><strong>Information diffusion</strong></p>
-<p>目前信息传播的研究是基于单个社交网络的。实际上，信息和流言得传播极有可能是跨社交平台的，研究什么样的信息更容易在一个社交内的网络内传播，什么样的信息更容易跨社交网络传播都是极有意义的。</p>
-</li>
-<li><p><strong>Analyzing Network Dynamics</strong></p>
-</li>
-</ul>
-<h4 id="Identity-Linkage-Challenge"><a href="#Identity-Linkage-Challenge" class="headerlink" title="Identity Linkage Challenge"></a>Identity Linkage Challenge</h4><p>task：linking user‘s account on multiple social sites</p>
-<ol>
-<li>用户社交网络上的身份信息可以与他在真实世界中的身份信息不相同</li>
-<li>在线社交网络数据庞大，存在较多噪声数据、非结构化、不完整</li>
-</ol>
-<p>在线社交网络中 user identity data 的特点：</p>
-<ul>
-<li>Profile inconsistency：不同的用户资料关注点，故意信息造假</li>
-<li>Content Heterogeneity：用户发布的内容反映了他的社会活动行为，在社交网络中产生的内容包括文字、图片、视频等，多源异构信息难以利用。数据孤岛。</li>
-<li>Network Diversity：某用户在不同社交平台的社交网路结构是不同的</li>
-</ul>
-<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><h3 id="Problem-Definition"><a href="#Problem-Definition" class="headerlink" title="Problem Definition"></a>Problem Definition</h3><p>对于一个现实世界中的自然人P：</p>
-<ul>
-<li>Profile：对该用户的描述，eg：用户名、位置、年龄、职业等</li>
-<li>Context：表示用户活动的属性，包括时间、位置、文本、图片等</li>
-<li>Network：描述该用户与其他用户的社会关系</li>
-</ul>
-<p><img src="/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/definition.png" alt="definition"></p>
-<hr>
-
-<h3 id="Framework"><a href="#Framework" class="headerlink" title="Framework"></a>Framework</h3><p><img src="/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/framework.png" alt="framework"></p>
-<h4 id="1-Feature-Extraction"><a href="#1-Feature-Extraction" class="headerlink" title="1. Feature Extraction"></a>1. Feature Extraction</h4><h4 id="1-1-Profile-Features"><a href="#1-1-Profile-Features" class="headerlink" title="1.1. Profile Features"></a>1.1. Profile Features</h4><p><strong>Public profile fileds</strong></p>
-<p>​    username</p>
-<p>​    screen name：账户名</p>
-<p>​    Biography：text description</p>
-<p>​    Education</p>
-<p>​    Avatar</p>
-<p><strong>根据用户资料识别用户身份的方法</strong></p>
-<ul>
-<li>Distance-based<ul>
-<li>文本类型：Jaro-Winkler distance，Jaccard similarity, and Levenshtein (Edit) distance </li>
-<li>图像：mean square error, peak signal-to-noise ratio, and Levenshtein distance </li>
-</ul>
-</li>
-<li>Frequency-based<pre><code>+ 文本类型：bag-of-word model， TF-IDF model  
-   + 其他：probabilistic model ：Markov-chain model
-</code></pre></li>
-</ul>
-<h4 id="1-2-Content-Features"><a href="#1-2-Content-Features" class="headerlink" title="1.2. Content Features"></a>1.2. Content Features</h4><p><strong>特征</strong></p>
-<ul>
-<li>Temporal：用户活动的时间戳</li>
-<li>Spatial：有位置标签的，可以转成精确的经纬度；没有位置标签可以从用户发布的文字和图片中提取</li>
-<li>Post：文字或图像</li>
-</ul>
-<p><strong>方法</strong></p>
-<ul>
-<li><p>Interest-based：long-term topic modeling — 提取用户的核心兴趣</p>
-<blockquote>
-<p>Liu et.al. Hydra: Large-scale social identity linkage via heterogeneous behavior modeling. In SIGMOD, 2014. </p>
-</blockquote>
-<p><a href="https://dl.acm.org/citation.cfm?id=2588559&amp;preflayout=flat" target="_blank" rel="noopener">https://dl.acm.org/citation.cfm?id=2588559&amp;preflayout=flat</a></p>
-<blockquote>
-<p>Yuanping Nie, Yan Jia, Shudong Li, Xiang Zhu, Aiping Li, and Bin Zhou. Identifying users across social networks based on dynamic core interests. Neurocomputing, 2016. </p>
-</blockquote>
-</li>
-<li><p>Style-based：提取用户的写作风格。</p>
-<ul>
-<li>n-gram language model </li>
-<li>term-frequency analysis</li>
-</ul>
-</li>
-<li><p>Trajectory-based：具有时间戳的位置数据</p>
-</li>
-</ul>
-<h4 id="1-3-Network-Features"><a href="#1-3-Network-Features" class="headerlink" title="1.3. Network Features"></a>1.3. Network Features</h4><p><strong>网络分类</strong></p>
-<ul>
-<li>local network：只考虑直接相连的邻居（following/followee/friend relationship)，是用户的ego-network</li>
-<li>global network：所有用户都要考虑进去</li>
-</ul>
-<p><strong>方法</strong></p>
-<ul>
-<li>Neighborhood-based：邻居的数量，入度/出度，Dice coefficient ，common neighbors, Jaccard’s coefficient and Adamic/Adar score </li>
-<li>Embedding-based：<ul>
-<li>first-order proximity </li>
-<li>second-order proximity </li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>local network中，只有 Neighborhood-based 方法可以用，而 global network 上述两种方法都可以使用</p>
-</blockquote>
-<h4 id="1-4-Discussion"><a href="#1-4-Discussion" class="headerlink" title="1.4. Discussion"></a>1.4. Discussion</h4><p>Profile features 最容易获得，但是也信息也是最容易被伪造的。由于不同社交平台会要求填写不同的用户资料，数据不一致性会更强。</p>
-<p>Content features 会非常稀疏，因为用户可能并不活跃</p>
-<p>Network features 噪声数据较多；一些特征必须是基于两个完全一致的网络提取的。</p>
-<h4 id="2-Model-Construction"><a href="#2-Model-Construction" class="headerlink" title="2. Model Construction"></a>2. Model Construction</h4><h4 id="2-1-Supervised-Model"><a href="#2-1-Supervised-Model" class="headerlink" title="2.1 Supervised Model"></a>2.1 Supervised Model</h4><p>典型的二分类问题</p>
-<ul>
-<li><p><strong>Aggregating methods</strong></p>
-<p>hybrid weighted form 混合加权的形式 combine 不同的相似性分数</p>
-<p><img src="/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/f1.png" alt="hybrid weighted form"></p>
-</li>
-<li><p><strong>Probabilistic methods</strong></p>
-<p>预测类标签的概率分布</p>
-<script type="math/tex; mode=display">
-\mathcal{F}(\vec{x})=\arg \max \operatorname{Pr}\left(y=1 | \vec{x},\left(\mathcal{M}^{\prime}, \mathcal{N}^{\prime}\right), M\right)</script><p>Maximum a posteriori (MAP) estimate 最大后验估计，可以通过贝叶斯理论求解</p>
-</li>
-<li><p><strong>Boosting methods</strong></p>
-<p>通过多个弱假设学习一个强假设</p>
-<script type="math/tex; mode=display">
-\mathcal{F}(\vec{x})=\operatorname{sign}\left(\sum_{i=1}^{T} \alpha_{i} h_{i}(\vec{x})\right)</script></li>
-<li><p><strong>Projection methods</strong></p>
-<p>学习一个映射函数：学习原始特征空间和在线社交网络中用户身份的潜在特征空间的映射关系</p>
-<script type="math/tex; mode=display">
-\hat{u}^{t}=\underset{u^{t} \in \mathcal{U}^{t}}{\arg \min } \mathbb{D}\left(\Phi_{s}\left(u^{s}\right), \Phi_{t}\left(u^{t}\right)\right)</script><p>$\mathbb{D}$ 是衡量潜在特征空间中用户s和用户d之间距离的函数</p>
-</li>
-</ul>
-<h4 id="2-2-Semi-Supervised-Model"><a href="#2-2-Semi-Supervised-Model" class="headerlink" title="2.2 Semi-Supervised Model"></a>2.2 Semi-Supervised Model</h4><ul>
-<li><p><strong>Propagation methods</strong></p>
-<p>seed matching user identity pairs </p>
-<p>定义一个函数来计算用户身份的匹配程度，通过使用其已知的邻居信息以及其他特征</p>
-<p>每一轮迭代过程中，匹配分数高的用户身份对被选择出来</p>
-<p>两种<strong>propagation order</strong>：</p>
-<pre><code>+ Exhaust comparison ：从未匹配对中找到，加入
-+ Local expansion 从现有匹配的用户对的邻居扩展候选匹配对扩充
-</code></pre></li>
-<li><p><strong>Embedding methods</strong></p>
-<p>在源网络和目标网络中，半监督嵌入方法通常共同学习用户身份的潜在特征。</p>
-</li>
-</ul>
-<h4 id="2-3-Unsupervised-Model"><a href="#2-3-Unsupervised-Model" class="headerlink" title="2.3 Unsupervised Model"></a>2.3 Unsupervised Model</h4><ul>
-<li><strong>Aligning Methods</strong><ul>
-<li>对每一对候选 user identities 计算 affinity score</li>
-<li>构建一个二分网络</li>
-<li>根据得到的图G，形式化为一个优化问题，实现所有用户标识对的一对一匹配。</li>
-</ul>
-</li>
-<li><strong>Progressive methods</strong><ul>
-<li>利用具有较强识别力的特征来寻找局部 ground truth</li>
-<li>所有提取的特征都可以用来对剩余的未标记用户标识执行分类</li>
-</ul>
-</li>
-</ul>
-<h4 id="2-4-Discussion"><a href="#2-4-Discussion" class="headerlink" title="2.4 Discussion"></a>2.4 Discussion</h4><ul>
-<li>可扩展性</li>
-<li>多样性</li>
-</ul>
-<h4 id="3-Summary-of-UIL-Algorithms"><a href="#3-Summary-of-UIL-Algorithms" class="headerlink" title="3. Summary of UIL Algorithms"></a>3. Summary of UIL Algorithms</h4><hr>
-
-<h3 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h3><h4 id="1-Datasets"><a href="#1-Datasets" class="headerlink" title="1. Datasets"></a>1. Datasets</h4><h4 id="2-Evaluation-Metrics"><a href="#2-Evaluation-Metrics" class="headerlink" title="2. Evaluation Metrics"></a>2. Evaluation Metrics</h4><ul>
-<li><p>Prediction metrics</p>
-<ul>
-<li>TP：预测为 true，真实为 true</li>
-<li>TN：预测为 false，真实为 false</li>
-<li>FN：预测为 false，真实为 true</li>
-<li>FP：预测为 true，真实为 false</li>
-</ul>
-<script type="math/tex; mode=display">
-Precision=\frac{|T P|}{|T P|+|F P|}  \\
-Recall=\frac{|T P|}{|T P|+|F N|}  \\
-Accuracy=\frac{|T P|+|T N|}{|T P|+|T N|+|F P|+|F N|}</script><p>Identity-based Accuracy :</p>
-<script type="math/tex; mode=display">
-I-Acc=\frac{\# \text { correctly identified user identities }}{\# \text { ground truth user identities }}</script></li>
-<li><p>Ranking metrics</p>
-<ul>
-<li><p>ROC 曲线</p>
-<ul>
-<li><p>FPR（False Positive Rate）</p>
-<script type="math/tex; mode=display">
-TPR=\frac{|T P|}{|T P|+|F N|}</script></li>
-<li><p>TPR（True Positive Rate）</p>
-<script type="math/tex; mode=display">
-FPR=\frac{|F P|}{|F P|+|T N|}</script></li>
-</ul>
-</li>
-<li><p>Area Under ROC curve （AUC）</p>
-<script type="math/tex; mode=display">
-A U C=\frac{n_{1}+1-r_{1}}{n_{1}}  \\
-\text {Hit-Pricision}=\frac{n_{1}+2-r_{1}}{n_{1}+1}</script></li>
-</ul>
-</li>
-<li><p>Mean Reciprocal Rank (MRR)</p>
-</li>
-<li>Mean Average Precision (MAP)</li>
-</ul>
-<hr>
-
-<h3 id="Related-Areas"><a href="#Related-Areas" class="headerlink" title="Related Areas"></a>Related Areas</h3><p><img src="/2019/09/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AUser-Identity-Linkage-across-Online-Social-Networks%EF%BC%9AA-Review%E3%80%8B/research_aspects.png" alt="research_aspects"></p>
-<h3 id="Open-Issues-and-Future-Research-Directions"><a href="#Open-Issues-and-Future-Research-Directions" class="headerlink" title="Open Issues and Future Research Directions"></a>Open Issues and Future Research Directions</h3><ul>
-<li>Data Challenge</li>
-<li>Dynamic user identity linkage</li>
-<li>Jointly user identity linkage and recommendation </li>
-<li>Jointly user identity linkage and link prediction </li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/09/18/%E7%BB%84%E4%BC%9A%E8%AE%B0%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/18/%E7%BB%84%E4%BC%9A%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">组会记录</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-09-18 14:12:45 / 修改时间：19:37:39" itemprop="dateCreated datePublished" datetime="2019-09-18T14:12:45+08:00">2019-09-18</time>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/18/%E7%BB%84%E4%BC%9A%E8%AE%B0%E5%BD%95/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/18/%E7%BB%84%E4%BC%9A%E8%AE%B0%E5%BD%95/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>112</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="目标检测"><a href="#目标检测" class="headerlink" title="目标检测"></a>目标检测</h2><h3 id="经典网络结构"><a href="#经典网络结构" class="headerlink" title="经典网络结构"></a>经典网络结构</h3><p>RCNN 2014</p>
-<p>Fast RCNN 2015</p>
-<p><strong>Backbone Networks</strong></p>
-<ul>
-<li><p>VGG16/VGG19</p>
-</li>
-<li><p>ResNet, ResNext</p>
-</li>
-</ul>
-<p><strong>RCNN: Region based CNN</strong></p>
-<p><strong>Faster RCNN</strong></p>
-<p><strong>Mask RCNN</strong></p>
-<p><strong>YOLO</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/09/18/leetcode-%E5%88%B7%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/18/leetcode-%E5%88%B7%E9%A2%98/" class="post-title-link" itemprop="url">leetcode 刷题</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-09-18 09:38:13" itemprop="dateCreated datePublished" datetime="2019-09-18T09:38:13+08:00">2019-09-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:50:26" itemprop="dateModified" datetime="2020-09-13T09:50:26+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/18/leetcode-%E5%88%B7%E9%A2%98/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/18/leetcode-%E5%88%B7%E9%A2%98/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>742</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Leetcode-刷题记录"><a href="#Leetcode-刷题记录" class="headerlink" title="Leetcode 刷题记录"></a>Leetcode 刷题记录</h2><h3 id="191-位1的个数"><a href="#191-位1的个数" class="headerlink" title="191. 位1的个数"></a>191. 位1的个数</h3><p>汉明重量：一串符号中非零符号的个数，在数据位符号串中，指1的个数</p>
-<p><strong>方法1</strong></p>
-<p>遍历一个数字的 32 位，如果某一位为 1，就将计数器加 1。</p>
-<p>运行时间依赖于数字 n 的位数，此题中 n 是一个 32 位数，所以运行时间是 O(1) 的</p>
-<p><strong>方法2</strong></p>
-<p>位操作小技巧：在二进制表示中，将 n 和 n-1 做与运算总是能把 n 中最低位的 1 变成 0，并保持其他位不变</p>
-<h3 id="193-有效的电话号码"><a href="#193-有效的电话号码" class="headerlink" title="193. 有效的电话号码"></a>193. 有效的电话号码</h3><p><code>grep</code>对文本或输出内容进行过滤</p>
-<p><code>grep [OPTIONS] PATTERN [FILE ...]</code></p>
-<p><code>grep</code>按行检索输入的每一行，如果输入行包含模式<code>PATTERN</code>，则输出这一行。这里的<code>PATTERN</code>是正则表达式。</p>
-<p><code>-i</code> 使 grep 在匹配模式时忽略大小写</p>
-<p><code>-o</code> 表示只输出匹配的字符，而不是整行</p>
-<p><code>-c</code> 统计匹配的行数</p>
-<p><code>-v</code> 表示取反匹配</p>
-<p><code>-P</code> 表示使用 perl 的正则表达式进行匹配</p>
-<h3 id="195-第十行"><a href="#195-第十行" class="headerlink" title="195. 第十行"></a>195. 第十行</h3><ul>
-<li><p><code>sed</code> 命令</p>
-<p><code>sed --help</code> 查看具体使用规则</p>
-<p><code>sed -n &#39;xp&#39; filename</code> 显示文件X行命令   </p>
-<p><code>sed -n &#39;x,yp&#39; filename</code> 显示文件X行到Y行的内容</p>
-</li>
-<li><p><code>head</code> 命令</p>
-<p><code>head [参数]...[文件]...</code> head 用来显示档案的开头至标准输出中，默认head命令打印其相应文件的开头10行。</p>
-</li>
-<li><p><code>tail</code> 命令</p>
-<p><code>tail [必要参数] [选择参数] [文件]</code> tail 命令从指定点开始将文件写到标准输出.</p>
-<p>使用 <code>tail</code> 命令的 <code>-f</code>选项可以方便的查阅正在改变的日志文件,<code>tail -f filename</code>会把<code>filename</code>里最尾部的内容显示在屏幕上, 并且不刷新, 使你看到最新的文件内容. </p>
-</li>
-<li><p><code>head</code> 命令和 <code>tail</code> 命令结合</p>
-</li>
-</ul>
-<h3 id="204-计数质数"><a href="#204-计数质数" class="headerlink" title="204. 计数质数"></a>204. 计数质数</h3><p>判断一个数是否是质数的方法：</p>
-<ul>
-<li><p>暴力算法</p>
-</li>
-<li><p>优化暴力算法：当判断一个数是否是质数时，用 2-sqrt(n) 之间的整数去除</p>
-</li>
-<li><p><strong>厄拉多塞筛法</strong></p>
-<p><img src="/2019/09/18/leetcode-%E5%88%B7%E9%A2%98/204.gif" alt="img"></p>
-</li>
-<li></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/09/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ATransLink-User-Identity-Linkage-across-Heterogeneous-Social-Networks-via-Translating-Embeddings%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ATransLink-User-Identity-Linkage-across-Heterogeneous-Social-Networks-via-Translating-Embeddings%E3%80%8B/" class="post-title-link" itemprop="url">论文阅读《TransLink: User Identity Linkage across Heterogeneous Social Networks via Translating Embeddings》</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-09-17 08:18:18" itemprop="dateCreated datePublished" datetime="2019-09-17T08:18:18+08:00">2019-09-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:53:34" itemprop="dateModified" datetime="2020-09-13T09:53:34+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/" itemprop="url" rel="index"><span itemprop="name">Social Networks</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ATransLink-User-Identity-Linkage-across-Heterogeneous-Social-Networks-via-Translating-Embeddings%E3%80%8B/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ATransLink-User-Identity-Linkage-across-Heterogeneous-Social-Networks-via-Translating-Embeddings%E3%80%8B/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="TransLink-User-Identity-Linkage-across-Heterogeneous-Social-Networks-via-Translating-Embeddings"><a href="#TransLink-User-Identity-Linkage-across-Heterogeneous-Social-Networks-via-Translating-Embeddings" class="headerlink" title="TransLink: User Identity Linkage across Heterogeneous Social Networks via Translating Embeddings"></a>TransLink: User Identity Linkage across Heterogeneous Social Networks via Translating Embeddings</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><h2 id="Research-Objective"><a href="#Research-Objective" class="headerlink" title="Research Objective"></a>Research Objective</h2><p>针对多个社交平台的账号判断是否是同一个人，</p>
-<p>提出 translation-modeling approach: 对用户信息以及其交互行为一起进行嵌入</p>
-<ol>
-<li>网络模式和交互元数据提取</li>
-<li>Translating embeddings </li>
-<li>Iterative identity linkage </li>
-</ol>
-<h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p>User Identity Linkage</p>
-<p><strong>Challenges</strong></p>
-<p>社交网络的异质性</p>
-<p>用户信息的稀疏性和不完整性</p>
-<p>缺少已知的 anchor link</p>
-<h3 id="现有方法"><a href="#现有方法" class="headerlink" title="现有方法"></a>现有方法</h3><ul>
-<li><p>Attribute-based approaches: username，location, avatar, etc.</p>
-</li>
-<li><p>User generated content (UGC) based approaches: interest, writing style, trajectory</p>
-</li>
-<li>Network-based approaches: <ul>
-<li>neighborhood-based</li>
-<li>network representation to learn follower-ship and followee-ship</li>
-</ul>
-</li>
-</ul>
-<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><p>TransLink</p>
-<h3 id="1-Extractions-of-Network-Schemas-and-interaction-metapaths"><a href="#1-Extractions-of-Network-Schemas-and-interaction-metapaths" class="headerlink" title="1.  Extractions of Network Schemas and interaction metapaths"></a>1.  Extractions of Network Schemas and interaction metapaths</h3><p><strong>Network Schema</strong></p>
-<p>a directed graph $\mathcal G=(V, E)$ $V$ 是 G 的顶点类型的集合，$G$是边的类型的集合。</p>
-<p><strong>Interaction Metapath </strong></p>
-<script type="math/tex; mode=display">
-p_{ab} = u_{a}\stackrel{r_{1}}{\rightarrow}v_{1}\stackrel{r_{2}}{\rightarrow}v_{2}\stackrel{r_{3}}{\rightarrow}...\stackrel{r_{k}}{\rightarrow}u_{b}</script><h3 id="2-Translating-Embeddings"><a href="#2-Translating-Embeddings" class="headerlink" title="2. Translating Embeddings"></a>2. Translating Embeddings</h3><p>由于边中会隐含一些语义信息，仅通过对网络中的节点进行 embedding 是有限的，与传统的 embedding 方式不同，translation-based techniques 可以同时对节点和边进行 embedding。</p>
-<p>translation-based framework: 对于一个 triple $(h, e, t)$, $h + e \approx t$</p>
-<h4 id="Intra-network-Embeddings"><a href="#Intra-network-Embeddings" class="headerlink" title="Intra-network Embeddings"></a>Intra-network Embeddings</h4><p>a triple $(u<em>{a}, p</em>{ab}, u_{b})$</p>
-<p>定义 energy function $E(u<em>{a}, p</em>{ab}, u<em>{b}) =||u</em>{a} + p<em>{ab} - u</em>{b}||$ 表示经过metapath $p_{ab}$的能量转移</p>
-<p>$u<em>{a}$ 到 $u</em>{b}$ 的能量转移函数定义为：</p>
-<script type="math/tex; mode=display">
-E(u_{a}, p_{ab}, u_{b}) = \frac{1}{\Gamma}\sum_{p_{ab}\in P_{ab}} R(p_{ab}|u_{a},u_{b})E(u_{a}, p_{ab}, u_{b}) \\
-P_{ab}:从\ u_a\ 到\ u_b\ 的\ metapath\ 的集合 \\
-R(p_{ab}|u_{a},u_{b}):给定一个(u_a,u_b)，metapath-p_{ab}的置信度 \\
-\Gamma 是 \ normalization\  factor</script><p>定义margin-based score function</p>
-<script type="math/tex; mode=display">
-S_{intra} = \sum_{T\in \lbrace T^{(i)}|i\in [1,m]\rbrace} \sum_{(u_a,r,u_b)\in T}(L(u_a,r,u_b) + \sum_{p_{ab}\in P_{ab}} R(p_{ab}|u_{a},u_{b})L(p_{ab},r)) \\
-L(u_a,r,u_b) = \sum_{u^{'}_a,r^{'},u^{'}_b}max \lbrace 0,\gamma +E(u_a,r,u_b)-E(u^{'}_a,r^{'},u^{'}_b)\rbrace  \\
-L(p_{ab},r) = \sum_{(u_a,r^{'},u_b)\in T^{-}}max \lbrace 0,\gamma +E(p_{ab},r)-E(p^{'}_{ab},r^{'})\rbrace  \\</script><h4 id="Inter-network-Embeddings"><a href="#Inter-network-Embeddings" class="headerlink" title="Inter-network Embeddings"></a>Inter-network Embeddings</h4><script type="math/tex; mode=display">
-E(u^{(i)}_{a},u^{(j)}_{x}) = \parallel u^{(i)}_{a} + r^{(ij)}_{ax}-u^{(j)}_{x}\parallel   \\
-S_{inter} = \sum_{r^{(ij)}_{ax} \in Z} \lambda E(u^{(i)}_{a},u^{(j)}_{x})</script><h4 id="Iterative-Identity-Linkage"><a href="#Iterative-Identity-Linkage" class="headerlink" title="Iterative Identity Linkage"></a>Iterative Identity Linkage</h4><h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/09/16/Java-%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/16/Java-%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="post-title-link" itemprop="url">Java - 基本语法</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-09-16 20:17:32" itemprop="dateCreated datePublished" datetime="2019-09-16T20:17:32+08:00">2019-09-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:48:36" itemprop="dateModified" datetime="2020-09-13T09:48:36+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/16/Java-%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/16/Java-%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Java-程序流程控制"><a href="#Java-程序流程控制" class="headerlink" title="Java 程序流程控制"></a>Java 程序流程控制</h2><h3 id="顺序结构"><a href="#顺序结构" class="headerlink" title="顺序结构"></a>顺序结构</h3><p>从上到下逐行执行，中间没有任何判断和跳转</p>
-<h3 id="分支结构"><a href="#分支结构" class="headerlink" title="分支结构"></a>分支结构</h3><p>根据条件，选择性地执行某段代码</p>
-<p>有 if… else 和 switch 两种分支语句</p>
-<p><strong>if…else结构</strong></p>
-<p>if 语句的三种格式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">	执行代码块;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(条件表达式)&#123;</span><br><span class="line">	执行代码块;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	执行代码块;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(条件表达式)&#123;</span><br><span class="line">	执行代码块;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(条件表达式)&#123;</span><br><span class="line">	执行代码块;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">	执行代码块;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>switch结构</strong></p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(变量)&#123;</span><br><span class="line"><span class="keyword">case</span> 常量 <span class="number">1</span>:</span><br><span class="line">	语句 <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> 常量 <span class="number">2</span>:</span><br><span class="line">	语句 <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line">... ...</span><br><span class="line"><span class="keyword">case</span> 常量 N:</span><br><span class="line">	语句 N;</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">	语句;</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>switch 语句有关规则：</p>
-<p>switch(表达式) 中表达式的<strong>返回值</strong>必须是：<strong>byte, short, char, int, 枚举, String </strong>中的一种</p>
-<p>case 子句中的值必须是<strong>常量</strong>，且所有 case 子句中的值应是不同的</p>
-<p>default 子句是可任选的，没有匹配case时，执行default</p>
-<p>break 语句用来在执行完一个case分支后使程序跳出switch语句块; 如果没有break，程序会顺序执行到switch结尾</p>
-<h3 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h3><p>根据循环条件，重复地执行某段代码</p>
-<p>有 while, do…while, for 三种循环语句</p>
-<p><strong>循环语句的四个组成部分：</strong></p>
-<ul>
-<li>初识化部分</li>
-<li>循环条件部分</li>
-<li>循环体部分</li>
-<li>迭代部分</li>
-</ul>
-<p><strong>循环语句分类：</strong></p>
-<ul>
-<li><p>for 循环</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(初始化表达式; 布尔测试表达式; 更改表达式)&#123;</span><br><span class="line">	语句或语句块</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>while 循环</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[初始化语句;]</span><br><span class="line"><span class="keyword">while</span>(布尔测试表达式)&#123;</span><br><span class="line">	语句或语句块;</span><br><span class="line">	[更改语句;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>do/while 循环</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[初始化语句<span class="comment">;]</span></span><br><span class="line">do&#123;</span><br><span class="line">	语句或语句块<span class="comment">;</span></span><br><span class="line">	[更改语句<span class="comment">;]</span></span><br><span class="line">&#125;while(布尔值测试表达式)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>嵌套循环：</strong></p>
-<p>将一个循环放在另一个循环体内，就形成了嵌套循环。</p>
-<p>实质上，嵌套循环就是把内层循环当成外层循环的循环体。当只有内层循环的循环条件为 false 时，才会完全跳出内层循环，才可结束外层的当次循环，开始下一次的循环。</p>
-<p>设外层循环次数为 m，内层循环次数为 n，则内层循环体实际上要执行 m*n 次</p>
-<blockquote>
-<p>在写嵌套循环时，如果两种嵌套方式能够达到一样的效果，尽量保证外层循环的循环次数小于内层的循环次数</p>
-</blockquote>
-<h3 id="特殊流程控制语句"><a href="#特殊流程控制语句" class="headerlink" title="特殊流程控制语句"></a>特殊流程控制语句</h3><p><strong>break 语句</strong></p>
-<p>用于终止某个语句块的执行</p>
-<p>终止当前所在的循环</p>
-<p><strong>continue 语句</strong></p>
-<p>不再执行当前循环体中continue语句之后的代码，直接进行下一次循环</p>
-<p><strong>return</strong></p>
-<p>直接结束一个方法，不管这个return处于多少层循环之内</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/09/16/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADPLink-User-Identity-Linkage-via-Deep-Neural-Network-From-Heterogeneous-Mobility-Data%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/16/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADPLink-User-Identity-Linkage-via-Deep-Neural-Network-From-Heterogeneous-Mobility-Data%E3%80%8B/" class="post-title-link" itemprop="url">论文阅读《DPLink: User Identity Linkage via Deep Neural Network From Heterogeneous Mobility Data》</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-09-16 08:42:33" itemprop="dateCreated datePublished" datetime="2019-09-16T08:42:33+08:00">2019-09-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:52:40" itemprop="dateModified" datetime="2020-09-13T09:52:40+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/" itemprop="url" rel="index"><span itemprop="name">Social Networks</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/16/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADPLink-User-Identity-Linkage-via-Deep-Neural-Network-From-Heterogeneous-Mobility-Data%E3%80%8B/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/16/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADPLink-User-Identity-Linkage-via-Deep-Neural-Network-From-Heterogeneous-Mobility-Data%E3%80%8B/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="DPLink-User-Identity-Linkage-via-Deep-Neural-Network-From-Heterogeneous-Mobility-Data"><a href="#DPLink-User-Identity-Linkage-via-Deep-Neural-Network-From-Heterogeneous-Mobility-Data" class="headerlink" title="DPLink: User Identity Linkage via Deep Neural Network From Heterogeneous Mobility Data"></a>DPLink: User Identity Linkage via Deep Neural Network From Heterogeneous Mobility Data</h2><blockquote>
-<p>Jie Feng1, Mingyang Zhang1, Huandong Wang1, Zeyu Yang1, Chao Zhang2, Yong Li1, Depeng Jin1 . 2019. DPLink: User Identity Linkage via Deep Neural Network From Heterogeneous Mobility Data. In Proceedings of the 2019 World Wide Web Conference (WWW ’19), May 13–17, 2019, San Francisco, CA, USA. ACM, New York, NY, USA, 11 pages. <a href="https://doi.org/10.1145/3308558.3313424" target="_blank" rel="noopener">https://doi.org/10.1145/3308558.3313424</a> </p>
-</blockquote>
-<p>提出一个端到端的深度学习框架，从异构流动性数据中进行user identity linkage</p>
-<p>feature extractor：location encoder and a trajectory encoder</p>
-<p>comparator module</p>
-<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><p>linking online indentities: user profile attributes and social graphs</p>
-<p>提出基于用户活动的时空位置信息进行 user IDs linkage</p>
-<p><strong>Challenges</strong></p>
-<p>Heterogeneity nature of mobility data 移动数据的异质性</p>
-<p>Poor quality of mobility data  移动数据的质量不高：</p>
-<p>​    收集的数据只有<strong>时间</strong>和<strong>位置</strong>信息，并不能通过此发现挖掘其中的潜在语义关系</p>
-<p>​    数据中包含大量的噪声数据</p>
-<p><strong>Contributions</strong></p>
-<p>extractor module: </p>
-<ul>
-<li>location encoder: 整合多维输入，提取孤立位置的底层特征</li>
-<li>trajectory encoder: 捕获单个轨迹本身的过渡关系 (recurrent encoder)，并对两个不同轨迹之间的关联进行建模</li>
-<li>selector: attention based</li>
-</ul>
-<p>comparator module: a multilayer feed-forward network </p>
-<h2 id="2-Problem-Formulation"><a href="#2-Problem-Formulation" class="headerlink" title="2. Problem Formulation"></a>2. Problem Formulation</h2><p>给定一个用户的轨迹和候选用户，根据他们运动轨迹的相似性判断他们是否是同一个人</p>
-<p><img src="/2019/09/16/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADPLink-User-Identity-Linkage-via-Deep-Neural-Network-From-Heterogeneous-Mobility-Data%E3%80%8B/difference.png" alt="img"></p>
-<h2 id="3-Model-and-Method"><a href="#3-Model-and-Method" class="headerlink" title="3. Model and Method"></a>3. Model and Method</h2><p><img src="/2019/09/16/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADPLink-User-Identity-Linkage-via-Deep-Neural-Network-From-Heterogeneous-Mobility-Data%E3%80%8B/architecture.png" alt="img"></p>
-<h3 id="3-1-Location-Encoder"><a href="#3-1-Location-Encoder" class="headerlink" title="3.1 Location Encoder"></a>3.1 Location Encoder</h3><p>a trajectory point $p_{i} = ( t<em>{i}, l</em>{i})$  —&gt; a single vector $x_{i}$</p>
-<p><strong>embedding module</strong></p>
-<script type="math/tex; mode=display">
-x_{i} = tanh(W_{p}p_{i} + b_{p}) = tanh([W_{t}t_{i} + b_{t};W_{l}l_{i} + b_{l};W_{e}e_{i} + b_{e}])</script><p>$W$ and $b$ denote the learnable parameters of embedding layers</p>
-<p>$[;;]$ denotes the concatenate function</p>
-<h3 id="3-2-Trajectory-encoder"><a href="#3-2-Trajectory-encoder" class="headerlink" title="3.2 Trajectory encoder"></a>3.2 Trajectory encoder</h3><p><strong>Reccurent Encoder</strong></p>
-<p>输入 location encoder 产生的结果 ${x<em>{1}, x</em>{2}, …, x<em>{n}}$, 通过 LSTM 和 Max/Mean pooling 操作，产生encoded trajectory feature ${h</em>{1}, h<em>{2}, …, h</em>{n}}$</p>
-<p><strong>Co-Attention based Selector</strong></p>
-<ul>
-<li>calculate the “correlation” between the query vector $q$ and all the candidate vectors  ${h<em>{1}, h</em>{2}, …, h_{n}}$</li>
-<li>normalized “correlation” as weights ${α1, α2, …, αn}$, to calculate the weighted sum $y$<br>of candidate vectors </li>
-</ul>
-<p><img src="/2019/09/16/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADPLink-User-Identity-Linkage-via-Deep-Neural-Network-From-Heterogeneous-Mobility-Data%E3%80%8B/trajectory_encoder.png" alt="img"></p>
-<h3 id="3-3-Comparator-Network"><a href="#3-3-Comparator-Network" class="headerlink" title="3.3 Comparator Network"></a>3.3 Comparator Network</h3><p>a multilayer feed-forward network </p>
-<h3 id="3-4-Training-strategy"><a href="#3-4-Training-strategy" class="headerlink" title="3.4 Training strategy"></a>3.4 Training strategy</h3><p>loss function</p>
-<script type="math/tex; mode=display">
-Loss = -\sum^{n}_{i=1}y_{i}log x_{i}+(1-y_{i})log(1-x_{i})</script><p>Adam</p>
-<p>dropout</p>
-<p>L2 regularization</p>
-<p>learning rate</p>
-<p><img src="/2019/09/16/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADPLink-User-Identity-Linkage-via-Deep-Neural-Network-From-Heterogeneous-Mobility-Data%E3%80%8B/train_strategy.png" alt="img"></p>
-<h2 id="4-Performance-Evaluation"><a href="#4-Performance-Evaluation" class="headerlink" title="4. Performance Evaluation"></a>4. Performance Evaluation</h2><p><strong>Datasets：</strong></p>
-<p>ISP-Weibo </p>
-<p>Foursquare-Twitter </p>
-<p><strong>Baselines：</strong></p>
-<p>NFLX、  MSQ、HIST 、LRCF 、WYCI 、POIS </p>
-<p><strong>Metrics and Parameter Settings：</strong></p>
-<h2 id="5-Related-Work"><a href="#5-Related-Work" class="headerlink" title="5. Related Work"></a>5. Related Work</h2><p>Identity Linkage using Trajectory Data：基于轨迹数据</p>
-<p>Representation Learning for Trajectories </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/09/15/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeepLink-A-Deep-Learning-Approach-for-User-Identity-Linkage%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/15/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeepLink-A-Deep-Learning-Approach-for-User-Identity-Linkage%E3%80%8B/" class="post-title-link" itemprop="url">论文阅读《DeepLink: A Deep Learning Approach for User Identity Linkage》</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-09-15 09:06:15" itemprop="dateCreated datePublished" datetime="2019-09-15T09:06:15+08:00">2019-09-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:52:28" itemprop="dateModified" datetime="2020-09-13T09:52:28+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Social-Networks/" itemprop="url" rel="index"><span itemprop="name">Social Networks</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/15/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeepLink-A-Deep-Learning-Approach-for-User-Identity-Linkage%E3%80%8B/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/15/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeepLink-A-Deep-Learning-Approach-for-User-Identity-Linkage%E3%80%8B/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="DeepLink-A-Deep-Learning-Approach-for-User-Identity-Linkage"><a href="#DeepLink-A-Deep-Learning-Approach-for-User-Identity-Linkage" class="headerlink" title="DeepLink: A Deep Learning Approach for User Identity Linkage"></a>DeepLink: A Deep Learning Approach for User Identity Linkage</h1><h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><p><strong>Feature-based approaches 基于特征的方法</strong></p>
-<p>从用户资料和社交平台的活动中提取独立的特征：e.g., username, gender, writing style</p>
-<p><strong>Network-based approaches 基于网络的方法</strong></p>
-<p>COSNET </p>
-<p>IONE </p>
-<p><strong>Challenge</strong></p>
-<p>mapping the behaviors of cross-site accounts to a particular user  </p>
-<p>user representation：</p>
-<ul>
-<li>cross-platform behavior prediction </li>
-<li>cross-platform account correlation</li>
-</ul>
-<p>lack of labeled data</p>
-<p><strong>Contributions</strong></p>
-<ul>
-<li>应用深度学习学习用户活动和网络结构的潜在语义</li>
-<li>semi-supervised graph regularization to predict the context (neighboring structures) of<br>nodes in the network </li>
-<li>dual-learning process </li>
-</ul>
-<h2 id="2-Related-Work"><a href="#2-Related-Work" class="headerlink" title="2. Related Work"></a>2. Related Work</h2><h4 id="Profile-based-methods"><a href="#Profile-based-methods" class="headerlink" title="Profile-based methods"></a>Profile-based methods</h4><p>使用用户的用户资料信息，将不同社交平台的账号链接到一起</p>
-<p>user name</p>
-<p>writing style identification：grammatical structure，frequency of letters </p>
-<h4 id="Network-based-methods"><a href="#Network-based-methods" class="headerlink" title="Network-based methods"></a>Network-based methods</h4><p>BIG-ALIGN </p>
-<p>Neighborhood-based features </p>
-<p>CLF </p>
-<p>将网络节点的结构进行嵌入</p>
-<h2 id="3-Preliminary-Background"><a href="#3-Preliminary-Background" class="headerlink" title="3. Preliminary Background"></a>3. Preliminary Background</h2><h4 id="Problem-Definition"><a href="#Problem-Definition" class="headerlink" title="Problem Definition"></a>Problem Definition</h4><p>Social Network Graph</p>
-<p>Network Embedding Model</p>
-<p>User Identity Linkage</p>
-<p>Graph Mapping Function</p>
-<h2 id="4-DeepLink：The-Proposed-Model"><a href="#4-DeepLink：The-Proposed-Model" class="headerlink" title="4. DeepLink：The Proposed Model"></a>4. DeepLink：The Proposed Model</h2><p><img src="/2019/09/15/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeepLink-A-Deep-Learning-Approach-for-User-Identity-Linkage%E3%80%8B/architecture.png" alt="img"></p>
-<h4 id="Network-Structure-Sampling"><a href="#Network-Structure-Sampling" class="headerlink" title="Network Structure Sampling"></a>Network Structure Sampling</h4><p>首先通过几轮随机游走生成每一个user的多个 social sequence （每一个 social sequence 代表了用户的社交关系）</p>
-<p>从顶点(用户) ui 开始，在每一步中沿着随机选择的边前进，直到到达长度L</p>
-<p>algorithms：LINE，GraRep， node2vec</p>
-<h4 id="User-Latent-Space-Embedding"><a href="#User-Latent-Space-Embedding" class="headerlink" title="User Latent Space Embedding"></a>User Latent Space Embedding</h4><h4 id="Neural-Mapping-Learning"><a href="#Neural-Mapping-Learning" class="headerlink" title="Neural Mapping Learning"></a>Neural Mapping Learning</h4><p>two Multi-Layer Perceptrons</p>
-<h4 id="Linkage-Dual-Learning"><a href="#Linkage-Dual-Learning" class="headerlink" title="Linkage Dual Learning"></a>Linkage Dual Learning</h4><p>Unsupervised UIL Pretraining ：先从一个graph映射到另一个graph再映射回来</p>
-<p>Supervised UIL Learning </p>
-<p><img src="/2019/09/15/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeepLink-A-Deep-Learning-Approach-for-User-Identity-Linkage%E3%80%8B/algorithm1.png" alt="img"></p>
-<script type="math/tex; mode=display">
-r_{s,t}^{a} = \frac{1}{k}\sum^{k}_{i=1}log(cos(v(u_{i}),v^{'}(u_{a}))+1)    (6)  \\
-r_{t,s}^{a} = \frac{1}{k}\sum^{k}_{i=1}log(cos(\Phi^{-1}(v(u_{i})),v(u_{a}))+1)    (6)</script><h2 id="5-Experiments"><a href="#5-Experiments" class="headerlink" title="5. Experiments"></a>5. Experiments</h2><p><strong>Dataset</strong></p>
-<p><strong>Baseline and settings</strong></p>
-<p>比较方法：</p>
-<ul>
-<li>Input-Output Network Embedding (IONE) : node vector, input vector and output vector</li>
-<li>ONE: node vector and output vector</li>
-<li>MAH: Manifold Alignment on Hypergraph </li>
-<li>MAG: Manifold Alignment on traditional Graphs </li>
-<li>CRW: Collective Random Walk  </li>
-</ul>
-<p><strong>Evaluation Metrics</strong></p>
-<p>Precision@k(P@k) </p>
-<p>MAP</p>
-<p>AUC</p>
-<p>Hit-Precision</p>
-<script type="math/tex; mode=display">
-MAP = \frac{\sum^{n}\frac{1}{ra}}{n} \\
-AUC = \frac{\sum^{n}\frac{m+1-ra}{m}}{n} \\
-Hit-Precision =  \frac{\sum^{n}\frac{m+2-ra}{m+1}}{n} \\
-ra\;is\; the\; rank\; of\; the\; positive\;matching\;identity \\
-m\;is\; the\; number\; of\;negative\;user\;identities</script>
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/09/12/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/12/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">推荐系统学习</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-09-12 09:37:30" itemprop="dateCreated datePublished" datetime="2019-09-12T09:37:30+08:00">2019-09-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:51:14" itemprop="dateModified" datetime="2020-09-13T09:51:14+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithms/" itemprop="url" rel="index"><span itemprop="name">algorithms</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/12/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/12/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="推荐系统学习"><a href="#推荐系统学习" class="headerlink" title="推荐系统学习"></a>推荐系统学习</h2><p>个性化推荐系统一般由四部分组成：信息采集模块、数据存储模块、推荐模块、推荐结果展示模块</p>
-<h3 id="1-信息采集模块"><a href="#1-信息采集模块" class="headerlink" title="1. 信息采集模块"></a>1. 信息采集模块</h3><ul>
-<li>用户信息：性别、年龄 …….</li>
-<li>物品信息：种类、产地 … …</li>
-<li>用户对物品的行为信息：显式行为、隐式行为</li>
-</ul>
-<hr>
-
-<h3 id="2-数据存储模块"><a href="#2-数据存储模块" class="headerlink" title="2. 数据存储模块"></a>2. 数据存储模块</h3><hr>
-
-<h3 id="3-推荐模块"><a href="#3-推荐模块" class="headerlink" title="3. 推荐模块"></a>3. 推荐模块</h3><h4 id="推荐算法"><a href="#推荐算法" class="headerlink" title="推荐算法"></a>推荐算法</h4><h4 id="1-基于内容的推荐算法-CB"><a href="#1-基于内容的推荐算法-CB" class="headerlink" title="1. 基于内容的推荐算法 CB"></a>1. 基于内容的推荐算法 CB</h4><p>根据用户过去喜欢过的物品的内容来为其推荐具有相似内容的东西<br><strong>步骤:</strong></p>
-<ol>
-<li><p>物品内容特征表示：物品的属性获得</p>
-<ul>
-<li><p>结构化属性：可以直接量化的属性</p>
-</li>
-<li><p>非结构化属性：需要二次解析，比如评论、描述等</p>
-<p>​    文本类的属性信息的特征表示方法：TF-IDF, Word2vec</p>
-</li>
-</ul>
-</li>
-<li><p>用户兴趣特征表示：用户的历史偏好记录</p>
-</li>
-<li><p>计算用户与物品的匹配度：一般使用余弦相似度来计算</p>
-</li>
-<li>将用户<strong>未接触过且匹配度较高</strong>的前N项物品推荐给目标用户</li>
-</ol>
-<p><strong>优点：</strong></p>
-<p>保证用户的独立性，其他用户的作弊行为不会影响到算法对当前用户的推荐结果</p>
-<p>可解释性高，推荐的物品和他兴趣相匹配的特征</p>
-<p>推荐新物品，对于从未被用户评分的新物品也可以推荐给用户，并且新物品和老物品被推荐的概率相同</p>
-<p><strong>缺点：</strong></p>
-<p>物品特征抽取困难</p>
-<p>推荐结果同质化严重，只会给用户推荐与他过去喜欢过的物品相似的物品，推荐结果缺乏新颖性</p>
-<p>用户冷启动，新用户没有历史偏好记录，无法学习他的兴趣特征</p>
-<h4 id="2-协同过滤推荐算法-CF"><a href="#2-协同过滤推荐算法-CF" class="headerlink" title="2. 协同过滤推荐算法 CF"></a>2. 协同过滤推荐算法 CF</h4><h5 id="2-1-基于邻域的协同过滤"><a href="#2-1-基于邻域的协同过滤" class="headerlink" title="2.1 基于邻域的协同过滤"></a>2.1 基于邻域的协同过滤</h5><p>通过用户-物品评分矩阵分析用户（或物品）之间的相似度，利用相似度较大的邻居用户（或邻居物品）预测目标用户对候选物品的评分，并将评分较高的物品推荐给用户。根据相似度计算的主体，基于邻域的推荐算法又可以分为 <strong>基于用户的协同过滤</strong> 和 <strong>基于物品的协同过滤</strong></p>
-<ul>
-<li><p>基于用户的协同过滤：</p>
-<p>找到与目标用户口味相近的用户(邻居用户)，然后对目标用户未接触过的物品，利用邻居用户评分信息和用户相似度预测目标用户的评分，将预测值排名前 N 项物品推荐给目标用户</p>
-</li>
-<li><p>基于物品的协同过滤</p>
-<p>利用物品之间的相似度(根据用户行为计算而不考虑物品的内容)找到与目标用户过去喜欢的物品最相似的一些物品（邻居物品），利用目标用户已有的评分信息和物品相似度预测目标用户对候选物品的评分，将预测值排名前 N 项物品推荐给目标用户</p>
-</li>
-</ul>
-<p><strong>基于邻域的推荐过程</strong></p>
-<ol>
-<li><p>构建用户-物品评分矩阵</p>
-<p>矩阵中的每一项代表用户对物品的评分值</p>
-<p>用户行为数据：</p>
-<p>​    显式行为：打分、收藏</p>
-<p>​    隐式行为：点击、浏览</p>
-</li>
-<li><p>计算相似度：</p>
-<p>用户相似度：Pearson 相关系数</p>
-<p>物品相似度：改进的余弦相似度</p>
-</li>
-<li><p>确定邻居集合</p>
-<p>K 近邻和阈值过滤</p>
-</li>
-<li><p>预测评分生成推荐列表</p>
-<p><strong>缺点</strong>：用户冷启动；物品冷启动；数据稀疏性问题；可扩展性问题</p>
-</li>
-</ol>
-<p><strong>基于模型的协同过滤</strong><br>​用户-物品评分矩阵来训练一个预测模型，然后用该模型来计算评分矩阵中的缺失项<br>​模型：</p>
-<ul>
-<li><p>聚类模型</p>
-</li>
-<li><p>贝叶斯网络</p>
-</li>
-<li><p>图模型：将用户行为抽象为一个二部图，该图包含用户和物品两类节点，且只有用户节点和物品节点之间存在边，同种类型的节点间不存在边。用户节点和物品节点之间的边代表用户对物品的行为。</p>
-<p>核心思想：计算和目标用户顶点没有直接连边的物品节点（即候选物品）与目标用户节点在图上的相关性。</p>
-</li>
-<li><p>矩阵分解模型：将用户和物品映射到同一维度的隐空间，通过隐空间的<strong>用户隐特征矩阵</strong>和<strong>物品隐特征矩阵</strong>之间的联系预测用户对物品的偏好值</p>
-<pre><code>混合推荐算法
-</code></pre><p>推荐结果展示模块<br>在用户评分数据充足的情况下才能有较好的推荐效果</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/09/09/How-to-tackle-with-overfitting/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/09/How-to-tackle-with-overfitting/" class="post-title-link" itemprop="url">How to tackle with overfitting?</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-09-09 13:38:42" itemprop="dateCreated datePublished" datetime="2019-09-09T13:38:42+08:00">2019-09-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-13 09:46:58" itemprop="dateModified" datetime="2020-09-13T09:46:58+08:00">2020-09-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/09/How-to-tackle-with-overfitting/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/09/How-to-tackle-with-overfitting/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>213</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="如何解决过拟合问题？"><a href="#如何解决过拟合问题？" class="headerlink" title="如何解决过拟合问题？"></a>如何解决过拟合问题？</h2><p>对于模型：</p>
-<ul>
-<li>Dropout: regularizing the network by randomly discarding nodes and connections during training 在训练得时候随机得使一些网络节点失活</li>
-<li>Batch Normalization</li>
-<li>Weight Decay</li>
-</ul>
-<p>对于模型的输入：</p>
-<ul>
-<li>数据增强<ul>
-<li>data corruption</li>
-</ul>
-</li>
-</ul>
-<p>对于模型的输出：<br>penalizing theo ver-confident outputs </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-  </div>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
-
-
+              </div>
+            </div>
           </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
         </div>
-          
+      </div>
+    
+  </main>
+
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Kelly Liu"
-      src="/uploads/avatar.jpeg">
-  <p class="site-author-name" itemprop="name">Kelly Liu</p>
-  <div class="site-description" itemprop="description">The Space to record knowledge and my life.</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">83</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
       </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">38</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">38</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/tiantianliu2018" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tiantianliu2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:tiantianliu2018@outlook.com" title="E-Mail → mailto:tiantianliu2018@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-  </div>
-
-
-
-      </div>
-
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright">
-  
-  &copy; 2019 – 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Kelly liu</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-      <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">169k</span>
-</div>
-
-<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="theme-info">
-  <div class="powered-by"></div>
-  <span class="post-count">博客全站共73.6k字</span>
-  <span class="post-meta-divider">|</span>
-  本站总访问量<span id="busuanzi_value_site_pv"></span>次
-  <span class="post-meta-divider">|</span>
-  本站访客数<span id="busuanzi_value_site_uv"></span>人次
-  <span class="post-meta-divider">|</span>
-  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-</div>
-
-<div class="theme-info">
-  <div class="powered-by"></div>
-  <span class="post-count">博客全站共73.6k字</span>
-</div>
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
   </div>
-
+</div>
   
-  
-  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
 
   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
   
 
   
 
   
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
 
 
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "An elegant Material-Design theme for Hexo&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
     });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : true,
-      notify     : true,
-      appId      : 'FhWVmso5TyqrTqtDNNtpuBeC-gzGzoHsz',
-      appKey     : 'd5yz5CVcPPfEmfA5p2ovH6g9',
-      placeholder: "欢迎交流讨论...",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : 'zh-CN' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
     });
-  }, window.Valine);
-});
-</script>
+  </script>
+
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
