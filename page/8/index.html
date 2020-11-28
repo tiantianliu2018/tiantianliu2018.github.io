@@ -1,779 +1,1661 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
-
-
-
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="The Space to record knowledge and my life.">
-  <meta name="author" content="Kelly Liu">
-  <meta name="keywords" content="CS_learn, Keep Moving...">
-  <title>Kelly&#39;s Blogs</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8332.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8316.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
-
-
-<body>
-  <header style="height: 100vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>Kelly</strong>&nbsp;</a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
-              
-            </span>
-
-            
-          </div>
-
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
-          
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          style=margin-top:0>
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/09/07/Java-Re-learn/">Java Re-learn</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/09/07/Java-Re-learn/">
-          
-          
-            
-          
-          1. Java 基础常见Dos命令dir：列出当前目录下的文件以及文件夹md: 创建目录rd：删除目录cd：进入指定目录cd..：退回到上一级目录cd\：退回到根目录del：删除文件exit：退出dos命令行  
-Java 语言概述特性：强面向对象，分布式，健壮（强类型机制、异常处理、垃圾的自动回收机制）、安全的、体系结构中立的、解释型的（先编译后运行）、支持多线程的
-Java技术体系平台：
-Ja
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-09-07 14:13" pubdate>
-              2019-09-07
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Java/">Java</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/08/18/ELMO-Deep-contextualized-word-representations/">ELMO -- Deep contextualized word representations</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/08/18/ELMO-Deep-contextualized-word-representations/">
-          
-          
-            
-          
-          从经典的语言模型开始ELMO — Embedding form Language Model
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-08-18 15:15" pubdate>
-              2019-08-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/NLP-Model/">NLP Model</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Language-Model/">Language Model</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/08/17/NLP-Basic/">NLP Basic</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/08/17/NLP-Basic/">
-          
-          
-            
-          
-          数据集(Workshop on Machine Translation) - 机器翻译研讨会
-模型度量标准BLEU score：Bilingual Evaluation Understudy（双语评估替换）比较候选文本翻译与其他一个或多个参考翻译的评价分数。是一种对生成语句进行评估的指标。
-
-BLEU编程实现的主要任务是对候选翻译和参考翻译的 n 元组进行比较，并计算相匹配的个数。匹配个数与单词的
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-08-17 14:14" pubdate>
-              2019-08-17
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/08/17/Seq2Seq-Learning-with-Nerual-Network-code/">Seq2Seq-Learning-with-Nerual-Network-code</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/08/17/Seq2Seq-Learning-with-Nerual-Network-code/">
-          
-          
-            
-          
-          论文阅读 《Sequence to Sequence Learning with Neural Networks》“Our method uses a multilayered Long Short-Term Memory (LSTM) to map the input sequenceto a vector of a fixed dimensionality, and then another 
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-08-17 14:04" pubdate>
-              2019-08-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/NLP-Models/">NLP Models</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/seq2seq/">seq2seq</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/08/17/Attention-is-All-you-Need/">Attention is All you Need</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/08/17/Attention-is-All-you-Need/">
-          
-          
-            
-          
-          简单来说，Attention 可以理解为表示重要性的权重向量
-为了预测或推断一个元素，使用注意力权重来估计其它元素与其相关的强度，并由注意力权重加权的值的总和作为计算最终目标的特征。
-
-step 1：计算其它元素与待预测元素的相关性权重
-step 2：根据相关性权重对其他元素进行加权求和
-
-Attention 机制对Encoder层状态的加权
-
-Seq2Seq对于一个输入序列，我们需要将其转化为一
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-08-17 09:35" pubdate>
-              2019-08-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/NLP/">NLP</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Attention/">Attention</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/08/16/%E7%89%9B%E9%A1%BF%E6%B1%82%E6%A0%B9%E6%B3%95/">牛顿求根法</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/08/16/%E7%89%9B%E9%A1%BF%E6%B1%82%E6%A0%B9%E6%B3%95/">
-          
-          
-            
-          
-          牛顿求根法
-
-x_{n+1} = x_{n} - \frac{f(x_{n})}{f^{'}{(x_{n})}}
-应用牛顿法求解平方根，可令 
-
-f(x)=x^2-a \\
-f(x)\approx f(x_{0}) + (x-x_{0})f^{'}(x_{0}) \\ 
-令f(x)=0 \rightarrow  x = x_{0} - \frac{f(x_{0})}{f^{'}(x_{0})} =
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-08-16 09:41" pubdate>
-              2019-08-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Leetcode-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">Leetcode 刷题记录</a>
-            
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/08/13/Linear-Algebra-01-LHY/">Linear Algebra 01 -- LHY</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/08/13/Linear-Algebra-01-LHY/">
-          
-          
-            
-          
-          
-Linear System
-
-Persevering Multiplication
- x \rightarrow y \\
- kx \rightarrow ky \\
-
-
-
-Persevering Addition
-x_{1} \rightarrow (x_{1} )^2 \\
-x_{2} \rightarrow (x_{2})^2 \\
-x_{1} + x_{2} \rightarrow (x
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-08-13 20:39" pubdate>
-              2019-08-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Math/">Math</a>
-            
-              <a href="/categories/Math/Basic-Knowledge/">Basic Knowledge</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linear-Algeria/">Linear Algeria</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/08/12/Dynamic-Programming-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">Dynamic Programming 动态规划</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/08/12/Dynamic-Programming-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-          
-          
-            
-          
-          动态规划算法
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-08-12 14:58" pubdate>
-              2019-08-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Algorithms/">Algorithms</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Algorithms/">Algorithms</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/08/11/Learn-NLP-using-Pytorch/">Learn NLP using Pytorch</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/08/11/Learn-NLP-using-Pytorch/">
-          
-          
-            
-          
-          学习使用 Pytorch 进行 NLP 项目实践
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-08-11 18:03" pubdate>
-              2019-08-11
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/NLP/">NLP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/08/11/Overview-of-Sematic-Similarity/">Overview of Sematic Similarity</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/08/11/Overview-of-Sematic-Similarity/">
-          
-          
-            
-          
-          句子相似性检测方法总结
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-08-11 11:47" pubdate>
-              2019-08-11
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/NLP/">NLP</a>
-            
-              <a href="/tags/%E5%8F%A5%E5%AD%90%E7%9B%B8%E4%BC%BC%E6%80%A7%E6%A3%80%E6%B5%8B/">句子相似性检测</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/7/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
+  <meta name="description" content="The Space to record knowledge and my life.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kelly&#39;s Blogs">
+<meta property="og:url" content="http://tiantianliu2018.github.io/page/8/index.html">
+<meta property="og:site_name" content="Kelly&#39;s Blogs">
+<meta property="og:description" content="The Space to record knowledge and my life.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Kelly Liu">
+<meta property="article:tag" content="CS_learn">
+<meta property="article:tag" content=" Keep Moving...">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://tiantianliu2018.github.io/page/8/">
 
 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    
-  </main>
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false
+  };
+</script>
 
+  <title>Kelly's Blogs</title>
   
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Kelly's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">To Be Better</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
   </div>
 </div>
-  
 
-  
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">38</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">38</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">83</span></a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
   </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/" class="post-title-link" itemprop="url">论文阅读《Deep Learning in bioinformatics: introduction, application and perspective in big data era》</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-08 19:18:01" itemprop="dateCreated datePublished" datetime="2019-09-08T19:18:01+08:00">2019-09-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-13 09:52:17" itemprop="dateModified" datetime="2020-09-13T09:52:17+08:00">2020-09-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.2k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h4 id="Computer-Vision"><a href="#Computer-Vision" class="headerlink" title="Computer Vision"></a>Computer Vision</h4><ul>
+<li>image recognition 图像识别</li>
+<li>object detection 目标检测</li>
+<li>image inpainting 图像修复</li>
+<li>super-resolution  超分辨率</li>
+</ul>
+<h4 id="Natural-Language-Processing"><a href="#Natural-Language-Processing" class="headerlink" title="Natural Language Processing"></a>Natural Language Processing</h4><ul>
+<li>text classification 文本分类</li>
+<li>speech recognition 语音识别</li>
+<li>machine translation 机器翻译</li>
+</ul>
+<h4 id="Bioinformatics"><a href="#Bioinformatics" class="headerlink" title="Bioinformatics"></a>Bioinformatics</h4><ol>
+<li><p>sequence analysis 序列分析</p>
+<ul>
+<li>predict the effect of noncoding sequence variants  预测非编码序列变异的影响</li>
+<li><strong>model the transcription factor binding affinity landscape 对转录因子结合亲和性的建模</strong> （PS：有一篇文章可以看）</li>
+<li>improve DNA sequencing and peptide sequencing </li>
+<li>analyze DNA sequence modification  分析DNA序列的变异</li>
+<li>model various post-transcription regulation events  模拟各种转录后调控事件</li>
+</ul>
+</li>
+<li><p>structure prediction and reconstruction 结构预测和重建</p>
+<ul>
+<li>protein secondary structure 蛋白质的二级结构</li>
+<li>model the protein structure when it interacts with other molecules  </li>
+<li>predict protein contact maps and the structure of membrane proteins 预测蛋白质的接触图和膜蛋白的结构</li>
+<li>accelerates the fluorescence microscopy super-resolution</li>
+</ul>
+</li>
+<li><p>biomolecular property and function prediction  生物分子性质和功能预测</p>
+<ul>
+<li>predicts enzyme detailed function by predicting the Enzyme Commission number 通过预测酶的EC number 预测酶的详细功能</li>
+<li>predict the protein Gene Ontology (GO) </li>
+<li>predicts the protein subcellular location 预测蛋白质亚细胞位置</li>
+</ul>
+</li>
+<li><p>biomedical image processing and diagnosis 生物图像处理和诊断</p>
+<ul>
+<li>classifying skin cancer </li>
+<li>predict fluorescent labels from transmitted-light images of unlabeled biological samples </li>
+<li>analyze the cell imagining data </li>
+</ul>
+</li>
+<li><p>biomolecule interaction prediction and system biology 生物相互作用预测与统生物学</p>
+<ul>
+<li>model the hierarchical structure and the function of the whole cell 对整个细胞的层次结构和功能进行建模</li>
+<li>predict novel drug-target interaction 预测新的药物靶点相互作用</li>
+<li>model polypharmacy sides effects - multi-modal graph convolutional networks </li>
+</ul>
+</li>
+</ol>
+<p><img src="/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/data.png" alt="img"></p>
+<hr>
+
+<h2 id="Deep-Learning-Methods"><a href="#Deep-Learning-Methods" class="headerlink" title="Deep Learning Methods"></a>Deep Learning Methods</h2><p>通过训练一个神经网络（具有非线性函数）来表达特征和标签之间的隐含关系。</p>
+<p>需要训练参数 W, 让模型 fit data，实现这一目的的算法是前向-反向传播（<code>forward-backward propagation</code>)，通过最小化前向输出和标签之间的差异（loss or error）直到模型收敛</p>
+<p>常用的 activation function：</p>
+<p>​    hidden layer — ReLU </p>
+<p>​    output layer — softmax</p>
+<p>常用的 loss function：</p>
+<p>​    classification — cross-entropy</p>
+<p>​    regression — mean squared error</p>
+<p>optimizer：</p>
+<p>​    stochastic gradient descent （SGD）</p>
+<p>​    Momentum with learning rate decay — understanding the problem</p>
+<p>​    Adam  — not familiar with the problem</p>
+<p>​    RMSprop</p>
+<h3 id="CNN-Deep-Learning-Architecture"><a href="#CNN-Deep-Learning-Architecture" class="headerlink" title="CNN Deep Learning Architecture"></a>CNN Deep Learning Architecture</h3><p>local connectivity 局部连接 </p>
+<p>weight sharing  权重共享</p>
+<p>模型架构：</p>
+<p>​    AlexNet、VGG、GoogleNet、ResNet、SENet、DenseNet、DPN</p>
+<h3 id="RNN-Deep-Learning-Architecture"><a href="#RNN-Deep-Learning-Architecture" class="headerlink" title="RNN Deep Learning Architecture"></a>RNN Deep Learning Architecture</h3><p>模型架构：</p>
+<p>​    LSTM、Bi-RNN、GRU</p>
+<h3 id="Graph-Nerual-Networks"><a href="#Graph-Nerual-Networks" class="headerlink" title="Graph Nerual Networks"></a>Graph Nerual Networks</h3><p><strong>Primary task</strong>：</p>
+<p>extract and encode the topological and connectivity information from the network  提取并编码网络的拓扑和连接信息</p>
+<p>为了保证网络中节点的信息（邻居信息），构建一棵邻居树</p>
+<p><img src="/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/GCN.png" alt="img"></p>
+<h3 id="Generative-models-GAN-and-VAE-—-unsupervised-learning"><a href="#Generative-models-GAN-and-VAE-—-unsupervised-learning" class="headerlink" title="Generative models: GAN and VAE — unsupervised learning"></a>Generative models: GAN and VAE — unsupervised learning</h3><p>学习数据分布并且生成带有一些变化的新数据点</p>
+<p><strong>GAN</strong></p>
+<p><img src="/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/GAN.png" alt="img"></p>
+<p><strong>Variational Autoencoder</strong></p>
+<p>Autoencoder 并不能产生新的数据</p>
+<p><img src="/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/autoencoder.png" alt="img"></p>
+<p>Variational antoencoder </p>
+<p><img src="/2019/09/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8ADeep-Learning-in-bioinformatics-introduction-application-and-perspective-in-big-data-era%E3%80%8B/vae.png" alt="img"></p>
+<hr>
+
+<h2 id="Applications-of-deep-learning-in-bioinformatics"><a href="#Applications-of-deep-learning-in-bioinformatics" class="headerlink" title="Applications of deep learning in bioinformatics"></a>Applications of deep learning in bioinformatics</h2><h3 id="1-Identifying-enzymes-using-multi-layer-neural-networks"><a href="#1-Identifying-enzymes-using-multi-layer-neural-networks" class="headerlink" title="1. Identifying enzymes using multi-layer neural networks"></a>1. Identifying enzymes using multi-layer neural networks</h3><p>identify enzyme sequences based on sequence information using deep learning based methods 用深度学习的方法基于序列信息预测酶的序列</p>
+<p>encoder the protein sequences into numbers → Forward Nerual Network</p>
+<h3 id="2-Gene-expression-regression"><a href="#2-Gene-expression-regression" class="headerlink" title="2. Gene expression regression"></a>2. Gene expression regression</h3><p>different genes’ expression can be highly correlated </p>
+<p>profiling around 1000 carefully selected landmark genes and predicting the expression of the other target genes based on computational methods and landmark gene expression </p>
+<h3 id="3-RNA-protein-binding-sites-prediction-with-CNN"><a href="#3-RNA-protein-binding-sites-prediction-with-CNN" class="headerlink" title="3. RNA-protein binding sites prediction with CNN"></a>3. RNA-protein binding sites prediction with CNN</h3><p>RNA-binding proteins (RBP)  RNA 结合蛋白</p>
+<p>将RNN序列编码为 2D tensors</p>
+<h3 id="4-DNA-sequence-function-prediction-with-CNN-and-RNN"><a href="#4-DNA-sequence-function-prediction-with-CNN-and-RNN" class="headerlink" title="4. DNA sequence function prediction with CNN and RNN"></a>4. DNA sequence function prediction with CNN and RNN</h3><p>predict the functionality of non-coding DNA sequences 预测DNA序列的非编码区的功能</p>
+<h3 id="5-Biomedical-image-classification-using-transfer-learning-and-ResNet"><a href="#5-Biomedical-image-classification-using-transfer-learning-and-ResNet" class="headerlink" title="5. Biomedical image classification using transfer learning and ResNet"></a>5. Biomedical image classification using transfer learning and ResNet</h3><h3 id="6-Graph-embedding-for-novel-protein-interaction-prediction-using-GCN"><a href="#6-Graph-embedding-for-novel-protein-interaction-prediction-using-GCN" class="headerlink" title="6. Graph embedding for novel protein interaction prediction using GCN"></a>6. Graph embedding for novel protein interaction prediction using GCN</h3><p>graph embedding — PPI networks</p>
+<p>使用 GCN 学得节点（蛋白质）的嵌入表示，然后 apply the interaction operation (inner product) to each pair of nodes </p>
+<h3 id="7-Biology-image-super-resolution-using-GAN"><a href="#7-Biology-image-super-resolution-using-GAN" class="headerlink" title="7. Biology image super-resolution using GAN"></a>7. Biology image super-resolution using GAN</h3><h3 id="8-High-dimensional-biological-data-embedding-and-generation-with-VAE"><a href="#8-High-dimensional-biological-data-embedding-and-generation-with-VAE" class="headerlink" title="8. High dimensional biological data embedding and generation with VAE"></a>8. High dimensional biological data embedding and generation with VAE</h3><hr>
+
+<h2 id="Perspectives-limitations-and-suggestions"><a href="#Perspectives-limitations-and-suggestions" class="headerlink" title="Perspectives: limitations and suggestions"></a>Perspectives: limitations and suggestions</h2><h4 id="1-Lack-of-data"><a href="#1-Lack-of-data" class="headerlink" title="1. Lack of data"></a>1. Lack of data</h4><p>transfer learning</p>
+<p>use a well trained model from another similar task and fine tune the last one or two layers using the limited real data  </p>
+<p>data augmentation</p>
+<p>simulated data </p>
+<h4 id="2-Overfitting"><a href="#2-Overfitting" class="headerlink" title="2. Overfitting"></a>2. Overfitting</h4><p>acts on the model parameters and the model architecture :</p>
+<ul>
+<li>dropout</li>
+<li>batch normalization</li>
+<li>weight decay</li>
+</ul>
+<h4 id="3-Imbalanced-data"><a href="#3-Imbalanced-data" class="headerlink" title="3. Imbalanced data"></a>3. Imbalanced data</h4><ul>
+<li>use the right criteria to evaluate the prediction result and the loss  使用恰当的评价标准衡量模型的预测结果</li>
+<li>upsample smaller classes</li>
+<li>downsample larger classes</li>
+</ul>
+<h4 id="4-Interpretability"><a href="#4-Interpretability" class="headerlink" title="4. Interpretability"></a>4. Interpretability</h4><p>查看输入的每一部分的重要性分数</p>
+<p>Perturbation-based approaches </p>
+<p>Backpropagation-based methods </p>
+<h4 id="5-Uncertainty-scaling"><a href="#5-Uncertainty-scaling" class="headerlink" title="5. Uncertainty scaling"></a>5. Uncertainty scaling</h4><p>legendary Platt scaling </p>
+<p>histogram binning </p>
+<p>isotonic regression 保序回归</p>
+<p>Bayssian Binning into Quantiles </p>
+<p>temperature scaling  </p>
+<h4 id="6-Catastrophic-forgetting"><a href="#6-Catastrophic-forgetting" class="headerlink" title="6. Catastrophic forgetting"></a>6. Catastrophic forgetting</h4><ul>
+<li>regularizations：EWC</li>
+<li>dynamic nerual network</li>
+<li>rehearsal training methods：iCaRL </li>
+</ul>
+<h4 id="7-Reducing-computational-requirement-and-model-compression-减少计算需求并进行模型压缩"><a href="#7-Reducing-computational-requirement-and-model-compression-减少计算需求并进行模型压缩" class="headerlink" title="7. Reducing computational requirement and model compression  减少计算需求并进行模型压缩"></a>7. Reducing computational requirement and model compression  减少计算需求并进行模型压缩</h4><ul>
+<li>parameter pruning ：reduces the redundant parameters </li>
+<li>knowledge distillation </li>
+<li>use compact convolutional filters to save parameters </li>
+<li>low rank factorization </li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/09/07/%E6%9C%AC%E5%9C%B0%E9%85%8D%E7%BD%AE%E4%B8%A4%E6%AE%B5%E8%B7%B3%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/07/%E6%9C%AC%E5%9C%B0%E9%85%8D%E7%BD%AE%E4%B8%A4%E6%AE%B5%E8%B7%B3%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-title-link" itemprop="url">本地配置两段跳的服务器</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-07 15:33:07" itemprop="dateCreated datePublished" datetime="2019-09-07T15:33:07+08:00">2019-09-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-13 09:51:24" itemprop="dateModified" datetime="2020-09-13T09:51:24+08:00">2020-09-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index"><span itemprop="name">tools</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/09/07/%E6%9C%AC%E5%9C%B0%E9%85%8D%E7%BD%AE%E4%B8%A4%E6%AE%B5%E8%B7%B3%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/07/%E6%9C%AC%E5%9C%B0%E9%85%8D%E7%BD%AE%E4%B8%A4%E6%AE%B5%E8%B7%B3%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>259</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>实验室的服务器为了保证访问的安全性，设置了跳板机，平时使用服务器的时候会比较麻烦。</p>
+<p>尝试本地配置对服务器的连接，可以使用本地的 Pycharm 和 Jupyter Notebook</p>
+<p>在本地使用命令</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -f -N -L <span class="number">3000</span>:<span class="number">172.20</span><span class="number">.0</span><span class="number">.6</span>:<span class="number">22</span> <span class="symbol">user@</span>jump_server_ip -p <span class="number">3000</span></span><br></pre></td></tr></table></figure>
+<p>其中 第一个<code>3000</code>是本机端口，省略了<code>127.0.0.1</code>；</p>
+<p>服务器 ip：<code>172.20.0.6</code>，端口号是 22 </p>
+<p><code>user@jump_server_ip</code>:  跳板机的用户名+ip 端口是 <code>3000</code></p>
+<h3 id="本地配置可连接服务器的-jupyter-notebook"><a href="#本地配置可连接服务器的-jupyter-notebook" class="headerlink" title="本地配置可连接服务器的 jupyter notebook"></a>本地配置可连接服务器的 jupyter notebook</h3>
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
   
 
+      
   
-</footer>
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/09/07/Java-Re-learn/">
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
 
-<!-- Plugins -->
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/07/Java-Re-learn/" class="post-title-link" itemprop="url">Java Re-learn</a>
+        </h1>
 
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-07 14:13:01" itemprop="dateCreated datePublished" datetime="2019-09-07T14:13:01+08:00">2019-09-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-13 09:47:25" itemprop="dateModified" datetime="2020-09-13T09:47:25+08:00">2020-09-13</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/09/07/Java-Re-learn/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/09/07/Java-Re-learn/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.1k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-Java-基础"><a href="#1-Java-基础" class="headerlink" title="1. Java 基础"></a>1. Java 基础</h2><h4 id="常见Dos命令"><a href="#常见Dos命令" class="headerlink" title="常见Dos命令"></a>常见Dos命令</h4><p>dir：列出当前目录下的文件以及文件夹<br>md: 创建目录<br>rd：删除目录<br>cd：进入指定目录<br>cd..：退回到上一级目录<br>cd\：退回到根目录<br>del：删除文件<br>exit：退出dos命令行  </p>
+<h4 id="Java-语言概述"><a href="#Java-语言概述" class="headerlink" title="Java 语言概述"></a>Java 语言概述</h4><p><strong>特性</strong>：强面向对象，分布式，健壮（强类型机制、异常处理、垃圾的自动回收机制）、安全的、体系结构中立的、解释型的（先编译后运行）、支持多线程的</p>
+<p><strong>Java技术体系平台</strong>：</p>
+<p>Java SE：标准版</p>
+<p>Java EE：企业版</p>
+<p>Java ME</p>
+<p>Java Card</p>
+<h4 id="Java-语言运行机制及运行过程"><a href="#Java-语言运行机制及运行过程" class="headerlink" title="Java 语言运行机制及运行过程"></a>Java 语言运行机制及运行过程</h4><p><strong>Java 语言的特点</strong>：面向对象（封装、继承、多态）、健壮完善、跨平台 JVM（Java虚拟机）</p>
+<p><strong>Java两种核心机制</strong>：</p>
+<p>​    JVM（Java 虚拟机）：虚拟的计算机，具有指令集并使用不同的存储区域。负责执行指令，管理数据、内存和寄存器。</p>
+<p>​    GC （垃圾收集机制）：</p>
+<blockquote>
+<p>同时使用多个JDK的话，使用压缩版的JDK</p>
+</blockquote>
+<p><strong>什么是 JDK、JRE</strong></p>
+<p>JDK：Java 开发工具包</p>
+<p>JRE：Java 运行环境</p>
+<p>JDK &gt; JRE &gt; JVM</p>
+<p><strong>Java 程序</strong></p>
+<p>java 源文件以 <code>.java</code> 作为扩展名</p>
+<p><strong>注释</strong></p>
+<p>单行注释 //</p>
+<p>多行注释 /<em> </em>/</p>
+<p>文档注释 /<strong>  </strong>/</p>
+<hr>
+
+<h2 id="2-Java基本语法"><a href="#2-Java基本语法" class="headerlink" title="2.  Java基本语法"></a>2.  Java基本语法</h2><h4 id="Java-关键词和保留字"><a href="#Java-关键词和保留字" class="headerlink" title="Java 关键词和保留字"></a>Java 关键词和保留字</h4><p><strong>标识符</strong>：对各种变量、方法和类等要素命名时使用的字符序列称为标识符</p>
+<p>​    凡是自己可以起名字的地方</p>
+<p><strong>命名规范</strong>：</p>
+<p>​    包名：多单词组成时所有字母小写 xxyyzz</p>
+<p>​    类名，接口名：多单词组成时，所有单词的首字母大写 XxxYyyZzz</p>
+<p>​    变量名、方法名：多单词组成时，第一个单词的首字母小写，第二个单词开始，每个单词的首字母大写 xxxYyyZzz</p>
+<p>​    常量名：所有字母都大写，多单词时每个单词之间用下划线连接 XXX_YYY_ZZZ</p>
+<h4 id="Java中的变量"><a href="#Java中的变量" class="headerlink" title="Java中的变量"></a>Java中的变量</h4><p>定义：<strong>数据类型 变量名 = 变量的值</strong> <code>eg：int i = 1;</code></p>
+<p>概念：内存中的一个存储区域</p>
+<p>​            该区域有自己的名称（变量名）和类型（数据类型）</p>
+<p>​            Java 中每个变量必须先声明，后使用</p>
+<p>​            该区域的数据可以在同一类型范围内不断变化</p>
+<p>注意：变量的作用域，一对{}之间有效； 初始化值</p>
+<p>变量是通过使用变量名来访问这块区域的</p>
+<p><strong>变量的分类</strong>：按数据类型</p>
+<p><img src="/2019/09/07/Java-Re-learn/数据类型.png" alt="img"></p>
+<p><strong>基本数据类型转换</strong>：</p>
+<ul>
+<li><p>自动类型转换：容量小的类型自动转换为容量大的类型</p>
+<p><img src="/2019/09/07/Java-Re-learn/排序.png" alt="img"></p>
+<ul>
+<li>有多种类型的数据混合运算时，系统首先自动将所有数据转换成容量最大的数据类型，然后再进行计算</li>
+<li>char 类型在进行数学运算时，转换为相应的ASCII值，进行计算</li>
+<li>当把任何基本类型的值和字符串进行连接运算时（+），基本类型的值将自动转换为字符串类型<ul>
+<li>当有一系列的 <code>+</code> 运算时，如果某个部分其中含有字符串，那么这个字符串前边挨着的 <code>+</code> 开始一直往后都是要按照字符串拼接去看</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>强制类型转换</p>
+<ul>
+<li><p>加强制转换符，但可能造成精度降低或溢出</p>
+</li>
+<li><p>通常，字符串不能直接转换为基本类型，但通过基本类型对应的包装类则可以实现把字符串转换为基本类型：</p>
+<p>String a = ‘43’; int i = Integer.parseInt(a);</p>
+</li>
+<li><p>boolean 无法转换成其他类型</p>
+</li>
+</ul>
+<p><strong>运算符</strong>：特殊符号，用以表示数据的运算、赋值和比较</p>
+</li>
+<li><p>算术运算符</p>
+<p>|   运算符   |                          运算                          |             范例             |           结果           |<br>| :————: | :——————————————————————————: | :—————————————: | :———————————: |<br>|     +      |                          正号                          |              +3              |            3             |<br>|     -      |                          负号                          |           b=4; -b            |            -4            |<br>|     +      |                           加                           |             5+5              |            10            |<br>|     -      |                           减                           |             6-4              |            2             |<br>|     <em>      |                           乘                           |             3</em>4              |            12            |<br>|     /      |                           除                           |             5/5              |            1             |<br>|     %      |                          取模                          |             7%5              |            2             |<br>| ++<br>++ | 自增（前），先运算后取值<br>自增（后），先取值后运算 | a=2; b=++a;<br>a=2; b=a++; | a=3; b=3;<br>a=3; b=2; |<br>| —<br>— | 自减（前），先运算后取值<br>自减（后），先取值后运算 | a=2; b=—a;<br>a=2; b=a—; | a=1; b=1;<br>a=1; b=2; |<br>|     +      |                       字符串连接                       |          “He”+”llo”          |         “Hello”          |</p>
+<p>PS: </p>
+<ul>
+<li><p>如果对负数取模，可以把模数负号忽略不记，如：5%-2=1. 但被模数是负数则不可以忽略。此外，取模运算的结果不一定总是整数</p>
+</li>
+<li><p>对于除号 “/“ ,它的整数除和小数除是有区别的</p>
+</li>
+<li><p>“+” 除了字符串相加功能外，还能把非字符串转换成字符串</p>
+<p>例如：`System.out.println(“5+5=”+5+5); // 打印结果是 5+5=55</p>
+</li>
+</ul>
+<ul>
+<li>char类型数据是可以做数学运算的，在做数学运算的时候把字符转为ASCII码进行</li>
+</ul>
+</li>
+<li><p>赋值运算符</p>
+<ul>
+<li>符号： =  可以进行连续赋值</li>
+<li>+=、-=、*=、/=、%=</li>
+<li>变量参与运算时，Java程序不知道具体的这个变量在做完运算后会不会查重当前变量的范围，所有会先把变量转换为一个更大长度</li>
+<li>在使用扩展运算符时，变量参与运算时会把结果自动强制转换为当前变量的类型</li>
+</ul>
+</li>
+<li><p>比较运算符（关系运算符）</p>
+<p>| 运算符 |   运算   | 范例 | 结果  |<br>| :——: | :———: | :—: | :—-: |<br>|   ==   |  相等于  | 4==3 | False |<br>|   !=   |  不等于  | 4!=3 | True  |<br>|   &lt;    |   小于   | 4<3 | false>    |   大于   | 4&gt;3  | True  |<br>|   &lt;=   | 小于等于 | 4&lt;=3 | False |<br>|   &gt;=   | 大于等于 | 4&gt;=3 | True  |</3></p>
+</li>
+<li><p>逻辑运算符</p>
+<p>|      操作      | 选择  | 选择  | 选择  | 选择  |<br>| :——————: | :—-: | :—-: | :—-: | :—-: |<br>|       a        | true  | true  | false | false |<br>|       b        | true  | false | true  | true  |<br>|      a&amp;b       | true  | false | false | false |<br>|      a|b      | true  | true  | true  | false |<br>|       !a       | false | false | true  | true  |<br>|      a^b       | false | true  | true  | false |<br>|  a&amp;&amp;b 短路与   | true  | false | false | false |<br>| a||b  短路或 | true  | true  | true  | false |</p>
+<p><strong>“&amp;” 和 “&amp;&amp;”的区别：</strong></p>
+<p>单 &amp; 时，左边无论真假，右边都进行运算</p>
+<p>双 &amp;&amp; 时，如果左边为真，右边参与运算，如果左边为假，那么右边不参与运算</p>
+<p><strong>“|” 和 “||”的区别</strong></p>
+<p>|| 表示，当左边为真，右边不参与运算</p>
+</li>
+<li><p>位运算符：位运算都是针对二进制进行运算</p>
+<p>| 运算符 |    运算    |                       范例                       |                             总结                             |<br>| :——: | :————: | :———————————————————————: | :—————————————————————————————: |<br>|   &lt;&lt;   |    左移    | 3&lt;<2 12 = -> 3 <em> 2 </em> 2 = 12<br>m&lt;<n -> m <em> 2^n |             空位补0，被移除的高位丢弃，空缺位补0             |<br>|   &gt;&gt;   |    右移    |    3&gt;&gt;1 = 1 -&gt; 3/2 = 1<br>m&gt;&gt;n -&gt; m </em> 2^-n     | 被移除的二进制最高位是0，右移后，空位补0；<br>最高位是1，空缺位补1 |<br>|  &gt;&gt;&gt;   | 无符号右移 |               3&gt;&gt;&gt;1 = 1 -&gt; 3/2 = 1               |       被移除二进制无论最高位是0或者是1，空缺位都用0补        |<br>|   &amp;    |   与运算   |            6&amp;3 = 2  -&gt; 110&amp;011 = 010             |          二进制位进行&amp;运算，只有1&amp;1结果是1，否则是0          |<br>|   |   |   或运算   |            6|3 = 7 -&gt; 110|011 = 111            |         二进制位进行|运算，只有0|0结果是0，否则是1         |<br>|   ^    |  异或运算  |            6^3 = 5 -&gt; 110 ^011 = 101             |         相同二进制位进行^运算结果是0，不相同结果是1          |<br>|   ~    |    反码    |                     ~6 = -7                      | 正数取反，各二进制码按补码各位取反；<br>负数取反，各二进制码按补码各位取反 |</n></2></p>
+<p>PS ：有符号的右移是看右移之后的首位是0还是1，是0前面空位，是1就补1</p>
+</li>
+<li><p>三元运算符</p>
+<p>（条件表达式）？表达式1 ：表达式2</p>
+<p>条件表达式为 true，运算后的结果为表达式 1</p>
+<p>条件表达式为 false，运算后的结果为表达式 2</p>
+</li>
+</ul>
+<p><strong>运算符的优先级</strong></p>
+<p><img src="/2019/09/07/Java-Re-learn/运算符优先级.jpg" alt="img"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/08/18/ELMO-Deep-contextualized-word-representations/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/18/ELMO-Deep-contextualized-word-representations/" class="post-title-link" itemprop="url">ELMO -- Deep contextualized word representations</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-18 15:15:30" itemprop="dateCreated datePublished" datetime="2019-08-18T15:15:30+08:00">2019-08-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-13 09:46:24" itemprop="dateModified" datetime="2020-09-13T09:46:24+08:00">2020-09-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP-Model/" itemprop="url" rel="index"><span itemprop="name">NLP Model</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/08/18/ELMO-Deep-contextualized-word-representations/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/18/ELMO-Deep-contextualized-word-representations/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>从经典的语言模型开始<br>ELMO — Embedding form Language Model<br></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/08/18/ELMO-Deep-contextualized-word-representations/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/08/17/NLP-Basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/17/NLP-Basic/" class="post-title-link" itemprop="url">NLP Basic</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-08-17 14:14:10 / 修改时间：14:48:16" itemprop="dateCreated datePublished" datetime="2019-08-17T14:14:10+08:00">2019-08-17</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/08/17/NLP-Basic/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/17/NLP-Basic/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>212</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p>(Workshop on Machine Translation) - 机器翻译研讨会</p>
+<h3 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h3><h3 id="度量标准"><a href="#度量标准" class="headerlink" title="度量标准"></a>度量标准</h3><p>BLEU score：Bilingual Evaluation Understudy（双语评估替换）比较候选文本翻译与其他一个或多个参考翻译的评价分数。是一种对生成语句进行评估的指标。</p>
+<blockquote>
+<p>BLEU编程实现的主要任务是对候选翻译和参考翻译的 n 元组进行比较，并计算相匹配的个数。匹配个数与单词的位置无关。匹配个数越多，表明候选翻译的质量就越好。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/08/17/Seq2Seq-Learning-with-Nerual-Network-code/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/17/Seq2Seq-Learning-with-Nerual-Network-code/" class="post-title-link" itemprop="url">Seq2Seq-Learning-with-Nerual-Network-code</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-17 14:04:15" itemprop="dateCreated datePublished" datetime="2019-08-17T14:04:15+08:00">2019-08-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-13 09:51:01" itemprop="dateModified" datetime="2020-09-13T09:51:01+08:00">2020-09-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP-Models/" itemprop="url" rel="index"><span itemprop="name">NLP Models</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/08/17/Seq2Seq-Learning-with-Nerual-Network-code/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/17/Seq2Seq-Learning-with-Nerual-Network-code/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>341</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="论文阅读-《Sequence-to-Sequence-Learning-with-Neural-Networks》"><a href="#论文阅读-《Sequence-to-Sequence-Learning-with-Neural-Networks》" class="headerlink" title="论文阅读 《Sequence to Sequence Learning with Neural Networks》"></a>论文阅读 《Sequence to Sequence Learning with Neural Networks》</h3><p>“Our method uses a multilayered Long Short-Term Memory (LSTM) to map the input sequence<br>to a vector of a fixed dimensionality, and then another deep LSTM to decode the target sequence from the vector. ”<br>首先用一个多层的 LSTM 将输入的序列编码为一个固定维度的向量（将输入进行翻转，以引入更多的 short dependencies）<br>然后用一个 LSTM 进行解码为输出序列</p>
+<p><img src="/2019/08/17/Seq2Seq-Learning-with-Nerual-Network-code/seq2seq.png" alt="seq2seq"></p>
+<p>字符 -&gt; word2vec词向量(或对词向量进行随机初始化，让网络模型自己学习)</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/08/17/Attention-is-All-you-Need/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/17/Attention-is-All-you-Need/" class="post-title-link" itemprop="url">Attention is All you Need</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-17 09:35:38" itemprop="dateCreated datePublished" datetime="2019-08-17T09:35:38+08:00">2019-08-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-13 09:45:51" itemprop="dateModified" datetime="2020-09-13T09:45:51+08:00">2020-09-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index"><span itemprop="name">NLP</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/08/17/Attention-is-All-you-Need/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/17/Attention-is-All-you-Need/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>771</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>简单来说，Attention 可以理解为表示重要性的权重向量</p>
+<p>为了预测或推断一个元素，使用<strong>注意力权重</strong>来估计其它元素与其相关的强度，并由<strong>注意力权重加权的值的总和</strong>作为计算最终目标的特征。</p>
+<ul>
+<li>step 1：计算其它元素与待预测元素的相关性权重</li>
+<li>step 2：根据相关性权重对其他元素进行加权求和</li>
+</ul>
+<h4 id="Attention-机制"><a href="#Attention-机制" class="headerlink" title="Attention 机制"></a>Attention 机制</h4><p>对Encoder层状态的加权</p>
+<p><img src="/2019/08/17/Attention-is-All-you-Need/Attention.jpg" alt="img"></p>
+<h4 id="Seq2Seq"><a href="#Seq2Seq" class="headerlink" title="Seq2Seq"></a>Seq2Seq</h4><p>对于一个输入序列，我们需要将其转化为一个新的输出序列，其中输入、输出序列的长度可以是任意的长度</p>
+<ul>
+<li>机器翻译</li>
+<li>问答系统</li>
+<li>语音识别</li>
+</ul>
+<p>使用 Encoder-Decoder 框架 </p>
+<p>Sutskever  et al., Sequence to sequence learning with neural networks. 2014</p>
+<p>Bahdanau et al.,  (2014). Neural machine translation by jointly learning to align and translate</p>
+<h4 id="Self-Attention"><a href="#Self-Attention" class="headerlink" title="Self Attention"></a>Self Attention</h4><p>一个序列之间自己做 attention ，每一个词的 embedding 产生一个q vector，k vector，v vector,  用 q 去匹配每一个 k（计算dot-product)，通过一个 softmax 映射为权重，再与 v 相乘，求和（这一步可以看做加权求和，就是 attention 的思想），得到最终的表示 z 。</p>
+<p><img src="/2019/08/17/Attention-is-All-you-Need/self-attention.png" alt="img"></p>
+<h4 id="Multi-head-Attention"><a href="#Multi-head-Attention" class="headerlink" title="Multi-head Attention"></a>Multi-head Attention</h4><p>生成多组 （Q，K，V）分别进行 self-attention 计算，将最后得到的多个 z 进行拼接。好处是多个 head 可以捕获不同的特征</p>
+<p><img src="/2019/08/17/Attention-is-All-you-Need/transformer_multi-headed_self-attention-recap.png" alt="img"></p>
+<h4 id="模型架构"><a href="#模型架构" class="headerlink" title="模型架构"></a>模型架构</h4><p><img src="/2019/08/17/Attention-is-All-you-Need/transformer_resideual_layer_norm_3.png" alt="img"></p>
+<p><strong>PS</strong>：<br>Transformer 重点是如何做self-attention，其中 Q, K, V的计算比较重要，解释这篇论文比较好的博客有：</p>
+<p><a href="http://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener" title="The Illustrated Transformer">The Illustrated Transformer</a><br><a href="https://zhuanlan.zhihu.com/p/39034683" target="_blank" rel="noopener" title="Transformer模型笔记">Transformer模型笔记</a></p>
+<p>论文来自:</p>
+<p><a href="https://arxiv.org/pdf/1706.03762.pdf" target="_blank" rel="noopener" title="Attention Is All You Need">Attention Is All You Need</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/08/16/%E7%89%9B%E9%A1%BF%E6%B1%82%E6%A0%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/16/%E7%89%9B%E9%A1%BF%E6%B1%82%E6%A0%B9%E6%B3%95/" class="post-title-link" itemprop="url">牛顿求根法</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-16 09:41:21" itemprop="dateCreated datePublished" datetime="2019-08-16T09:41:21+08:00">2019-08-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-13 09:51:32" itemprop="dateModified" datetime="2020-09-13T09:51:32+08:00">2020-09-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">Leetcode 刷题记录</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/08/16/%E7%89%9B%E9%A1%BF%E6%B1%82%E6%A0%B9%E6%B3%95/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/16/%E7%89%9B%E9%A1%BF%E6%B1%82%E6%A0%B9%E6%B3%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>208</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>牛顿求根法</p>
+<script type="math/tex; mode=display">
+x_{n+1} = x_{n} - \frac{f(x_{n})}{f^{'}{(x_{n})}}</script><p><img src="/2019/08/16/%E7%89%9B%E9%A1%BF%E6%B1%82%E6%A0%B9%E6%B3%95/MyHexo\source\_posts\牛顿求根法\dfig" alt="image.png"></p>
+<p>应用牛顿法求解平方根，可令 </p>
+<script type="math/tex; mode=display">
+f(x)=x^2-a \\
+f(x)\approx f(x_{0}) + (x-x_{0})f^{'}(x_{0}) \\ 
+令f(x)=0 \rightarrow  x = x_{0} - \frac{f(x_{0})}{f^{'}(x_{0})} = \frac{1}{2}(x_{0} + \frac{a}{x_{0}})</script>
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/08/13/Linear-Algebra-01-LHY/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/13/Linear-Algebra-01-LHY/" class="post-title-link" itemprop="url">Linear Algebra 01 -- LHY</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-13 20:39:33" itemprop="dateCreated datePublished" datetime="2019-08-13T20:39:33+08:00">2019-08-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-13 09:50:39" itemprop="dateModified" datetime="2020-09-13T09:50:39+08:00">2020-09-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/Basic-Knowledge/" itemprop="url" rel="index"><span itemprop="name">Basic Knowledge</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/08/13/Linear-Algebra-01-LHY/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/13/Linear-Algebra-01-LHY/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>224</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+<h4 id="Linear-System"><a href="#Linear-System" class="headerlink" title="Linear System"></a>Linear System</h4><ul>
+<li><ol>
+<li>Persevering Multiplication<script type="math/tex; mode=display">
+ x \rightarrow y \\
+ kx \rightarrow ky \\</script></li>
+</ol>
+</li>
+<li><ol>
+<li>Persevering Addition<script type="math/tex; mode=display">
+x_{1} \rightarrow (x_{1} )^2 \\
+x_{2} \rightarrow (x_{2})^2 \\
+x_{1} + x_{2} \rightarrow (x_{1} + x_{2})^2</script></li>
+</ol>
+</li>
+</ul>
+<h4 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h4><p>Transform</p>
+<p>PageRank</p>
+<p>Computer Graphics</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2019/08/12/Dynamic-Programming-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+      <meta itemprop="name" content="Kelly Liu">
+      <meta itemprop="description" content="The Space to record knowledge and my life.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kelly's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/12/Dynamic-Programming-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="post-title-link" itemprop="url">Dynamic Programming 动态规划</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-12 14:58:20" itemprop="dateCreated datePublished" datetime="2019-08-12T14:58:20+08:00">2019-08-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-13 09:46:14" itemprop="dateModified" datetime="2020-09-13T09:46:14+08:00">2020-09-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/08/12/Dynamic-Programming-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/12/Dynamic-Programming-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>257</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>动态规划算法<br></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/08/12/Dynamic-Programming-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
 
   
-    <script  src="/js/lazyload.js" ></script>
-  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
-  
+          </div>
+          
 
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-
-
-
-
-
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "Welcome to Kelly's space...❤&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
     }
-  </script>
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kelly Liu"
+      src="/uploads/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Kelly Liu</p>
+  <div class="site-description" itemprop="description">The Space to record knowledge and my life.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tiantianliu2018" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tiantianliu2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tiantianliu2018@outlook.com" title="E-Mail → mailto:tiantianliu2018@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kelly liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">169k</span>
+</div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共73.6k字</span>
+  <span class="post-meta-divider">|</span>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  <span class="post-meta-divider">|</span>
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  <span class="post-meta-divider">|</span>
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共73.6k字</span>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
 
 
 
@@ -789,7 +1671,40 @@ x_{1} + x_{2} \rightarrow (x
 
 
 
+  
 
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'FhWVmso5TyqrTqtDNNtpuBeC-gzGzoHsz',
+      appKey     : 'd5yz5CVcPPfEmfA5p2ovH6g9',
+      placeholder: "欢迎交流讨论...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-CN' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
 
 </body>
 </html>
