@@ -127,17 +127,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">38</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">32</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">38</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">12</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">83</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">82</span></a>
 
   </li>
   </ul>
@@ -197,7 +197,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-24 09:58:07" itemprop="dateModified" datetime="2020-12-24T09:58:07+08:00">2020-12-24</time>
+                <time title="修改时间：2021-01-16 11:55:31" itemprop="dateModified" datetime="2021-01-16T11:55:31+08:00">2021-01-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -206,10 +206,6 @@
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/%E9%AB%98%E7%BA%A7%E7%B1%BB%E7%89%B9%E6%80%A7/" itemprop="url" rel="index"><span itemprop="name">高级类特性</span></a>
                 </span>
             </span>
 
@@ -248,315 +244,14 @@
           <h2 id="Java-高级类特性"><a href="#Java-高级类特性" class="headerlink" title="Java 高级类特性"></a>Java 高级类特性</h2><h2 id="面向对象特征之二：继承"><a href="#面向对象特征之二：继承" class="headerlink" title="面向对象特征之二：继承"></a>面向对象特征之二：继承</h2><p><strong>为什么要有继承？</strong></p>
 <p>多个类中存在相同属性和行为时，将这些内容抽取到单独一个类中，那么多个类无需再定义这些属性和行为，只要继承那个类即可。</p>
 <p>此处的多个类称为子类，单独的这个类称为父类（基类或超类）</p>
-<p><strong>继承的语法规则</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Subclass extends Superclass&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>作用</strong></p>
-<p>继承的出现提高了代码的复用性</p>
-<p>继承的出现让类与类之间产生了关系，提供了多态的前提</p>
-<p>不要仅为了获取其他类中某个功能而去继承</p>
-<p><strong>说明</strong></p>
-<p>子类继承了父类，就继承了父类的方法和属性。</p>
-<p>在子类中，可以使用父类中定义的方法和属性，也可以创建新的数据和方法。</p>
-<p>在 Java 中，继承的关键字用的是 <code>extends</code>, 即子类不是父类的子集，而是对父类的扩展</p>
-<p>关于继承的规则：</p>
-<ul>
-<li>子类不能直接访问父类中私有的（private）成员变量和方法</li>
-<li>Java 只支持单继承，不允许多重继承<ul>
-<li>一个子类只能有一个父类</li>
-<li>一个父类可以派生出多个子类</li>
-</ul>
-</li>
-</ul>
-<hr>
-
-<h2 id="方法的重写"><a href="#方法的重写" class="headerlink" title="方法的重写"></a>方法的重写</h2><p>在子类中可以根据需要对从父类中继承来的方法进行改造，也称方法的重置、覆盖。在程序执行时，子类的方法将覆盖父类的方法。子类重写父类的方法，只是重新编写方法体的代码。</p>
-<p>要求：</p>
-<ul>
-<li><p>重写方法必须和被重写方法具有相同的方法名称、参数列表和返回值类型</p>
-</li>
-<li><p>重写方法不能使用比被重写方法更严格的访问权限</p>
-</li>
-<li><p>重写方法和被重写的方法必须同时为 <code>static</code> 的，或者同时为 <code>非static</code> 的</p>
-</li>
-<li><p>子类方法抛出的异常不能大于父类被重写方法的异常</p>
-</li>
-</ul>
-<hr>
-
-<h2 id="四种访问权限修饰符"><a href="#四种访问权限修饰符" class="headerlink" title="四种访问权限修饰符"></a>四种访问权限修饰符</h2><p>如果子类和父类在<strong>同一个包</strong>下，那么对于父类的成员修饰符只要不是私有的 <code>private</code>，子类那就可以使用</p>
-<p>如果子类和父类<strong>不在同一个包</strong>中，那么子类只能使用父类中 <code>protected</code> 和 <code>public</code> 的成员变量</p>
-<hr>
-
-<h2 id="关键字-super"><a href="#关键字-super" class="headerlink" title="关键字 super"></a>关键字 super</h2><p>在 Java 类中使用 <code>super</code> 来调用父类中指定的操作：</p>
-<ul>
-<li><p><code>super</code> 可用于访问父类中定义的属性</p>
-</li>
-<li><p><code>super</code> 可用于调用父类中定义的成员方法</p>
-</li>
-<li><p><code>super</code> 可用于在子类构造方法中调用父类的构造器</p>
-</li>
-</ul>
-<p><strong>注意</strong></p>
-<p>尤其是当子父类出现同名成员时，可以用 <code>super</code> 进行区分</p>
-<p><code>super</code> 的追溯不仅限于直接父类，使用 <code>super</code>，子类可以调用子类之上的所有父类层级</p>
-<p><code>super</code> 和 <code>this</code> 的用法相像，<code>this</code> 代表本类对象的引用， <code>super</code> 代表父类的内存空间的标识</p>
-<p><strong>调用父类的构造器</strong></p>
-<p>子类中所有的构造器<strong>默认</strong>都会访问父类中<strong>空参数</strong>的构造器</p>
-<p>当父类中没有空参数的构造器时，子类的构造器必须通过 <code>this（参数列表）</code>或者 <code>super（参数列表）</code>语句指定调用本类或者父类中相应的构造器，且必须放在构造器的第一行</p>
-<p>如果子类构造器中既有显式调用父类或本类的构造器，且父类中又没有无参的构造器，则编译出错</p>
-<p><strong>this 和 super 的区别</strong></p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">区别点</th>
-<th>this</th>
-<th>super</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">访问属性</td>
-<td>访问本类中的属性，如果本类没有此属性则从父类中继续查找</td>
-<td>访问父类中的属性</td>
-</tr>
-<tr>
-<td style="text-align:center">调用方法</td>
-<td>访问本类中的方法</td>
-<td>直接访问父类中的方法</td>
-</tr>
-<tr>
-<td style="text-align:center">调用构造器</td>
-<td>调用本类构造器，必须放在构造器的首行</td>
-<td>调用父类构造器，必须放在子类构造器的首行</td>
-</tr>
-<tr>
-<td style="text-align:center">特殊</td>
-<td>表示当前对象</td>
-<td>无此概念</td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr>
-
-<h2 id="子类对象实例化过程"><a href="#子类对象实例化过程" class="headerlink" title="子类对象实例化过程"></a>子类对象实例化过程</h2><p><strong>简单类对象的实例化过程</strong></p>
-<ol>
-<li>在方法区加载 <code>Person.class</code></li>
-<li>在栈中申请空间，声明变量 <code>p</code></li>
-<li>在堆内存中开辟空间，分配地址，假设地址是 <code>BE2500</code></li>
-<li>在对象空间中（堆内存），对对象中的属性进行默认初始化，若对成员变量有赋值，则对成员变量显式初始化</li>
-<li>构造函数方法进栈，进行初始化（栈内存）</li>
-<li>初始化完毕后，将堆内存中的地址值赋给引用变量 <code>p = BE2500</code>，构造方法出栈</li>
-</ol>
-<p><strong>子类对象的实例化过程</strong></p>
-<ol>
-<li>在方法区先加载 <code>Person.class</code>, 再加载 <code>Student.class</code></li>
-<li>在栈中申请空间，声明变量 <code>stu</code></li>
-<li>在堆内存中开辟空间，分配地址</li>
-<li>并在对象空间中，对对象中的属性（包括父类的属性）进行默认初始化</li>
-<li>子类构造方法进栈</li>
-<li>显式初始化父类的属性（堆内存）</li>
-<li>父类构造方法进栈，执行完毕出栈</li>
-<li>显式初始化子类的属性（堆内存）</li>
-<li>初始化完毕后，将堆内存中的地址值赋给引用变量 <code>stu</code>. 子类构造方法出栈</li>
-</ol>
-<hr>
-
-<h2 id="面向对象特征之三：多态"><a href="#面向对象特征之三：多态" class="headerlink" title="面向对象特征之三：多态"></a>面向对象特征之三：多态</h2><p>多态性，是面向对象最重要的概念，在Java中有两种体现：</p>
-<ol>
-<li>方法的重载（overload）和重写（overwrite）</li>
-<li><strong>对象的多态性</strong>——可以直接应用在抽象类和接口上</li>
-</ol>
-<p>Java 引用变量有两个类型：<strong>编译时类型</strong>和<strong>运行时类型</strong>。</p>
-<p>编译时类型由声明该变量时使用的类型决定，</p>
-<p>运行时类型由实际赋给该变量的对象决定。</p>
-<p>若编译时类型和运行时类型不一致，就出现多态（Polymorphism）——对象的多态</p>
-<p><strong>对象的多态</strong> —— 在Java中，子类的对象可以代替父类的对象使用</p>
-<ul>
-<li>一个变量只能有一种确定的数据类型</li>
-<li>一个引用类型变量可能指向（引用）多种不同类型的对象</li>
-</ul>
-<p>子类可以看做是特殊的父类，所以父类类型的引用可以指向子类的对象：<strong>向上转型</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;&#125;</span><br><span class="line">Person p = <span class="keyword">new</span> Person();</span><br><span class="line">Person e = <span class="keyword">new</span> Student();  <span class="comment">// 子类的对象可以赋值给父类类型的变量引用</span></span><br></pre></td></tr></table></figure>
-<p>一个引用类型变量如果声明为父类的类型，但实际引用的是子类对象，那么该变量就不能再访问子类中添加的属性和方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Student m = <span class="keyword">new</span> Student();</span><br><span class="line">m.school = <span class="string">"pku"</span>; <span class="comment">// 合法， Student类中有school成员变量</span></span><br><span class="line">Person e = <span class="keyword">new</span> Student();</span><br><span class="line">e.school = <span class="string">"pku"</span>; <span class="comment">// 非法，Person类没有school成员变量</span></span><br></pre></td></tr></table></figure>
-<p>属性是在编译时确定的，编译时 <code>e</code> 为 <code>Person</code> 类型，没有 <code>school</code> 成员变量，因而编译出错。</p>
-<p><strong>虚拟方法调用</strong></p>
-<p>正常的方法调用：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Person p = <span class="keyword">new</span> Person();</span><br><span class="line">p.getInfo();</span><br><span class="line">Student s = <span class="keyword">new</span> Student();</span><br><span class="line">s.getInfo();</span><br></pre></td></tr></table></figure>
-<p>虚拟方法调用（多态情况下）</p>
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person e = <span class="keyword">new</span> <span class="constructor">Student()</span>;</span><br><span class="line">e.get<span class="constructor">Info()</span>;  <span class="comment">// 调用 Student 类的 getInfo() 方法</span></span><br></pre></td></tr></table></figure>
-<p>编译时类型和运行时类型：</p>
-<p>编译时 <code>e</code>为 <code>Person</code> 类，而方法的调用是在运行时确定的，所以调用的是 <code>Student</code>类的 <code>getInfo()</code> 方法 —— 动态绑定</p>
-<p><strong>多态小结：</strong></p>
-<ul>
-<li><p>前提</p>
-<p>需要存在继承或者实现关系</p>
-<p>要有覆盖操作</p>
-</li>
-<li><p>成员方法：</p>
-<ul>
-<li>编译时，要查看引用变量所属的类中是否有所调用的方法</li>
-<li>运行时，要调用实际对象所属类中的重写方法</li>
-</ul>
-</li>
-<li><p>成员变量</p>
-<p>不具备多态性，只看引用变量所属的类</p>
-</li>
-</ul>
-<h4 id="instance-of-操作符"><a href="#instance-of-操作符" class="headerlink" title="instance of 操作符"></a>instance of 操作符</h4><p><code>x instance of A</code>: 检验 <code>x</code> 是否是类 A 的对象，返回值为 <code>boolean</code> 型</p>
-<p>要求 x 所属的类与类 A 必须是子类和父类的关系，否则编译出错</p>
-<p>如果 x 属于类 A 的子类 B ，<code>x instance of A</code> 值也为 <code>true</code></p>
-<hr>
-
-<h2 id="Object类，包装类"><a href="#Object类，包装类" class="headerlink" title="Object类，包装类"></a>Object类，包装类</h2><h4 id="Object-类"><a href="#Object-类" class="headerlink" title="Object 类"></a>Object 类</h4><p>Object 类是所有Java类的根父类 —— 基类</p>
-<p>object类中的主要方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Object</span><span class="params">()</span>   <span class="comment">//构造方法</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span>	<span class="comment">//普通方法，对象比较(引用对象)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span>		<span class="comment">// 获取Hash码</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span>    <span class="comment">// 对象打印时调用</span></span></span><br></pre></td></tr></table></figure>
-<h4 id="对象类型转换"><a href="#对象类型转换" class="headerlink" title="对象类型转换"></a>对象类型转换</h4><p>基本数据类型转换的 Casting</p>
-<ul>
-<li><p>自动类型转换：小的数据类型可以自动转换成大的数据类型</p>
-<p><code>long g = 20;</code>       <code>double d = 12.0f</code></p>
-</li>
-<li><p>强制类型转换：可以把大的数据类型转换成小的数据类型</p>
-<p><code>float f = (float)12.0;</code>       <code>int a = (int) 1200L</code></p>
-</li>
-</ul>
-<p>对Java对象的强制类型转换称为<strong>造型</strong></p>
-<ul>
-<li>从子类到父类的类型转换可以自动进行</li>
-<li>从父类到子类的类型转换必须通过造型（强制类型转换）实现</li>
-<li>无继承关系的引用类型间的转换是非法的</li>
-</ul>
-<h4 id="操作符与-equals-方法"><a href="#操作符与-equals-方法" class="headerlink" title="== 操作符与 equals 方法"></a><code>==</code> 操作符与 <code>equals</code> 方法</h4><ul>
-<li><p><code>==</code></p>
-<ul>
-<li><p>基本类型比较值：只要两个变量的值相等，即为 true</p>
-<p><code>int a = 5;</code>  <code>if(a==6){...};</code></p>
-</li>
-<li><p>引用类型比较引用（是否指向同一个对象）：只有指向同一个对象时，<code>==</code> 才返回true</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Person p1 = <span class="keyword">new</span> Person();</span><br><span class="line">Person p2 = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">if</span>(p1 == p2)&#123;...&#125;</span><br></pre></td></tr></table></figure>
-<p>用 <code>==</code> 进行比较时，符号两边的数据类型必须兼容（可自动转换的基本数据类型除外），否则编译出错</p>
-</li>
-</ul>
-</li>
-<li><p><code>equals</code> 所有类都继承了 Object，也就获得了 <code>equals()</code> 方法。还可以重写。</p>
-<ul>
-<li>只能比较引用类型，其作用与 <code>==</code> 相同，比较是否指向同一个对象。<ul>
-<li>格式：<code>obj1.equals(obj2)</code></li>
-</ul>
-</li>
-<li>特例：当用 <code>equals()</code> 方法进行比较时，对类 File、String、Date 及包装类（Wrapper）来说，是比较类型及内容而不考虑引用的是否是同一个对象<ul>
-<li>原因：在职这些类中重写了 Object 类的  <code>equals()</code>  方法</li>
-</ul>
-</li>
-</ul>
-<p><strong>总结</strong></p>
-<p>对于对象来说，特殊的类，如 String、File、Date使用 <code>==</code> 比较的是对象（对象的地址）， <code>equals</code> 比较的是内容</p>
-<p>除了特殊类之外的其他其他普通对象， <code>==</code> 和 <code>equals</code> 比较的都是对象（对象的内存地址）</p>
-</li>
-</ul>
-<h4 id="String-对象的创建"><a href="#String-对象的创建" class="headerlink" title="String 对象的创建"></a>String 对象的创建</h4><ul>
-<li><p>字面量创建 String 对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">"abc"</span>;	<span class="comment">// 堆内存的常量池中添加“abc”对象，返回引用地址给s1对象</span></span><br><span class="line">String s2 = <span class="string">"abc"</span>;	<span class="comment">// 通过 equals() 方法判断常量池中是否存在值为“abc”的对象，返回相同的引用</span></span><br><span class="line">System.out.println(s1==s2); <span class="comment">// true, s1==s2</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>new 创建 String 对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String s3 = <span class="keyword">new</span> String(<span class="string">"def"</span>);  <span class="comment">// 在常量池中添加“def”对象，在堆中创建值为“def"的对象s3,返回指向堆中s3的引用</span></span><br><span class="line">String s4 = <span class="keyword">new</span> String(<span class="string">"def"</span>);  <span class="comment">// 常量池中已有“def”对象，不做处理，在堆中创建值为“def”的对象s4，返回指向堆中s4的引用</span></span><br><span class="line"><span class="comment">// 因此 s3 和 s4 指向的不是一个对象</span></span><br></pre></td></tr></table></figure>
-<p>字面量创建对象的时候，只在常量池创建一个对象。</p>
-<p>使用 <code>new</code> 创建对象，常量池有对象，堆中也要有对象，字面量方法要比<code>new</code>方法省内存</p>
-</li>
-<li><p>字面量相加</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s5 = <span class="string">"x"</span>+<span class="string">"y"</span>;  <span class="comment">// 经过JVM的优化，直接在常量池中添加“xy”对象</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过<code>new</code>的方式字符串叠加</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s6 = <span class="keyword">new</span> String(<span class="string">"1"</span>)+<span class="keyword">new</span> String(<span class="string">"1"</span>)+<span class="keyword">new</span> String(<span class="string">"2"</span>);  <span class="comment">// 通过StringBuilder实现，在常量池中添加“1”和“2”两个对象，在堆中创建值为“112”的对象，把引用地址给s6</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="包装类（Wrapper）"><a href="#包装类（Wrapper）" class="headerlink" title="包装类（Wrapper）"></a>包装类（Wrapper）</h4><p>针对八种基本类型定义相应的引用类型——包装类（封装类）</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">基本数据类型</th>
-<th style="text-align:center">包装类</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">boolean</td>
-<td style="text-align:center">Boolean</td>
-</tr>
-<tr>
-<td style="text-align:center">byte</td>
-<td style="text-align:center">Byte</td>
-</tr>
-<tr>
-<td style="text-align:center">short</td>
-<td style="text-align:center">Short</td>
-</tr>
-<tr>
-<td style="text-align:center">int</td>
-<td style="text-align:center">Integer</td>
-</tr>
-<tr>
-<td style="text-align:center">long</td>
-<td style="text-align:center">Long</td>
-</tr>
-<tr>
-<td style="text-align:center">char</td>
-<td style="text-align:center">Character</td>
-</tr>
-<tr>
-<td style="text-align:center">float</td>
-<td style="text-align:center">Float</td>
-</tr>
-<tr>
-<td style="text-align:center">double</td>
-<td style="text-align:center">Double</td>
-</tr>
-</tbody>
-</table>
-</div>
-<ul>
-<li><p>基本数据类型包装成包装类的实例——装箱</p>
-<p>通过包装类的构造器实现：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">500</span>;</span><br><span class="line">Interger t = <span class="keyword">new</span> Integer(i);</span><br></pre></td></tr></table></figure>
-<p>还可以通过字符串参数构造包装类对象：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Float f = <span class="keyword">new</span> <span class="keyword">float</span>(<span class="string">"4.56"</span>);</span><br><span class="line">Long l = <span class="keyword">new</span> Long(<span class="string">"asdf"</span>);  <span class="comment">// NumberFormatException</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获得包装类对象中包装的基本数据类型变量——拆箱</p>
-<p>调用包装类的<code>.xxxValue()</code> 方法：</p>
-<p><code>boolean b = bObj.booleanValue();</code></p>
-</li>
-</ul>
-<p>JDK1.5后支持自动装箱和拆箱：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer l1 = <span class="number">112</span>;  <span class="comment">// 自动装箱</span></span><br><span class="line"><span class="keyword">int</span> l2 = l1; 	<span class="comment">// 自动拆箱</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>字符串转换成基本数据类型</p>
-<ul>
-<li><p>通过包装类的构造器实现：</p>
-<p><code>int i = new Integer(&quot;12&quot;);</code></p>
-</li>
-<li><p>通过包装类的<code>parseXxx(String s)</code> 静态方法：</p>
-<p><code>Float f = Float.parseFloat(&quot;12.1&quot;);</code></p>
-</li>
-</ul>
-</li>
-<li><p>基本数据类型转换成字符串</p>
-<ul>
-<li><p>调用字符串重载的<code>valueOf()</code> 方法</p>
-<p><code>String fstr = String.valueOf(2.34f);</code></p>
-</li>
-<li><p>更直接的方式</p>
-<p><code>String intStr = 5 + &quot;&quot;</code></p>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>包装类的作用</strong></p>
-<p>基本数据类型的包装类实现了基本数据类型与字符串直接转化</p>
-<p>包装类使得一个基本数据类型的数据变成了类。有了类的特点，可以调用类中的方法。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/10/03/Java-%E9%AB%98%E7%BA%A7%E7%B1%BB%E7%89%B9%E6%80%A7/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -610,7 +305,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-24 09:58:07" itemprop="dateModified" datetime="2020-12-24T09:58:07+08:00">2020-12-24</time>
+                <time title="修改时间：2021-01-16 12:02:15" itemprop="dateModified" datetime="2021-01-16T12:02:15+08:00">2021-01-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -718,7 +413,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-24 09:58:07" itemprop="dateModified" datetime="2020-12-24T09:58:07+08:00">2020-12-24</time>
+                <time title="修改时间：2021-01-16 12:01:54" itemprop="dateModified" datetime="2021-01-16T12:01:54+08:00">2021-01-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -727,10 +422,6 @@
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/this%E5%85%B3%E9%94%AE%E5%AD%97/" itemprop="url" rel="index"><span itemprop="name">this关键字</span></a>
                 </span>
             </span>
 
@@ -769,16 +460,14 @@
           <h1 id="Java-关键字——this"><a href="#Java-关键字——this" class="headerlink" title="Java 关键字——this"></a>Java 关键字——this</h1><p>this 在方法内部使用，即这个方法所属对象的引用</p>
 <p>它在构造器内部使用，表示该构造器正在初始化的对象</p>
 <p>this 表示当前对象，可以调用类的属性、方法和构造器</p>
-<p><strong>什么时候使用？</strong></p>
-<p>当在方法内先需要用到调用该方法的对象时，就用 this</p>
-<p>使用this，调用属性、方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;  <span class="comment">// 创建Person类</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, <span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getInfo</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"姓名："</span> + <span class="keyword">this</span>.name);</span><br><span class="line">        <span class="keyword">this</span>.speak();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">speak</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"年龄："</span> + <span class="keyword">this</span>.age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用this调用本类的构造器</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;  <span class="comment">// 创建Person类</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span></span>&#123;  <span class="comment">// 无参构造方法</span></span><br><span class="line">        System.out.println(<span class="string">"新对象实例化"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name)</span></span>&#123; </span><br><span class="line">        <span class="keyword">this</span>();		<span class="comment">// 调用本类中的无参构造方法</span></span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, <span class="keyword">int</span> age)</span></span>&#123; </span><br><span class="line">        <span class="keyword">this</span>(name);	<span class="comment">// 调用本类只有一个参数的构造方法</span></span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getInfo</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"姓名："</span> + name + <span class="string">"年龄："</span> + age; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>注意：</strong></p>
-<p>使用 this 必须放在构造器的首行</p>
-<p>使用 this 调用本类中其他的构造器，保证至少有一个构造器是不用this的。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/10/02/Java-this%E5%85%B3%E9%94%AE%E5%AD%97/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -832,7 +521,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-24 09:58:07" itemprop="dateModified" datetime="2020-12-24T09:58:07+08:00">2020-12-24</time>
+                <time title="修改时间：2021-01-16 11:56:02" itemprop="dateModified" datetime="2021-01-16T11:56:02+08:00">2021-01-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -841,10 +530,6 @@
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/%E6%9E%84%E9%80%A0%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">构造器</span></a>
                 </span>
             </span>
 
@@ -883,27 +568,14 @@
           <h1 id="Java-类的成员之三：构造器（构造方法）"><a href="#Java-类的成员之三：构造器（构造方法）" class="headerlink" title="Java 类的成员之三：构造器（构造方法）"></a>Java 类的成员之三：构造器（构造方法）</h1><h3 id="构造器的特征"><a href="#构造器的特征" class="headerlink" title="构造器的特征"></a>构造器的特征</h3><p>它具有与类相同的名称</p>
 <p>它不声明返回值类型（与声明为void不同）</p>
 <p>不能被 static、final、synchronized、abstract、native 修饰，不能 return 语句返回</p>
-<p><strong>构造器的作用：创建对象；给对象进行初始化</strong></p>
-<p><strong>语法格式</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">修饰符 类名(参数列表)&#123;</span><br><span class="line">	初始化语句;</span><br><span class="line">&#125;</span><br><span class="line">举例：</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> legs;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Animal</span><span class="params">()</span></span>&#123;legs = <span class="number">4</span>;&#125;  <span class="comment">// 构造器</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLegs</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;legs = i;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLegs</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> legs;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h3><p>根据参数不同，构造器可以分为如下两类：</p>
-<ul>
-<li>隐式无参构造器（系统默认提供）</li>
-<li>显式定义一个或多个构造器（无参、有参）</li>
-</ul>
-<p><strong>注意：</strong></p>
-<p>Java语言中，每个类都至少有一个构造器</p>
-<p>默认构造器的修饰符与所属类的修饰符一致</p>
-<p>一旦显式定义了构造器，则系统不再提供默认构造器</p>
-<p>一个类可以创建多个重载的构造器</p>
-<p>父类的构造器不可被子类继承</p>
-<p><strong>new 对象，实际上就是调用类的构造方法</strong></p>
-<h3 id="构造器重载"><a href="#构造器重载" class="headerlink" title="构造器重载"></a>构造器重载</h3><p>构造器一般用来在创建对象的同时初始化对象，如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	String name;</span><br><span class="line">	<span class="keyword">int</span> age;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String n, <span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">		name = n;</span><br><span class="line">		age = a;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>构造器重载使得对象的创建更加灵活，方便创建各种不同的对象。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">构造器重载举例：</span><br><span class="line"><span class="function"><span class="keyword">public</span> class <span class="title">Person</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name,<span class="keyword">int</span> age, Date d)</span></span>&#123;<span class="keyword">this</span>(name, age);...&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name,<span class="keyword">int</span> age)</span></span>&#123;...&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name,Date d)</span></span>&#123;...&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span></span>&#123;...&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>构造器重载，参数列表必须不同</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/10/02/Java-%E6%9E%84%E9%80%A0%E5%99%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -957,7 +629,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-24 09:58:07" itemprop="dateModified" datetime="2020-12-24T09:58:07+08:00">2020-12-24</time>
+                <time title="修改时间：2021-01-16 11:58:04" itemprop="dateModified" datetime="2021-01-16T11:58:04+08:00">2021-01-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1005,56 +677,14 @@
 <p>隐藏一个类中不需要对外提供的实现细节；</p>
 <p>使用者只能通过事先定值好的方法来访问数据，可以方便地加入控制逻辑，限制对属性的不合理操作；</p>
 <p>便于修改，增强代码的可维护性。</p>
-<hr>
-
-<h2 id="四种访问权限修饰符"><a href="#四种访问权限修饰符" class="headerlink" title="四种访问权限修饰符"></a>四种访问权限修饰符</h2><p>Java 权限修饰符 public、protected、private 置于<strong>类的成员</strong>定义前，用来限定对象对该类成员的访问权限。</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>修饰符</th>
-<th>类内部</th>
-<th>同一个包</th>
-<th>子类</th>
-<th>任何地方</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>private</td>
-<td>Yes</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>（缺省）</td>
-<td>Yes</td>
-<td>Yes</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>protected</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td>public</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>对于 <code>class</code> 的权限修饰符只可以用 <code>public</code> 和 <code>default（缺省）</code>：</p>
-<p>public 类可以在任意地方被访问。</p>
-<p>default 类只可以被同一个包内部的内访问。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1108,7 +738,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-24 09:58:07" itemprop="dateModified" datetime="2020-12-24T09:58:07+08:00">2020-12-24</time>
+                <time title="修改时间：2021-01-16 11:54:24" itemprop="dateModified" datetime="2021-01-16T11:54:24+08:00">2021-01-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1153,16 +783,14 @@
 
       
           <h1 id="Java-包-package-和引用-import"><a href="#Java-包-package-和引用-import" class="headerlink" title="Java 包 package 和引用 import"></a>Java 包 package 和引用 import</h1><h2 id="关键字——package"><a href="#关键字——package" class="headerlink" title="关键字——package"></a>关键字——package</h2><p>package 语句作为Java源文件的第一条语句，指明该文件中定义的类所在的包。</p>
-<p>格式：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> 顶层包名.子包名;</span><br><span class="line">举例：pack\Test.java</span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> p1; <span class="comment">// 指定类 Test 属于包 p1</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"in method display()"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>包对应于文件系统的目录，package语句中，用”.”来指明包（目录）的层次；</p>
-<p>包通常用小写单词，类名首字母通常大写</p>
-<h2 id="import语句"><a href="#import语句" class="headerlink" title="import语句"></a>import语句</h2><p>若引入的包为：<code>java.lang</code>，则编译器默认获取此包下的类，不需要再显示声明。</p>
-<p><code>import</code> 语句出现在 <code>package</code> 语句之后、类定义之前</p>
-<p>一个源文件中可包含多个<code>import</code>语句</p>
-<p>可以使用 <code>import lee.*;</code>语句，表明导入<code>lee</code>包下的所有类。而<code>lee</code>包下<code>sub</code>子包内的类则不会被导入。<code>import lee.sub.*;</code></p>
-<p><code>import</code> 语句不是必须的，可以坚持在类中使用类的全名。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/10/01/Java-%E5%8C%85%E5%92%8C%E5%BC%95%E7%94%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1216,7 +844,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-24 09:58:07" itemprop="dateModified" datetime="2020-12-24T09:58:07+08:00">2020-12-24</time>
+                <time title="修改时间：2021-01-16 11:42:40" itemprop="dateModified" datetime="2021-01-16T11:42:40+08:00">2021-01-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1224,11 +852,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Paper%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">Paper阅读</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Paper%E9%98%85%E8%AF%BB/Social-Networks/" itemprop="url" rel="index"><span itemprop="name">Social Networks</span></a>
+                  <a href="/categories/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87/" itemprop="url" rel="index"><span itemprop="name">科研论文</span></a>
                 </span>
             </span>
 
@@ -1269,54 +893,14 @@
 </blockquote>
 <h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>这篇文章非常数学，嵌入方式应该是通过三个向量表示一个节点，然后通过各自的目标函数联合优化作为整体的目标函数。证明推理部分没有看，感觉很难。</p>
 <p>太难了，我太难了。。。我就是不想看数学推导和数学证明，直接上代码啊~~</p>
-<hr>
-
-<h2 id="Research-Objective"><a href="#Research-Objective" class="headerlink" title="Research Objective"></a>Research Objective</h2><p>提出应用网络表示学习的方法来对齐社交网络。</p>
-<p>Input-Output Network Embedding (IONE) </p>
-<p>将多个社交网络映射到一个共同的嵌入空间中，提出的 IONE 方法使得更多的社交结构属性用于网络表征学习，最终目标是实现更准确的社交网络对齐。</p>
-<hr>
-
-<h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p>结构对齐方法：</p>
-<ul>
-<li><p>监督的</p>
-<p>通过分类的方法，预测 anchor links </p>
-</li>
-<li><p>无监督的</p>
-<p>假定 anchor links 不存在，把该问题看做一般的 graph alignment 问题</p>
-</li>
-</ul>
-<hr>
-
-<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><h3 id="1-Input-Output-Network-Embedding"><a href="#1-Input-Output-Network-Embedding" class="headerlink" title="1. Input-Output Network Embedding"></a>1. Input-Output Network Embedding</h3><p>将节点的父节点作为其输入上下文，同时将节点的子节点作为其输出上下文。</p>
-<p>每一个节点 $v<em>{i}$ 有三个向量表示，节点向量 $\overrightarrow{u</em>{i}} \in \Re^{d}$ , 输入上下文向量  $\vec{u}<em>{i}^{\prime} \in \Re^{d}$ ，输出上下文向量 $\overrightarrow{u</em>{i}}^{\prime \prime} \in \Re^{d}$</p>
-<p><img src="/2019/09/30/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AAligning-Users-Across-Social-Networks-Using-Network-Embedding%E3%80%8B/IONE.png" alt="IONE"></p>
-<p>定义节点$v<em>{i}$ 作为 $v</em>{j}$ 的输入上下文对其贡献概率</p>
-<script type="math/tex; mode=display">
-p_{1}\left(v_{j} | v_{i}\right)=\frac{\exp \left(\overrightarrow{u_{j}}^{\prime T} \cdot \overrightarrow{u_{i}}\right)}{\sum_{k=1}^{|V|} \exp \left(\overrightarrow{u_{k}}^{\prime T} \cdot \overrightarrow{u_{i}}\right)}</script><p>其中 $|V|$ 是网络中用户数，同样可以定义节点 j 作为对节点 i 输出上下文向量的贡献概率</p>
-<script type="math/tex; mode=display">
-p_{2}\left(v_{i} | v_{j}\right)=\frac{\exp \left(\overrightarrow{u_{i}}^{\prime \prime T} \cdot \overrightarrow{u_{j}}\right)}{\sum_{k=1}^{|V|} \exp (\overrightarrow{u_{k}^{\prime \prime}} \cdot \overrightarrow{u_{j}})}</script><script type="math/tex; mode=display">
-\widehat{p}_{1}(i, j)=w_{i j} / d_{i}^{out} ，  d_{i}^{out}=\sum_{k \in N_{\text {out}}\left(v_{i}\right)} w_{i k} , 节点 i 出度和\\
-\widehat{p}_{2}(i, j)=w_{i j} / d_{j}^{in}， d_{j}^{in}=\sum_{k \in N_{\text {in}}\left(v_{j}\right)} w_{kj} , 节点 j 入度和</script><h3 id="2-Aligning-Network-Embedding-of-Multiple-Networks"><a href="#2-Aligning-Network-Embedding-of-Multiple-Networks" class="headerlink" title="2. Aligning Network Embedding of Multiple Networks"></a>2. Aligning Network Embedding of Multiple Networks</h3><p>两个独立网络中节点的结构邻近性尽可能保留在其对应的嵌入中，并且锚节点的表示在嵌入式空间中重合，在嵌入空间中较近的锚节点可以看做 ‘用户对齐’ 较好的候选对象。</p>
-<p>最小化 $p<em>{1}$ 和 $p</em>{2}$ 的 KL 散度</p>
-<p>目标函数：</p>
-<script type="math/tex; mode=display">
-\begin{aligned} O_{1}=&-\sum_{k \in\{X, Y\}} \sum_{v_{j} \in V^{k}} \lambda_{i}^{\text {out}} K L\left(\widehat{p}_{1}^{k}(i, j) \| p_{1}\left(v_{j}^{k} | v_{i}^{k}\right)\right) \\ &-\sum_{k \in\{X, Y\}} \sum_{v_{i} \in V^{k}} \lambda_{j}^{\text {in}} K L\left(\widehat{p}_{2}^{k}(i, j) \| p_{2}\left(v_{i}^{k} | v_{j}^{k}\right)\right) \end{aligned}  \\
-将 \lambda_{i}^{out} 定义为节点v_{i}的出度d_{i}^{out},\lambda_{j}^{in} 定义为节点v_{j}的入度d_{j}^{in} \\
-目标函数可以定义为：\\
-\begin{aligned} O_{1}=&-\sum_{k \in\{X, Y\}} \sum_{\left(v_{i}, v_{j}\right) \in E^{k}} w_{i j}^{k} \log p_{1}\left(v_{j}^{k} | v_{i}^{k}\right) \\ &-\sum_{k \in\{X, Y\}\left(v_{i}, v_{j}\right) \in E^{k}} w_{i j}^{k} \log p_{2}\left(v_{i}^{k} | v_{j}^{k}\right) \end{aligned}</script><p>保持两个网络中同一个节点嵌入向量一致的目标函数：</p>
-<script type="math/tex; mode=display">
-\begin{aligned} O_{2}=&-\sum_{v_{k} \in Y} \sum_{\left(v_{i}, v_{j}\right) \in E^{X}} w_{i j}^{X} p_{a}\left(v_{i}^{X} | v_{k}^{Y}\right) \log p_{1}\left(v_{j}^{X} | v_{k}^{Y}\right) \\ &-\sum_{v_{k} \in Y} \sum_{\left(v_{i}, v_{j}\right) \in E^{X}} w_{i j}^{X} p_{a}\left(v_{j}^{X} | v_{k}^{Y}\right) \log p_{2}\left(v_{i}^{X} | v_{k}^{Y}\right) \\ &-\sum_{v_{k} \in X} \sum_{\left(v_{i}, v_{j}\right) \in E^{Y}} w_{i j}^{Y} p_{a}\left(v_{i}^{Y} | v_{k}^{X}\right) \log p_{1}\left(v_{j}^{Y} | v_{k}^{X}\right) \\ &-\sum_{v_{k} \in X} \sum_{\left(v_{i}, v_{j}\right) \in E^{Y}} w_{i j}^{Y} p_{a}\left(v_{j}^{Y} | v_{k}^{X}\right) \log p_{2}\left(v_{i}^{Y} | v_{k}^{X}\right) \end{aligned}</script><p>最终的目标函数 $O = O<em>{1} + O</em>{2}$</p>
-<hr>
-
-<h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><script type="math/tex; mode=display">
-\text {Precision@} N=\frac{|\operatorname{Corr} U \operatorname{ser} @ N|^{X}+|\operatorname{Corr} U \operatorname{ser} @ N|^{Y}}{ | \text {UnMapped Anchors} | \times 2}  \\
-|\operatorname{Corr} U \operatorname{ser} @ N|:在嵌入空间的前n个邻居中发现的未映射anchor \ user及其对应用户的数量。 \\
-| \text {UnMapped Anchors} |是未映射用户的总数目</script><p>两个网络的度：</p>
-<script type="math/tex; mode=display">
-\text {Interop}(X, Y)=\frac{ | \text {Correlations} | \times 2}{ | \text {Relations}^{X}|+| \text {Relations}^{Y} |} \\
-\text { Relations }^{X / Y} 是网络X/Y中直接连边的集合 \\
- \text {Correlations} 是它们的交集</script><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>研究了跨网络映射用户的问题。提出了一种学习多网络嵌入以对齐网络的表示学习模型。该方法明确地将每个用户的follower-ship和followee-ship建模为输入和输出上下文。在这个模型中，给定的和潜在的锚链接都可以作为一个统一的学习框架中的硬约束和软约束来使用。采用随机梯度下降法和负抽样法对模型进行有效学习。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/09/30/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AAligning-Users-Across-Social-Networks-Using-Network-Embedding%E3%80%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1370,7 +954,7 @@ p_{2}\left(v_{i} | v_{j}\right)=\frac{\exp \left(\overrightarrow{u_{i}}^{\prime 
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-24 09:58:07" itemprop="dateModified" datetime="2020-12-24T09:58:07+08:00">2020-12-24</time>
+                <time title="修改时间：2021-01-16 12:13:26" itemprop="dateModified" datetime="2021-01-16T12:13:26+08:00">2021-01-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1378,7 +962,7 @@ p_{2}\left(v_{i} | v_{j}\right)=\frac{\exp \left(\overrightarrow{u_{i}}^{\prime 
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
                 </span>
             </span>
 
@@ -1416,41 +1000,14 @@ p_{2}\left(v_{i} | v_{j}\right)=\frac{\exp \left(\overrightarrow{u_{i}}^{\prime 
       
           <h1 id="Dynamic-Programming"><a href="#Dynamic-Programming" class="headerlink" title="Dynamic Programming"></a>Dynamic Programming</h1><h2 id="303-区域和检索-数组不可变"><a href="#303-区域和检索-数组不可变" class="headerlink" title="303. 区域和检索 - 数组不可变"></a>303. 区域和检索 - 数组不可变</h2><p><strong>题目描述：</strong></p>
 <p>给定一个整数数组  nums，求出数组从索引 i 到 j  (i ≤ j) 范围内元素的总和，包含 i,  j 两点。</p>
-<p>示例：</p>
-<blockquote>
-<p>给定 nums = [-2, 0, 3, -5, 2, -1]，求和函数为 sumRange()</p>
-<p>sumRange(0, 2) -&gt; 1<br>sumRange(2, 5) -&gt; -1<br>sumRange(0, 5) -&gt; -3</p>
-</blockquote>
-<p>说明:<br>你可以假设数组不可变。<br>会多次调用 sumRange 方法。</p>
-<p><strong>解答</strong><br>起初不太明白为什么这个题目是动态规划问。后来想到，如果每次求一个区间都要重新计算的话，复杂度比较高，可能存在很多重复计算。</p>
-<p>如果求得 0-j 的和，每次计算只需要用 0-j 的和减去 0-i 的和，因为区间是闭区间，因此还要加上 i 的值。<br>先写了一个每次都重新计算的——超时了</p>
-<p>考虑用空间替换时间，写一个数组保存 <code>0-每一个数</code> 的值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumArray</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.nums = nums</span><br><span class="line">        self.sum_array = []</span><br><span class="line">        tmp = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> self.nums:</span><br><span class="line">            tmp += num</span><br><span class="line">            self.sum_array.append(tmp)</span><br><span class="line">            </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sumRange</span><span class="params">(self, i, j)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type i: int</span></span><br><span class="line"><span class="string">        :type j: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.sum_array[j]-self.sum_array[i]+self.nums[i]</span><br></pre></td></tr></table></figure>
-<hr>
-
-<h2 id="392-判断子序列"><a href="#392-判断子序列" class="headerlink" title="392. 判断子序列"></a>392. 判断子序列</h2><p>给定字符串 s 和 t ，判断 s 是否为 t 的子序列。</p>
-<p>你可以认为 s 和 t 中仅包含英文小写字母。字符串 t 可能会很长（长度 ~= 500,000），而 s 是个短字符串（长度 &lt;=100）。</p>
-<p>字符串的一个子序列是原始字符串删除一些（也可以不删除）字符而不改变剩余字符相对位置形成的新字符串。（例如，<code>&quot;ace&quot;</code>是<code>&quot;abcde&quot;</code>的一个子序列，而<code>&quot;aec&quot;</code>不是）。</p>
-<p>示例 1:<br>s = <code>&quot;abc&quot;</code>, t = <code>&quot;ahbgdc&quot;</code></p>
-<p>返回 <code>true</code>.</p>
-<p>示例 2:<br>s = <code>&quot;axc&quot;</code>, t = <code>&quot;ahbgdc&quot;</code></p>
-<p>返回 <code>false</code>.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isSubsequence</span><span class="params">(self, s, t)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :type t: str</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        遍历s中的每一个字符，若字符在t中出现，删除t中该字符前面的部分 </span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">for</span> s_i <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> s_i <span class="keyword">in</span> t:</span><br><span class="line">                index = t.index(s_i)</span><br><span class="line">                t = t[index+<span class="number">1</span>:]  <span class="comment">## 删除前面那的字符串，只判断后面的</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
-<hr>
-
-<h2 id="746-使用最小花费爬楼梯"><a href="#746-使用最小花费爬楼梯" class="headerlink" title="746. 使用最小花费爬楼梯"></a>746. 使用最小花费爬楼梯</h2><p><strong>题目描述：</strong></p>
-<p>数组的每个索引做为一个阶梯，第 i个阶梯对应着一个非负数的体力花费值 <code>cost[i]</code>(索引从0开始)。</p>
-<p>每当你爬上一个阶梯你都要花费对应的体力花费值，然后你可以选择继续爬一个阶梯或者爬两个阶梯。</p>
-<p>您需要找到达到楼层顶部的最低花费。在开始时，你可以选择从索引为 0 或 1 的元素作为初始阶梯。</p>
-<p>示例 1:</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: cost = [<span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>]</span><br><span class="line">输出: <span class="number">15</span></span><br><span class="line">解释: 最低花费是从cost[<span class="number">1</span>]开始，然后走两步即可到阶梯顶，一共花费<span class="number">15</span>。</span><br></pre></td></tr></table></figure>
-<p>示例 2:</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: cost = [<span class="number">1</span>, <span class="number">100</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">100</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">100</span>, <span class="number">1</span>]</span><br><span class="line">输出: <span class="number">6</span></span><br><span class="line">解释: 最低花费方式是从cost[<span class="number">0</span>]开始，逐个经过那些<span class="number">1</span>，跳过cost[<span class="number">3</span>]，一共花费<span class="number">6</span>。</span><br></pre></td></tr></table></figure>
-<p><strong>题解：</strong></p>
-<p>刚开始没有太看懂这道题是什么意思，看了评论区大家的解释，<br>大体可以理解为你可以一次走一步或者两步楼梯，但是到了这个楼梯，在该楼梯上的花费必须要有。<br>求最小的爬楼梯花费，有点像之前的爬楼梯的题目。<br>因此对于当前台阶i，你可以从前一级过来，也可以从前一级的前一级过来，<br>由于你到达了该台阶，总花费需要加上当前第i台阶的花费</p>
-<p><strong>代码：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minCostClimbingStairs</span><span class="params">(self, cost)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type cost: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        n = len(cost)</span><br><span class="line">        <span class="keyword">if</span> n==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> n==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> cost[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,n):</span><br><span class="line">            cost[i] = min(cost[i<span class="number">-1</span>], cost[i<span class="number">-2</span>]) + cost[i]</span><br><span class="line">        <span class="keyword">return</span> min(cost[<span class="number">-1</span>],cost[<span class="number">-2</span>])</span><br></pre></td></tr></table></figure>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/09/30/leetcode-Dynamic-Programming/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1504,7 +1061,7 @@ p_{2}\left(v_{i} | v_{j}\right)=\frac{\exp \left(\overrightarrow{u_{i}}^{\prime 
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-24 09:58:07" itemprop="dateModified" datetime="2020-12-24T09:58:07+08:00">2020-12-24</time>
+                <time title="修改时间：2021-01-16 11:47:32" itemprop="dateModified" datetime="2021-01-16T11:47:32+08:00">2021-01-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1512,7 +1069,7 @@ p_{2}\left(v_{i} | v_{j}\right)=\frac{\exp \left(\overrightarrow{u_{i}}^{\prime 
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Social-Networks/" itemprop="url" rel="index"><span itemprop="name">-论文阅读; -Social Networks</span></a>
+                  <a href="/categories/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87/" itemprop="url" rel="index"><span itemprop="name">科研论文</span></a>
                 </span>
             </span>
 
@@ -1550,44 +1107,14 @@ p_{2}\left(v_{i} | v_{j}\right)=\frac{\exp \left(\overrightarrow{u_{i}}^{\prime 
       
           <h1 id="Predict-Anchor-Links-across-Social-Networks-via-an-Embedding-Approach"><a href="#Predict-Anchor-Links-across-Social-Networks-via-an-Embedding-Approach" class="headerlink" title="Predict Anchor Links across Social Networks via an Embedding Approach"></a>Predict Anchor Links across Social Networks via an Embedding Approach</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>这篇文章的思想很好理解，通过将源网络和目标网络嵌入到低维向量空间中，最后根据已观测到的 anchor link 监督信息，预测 hidden anchor link。</p>
 <p>有一个问题是 “Cross Network Extension” 是否合理？？感觉他们的方法效果好的主要原因就是采取了两个 Cross Network Extension，嵌入的方法上使用 MLP 好像还可以进一步改进。</p>
-<h2 id="Research-Objective"><a href="#Research-Objective" class="headerlink" title="Research Objective"></a>Research Objective</h2><p>如果没有关于社交用户的用户资料和 content 信息，如何利用网络结构解决 anchor link prediction 问题。</p>
-<p>提出一种基于交叉网络嵌入的方法，将观察到的 Anchor Link 作为监督信息，进行Anchor Link预测。</p>
-<h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p>仅利用网络结构的方法包括：</p>
-<ul>
-<li><p>unsupervised：将该问题看做 network alignment 问题，通过寻找网络中节点之间的结构相似性来解决。</p>
-</li>
-<li><p>supervised：社交网络的结构特征，例如：度、聚类系数、共同邻居等</p>
-<p>受网络结构的影响比较大，微小的网络结构扰动会产生比较大的影响</p>
-</li>
-</ul>
-<p>充分利用 <strong>社交网络的结构规律</strong> 和 <strong>与所观察到的锚链接相关的信息</strong> 的方法</p>
-<p><strong>Anchor link prediction</strong></p>
-<p>Given two networks $G^{s} = {V^{s}, E^{s}}$ and $G^{t} = {V^{t}, E^{t}}$ and a set of observed anchor links $T={(v,u)|v \in V^{s}, u \in V{t}}$</p>
-<p>Aim: identify hidden anchor links across $G^{s}$ and $G^{t}$</p>
-<p>将源和目标网络嵌入到低维向量空间中，学习一个映射函数$Z^{s} \rightarrow Z^{t}$ </p>
-<p>最优化目标：</p>
-<script type="math/tex; mode=display">
-\min _{Z^{s}, Z^{t}, \phi}\left\{L_{e}\left(G^{s}, Z^{s}, G^{t}, Z^{t}, T\right)+L_{m}\left(\phi, Z^{s}, Z^{t}, T\right)\right\}</script><p>where $L<em>{e}\left(G^{s}, Z^{s}, G^{t}, Z^{t}, T\right)$ 是源网络和目标网络embedding到低维向量空间的loss，$L</em>{m}\left(\phi, Z^{s}, Z^{t}, T\right)$ 是 matching loss</p>
-<hr>
-
-<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><p>Predicting Anchor Links via Embedding</p>
-<p><img src="/2019/09/28/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8APredict-Anchor-Links-across-Social-Networks-via-an-Embedding-Approach%E3%80%8B/PALE.png" alt="PALE"></p>
-<h3 id="1-Anchor-Link-aware-Network-Embedding"><a href="#1-Anchor-Link-aware-Network-Embedding" class="headerlink" title="1. Anchor-Link-aware Network Embedding"></a>1. Anchor-Link-aware Network Embedding</h3><h4 id="Cross-Network-Extension"><a href="#Cross-Network-Extension" class="headerlink" title="Cross Network Extension"></a>Cross Network Extension</h4><p><img src="/2019/09/28/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8APredict-Anchor-Links-across-Social-Networks-via-an-Embedding-Approach%E3%80%8B/extension.png" alt="extension network"></p>
-<p>利用观察到的anchor link扩展源网络和目标网络。源网络中没有的边，但是它们的counterpart在目标网络中存在边，将边加入到网络中去，对源网络进行扩充。目标网络的扩充也是如此。</p>
-<h4 id="Network-Embedding"><a href="#Network-Embedding" class="headerlink" title="Network Embedding"></a>Network Embedding</h4><p>取log-likelihood并且进行负采样，得到目标函数：</p>
-<script type="math/tex; mode=display">
-\log \sigma\left(z_{i}^{T} \cdot z_{j}\right)+\sum_{k=1}^{K} E_{v_{k} \propto P_{n}(v)}\left[\log \left(1-\sigma\left(z_{i}^{T} \cdot z_{k}\right)\right)\right]</script><h3 id="2-Supervised-Latent-Space-Matching"><a href="#2-Supervised-Latent-Space-Matching" class="headerlink" title="2. Supervised Latent Space Matching"></a>2. Supervised Latent Space Matching</h3><p>在观测到的 anchor links $\left(v<em>{l}^{s}, u</em>{n}^{t}\right) \in T$ 为监督信息的条件下，学习一个映射函数，将网络嵌入到潜在的空间内。</p>
-<p>loss：</p>
-<script type="math/tex; mode=display">
-L_{m}\left(\phi, Z^{s}, Z^{t}, T\right)=\sum_{\left(v_{l}^{s}, u_{n}^{t}\right) \in T}\left\|\phi\left(z_{l}^{s} ; \Theta\right)-z_{n}^{t}\right\|_{F}  \\
-\phi\left(z_{l}^{s} ; \Theta\right)=\Theta \times z_{l}^{s}, \quad v_{l}^{s} \in V^{s}</script><h3 id="3-Anchor-Link-Prediction"><a href="#3-Anchor-Link-Prediction" class="headerlink" title="3. Anchor Link Prediction"></a>3. Anchor Link Prediction</h3><p>为了预测源，对于源网络中任意给定节点 v 及其表示 z，可以根据映射函数将其映射到目标的潜在空间中。然后，通过识别与之对应的节点 u 最近的节点来预测 hidden anchor links.</p>
-<script type="math/tex; mode=display">
-\min _{n}\left\|\phi\left(z_{l}^{s} ; \Theta\right)-z_{n}^{t}\right\|_{F}</script><h3 id="4-Experiments"><a href="#4-Experiments" class="headerlink" title="4. Experiments"></a>4. Experiments</h3><h4 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h4><blockquote>
-<p><a href="http://socialnetworks.mpi-sws.org/data-wosn2009.html" target="_blank" rel="noopener">http://socialnetworks.mpi-sws.org/data-wosn2009.html</a> </p>
-<p>微软学术圈会议的数据，按领域划分为数据挖掘和人工智能两个网络圈集合，进行这两个网络圈的用户对齐</p>
-<p><a href="http://research.microsoft.com/en-us/projects/mag/" target="_blank" rel="noopener">http://research.microsoft.com/en-us/projects/mag/</a> </p>
-</blockquote>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/09/28/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8APredict-Anchor-Links-across-Social-Networks-via-an-Embedding-Approach%E3%80%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1641,7 +1168,7 @@ L_{m}\left(\phi, Z^{s}, Z^{t}, T\right)=\sum_{\left(v_{l}^{s}, u_{n}^{t}\right) 
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-24 09:58:07" itemprop="dateModified" datetime="2020-12-24T09:58:07+08:00">2020-12-24</time>
+                <time title="修改时间：2021-01-16 11:57:49" itemprop="dateModified" datetime="2021-01-16T11:57:49+08:00">2021-01-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1688,105 +1215,14 @@ L_{m}\left(\phi, Z^{s}, Z^{t}, T\right)=\sum_{\left(v_{l}^{s}, u_{n}^{t}\right) 
           <h2 id="Java面向对象编程"><a href="#Java面向对象编程" class="headerlink" title="Java面向对象编程"></a>Java面向对象编程</h2><h3 id="1-面向对象（OOP）与面向过程（POP）"><a href="#1-面向对象（OOP）与面向过程（POP）" class="headerlink" title="1. 面向对象（OOP）与面向过程（POP）"></a>1. 面向对象（OOP）与面向过程（POP）</h3><p>二者都是一种思想，面向对象是相对于面向过程而言的。</p>
 <p>面向过程，强调的是功能行为。</p>
 <p>面向对象，将功能封装进对象，强调具备了功能的对象</p>
-<p><strong>面向对象的三大特征</strong>：</p>
-<p>封装、继承多态</p>
-<h3 id="2-Java-类及类的成员"><a href="#2-Java-类及类的成员" class="headerlink" title="2. Java 类及类的成员"></a>2. Java 类及类的成员</h3><h4 id="属性：对应类中的成员变量"><a href="#属性：对应类中的成员变量" class="headerlink" title="属性：对应类中的成员变量"></a>属性：对应类中的成员变量</h4><p><strong>语法格式</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">修饰符 类型 属性名=初值;</span><br><span class="line">说明：修饰符 <span class="keyword">private</span> 表示该属性只能由该类的方法访问</span><br><span class="line">	 修饰符 <span class="keyword">public</span> 表示该属性可以被该类以外的方法访问</span><br><span class="line">	 类型：任何基本类型，如 <span class="keyword">int</span>，<span class="keyword">boolean</span> 或任何类</span><br><span class="line">例子：</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age; <span class="comment">//声明 private 变量 age</span></span><br><span class="line">	<span class="keyword">public</span> String name=<span class="string">"Lisa"</span>; <span class="comment">// 声明 public 变量 name</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>变量的分类</strong></p>
-<ul>
-<li>成员变量：类体内声明的变量<ul>
-<li>实例变量（不以static修饰）：在类实例化成对象之后才能使用</li>
-<li>类变量（以static修饰）：静态的，这样的变量不需要类实例化成对象就可以使用，可以通过<strong>类名.属性</strong>这样的方式直接调用</li>
-</ul>
-</li>
-<li>局部变量：方法体内声明的变量<ul>
-<li>形参（方法签名中定义的变量）</li>
-<li>方法局部变量（在方法内定义）</li>
-<li>代码块局部变量（在代码块定义）</li>
-</ul>
-</li>
-<li>成员变量与局部变量的区别<ul>
-<li>成员变量<ul>
-<li>定义在类中，在整个类中都可以被访问</li>
-<li>成员变量分为类成员变量和实例成员变量，实例变量存在与对象所在的堆内存中</li>
-<li>成员变量的修饰符可以根据需要选择</li>
-</ul>
-</li>
-<li>局部变量<ul>
-<li>局部变量只定义在局部范围内，如：方法内、代码块内等</li>
-<li>局部变量存在于栈内存中</li>
-<li>作用的范围结束，变量空间会自动释放</li>
-<li>局部变量没有默认初始化值，每次必须显式初始化</li>
-<li>局部变量声明时不指定修饰符权限</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="行为：对应类中的成员方法"><a href="#行为：对应类中的成员方法" class="headerlink" title="行为：对应类中的成员方法"></a>行为：对应类中的成员方法</h4><p><strong>语法格式</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">修饰符 返回值类型 方法名(参数列表)&#123;</span><br><span class="line">	方法体语句;</span><br><span class="line">&#125;</span><br><span class="line">说明：修饰符，<span class="keyword">public</span>，<span class="keyword">private</span>，<span class="keyword">protected</span>等</span><br><span class="line">	 返回值类型：<span class="keyword">return</span>语句传递返回值，没有返回值，<span class="keyword">void</span></span><br><span class="line">举例：</span><br><span class="line"><span class="function"><span class="keyword">public</span> class <span class="title">Person</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span></span>&#123;  <span class="comment">// 声明方法getAge</span></span><br><span class="line">		<span class="keyword">return</span> age;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123; <span class="comment">// 声明方法setAge</span></span><br><span class="line">		age = i;  <span class="comment">// 将参数的值赋值给类的成员变量age</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>方法只有被调用才会被执行</p>
-<p><strong>注意</strong></p>
-<p>没有具体返回值的情况，返回值类型用关键字void表示。</p>
-<p>定义方法时，方法的结果应该返回给调用者，交由调用者处理。</p>
-<p>方法中只能调用方法，不可以在方法内部定义方法。</p>
-<p>面向对象程序设计的重点是<strong>类的设计</strong></p>
-<p>定义类其实是定义类中的成员（成员变量和成员方法）</p>
-<h3 id="3-类的语法格式"><a href="#3-类的语法格式" class="headerlink" title="3. 类的语法格式"></a>3. 类的语法格式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">修饰符 <span class="class"><span class="keyword">class</span> 类名</span>&#123;</span><br><span class="line">	属性声明;</span><br><span class="line">	方法声明;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>说明：public 修饰符，表示类可以被任意访问</p>
-<p>​            类的正文要用 <code>{ }</code> 括起来</p>
-<p>方法定义时，若有多个字母，采用驼峰命名法（首字母小写，其他单词首字母大写）</p>
-<h3 id="4-创建-Java-自定义类"><a href="#4-创建-Java-自定义类" class="headerlink" title="4. 创建 Java 自定义类"></a>4. 创建 Java 自定义类</h3><p>步骤：</p>
-<ol>
-<li>定义类（考虑修饰符、类名）</li>
-<li>编写类的属性（考虑修饰符、属性类型、属性名、初始化值）</li>
-<li>编写类的方法（考虑修饰符、返回值类型、方法名、形参等）</li>
-</ol>
-<h3 id="5-对象的创建和使用"><a href="#5-对象的创建和使用" class="headerlink" title="5. 对象的创建和使用"></a>5. 对象的创建和使用</h3><p>java 类及类的成员</p>
-<p>java 类的实例化，即创建类的对象</p>
-<p>使用 <code>new</code> + 构造器 创建一个新的对象</p>
-<p>使用 “对象名.对象成员” 的方式访问对象成员(包括属性和方法)</p>
-<h3 id="6-关于对象"><a href="#6-关于对象" class="headerlink" title="6. 关于对象"></a>6. 关于对象</h3><h4 id="匿名对象"><a href="#匿名对象" class="headerlink" title="匿名对象"></a>匿名对象</h4><p>我们可以不定义对象的句柄，而直接调用这个对象的方法，这样的对象叫做匿名对象。例如：<code>new Person().show();</code></p>
-<p>使用情况：</p>
-<p>如果对一个对象只需要进行一次方法调用，那么就使用匿名对象</p>
-<p>经常将匿名对象作为实参传递给一个方法调用</p>
-<h3 id="7-方法的重载"><a href="#7-方法的重载" class="headerlink" title="7. 方法的重载"></a>7. 方法的重载</h3><p>在同一个类中，允许存在一个以上的同名方法，只要它们的参数个数或者参数类型不同即可。</p>
-<p><strong>重载的特点</strong></p>
-<p>与返回值类型无关，只看<strong>参数列表</strong>，且参数列表必须不同（参数个数或参数类型），调用时，根据方法参数列表的不同来区别。</p>
-<h3 id="8-方法的可变个数的参数"><a href="#8-方法的可变个数的参数" class="headerlink" title="8. 方法的可变个数的参数"></a>8. 方法的可变个数的参数</h3><p>不知道给一个方法传递的参数的个数</p>
-<ul>
-<li><p>数组形参</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> a, String[] books)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>可变个数形参</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> a, String... books)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>说明：</p>
-<p>​    可变参数：方法参数部分指定类型的参数个数是可变多个</p>
-<p>​    声明方式：方法名 （参数类型名… 参数名）</p>
-<p>​    可变参数方法的使用与方法参数部分使用数组是一致的</p>
-<p>​    <strong>方法的参数部分有可变形参，需要放在形参声明的最后</strong></p>
-<h3 id="9-方法的参数传递"><a href="#9-方法的参数传递" class="headerlink" title="9. 方法的参数传递"></a>9. 方法的参数传递</h3><p>方法必须有其所在类或对象调用才有意义。若方法含有参数：</p>
-<ul>
-<li>形参：声明方法时的参数</li>
-<li>实参：方法调用时实际传给形参的参数值</li>
-</ul>
-<p>Java 方法参数的传递方式是<strong>值传递</strong>，即将实际参数值的副本传入方法内，而参数本身不受影响。</p>
-<p><strong>JVM 的内存模型</strong></p>
-<ul>
-<li>栈 stack：基础数据类型、对象的引用（对象的地址）</li>
-<li>堆 heap：所有的对象（包括自己定义的对象和字符串对象）</li>
-<li>方法区 method：所有的 class 和 static 变量</li>
-</ul>
-<p>基本数据类型在参数的传递中，就是把实参的值复制到形参中。</p>
-<p><strong>方法的参数传递之引用传递</strong></p>
-<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><ol>
-<li>如果方法的形参是基本数据类型，那么实参（实际的数据）向形参传递参数时，就是直接传递值，把实参的值赋给形参。</li>
-<li>如果方法的形参是对象，那么实参向形参传递参数时，这个值是实参在<strong>栈内存</strong>中的值，也就是引用对象在堆内存中的地址</li>
-</ol>
-<p>基本数据类型都是保存在栈内存中，引用对象在栈内存中保存的是引用对象在堆内存中的地址，那么方法的参数是传递值，实际上传递的是引用对象在堆内存中的地址。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/09/27/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1877,20 +1313,20 @@ L_{m}\left(\phi, Z^{s}, Z^{t}, T\right)=\sum_{\left(v_{l}^{s}, u_{n}^{t}\right) 
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1923,7 +1359,7 @@ L_{m}\left(\phi, Z^{s}, Z^{t}, T\right)=\sum_{\left(v_{l}^{s}, u_{n}^{t}\right) 
 <div class="copyright">
   
   &copy; 2019 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

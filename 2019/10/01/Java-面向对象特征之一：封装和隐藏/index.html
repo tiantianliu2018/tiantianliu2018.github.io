@@ -20,17 +20,17 @@
     var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Java 面向对象特征之一：封装和隐藏信息的封装和隐藏Java 中通过将数据声明为私有的（private），再提供公共的（public）方法：getXxx()和 setXxx() 实现对该属性的操作，以实现下述目的： 隐藏一个类中不需要对外提供的实现细节； 使用者只能通过事先定值好的方法来访问数据，可以方便地加入控制逻辑，限制对属性的不合理操作； 便于修改，增强代码的可维护性。   四种访问权限修">
+  <meta name="description" content="Java 面向对象特征之一：封装和隐藏信息的封装和隐藏Java 中通过将数据声明为私有的（private），再提供公共的（public）方法：getXxx()和 setXxx() 实现对该属性的操作，以实现下述目的： 隐藏一个类中不需要对外提供的实现细节； 使用者只能通过事先定值好的方法来访问数据，可以方便地加入控制逻辑，限制对属性的不合理操作； 便于修改，增强代码的可维护性。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 面向对象特征之一：封装和隐藏">
 <meta property="og:url" content="http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/index.html">
 <meta property="og:site_name" content="Kelly&#39;s Blogs">
-<meta property="og:description" content="Java 面向对象特征之一：封装和隐藏信息的封装和隐藏Java 中通过将数据声明为私有的（private），再提供公共的（public）方法：getXxx()和 setXxx() 实现对该属性的操作，以实现下述目的： 隐藏一个类中不需要对外提供的实现细节； 使用者只能通过事先定值好的方法来访问数据，可以方便地加入控制逻辑，限制对属性的不合理操作； 便于修改，增强代码的可维护性。   四种访问权限修">
+<meta property="og:description" content="Java 面向对象特征之一：封装和隐藏信息的封装和隐藏Java 中通过将数据声明为私有的（private），再提供公共的（public）方法：getXxx()和 setXxx() 实现对该属性的操作，以实现下述目的： 隐藏一个类中不需要对外提供的实现细节； 使用者只能通过事先定值好的方法来访问数据，可以方便地加入控制逻辑，限制对属性的不合理操作； 便于修改，增强代码的可维护性。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-10-01T01:11:54.000Z">
-<meta property="article:modified_time" content="2020-12-24T01:58:07.172Z">
+<meta property="article:modified_time" content="2021-01-16T03:58:04.333Z">
 <meta property="article:author" content="Kelly Liu">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Java 基础">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://tiantianliu2018.github.io/2019/10/01/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%B0%81%E8%A3%85%E5%92%8C%E9%9A%90%E8%97%8F/">
@@ -128,17 +128,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">38</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">32</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">38</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">12</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">83</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">82</span></a>
 
   </li>
   </ul>
@@ -197,7 +197,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-24 09:58:07" itemprop="dateModified" datetime="2020-12-24T09:58:07+08:00">2020-12-24</time>
+                <time title="修改时间：2021-01-16 11:58:04" itemprop="dateModified" datetime="2021-01-16T11:58:04+08:00">2021-01-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,6 +252,7 @@
 <p>隐藏一个类中不需要对外提供的实现细节；</p>
 <p>使用者只能通过事先定值好的方法来访问数据，可以方便地加入控制逻辑，限制对属性的不合理操作；</p>
 <p>便于修改，增强代码的可维护性。</p>
+<a id="more"></a>
 <hr>
 
 <h2 id="四种访问权限修饰符"><a href="#四种访问权限修饰符" class="headerlink" title="四种访问权限修饰符"></a>四种访问权限修饰符</h2><p>Java 权限修饰符 public、protected、private 置于<strong>类的成员</strong>定义前，用来限定对象对该类成员的访问权限。</p>
@@ -321,7 +322,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/Java-%E5%9F%BA%E7%A1%80/" rel="tag"># Java 基础</a>
           </div>
 
         
@@ -413,20 +414,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -459,7 +460,7 @@
 <div class="copyright">
   
   &copy; 2019 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

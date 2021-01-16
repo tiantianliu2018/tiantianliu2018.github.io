@@ -30,9 +30,10 @@
 <meta property="og:image" content="http://tiantianliu2018.github.io/2019/09/28/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8APredict-Anchor-Links-across-Social-Networks-via-an-Embedding-Approach%E3%80%8B/PALE.png">
 <meta property="og:image" content="http://tiantianliu2018.github.io/2019/09/28/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8APredict-Anchor-Links-across-Social-Networks-via-an-Embedding-Approach%E3%80%8B/extension.png">
 <meta property="article:published_time" content="2019-09-28T03:03:47.000Z">
-<meta property="article:modified_time" content="2020-12-24T01:58:07.352Z">
+<meta property="article:modified_time" content="2021-01-16T03:47:32.006Z">
 <meta property="article:author" content="Kelly Liu">
-<meta property="article:tag" content="Predict Anchor Links">
+<meta property="article:tag" content="Social Networks">
+<meta property="article:tag" content="User Identity Linkage">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://tiantianliu2018.github.io/2019/09/28/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8APredict-Anchor-Links-across-Social-Networks-via-an-Embedding-Approach%E3%80%8B/PALE.png">
 
@@ -131,17 +132,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">38</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">32</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">38</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">12</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">83</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">82</span></a>
 
   </li>
   </ul>
@@ -200,7 +201,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-24 09:58:07" itemprop="dateModified" datetime="2020-12-24T09:58:07+08:00">2020-12-24</time>
+                <time title="修改时间：2021-01-16 11:47:32" itemprop="dateModified" datetime="2021-01-16T11:47:32+08:00">2021-01-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -208,7 +209,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Social-Networks/" itemprop="url" rel="index"><span itemprop="name">-论文阅读; -Social Networks</span></a>
+                  <a href="/categories/%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87/" itemprop="url" rel="index"><span itemprop="name">科研论文</span></a>
                 </span>
             </span>
 
@@ -253,6 +254,7 @@
       
         <h1 id="Predict-Anchor-Links-across-Social-Networks-via-an-Embedding-Approach"><a href="#Predict-Anchor-Links-across-Social-Networks-via-an-Embedding-Approach" class="headerlink" title="Predict Anchor Links across Social Networks via an Embedding Approach"></a>Predict Anchor Links across Social Networks via an Embedding Approach</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>这篇文章的思想很好理解，通过将源网络和目标网络嵌入到低维向量空间中，最后根据已观测到的 anchor link 监督信息，预测 hidden anchor link。</p>
 <p>有一个问题是 “Cross Network Extension” 是否合理？？感觉他们的方法效果好的主要原因就是采取了两个 Cross Network Extension，嵌入的方法上使用 MLP 好像还可以进一步改进。</p>
+<a id="more"></a>
 <h2 id="Research-Objective"><a href="#Research-Objective" class="headerlink" title="Research Objective"></a>Research Objective</h2><p>如果没有关于社交用户的用户资料和 content 信息，如何利用网络结构解决 anchor link prediction 问题。</p>
 <p>提出一种基于交叉网络嵌入的方法，将观察到的 Anchor Link 作为监督信息，进行Anchor Link预测。</p>
 <h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p>仅利用网络结构的方法包括：</p>
@@ -310,7 +312,8 @@ L_{m}\left(\phi, Z^{s}, Z^{t}, T\right)=\sum_{\left(v_{l}^{s}, u_{n}^{t}\right) 
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Predict-Anchor-Links/" rel="tag"># Predict Anchor Links</a>
+              <a href="/tags/Social-Networks/" rel="tag"># Social Networks</a>
+              <a href="/tags/User-Identity-Linkage/" rel="tag"># User Identity Linkage</a>
           </div>
 
         
@@ -402,20 +405,20 @@ L_{m}\left(\phi, Z^{s}, Z^{t}, T\right)=\sum_{\left(v_{l}^{s}, u_{n}^{t}\right) 
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -448,7 +451,7 @@ L_{m}\left(\phi, Z^{s}, Z^{t}, T\right)=\sum_{\left(v_{l}^{s}, u_{n}^{t}\right) 
 <div class="copyright">
   
   &copy; 2019 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
