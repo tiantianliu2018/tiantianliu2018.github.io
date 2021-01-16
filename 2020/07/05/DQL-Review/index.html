@@ -1,292 +1,275 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8332.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%91%8A%E7%99%BD%E6%B0%94%E7%90%8316.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="The Space to record knowledge and my life.">
+  <meta name="author" content="Kelly Liu">
+  <meta name="keywords" content="CS_learn, Keep Moving...">
+  <title>DQL Review - Kelly&#39;s Blogs</title>
 
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"tiantianliu2018.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta name="description" content="DQL Review 数据库是大二的时候学的，后来很少用过了，一般也是一些简单的 select，最近看到一些 SQL 的应用，写篇笔记回顾一下。 数据库查询语言 12345678910SELECT&amp;#123;* | &lt;字段列名&gt;&amp;#125;    		-- 要查询字段的名称[FROM &lt;表 1&gt;, &lt;表 2&gt;…    -- 要查询的数据来源[WHERE &lt;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="DQL Review">
-<meta property="og:url" content="http://tiantianliu2018.github.io/2020/07/05/DQL-Review/index.html">
-<meta property="og:site_name" content="Kelly&#39;s Blogs">
-<meta property="og:description" content="DQL Review 数据库是大二的时候学的，后来很少用过了，一般也是一些简单的 select，最近看到一些 SQL 的应用，写篇笔记回顾一下。 数据库查询语言 12345678910SELECT&amp;#123;* | &lt;字段列名&gt;&amp;#125;    		-- 要查询字段的名称[FROM &lt;表 1&gt;, &lt;表 2&gt;…    -- 要查询的数据来源[WHERE &lt;">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-05T03:19:25.000Z">
-<meta property="article:modified_time" content="2021-01-16T03:51:51.114Z">
-<meta property="article:author" content="Kelly Liu">
-<meta property="article:tag" content="SQL">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://tiantianliu2018.github.io/2020/07/05/DQL-Review/">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true
-  };
-</script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-  <title>DQL Review | Kelly's Blogs</title>
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
   
 
 
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
+<link  rel="stylesheet" href="/css/main.css" />
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
+<!-- 自定义样式保持在最底部 -->
 
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/clicklove.js"></script>
-</head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Kelly</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Kelly's Blogs</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">To Be Better</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">32</span></a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">12</span></a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">82</span></a>
-
-  </li>
-  </ul>
-
 </nav>
-</div>
-    </header>
 
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
 
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content">
             
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-07-05 11:19" pubdate>
+        2020年7月5日 上午
+      </time>
+    </span>
+  
+</div>
 
-  <div class="posts-expand">
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
       
+      
+      24
+       分钟
+    </span>
+  
+
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://tiantianliu2018.github.io/2020/07/05/DQL-Review/">
+</div>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-      <meta itemprop="name" content="Kelly Liu">
-      <meta itemprop="description" content="The Space to record knowledge and my life.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kelly's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          DQL Review
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-05 11:19:25" itemprop="dateCreated datePublished" datetime="2020-07-05T11:19:25+08:00">2020-07-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-16 11:51:51" itemprop="dateModified" datetime="2021-01-16T11:51:51+08:00">2021-01-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-                </span>
-            </span>
+            
+          </div>
 
           
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/07/05/DQL-Review/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/05/DQL-Review/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.7k</span>
-            </span>
-
         </div>
-      </header>
+      </div>
+    </div>
+  </header>
 
+  <main>
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
       
-        <h1 id="DQL-Review"><a href="#DQL-Review" class="headerlink" title="DQL Review"></a>DQL Review</h1><hr>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">DQL Review</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="DQL-Review"><a href="#DQL-Review" class="headerlink" title="DQL Review"></a>DQL Review</h1><hr>
 <p>数据库是大二的时候学的，后来很少用过了，一般也是一些简单的 select，最近看到一些 SQL 的应用，写篇笔记回顾一下。</p>
 <p>数据库查询语言</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">&#123;* | &lt;字段列名&gt;&#125;    		<span class="comment">-- 要查询字段的名称</span></span><br><span class="line">[</span><br><span class="line"><span class="keyword">FROM</span> &lt;表 <span class="number">1</span>&gt;, &lt;表 <span class="number">2</span>&gt;…    <span class="comment">-- 要查询的数据来源</span></span><br><span class="line">[<span class="keyword">WHERE</span> &lt;表达式&gt;				 <span class="comment">-- 查询要满足的条件</span></span><br><span class="line">[<span class="keyword">GROUP</span> <span class="keyword">BY</span> &lt;<span class="keyword">group</span> <span class="keyword">by</span> definition&gt;  		<span class="comment">-- 按照指定的字段分组</span></span><br><span class="line">[<span class="keyword">HAVING</span> &lt;expression&gt; [&#123;&lt;<span class="keyword">operator</span>&gt; &lt;expression&gt;&#125;…]]</span><br><span class="line">[<span class="keyword">ORDER</span> <span class="keyword">BY</span> &lt;<span class="keyword">order</span> <span class="keyword">by</span> definition&gt;]		<span class="comment">-- 根据某个字段排序，有 ASC 和 DESC</span></span><br><span class="line">[<span class="keyword">LIMIT</span>[&lt;<span class="keyword">offset</span>&gt;,] &lt;<span class="keyword">row</span> <span class="keyword">count</span>&gt;] 		<span class="comment">-- 查询出来的数据条数</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span>
+&#123;* | &lt;字段列名&gt;&#125;    		<span class="hljs-comment">-- 要查询字段的名称</span>
+[
+<span class="hljs-keyword">FROM</span> &lt;表 <span class="hljs-number">1</span>&gt;, &lt;表 <span class="hljs-number">2</span>&gt;…    <span class="hljs-comment">-- 要查询的数据来源</span>
+[<span class="hljs-keyword">WHERE</span> &lt;表达式&gt;				 <span class="hljs-comment">-- 查询要满足的条件</span>
+[<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> &lt;<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> definition&gt;  		<span class="hljs-comment">-- 按照指定的字段分组</span>
+[<span class="hljs-keyword">HAVING</span> &lt;expression&gt; [&#123;&lt;<span class="hljs-keyword">operator</span>&gt; &lt;expression&gt;&#125;…]]
+[<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> &lt;<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> definition&gt;]		<span class="hljs-comment">-- 根据某个字段排序，有 ASC 和 DESC</span>
+[<span class="hljs-keyword">LIMIT</span>[&lt;<span class="hljs-keyword">offset</span>&gt;,] &lt;<span class="hljs-keyword">row</span> <span class="hljs-keyword">count</span>&gt;] 		<span class="hljs-comment">-- 查询出来的数据条数</span>
+]</code></pre>
 <a id="more"></a>
 <h3 id="查询表中的字段"><a href="#查询表中的字段" class="headerlink" title="查询表中的字段"></a>查询表中的字段</h3><ul>
 <li><code>*</code> 通配符查询，查询所有字段，按照数据表中字段的顺序进行排列，不能改变字段的排列顺序。</li>
 <li>指定要查询的字段名称</li>
 </ul>
 <p><strong>注意</strong>：由于索引的存在，为了走索引加快查询速度，尽量指明要查询的字段，而不是使用通配符</p>
-<h3 id="使用-DISTINCT-过滤重复数据"><a href="#使用-DISTINCT-过滤重复数据" class="headerlink" title="使用 DISTINCT 过滤重复数据"></a>使用 DISTINCT 过滤重复数据</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span>&lt;字段名&gt; <span class="keyword">FROM</span> &lt;表名&gt;;</span><br></pre></td></tr></table></figure>
+<h3 id="使用-DISTINCT-过滤重复数据"><a href="#使用-DISTINCT-过滤重复数据" class="headerlink" title="使用 DISTINCT 过滤重复数据"></a>使用 DISTINCT 过滤重复数据</h3><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span>&lt;字段名&gt; <span class="hljs-keyword">FROM</span> &lt;表名&gt;;</code></pre>
 <p><strong>注意</strong>：</p>
 <ul>
 <li><code>DISTINCT</code> 关键字只能在 <code>SELECT</code> 语句中使用</li>
 <li>如果 <code>DISTINCT</code> 关键字后有多个字段，则会对多个字段进行组合去重</li>
 </ul>
 <p>使用 <code>DISTINCT</code> 关键字返回不重复字段的条数</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span>&lt;字段&gt;) <span class="keyword">FROM</span> &lt;表名&gt;;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span>&lt;字段&gt;) <span class="hljs-keyword">FROM</span> &lt;表名&gt;;</code></pre>
 <h3 id="使用-LIMIT-限制查询结果的条数"><a href="#使用-LIMIT-限制查询结果的条数" class="headerlink" title="使用 LIMIT 限制查询结果的条数"></a>使用 LIMIT 限制查询结果的条数</h3><p><code>LIMIT</code> 关键字有 3 种使用方式，即指定初始位置、不指定初始位置以及与 OFFSET 组合使用。</p>
 <ul>
 <li><p>指定初始位置</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LIMIT 初始位置，记录数；</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sql">LIMIT 初始位置，记录数；</code></pre>
 </li>
 <li><p>不指定初始位置</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LIMIT 记录数；</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sql">LIMIT 记录数；</code></pre>
 <p>记录从第一条记录开始显示。显示记录的条数由 <code>LIMIT</code> 关键字指定。</p>
 </li>
 <li><p><code>LIMIT</code> 和 <code>OFFSET</code> 组合使用</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LIMIT 记录数 OFFSET 初始位置；</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sql">LIMIT 记录数 OFFSET 初始位置；</code></pre>
 </li>
 </ul>
-<h3 id="使用-ODER-BY-排序"><a href="#使用-ODER-BY-排序" class="headerlink" title="使用 ODER BY 排序"></a>使用 ODER BY 排序</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- ASC 升序，默认</span></span><br><span class="line"><span class="comment">-- DESC 降序</span></span><br><span class="line">ORDER BY &lt;字段名&gt;[ASC|DESC];</span><br></pre></td></tr></table></figure>
+<h3 id="使用-ODER-BY-排序"><a href="#使用-ODER-BY-排序" class="headerlink" title="使用 ODER BY 排序"></a>使用 ODER BY 排序</h3><pre><code class="hljs sql">-- ASC 升序，默认
+-- DESC 降序
+ORDER BY &lt;字段名&gt;[ASC|DESC];</code></pre>
 <p>注意：</p>
 <ul>
 <li><code>ORDER BY</code> 关键字后可以跟子查询</li>
 <li>当排序的字段中存在空值时，<code>ORDER BY</code> 会将该空值作为最小值来对待</li>
 <li><code>ORDER BY</code> 指定多个字段进行排序时，MySQL 会按照字段的顺序从左到右依次进行排序</li>
 </ul>
-<h3 id="使用-WHERE-条件查询"><a href="#使用-WHERE-条件查询" class="headerlink" title="使用 WHERE 条件查询"></a>使用 WHERE 条件查询</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE 查询条件;</span><br></pre></td></tr></table></figure>
+<h3 id="使用-WHERE-条件查询"><a href="#使用-WHERE-条件查询" class="headerlink" title="使用 WHERE 条件查询"></a>使用 WHERE 条件查询</h3><pre><code class="hljs sql">WHERE 查询条件;</code></pre>
 <p>查询条件：</p>
 <ul>
 <li>带比较运算符和逻辑运算符的查询条件</li>
@@ -295,7 +278,7 @@
 <li>带 <code>IN</code> 关键字的查询条件</li>
 <li>带 <code>LIKE</code> 关键字的查询条件</li>
 </ul>
-<h3 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NOT] LIKE '字符串'；</span><br></pre></td></tr></table></figure>
+<h3 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h3><pre><code class="hljs sql">[NOT] LIKE '字符串'；</code></pre>
 <p>支持 <code>%</code> ：代表任何长度的字符串，字符串的长度可以为 0</p>
 <p>“<code>_</code>”：只能代表单个字符，字符的长度不能为 0</p>
 <p>注意：</p>
@@ -303,18 +286,20 @@
 <li>如果查询内容中包含通配符，可以使用<code>“\”</code>转义符</li>
 <li><code>“%”</code>通配符可以到匹配任意字符，但是不能匹配 NULL</li>
 </ul>
-<h3 id="BETWEEN-AND-范围查询"><a href="#BETWEEN-AND-范围查询" class="headerlink" title="BETWEEN AND 范围查询"></a>BETWEEN AND 范围查询</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NOT] BETWEEN 取值 1 AND 取值 2;</span><br></pre></td></tr></table></figure>
+<h3 id="BETWEEN-AND-范围查询"><a href="#BETWEEN-AND-范围查询" class="headerlink" title="BETWEEN AND 范围查询"></a>BETWEEN AND 范围查询</h3><pre><code class="hljs sql">[NOT] BETWEEN 取值 1 AND 取值 2;</code></pre>
 <p><code>BETWEEN AND</code> 能匹配指定范围内的所有值，包括<strong>起始值</strong>和<strong>终止值</strong></p>
 <h3 id="空值查询"><a href="#空值查询" class="headerlink" title="空值查询"></a>空值查询</h3><p><code>IS NULL</code> 关键字，用来判断字段的值是否为空值（NULL）。空值不同于 0，也不同于空字符串。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IS [NOT] NULL</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sql">IS [NOT] NULL</code></pre>
 <p>如果字段的值是空值，则满足查询条件，该记录将被查询出来。</p>
-<h3 id="GROUP-BY-分组查询"><a href="#GROUP-BY-分组查询" class="headerlink" title="GROUP BY 分组查询"></a>GROUP BY 分组查询</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GROUP BY &lt;字段名&gt;;</span><br></pre></td></tr></table></figure>
+<h3 id="GROUP-BY-分组查询"><a href="#GROUP-BY-分组查询" class="headerlink" title="GROUP BY 分组查询"></a>GROUP BY 分组查询</h3><pre><code class="hljs sql">GROUP BY &lt;字段名&gt;;</code></pre>
 <p>查询结果会只显示每个分组的第一条记录</p>
 <p><code>GROUP BY</code> 关键字可以和 <code>GROUP_CONCAT()</code> 函数一起使用。<code>GROUP_CONCAT()</code> 函数会把每个分组的字段值都显示出来。</p>
 <p>在数据统计时，<code>GROUP BY</code> 关键字经常和聚合函数一起使用。<code>COUNT()</code> 用来统计记录的条数；<code>SUM()</code> 用来计算字段值的总和；<code>AVG()</code> 用来计算字段值的平均值；<code>MAX()</code> 用来查询字段的最大值；<code>MIN()</code> 用来查询字段的最小值。</p>
 <p><code>WITH POLLUP</code> 关键字用来在所有记录的最后加上一条记录，这条记录是上面所有记录的总和，即统计记录数量。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &lt;字段 <span class="number">1</span>&gt;,<span class="keyword">GROUP_CONCAT</span>(&lt;字段 <span class="number">2</span>&gt;) </span><br><span class="line"><span class="keyword">FROM</span> &lt;表名&gt; </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> &lt;字段 <span class="number">1</span>&gt; <span class="keyword">WITH</span> <span class="keyword">ROLLUP</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="HAVING-过滤分组"><a href="#HAVING-过滤分组" class="headerlink" title="HAVING 过滤分组"></a>HAVING 过滤分组</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HAVING &lt;查询条件&gt;;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> &lt;字段 <span class="hljs-number">1</span>&gt;,<span class="hljs-keyword">GROUP_CONCAT</span>(&lt;字段 <span class="hljs-number">2</span>&gt;) 
+<span class="hljs-keyword">FROM</span> &lt;表名&gt; 
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> &lt;字段 <span class="hljs-number">1</span>&gt; <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">ROLLUP</span>;</code></pre>
+<h3 id="HAVING-过滤分组"><a href="#HAVING-过滤分组" class="headerlink" title="HAVING 过滤分组"></a>HAVING 过滤分组</h3><pre><code class="hljs sql">HAVING &lt;查询条件&gt;;</code></pre>
 <p>对分组后的数据进行过滤</p>
 <blockquote>
 <p><code>WHERE</code> 和 <code>HAVING</code> 关键字的区别：</p>
@@ -326,21 +311,27 @@
 <li><code>WHERE</code> 查询条件中不可以使用字段别名，而 <code>HAVING</code> 查询条件中可以使用字段别名。</li>
 </ul>
 </blockquote>
-<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><h4 id="COSS-JOIN-交叉连接-—-笛卡尔积"><a href="#COSS-JOIN-交叉连接-—-笛卡尔积" class="headerlink" title="COSS JOIN 交叉连接  — 笛卡尔积"></a>COSS JOIN 交叉连接  — 笛卡尔积</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &lt;字段名&gt; <span class="keyword">FROM</span> &lt;表<span class="number">1</span>&gt; <span class="keyword">CROSS</span> <span class="keyword">JOIN</span> &lt;表<span class="number">2</span>&gt; [<span class="keyword">WHERE</span>子句];</span><br><span class="line">或</span><br><span class="line"><span class="keyword">SELECT</span> &lt;字段名&gt; <span class="keyword">FROM</span> &lt;表<span class="number">1</span>&gt;, &lt;表<span class="number">2</span>&gt; [<span class="keyword">WHERE</span>子句];</span><br></pre></td></tr></table></figure>
-<h4 id="INNER-JOIN-内连接"><a href="#INNER-JOIN-内连接" class="headerlink" title="INNER JOIN 内连接"></a>INNER JOIN 内连接</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &lt;字段名&gt; <span class="keyword">FROM</span> &lt;表<span class="number">1</span>&gt; [<span class="keyword">INNER</span>] <span class="keyword">JOIN</span> &lt;表<span class="number">2</span>&gt; [<span class="keyword">ON</span>子句];</span><br></pre></td></tr></table></figure>
+<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><h4 id="COSS-JOIN-交叉连接-—-笛卡尔积"><a href="#COSS-JOIN-交叉连接-—-笛卡尔积" class="headerlink" title="COSS JOIN 交叉连接  — 笛卡尔积"></a>COSS JOIN 交叉连接  — 笛卡尔积</h4><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> &lt;字段名&gt; <span class="hljs-keyword">FROM</span> &lt;表<span class="hljs-number">1</span>&gt; <span class="hljs-keyword">CROSS</span> <span class="hljs-keyword">JOIN</span> &lt;表<span class="hljs-number">2</span>&gt; [<span class="hljs-keyword">WHERE</span>子句];
+或
+<span class="hljs-keyword">SELECT</span> &lt;字段名&gt; <span class="hljs-keyword">FROM</span> &lt;表<span class="hljs-number">1</span>&gt;, &lt;表<span class="hljs-number">2</span>&gt; [<span class="hljs-keyword">WHERE</span>子句];</code></pre>
+<h4 id="INNER-JOIN-内连接"><a href="#INNER-JOIN-内连接" class="headerlink" title="INNER JOIN 内连接"></a>INNER JOIN 内连接</h4><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> &lt;字段名&gt; <span class="hljs-keyword">FROM</span> &lt;表<span class="hljs-number">1</span>&gt; [<span class="hljs-keyword">INNER</span>] <span class="hljs-keyword">JOIN</span> &lt;表<span class="hljs-number">2</span>&gt; [<span class="hljs-keyword">ON</span>子句];</code></pre>
 <p>查询结果都是符合连接条件的记录</p>
 <h4 id="LEFT-RIGHT-JOIN-外连接"><a href="#LEFT-RIGHT-JOIN-外连接" class="headerlink" title="LEFT/RIGHT JOIN 外连接"></a>LEFT/RIGHT JOIN 外连接</h4><p><strong>左外连接</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &lt;字段名&gt; <span class="keyword">FROM</span> &lt;表<span class="number">1</span>&gt; <span class="keyword">LEFT</span> [<span class="keyword">OUTER</span>] <span class="keyword">JOIN</span> &lt;表<span class="number">2</span>&gt; &lt;<span class="keyword">ON</span>子句&gt;;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> &lt;字段名&gt; <span class="hljs-keyword">FROM</span> &lt;表<span class="hljs-number">1</span>&gt; <span class="hljs-keyword">LEFT</span> [<span class="hljs-keyword">OUTER</span>] <span class="hljs-keyword">JOIN</span> &lt;表<span class="hljs-number">2</span>&gt; &lt;<span class="hljs-keyword">ON</span>子句&gt;;</code></pre>
 <p>以左表为基准，保留左表的全部数据，右表匹配不上的为 NULL</p>
 <p><strong>右外连接</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> &lt;字段名&gt; <span class="keyword">FROM</span> &lt;表<span class="number">1</span>&gt; <span class="keyword">RIGHT</span> [<span class="keyword">OUTER</span>] <span class="keyword">JOIN</span> &lt;表<span class="number">2</span>&gt; &lt;<span class="keyword">ON</span>子句&gt;;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> &lt;字段名&gt; <span class="hljs-keyword">FROM</span> &lt;表<span class="hljs-number">1</span>&gt; <span class="hljs-keyword">RIGHT</span> [<span class="hljs-keyword">OUTER</span>] <span class="hljs-keyword">JOIN</span> &lt;表<span class="hljs-number">2</span>&gt; &lt;<span class="hljs-keyword">ON</span>子句&gt;;</code></pre>
 <p>以右表为基准，保留右表的全部数据，左表匹配不上的为 NULL</p>
 <h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><p>子查询指将一个查询语句嵌套在另一个查询语句中。子查询可以在 <code>SELECT</code>、<code>UPDATE</code> 和 <code>DELETE</code> 语句中使用，而且可以进行多层嵌套，子查询经常出现在 <code>WHERE</code> 子句中。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 操作符可以是比较运算符和 IN、NOT IN、EXISTS、NOT EXISTS 等关键字</span></span><br><span class="line">WHERE &lt;表达式&gt; &lt;操作符&gt; (子查询)；</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sql">-- 操作符可以是比较运算符和 IN、NOT IN、EXISTS、NOT EXISTS 等关键字
+WHERE &lt;表达式&gt; &lt;操作符&gt; (子查询)；</code></pre>
 <p><strong>注意</strong>：</p>
 <ul>
 <li><p>子查询语句可以嵌套在 SQL 语句中任何表达式出现的位置</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 嵌套在 SELECT 语句的 SELECT 子句中</span></span><br><span class="line"><span class="keyword">SELECT</span> (子查询) <span class="keyword">FROM</span> 表名;</span><br><span class="line"><span class="comment">-- 嵌套在 SELECT 语句的 FROM 子句中</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> (子查询) <span class="keyword">AS</span> 表的别名;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sql"><span class="hljs-comment">-- 嵌套在 SELECT 语句的 SELECT 子句中</span>
+<span class="hljs-keyword">SELECT</span> (子查询) <span class="hljs-keyword">FROM</span> 表名;
+<span class="hljs-comment">-- 嵌套在 SELECT 语句的 FROM 子句中</span>
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> (子查询) <span class="hljs-keyword">AS</span> 表的别名;</code></pre>
 </li>
 <li><p>只出现在子查询中而没有出现在父查询中的表不能包含在输出列中</p>
 <p>多层嵌套子查询的最终数据集只包含父查询（即最外层的查询）的 <code>SELECT</code> 子句中出现的字段，而子查询的输出结果通常会作为其外层子查询数据源或用于数据判断匹配。</p>
@@ -455,297 +446,253 @@
 </table>
 </div>
 
-    </div>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/SQL/">SQL</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/09/15/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">消息队列</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/06/19/Maven-%E5%88%9B%E5%BB%BA-Spark-%E9%A1%B9%E7%9B%AE%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/">
+                        <span class="hidden-mobile">Maven 创建 Spark 项目采坑记录</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-    
-    
-    
-
-    <div>
-      
-        <div>
-    
-        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
-    
-</div>
-
-      
-    </div>
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/SQL/" rel="tag"># SQL</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2020/06/19/Maven-%E5%88%9B%E5%BB%BA-Spark-%E9%A1%B9%E7%9B%AE%E9%87%87%E5%9D%91%E8%AE%B0%E5%BD%95/" rel="prev" title="Maven 创建 Spark 项目采坑记录">
-      <i class="fa fa-chevron-left"></i> Maven 创建 Spark 项目采坑记录
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/09/15/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" rel="next" title="消息队列">
-      消息队列 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-  </div>
-
-
-          </div>
-          
-    <div class="comments" id="valine-comments"></div>
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
+            
+          </article>
         </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DQL-Review"><span class="nav-number">1.</span> <span class="nav-text">DQL Review</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查询表中的字段"><span class="nav-number">1.0.1.</span> <span class="nav-text">查询表中的字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-DISTINCT-过滤重复数据"><span class="nav-number">1.0.2.</span> <span class="nav-text">使用 DISTINCT 过滤重复数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-LIMIT-限制查询结果的条数"><span class="nav-number">1.0.3.</span> <span class="nav-text">使用 LIMIT 限制查询结果的条数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-ODER-BY-排序"><span class="nav-number">1.0.4.</span> <span class="nav-text">使用 ODER BY 排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-WHERE-条件查询"><span class="nav-number">1.0.5.</span> <span class="nav-text">使用 WHERE 条件查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模糊查询"><span class="nav-number">1.0.6.</span> <span class="nav-text">模糊查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BETWEEN-AND-范围查询"><span class="nav-number">1.0.7.</span> <span class="nav-text">BETWEEN AND 范围查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空值查询"><span class="nav-number">1.0.8.</span> <span class="nav-text">空值查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GROUP-BY-分组查询"><span class="nav-number">1.0.9.</span> <span class="nav-text">GROUP BY 分组查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HAVING-过滤分组"><span class="nav-number">1.0.10.</span> <span class="nav-text">HAVING 过滤分组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接"><span class="nav-number">1.0.11.</span> <span class="nav-text">连接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#COSS-JOIN-交叉连接-—-笛卡尔积"><span class="nav-number">1.0.11.1.</span> <span class="nav-text">COSS JOIN 交叉连接  — 笛卡尔积</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#INNER-JOIN-内连接"><span class="nav-number">1.0.11.2.</span> <span class="nav-text">INNER JOIN 内连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LEFT-RIGHT-JOIN-外连接"><span class="nav-number">1.0.11.3.</span> <span class="nav-text">LEFT&#x2F;RIGHT JOIN 外连接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子查询"><span class="nav-number">1.0.12.</span> <span class="nav-text">子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联合查询"><span class="nav-number">1.0.13.</span> <span class="nav-text">联合查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理无效数据"><span class="nav-number">1.0.14.</span> <span class="nav-text">处理无效数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用函数"><span class="nav-number">1.1.</span> <span class="nav-text">常用函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串函数"><span class="nav-number">1.1.1.</span> <span class="nav-text">字符串函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数值函数"><span class="nav-number">1.1.2.</span> <span class="nav-text">数值函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期和时间函数"><span class="nav-number">1.1.3.</span> <span class="nav-text">日期和时间函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流程函数"><span class="nav-number">1.1.4.</span> <span class="nav-text">流程函数</span></a></li></ol></li></ol></li></ol></div>
       </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Kelly Liu"
-      src="/uploads/avatar.jpeg">
-  <p class="site-author-name" itemprop="name">Kelly Liu</p>
-  <div class="site-description" itemprop="description">The Space to record knowledge and my life.</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">82</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">12</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">32</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/tiantianliu2018" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tiantianliu2018" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:tiantianliu2018@outlook.com" title="E-Mail → mailto:tiantianliu2018@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-  </div>
-
-
-
-      </div>
-
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
 
       </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright">
-  
-  &copy; 2019 – 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Kelly liu</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-      <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">169k</span>
-</div>
-
-<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="theme-info">
-  <div class="powered-by"></div>
-  <span class="post-count">博客全站共73.6k字</span>
-  <span class="post-meta-divider">|</span>
-  本站总访问量<span id="busuanzi_value_site_pv"></span>次
-  <span class="post-meta-divider">|</span>
-  本站访客数<span id="busuanzi_value_site_uv"></span>人次
-  <span class="post-meta-divider">|</span>
-  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-</div>
-
-<div class="theme-info">
-  <div class="powered-by"></div>
-  <span class="post-count">博客全站共73.6k字</span>
-</div>
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
+    
   </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
 
   
-  
-  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   
-
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
   
 
   
 
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
 
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
     });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : true,
-      notify     : true,
-      appId      : 'FhWVmso5TyqrTqtDNNtpuBeC-gzGzoHsz',
-      appKey     : 'd5yz5CVcPPfEmfA5p2ovH6g9',
-      placeholder: "欢迎交流讨论...",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : 'zh-CN' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "DQL Review&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
     });
-  }, window.Valine);
-});
-</script>
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
