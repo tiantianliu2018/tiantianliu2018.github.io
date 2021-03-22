@@ -90,7 +90,7 @@
 			</ul>
 		</nav>
 		<nav>
-		    总文章数 82
+		    总文章数 83
 		</nav>
 		<nav class="header-smart-menu">
 			
@@ -199,6 +199,136 @@
   <script>
     Oauthcallback();
   </script>
+
+
+  
+    <article id="post-Hadoop权威指南-Chapter3-Hadoop分布式文件系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/03/22/Hadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-Chapter3-Hadoop%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">Hadoop权威指南_Chapter3_Hadoop分布式文件系统</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/03/22/Hadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-Chapter3-Hadoop%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
+        <time datetime="2021-03-22T02:43:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-22</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="Chapter3-Hadoop-分布式文件系统"><a href="#Chapter3-Hadoop-分布式文件系统" class="headerlink" title="Chapter3_Hadoop 分布式文件系统"></a>Chapter3_Hadoop 分布式文件系统</h1><p>分布式文件系统：跨多台计算机存储的文件系统</p>
+<h2 id="3-1-HDFS-的设计"><a href="#3-1-HDFS-的设计" class="headerlink" title="3.1 HDFS 的设计"></a>3.1 HDFS 的设计</h2><p>超大文件</p>
+<p>流式数据访问：一次写入、多次读取</p>
+<p>商用硬件</p>
+<p>低时间延迟的数据访问</p>
+<p>大量的小文件</p>
+<p>多用户写入、任意修改文件</p>
+<h2 id="3-2-HDFS-的概念"><a href="#3-2-HDFS-的概念" class="headerlink" title="3.2 HDFS 的概念"></a>3.2 HDFS 的概念</h2><h3 id="3-2-1-数据块"><a href="#3-2-1-数据块" class="headerlink" title="3.2.1 数据块"></a>3.2.1 数据块</h3><p>block，默认 128MB。</p>
+<blockquote>
+<p>HDFS 中的块为什么这么大？ </p>
+<p>最小化寻址开销。使寻址时间仅占传输时间的 1%。如果寻址时间约为 10ms，而传输速率为 100MB/s，为了使寻址时间仅占传输时间的 1%，我们要将块大小设置约为100MB。默认的块大小 128MB。 块的大小：10ms×100×100M/s = 100M。</p>
+</blockquote>
+<p>列出文件系统中各个文件由哪些块构成 <code>hdfs fsck / -files -blocks</code></p>
+<h3 id="3-2-2-namenode-和-datanode"><a href="#3-2-2-namenode-和-datanode" class="headerlink" title="3.2.2 namenode 和 datanode"></a>3.2.2 namenode 和 datanode</h3><p><strong>namenode</strong>：管理文件系统的命名空间；维护文件系统树及整棵树内所有的文件和目录；记录每个文件中各个块所在的数据节点信息</p>
+<p><strong>client</strong>：代表用户通过与 namenode 和 datanode 交互来访问整个文件系统</p>
+<p><strong>datanode</strong>：文件系统的工作节点。根据需要存储并检索数据块，定期向 namenode 发送它们所存储的数据块列表</p>
+<blockquote>
+<p>运行 namenode 服务的机器毁坏，文件系统上所有的文件将会丢失，因此，对 namenode 实现容错非常重要。 Hadoop 的容错机制：</p>
+</blockquote>
+<ol>
+<li>备份组成文件系统元数据持久状态的文件。将持久状态写入本地磁盘的同时，写入一个远程挂载的网络文件系统（NFS）</li>
+<li>运行一个辅助的  namenode。定期合并编辑日志与命名空间镜像，防止编辑日志过大。</li>
+</ol>
+<h3 id="3-2-3-块缓存"><a href="#3-2-3-块缓存" class="headerlink" title="3.2.3 块缓存"></a>3.2.3 块缓存</h3><p>对于频繁访问的 datanode 磁盘上的文件，可以将对应的块缓存在 datanode 的内存中。</p>
+<h3 id="3-2-4-联邦-HDFS"><a href="#3-2-4-联邦-HDFS" class="headerlink" title="3.2.4 联邦 HDFS"></a>3.2.4 联邦 HDFS</h3><p>添加 namenode 扩展，每个 namenode 管理文件系统命名空间中的一部分（命名空间卷 namespace volume），命名空间卷由命名空间的元数据和一个数据块池（block pool）组成，数据块池下包含该命名空间下文件的所有数据块。</p>
+<p>集群中的 datanode 需要注册到每个 namenode，并且存储着来自多个数据块池中的数据块。</p>
+<h3 id="3-2-5-HDFS-的高可用性"><a href="#3-2-5-HDFS-的高可用性" class="headerlink" title="3.2.5 HDFS 的高可用性"></a>3.2.5 HDFS 的高可用性</h3><p>Hadoop2： 活动 namenode 、备用 namenode</p>
+<h2 id="3-3-命令行接口"><a href="#3-3-命令行接口" class="headerlink" title="3.3 命令行接口"></a>3.3 命令行接口</h2><p><code>fs.defaultFS</code> 设置为 hdfs://localhost/ 用于设置 Hadoop 的默认文件系统</p>
+<p><code>dfs.replication</code> 文件副本个数</p>
+<h2 id="3-4-Hadoop-文件系统"><a href="#3-4-Hadoop-文件系统" class="headerlink" title="3.4 Hadoop 文件系统"></a>3.4 Hadoop 文件系统</h2><p>列出本地文件系统根目录下的文件：<code>hadoop fs -ls file:///</code></p>
+<h2 id="3-6-数据流"><a href="#3-6-数据流" class="headerlink" title="3.6 数据流"></a>3.6 数据流</h2>
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Hadoop</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HDFS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/大数据//" class="article-tag-list-link color4">大数据</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/03/22/Hadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-Chapter3-Hadoop%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
 
 
   
@@ -1113,112 +1243,6 @@
 
 
   
-    <article id="post-论文阅读《A-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/">论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/" class="archive-article-date">
-        <time datetime="2020-04-13T07:08:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-13</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id="论文阅读《A-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage》"><a href="#论文阅读《A-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage》" class="headerlink" title="论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》"></a>论文阅读《A Novel Framework with Information Fusion and Neighborhood Enhancement for User Identity Linkage》</h2><h3 id="Information-Fusion"><a href="#Information-Fusion" class="headerlink" title="Information Fusion"></a>Information Fusion</h3><p>整合不同信息的统一框架</p>
-<p>Profiles：screen name —&gt; 编辑距离计算相似性</p>
-<p>Contents：将所有的帖子放在一个文档中，然后输入到 Doc2Vec 模型计算相似性</p>
-<p>Network Structure</p>
-    
-    <a class="article-more-a" href="/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Social Networks</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">User Identity Linkage</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/科研论文//" class="article-tag-list-link color5">科研论文</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/04/13/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%8AA-Novel-Framework-with-Information-Fusion-and-Neighborhood-Enhancement-for-User-Identity-Linkage%E3%80%8B/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next</a>
@@ -1374,10 +1398,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NLP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Flink</a>
               </li>
              
@@ -1386,7 +1406,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NLP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">HBase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HDFS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1398,7 +1430,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IO 流</a>
+                <a href="javascript:void(0)" class="js-tag color4">原子类</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1406,7 +1438,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">原子类</a>
+                <a href="javascript:void(0)" class="js-tag color5">IO 流</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1430,10 +1462,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spark</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
@@ -1446,11 +1474,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Spark</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">pytorch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
+                <a href="javascript:void(0)" class="js-tag color5">推荐系统</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1458,7 +1494,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">推荐系统</a>
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1471,10 +1507,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
               <li class="article-tag-list-item">
